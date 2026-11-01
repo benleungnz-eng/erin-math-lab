@@ -27,6 +27,8 @@ async function walk(dir) {
 const files = (await walk("dist")).map((x) => "./" + x.slice(5));
 const pkg = JSON.parse(await readFile("package.json", "utf8"));
 const contentHash = createHash("sha256");
+// Installer policy is part of the build identity, alongside runtime assets.
+contentHash.update("fresh-http-cache-install-v2");
 for (const file of [...files].sort()) {
   contentHash.update(file);
   contentHash.update(await readFile("dist/" + file.slice(2)));
@@ -39,7 +41,7 @@ const scopeKey=encodeURIComponent(new URL(self.registration.scope).pathname);
 const CACHE=VERSION+'-'+BUILD+'-'+scopeKey;
 const FILES=${JSON.stringify(files)};
 const urls=FILES.map(x=>new URL(x,self.registration.scope).href);
-self.addEventListener('install',e=>e.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(urls);})()));
+self.addEventListener('install',e=>e.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(urls.map(url=>new Request(url,{cache:"reload"})));})()));
 self.addEventListener('activate',e=>e.waitUntil((async()=>{await self.clients.claim();})()));
 self.addEventListener('message',e=>{if(e.data==='ACTIVATE')self.skipWaiting();if(e.data==='STATUS')e.waitUntil((async()=>{const cache=await caches.open(CACHE);const entries=await Promise.all(urls.map(u=>cache.match(u)));e.ports[0]?.postMessage({ready:entries.every(Boolean),version:VERSION});})());});
 self.addEventListener('fetch',e=>{const url=new URL(e.request.url);if(e.request.method!=='GET'||url.origin!==self.location.origin||!url.href.startsWith(self.registration.scope))return;e.respondWith((async()=>{const c=await caches.open(CACHE);const hit=await c.match(e.request,{ignoreSearch:true});if(hit)return hit;if(e.request.mode==='navigate')return await c.match(new URL('./index.html',self.registration.scope).href)||fetch(e.request);return fetch(e.request);})());});
