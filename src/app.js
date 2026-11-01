@@ -1,6 +1,12 @@
 import { createAcademyUI } from "./academy-ui.js";
 import { lockMathPartner } from "./academy.js";
-import { partners, partnerArt, partnerById, partnerLine } from "./partners.js";
+import {
+  partners,
+  partnerArt,
+  partnerById,
+  partnerLine,
+  positiveEvent,
+} from "./partners.js";
 import { subjects } from "./content/science.js";
 import { reportTypeName } from "./reports.js";
 import { presentQuestion, answerInstructions } from "./algebra-presentation.js";
@@ -407,13 +413,12 @@ function bindAnswers(q, r) {
     }
     if (result.correct) {
       renderLearn();
-      const chain = session()
-        .records.slice(0, session().index + 1)
-        .reverse()
-        .findIndex((x) => x.mode !== "independent");
-      const streak = chain < 0 ? session().index + 1 : chain;
       await academyUI.mathEvent(
-        streak === 5 ? "streak5" : streak === 3 ? "streak3" : "correct",
+        positiveEvent(
+          practiceMode ? [currentRecord()] : session().records,
+          practiceMode ? 0 : session().index,
+          q.difficulty === 3,
+        ),
       );
       celebrate();
     } else {

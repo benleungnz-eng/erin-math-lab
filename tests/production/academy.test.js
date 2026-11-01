@@ -227,3 +227,16 @@ test("backup merge preserves current layout and adds science/partners once; malf
   Object.values(badReward.academy.rewards)[0].session = "fake";
   assert.throws(() => validate(badReward), /奖励/);
 });
+
+test("positive events stay semantic: hinted/retried ordinary, independent key question big, third/fifth consecutive special", async () => {
+  const { positiveEvent } = await import("../../src/partners.js");
+  const rows = Array.from({ length: 5 }, () => ({ mode: "independent" }));
+  assert.equal(positiveEvent(rows, 0, true), "excellent");
+  assert.equal(positiveEvent(rows, 1, false), "correct");
+  assert.equal(positiveEvent(rows, 2), "streak3");
+  assert.equal(positiveEvent(rows, 4), "streak5");
+  rows[4].mode = "helped";
+  assert.equal(positiveEvent(rows, 4, true), "correct");
+  rows[3].mode = "retried";
+  assert.equal(positiveEvent(rows, 3, true), "correct");
+});

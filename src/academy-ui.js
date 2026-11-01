@@ -5,6 +5,7 @@ import {
   partnerLine,
   chooseEffect,
   eventStates,
+  positiveEvent,
   states,
 } from "./partners.js";
 import {
@@ -214,7 +215,13 @@ export function createAcademyUI({
       );
       if (result?.correct) {
         sciencePage();
-        await event("correct");
+        await event(
+          positiveEvent(
+            science().records,
+            s.index,
+            s.index === 0 && ["cells", "rotation"].includes(q.visual),
+          ),
+        );
       } else if (result?.valid) {
         main.querySelector("#scienceFeedback").textContent =
           "这次还没对上。看看图中的线索，或让搭档拆一步。";

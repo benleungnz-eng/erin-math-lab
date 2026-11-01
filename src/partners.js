@@ -383,3 +383,13 @@ export function partnerArt(id, state = "idle_default", variant = 0) {
           : '<path d="M85 69q10-24 20 0" fill="#fff3cc"/>';
   return `<span class="partner-art kind-${p.kind} state-${E(state)} variant-${variant}" role="img" aria-label="${p.name} · ${labels[Math.max(n, 0)]}"><svg viewBox="0 0 190 195" aria-hidden="true"><ellipse cx="95" cy="179" rx="48" ry="7" fill="#26343818"/><g fill="${p.color}" stroke="#283740" stroke-width="3" stroke-linejoin="round">${body}<path d="M64 151 56 171 79 171M118 151 128 171 107 171"/><path class="partner-hand" d="M138 102 164 ${hint ? 65 : happy ? 54 : soft ? 120 : state === "greet" ? 62 : 108}" fill="none" stroke-width="10" stroke-linecap="round"/></g><g stroke="#263438" stroke-width="5" stroke-linecap="round" fill="none">${eyes}<path d="${mouth}" stroke-width="3"/></g>${p.kind === "shadow" ? '<path d="m65 80 15 5m30 0 15-5" stroke="#263438" stroke-width="3"/>' : ""}${emblem}<g class="state-prop"><circle cx="156" cy="41" r="22" fill="#fff8df" stroke="${p.color}" stroke-width="3"/><text x="156" y="49" text-anchor="middle" font-size="25" fill="#263438">${marks[Math.max(n, 0)]}</text></g>${props}</svg></span>`;
 }
+export function positiveEvent(records, index, keyQuestion = false) {
+  const record = records[index];
+  if (record?.mode !== "independent") return "correct";
+  let streak = 0;
+  for (let i = index; i >= 0 && records[i].mode === "independent"; i--)
+    streak++;
+  if (streak === 5) return "streak5";
+  if (streak === 3) return "streak3";
+  return keyQuestion ? "excellent" : "correct";
+}
