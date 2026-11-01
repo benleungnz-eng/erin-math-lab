@@ -4,7 +4,7 @@ const http = require("node:http");
 const fs = require("node:fs");
 const path = require("node:path");
 (async () => {
-  let version = "1.1.0",
+  let version = "1.1.1",
     fail = true;
   const server = http.createServer((req, res) => {
     const pathname = new URL(req.url, "http://local").pathname;
@@ -42,7 +42,7 @@ const path = require("node:path");
     res.setHeader("Cache-Control", "no-store");
     let body = fs.readFileSync(target);
     if (file === "sw.js")
-      body = Buffer.from(body.toString().replaceAll("v1.1.0", "v" + version));
+      body = Buffer.from(body.toString().replaceAll("v1.1.1", "v" + version));
     res.end(body);
   });
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
@@ -70,7 +70,7 @@ const path = require("node:path");
   await page.evaluate(() => caches.open("other-app-sentinel"));
   await page.click("#start");
   await page.waitForSelector("#explain");
-  version = "1.1.1";
+  version = "1.1.2";
   await page.evaluate(async () => {
     const reg = await navigator.serviceWorker.getRegistration();
     await reg.update();
@@ -102,7 +102,7 @@ const path = require("node:path");
   await page.click("#update");
   await page.waitForFunction(async () => {
     const keys = await caches.keys();
-    return keys.some((k) => k.includes("v1.1.1"));
+    return keys.some((k) => k.includes("v1.1.2"));
   });
   await page.waitForSelector("#start");
   assert.deepEqual(

@@ -1,4 +1,4 @@
-当前版本：**v1.1.0**。新版功能、报告格式和 iPad 操作见 [验收说明](docs/V1_1_ACCEPTANCE.md)。
+当前版本：**v1.1.1**。新版功能、报告格式和 iPad 操作见 [验收说明](docs/V1_1_ACCEPTANCE.md)。
 
 # Erin Math Lab · 每日一关 / 方块航站
 
@@ -49,7 +49,7 @@ v0.1 的 `localStorage` 原始键不会被本版删除。设置中可导出旧�
 
 ## GitHub Pages 发布
 
-当前路线：提交到 main → GitHub Actions 安装锁定依赖、公开内容扫描、格式检查、31项逻辑/构建检查、生产构建、浏览器/PWA验收 → 部署 Pages。PR 只验证不部署，不使用其他托管平台。
+当前路线：提交到 main → GitHub Actions 安装锁定依赖、公开内容扫描、格式检查、34项逻辑/构建检查、生产构建、浏览器/PWA验收 → 部署 Pages。PR 只验证不部署，不使用其他托管平台。
 
 正式地址：**https://benleungnz-eng.github.io/erin-math-lab/**。仓库已公开、Pages已启用；Actions验证及部署成功，实际HTTPS与离线重开验收通过。广州家庭网络、iPad主屏幕与Pencil仍需真机验收。后续main提交自动测试、构建并发布，网址不变。
 

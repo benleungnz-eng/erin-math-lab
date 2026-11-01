@@ -1057,3 +1057,184 @@ details summary {
   height: auto;
   aspect-ratio: 256/300;
 }
+/* Function-specific controls: icon + label, not color alone. */
+.button-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.2em;
+  flex-shrink: 0;
+  font-weight: 800;
+  font-size: 1.12em;
+}
+button,
+.button {
+  font-weight: 550;
+  box-shadow: 0 2px 0 #273b3510;
+  transition:
+    background 0.15s,
+    box-shadow 0.15s,
+    transform 0.15s;
+}
+button:not(:disabled):active,
+.button:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+#submitAnswer {
+  background: linear-gradient(135deg, #245f56, #34796c);
+  color: #fff;
+  border-color: #245f56;
+  box-shadow: 0 4px 0 #19483e;
+  padding: 13px 24px;
+  font-weight: 750;
+}
+#submitAnswer:hover {
+  background: #1b5248;
+}
+#nextQuestion,
+#start,
+#goBuild {
+  background: linear-gradient(135deg, #ffe5a2, #edc163);
+  border-color: #d1a24b;
+  color: #382b13;
+  font-weight: 750;
+  box-shadow: 0 4px 0 #b88d3c;
+  padding: 13px 24px;
+}
+#nextQuestion:hover,
+#start:hover,
+#goBuild:hover {
+  background: #ffe2a0;
+}
+.learning-help {
+  padding: 16px 0;
+  border-top: 1px solid #dce2d7;
+  margin-top: 20px;
+  gap: 10px;
+}
+#hint1 {
+  background: #edf4fb;
+  border-color: #adc6dd;
+  color: #255477;
+}
+#hint2 {
+  background: #ede8fa;
+  border: 2px solid #9b8bbd;
+  color: #48356b;
+  font-weight: 750;
+  box-shadow: 0 3px 0 #c5b9de;
+}
+#hint2:hover {
+  background: #e1d7f6;
+}
+#explain {
+  background: #fff0e6;
+  border-color: #dbb99f;
+  color: #824b29;
+}
+#later {
+  background: transparent;
+  border-color: transparent;
+  color: #5e6c66;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  box-shadow: none;
+}
+.keypad button {
+  background: #fffefa;
+  border-color: #d8ded4;
+  box-shadow: 0 3px 0 #dce1d5;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  border-radius: 14px;
+}
+.keypad button:hover {
+  background: #e8f1e6;
+}
+.keypad button[data-key="−"],
+.keypad button[data-key="."],
+.keypad button[data-key="/"] {
+  background: #eeeaf7;
+  color: #513c75;
+  border-color: #d3c9e6;
+}
+.keypad button[data-key="⌫"],
+.keypad button[data-key="清空"] {
+  background: #fff0e9;
+  color: #8c4b35;
+  border-color: #e5cbbb;
+}
+.sketch-tools button {
+  border-radius: 10px;
+  background: #f4f5ef;
+  font-size: 13px;
+  box-shadow: none;
+}
+.sketch-tools button[aria-pressed="true"] {
+  background: #dceee5;
+  border-color: #4b7a69;
+  color: #224d3d;
+}
+#clearInk {
+  color: #8b4939;
+}
+#downloadReport,
+#export,
+#exportReports {
+  background: #edf4fb;
+  border-color: #b5cadc;
+  color: #255477;
+}
+#sendReport {
+  background: #285e54;
+  color: white;
+  border-color: #285e54;
+}
+nav button {
+  border-radius: 999px;
+  box-shadow: none;
+}
+nav button[aria-pressed="true"] {
+  background: #e0eee7;
+  color: #214d3b;
+  border-color: #5b8572;
+}
+.answer-instructions {
+  border: 1px solid #c8d8cc;
+  border-left: 4px solid #68917c;
+  background: #f1f7ed;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin: 18px 0;
+  line-height: 1.7;
+  font-size: 14px;
+}
+.answer-instructions p {
+  margin: 6px 0 0;
+}
+.simplified-result {
+  background: #fffdf4;
+  border: 1px solid #c7d9b9;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 18px;
+}
+@media (max-width: 600px) {
+  .learning-help {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .learning-help button {
+    width: 100%;
+    min-height: 52px;
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+  #hint2 {
+    grid-column: 1/-1;
+    grid-row: 1;
+  }
+  #later {
+    grid-column: 1/-1;
+  }
+}
