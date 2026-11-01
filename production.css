@@ -1639,3 +1639,13 @@ nav button[aria-pressed="true"] {
     width: 80px;
   }
 }
+.partner-stage.reacting .kind-shadow {
+  animation-timing-function: ease-in-out;
+}
+.partner-stage.reacting .kind-block {
+  animation-timing-function: steps(4, end);
+}
+.partner-stage.reacting .kind-circus .state-prop {
+  transform: rotate(-7deg);
+  transform-origin: 156px 41px;
+}

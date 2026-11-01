@@ -786,7 +786,7 @@ function renderWorld() {
           action((data) => (data.prefs.skin = b.dataset.skin))),
     );
   $("#bounce").onclick = () => {
-    const img = main.querySelector(".companion .character");
+    const img = main.querySelector(".companion .partner-art");
     img.classList.remove("bounce");
     void img.offsetWidth;
     img.classList.add("bounce");

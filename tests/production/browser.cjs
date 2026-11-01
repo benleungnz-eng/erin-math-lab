@@ -85,6 +85,7 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
   });
   ok("three-subject home, original companions and complete offline inventory");
   await page.click("#homeBuild");
+  await page.click("#bounce");
   assert.equal(await page.locator("[data-cell]").count(), 36);
   assert.equal(await page.locator("[data-item]:not([disabled])").count(), 3);
   await page.click('[data-item="tree"]');

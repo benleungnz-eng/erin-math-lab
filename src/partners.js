@@ -282,7 +282,11 @@ export function partnerArt(id, state = "idle_default", variant = 0) {
     soft = /wrong/.test(state),
     hint = /hint|solution/.test(state);
   const mouth = happy
-    ? "M78 111 Q95 133 113 109"
+    ? p.kind === "shadow"
+      ? "M84 115 Q96 122 108 114"
+      : p.kind === "block"
+        ? "M84 116H107"
+        : "M78 111 Q95 133 113 109"
     : soft
       ? "M83 116 Q95 110 108 116"
       : "M84 116 Q95 123 106 116";
@@ -329,7 +333,9 @@ export function partnerArt(id, state = "idle_default", variant = 0) {
     "五题连对",
   ];
   const eyes = happy
-    ? '<path d="M64 100q9-13 18 0m26 0q9-13 18 0"/>'
+    ? p.kind === "shadow"
+      ? '<path d="M67 96h14m28 0h14"/>'
+      : '<path d="M64 100q9-13 18 0m26 0q9-13 18 0"/>'
     : soft
       ? '<path d="M67 92l12 3m31 0 12-3M72 100v6m45-6v6"/>'
       : state === "thinking"
@@ -375,5 +381,5 @@ export function partnerArt(id, state = "idle_default", variant = 0) {
         : identity === 2
           ? '<path d="M86 59h18v13H86Z" fill="#fff3cc"/>'
           : '<path d="M85 69q10-24 20 0" fill="#fff3cc"/>';
-  return `<span class="partner-art state-${E(state)} variant-${variant}" role="img" aria-label="${p.name} · ${labels[Math.max(n, 0)]}"><svg viewBox="0 0 190 195" aria-hidden="true"><ellipse cx="95" cy="179" rx="48" ry="7" fill="#26343818"/><g fill="${p.color}" stroke="#283740" stroke-width="3" stroke-linejoin="round">${body}<path d="M64 151 56 171 79 171M118 151 128 171 107 171"/><path class="partner-hand" d="M138 102 164 ${hint ? 65 : happy ? 54 : soft ? 120 : state === "greet" ? 62 : 108}" fill="none" stroke-width="10" stroke-linecap="round"/></g><g stroke="#263438" stroke-width="5" stroke-linecap="round" fill="none">${eyes}<path d="${mouth}" stroke-width="3"/></g>${p.kind === "shadow" ? '<path d="m65 80 15 5m30 0 15-5" stroke="#263438" stroke-width="3"/>' : ""}${emblem}<g class="state-prop"><circle cx="156" cy="41" r="22" fill="#fff8df" stroke="${p.color}" stroke-width="3"/><text x="156" y="49" text-anchor="middle" font-size="25" fill="#263438">${marks[Math.max(n, 0)]}</text></g>${props}</svg></span>`;
+  return `<span class="partner-art kind-${p.kind} state-${E(state)} variant-${variant}" role="img" aria-label="${p.name} · ${labels[Math.max(n, 0)]}"><svg viewBox="0 0 190 195" aria-hidden="true"><ellipse cx="95" cy="179" rx="48" ry="7" fill="#26343818"/><g fill="${p.color}" stroke="#283740" stroke-width="3" stroke-linejoin="round">${body}<path d="M64 151 56 171 79 171M118 151 128 171 107 171"/><path class="partner-hand" d="M138 102 164 ${hint ? 65 : happy ? 54 : soft ? 120 : state === "greet" ? 62 : 108}" fill="none" stroke-width="10" stroke-linecap="round"/></g><g stroke="#263438" stroke-width="5" stroke-linecap="round" fill="none">${eyes}<path d="${mouth}" stroke-width="3"/></g>${p.kind === "shadow" ? '<path d="m65 80 15 5m30 0 15-5" stroke="#263438" stroke-width="3"/>' : ""}${emblem}<g class="state-prop"><circle cx="156" cy="41" r="22" fill="#fff8df" stroke="${p.color}" stroke-width="3"/><text x="156" y="49" text-anchor="middle" font-size="25" fill="#263438">${marks[Math.max(n, 0)]}</text></g>${props}</svg></span>`;
 }
