@@ -1,0 +1,1304 @@
+{
+  "version": 2,
+  "note": "虚构游戏配角参与记忆小剧情，不充当历史人物或史料；同图角色不重复，整批不重复角色组合与动作。",
+  "cast": {
+    "blackegg": 8,
+    "kirby": 9,
+    "gen": 8,
+    "sonic": 8,
+    "huan": 8,
+    "ling": 9,
+    "gu": 8,
+    "lu": 8,
+    "mario": 8,
+    "yoshi": 8,
+    "prism": 8,
+    "comet": 8,
+    "moss": 8,
+    "bell": 8,
+    "pebble": 8
+  },
+  "images": [
+    {
+      "id": "history-01-01",
+      "scene": "early humans making chipped stone tools outdoors",
+      "base": "./public/assets/history/history-01-01.webp",
+      "actors": [
+        {
+          "id": "kirby",
+          "name": "卡比",
+          "identity": "Kirby, small round pink body, blue eyes, rosy cheeks, red oval feet",
+          "reference": "./public/assets/partners/kirby/idle_default.webp",
+          "action": "kneeling to carry a small basket of stones to a human toolmaker"
+        },
+        {
+          "id": "pebble",
+          "name": "砾砾",
+          "identity": "small friendly square stone robot with glowing amber eyes and teal collar",
+          "reference": "./public/assets/partners/pebble/idle_default.webp",
+          "action": "balancing a flat rock on a low work surface with an earnest little effort"
+        }
+      ]
+    },
+    {
+      "id": "history-01-02",
+      "scene": "early humans walking upright near a small controlled campfire",
+      "base": "./public/assets/history/history-01-02.webp",
+      "actors": [
+        {
+          "id": "gen",
+          "name": "贾克斯",
+          "identity": "Jax, tall slim purple rabbit, long upright ears, half-lidded yellow eyes, pink overalls",
+          "reference": "./public/assets/partners/gen/idle_default.webp",
+          "action": "stacking firewood beside the human camp with a proud grin"
+        },
+        {
+          "id": "moss",
+          "name": "苔点",
+          "identity": "little blocky forest explorer with leafy green hood and brown boots",
+          "reference": "./public/assets/partners/moss/idle_default.webp",
+          "action": "warming cold hands near the controlled fire with a delighted relieved expression"
+        }
+      ]
+    },
+    {
+      "id": "history-01-03",
+      "scene": "prehistoric person polishing a bone tool with simple pierced ornaments beside them",
+      "base": "./public/assets/history/history-01-03.webp",
+      "actors": [
+        {
+          "id": "blackegg",
+          "name": "黑色蛋仔",
+          "identity": "the black egg character in the supplied reference: cream face, black eye mask, turquoise eyes, ball antenna, white boots",
+          "reference": "user-provided:blackegg",
+          "action": "carefully handing a bone blank to the human craftsperson"
+        },
+        {
+          "id": "bell",
+          "name": "铃幕",
+          "identity": "small cheerful fair-haired circus girl with red-and-gold jester hat",
+          "reference": "./public/assets/partners/bell/idle_default.webp",
+          "action": "sitting cross-legged rubbing a small ornament with a cloth, cheeks puffed in concentration"
+        }
+      ]
+    },
+    {
+      "id": "history-02-01",
+      "scene": "collection of simple stone tools on an earthy cloth",
+      "base": "./public/assets/history/history-02-01.webp",
+      "actors": [
+        {
+          "id": "sonic",
+          "name": "索尼克",
+          "identity": "Sonic, blue hedgehog, peach muzzle and belly, green eyes, white gloves, red-and-white shoes",
+          "reference": null,
+          "action": "arranging rough stone tools in a semicircle on a cloth"
+        },
+        {
+          "id": "yoshi",
+          "name": "叶舟",
+          "identity": "friendly little green dinosaur with cream belly, orange shoes and rounded nose",
+          "reference": "./public/assets/partners/yoshi/idle_default.webp",
+          "action": "rolling a small woven basket of stones into place with playful effort"
+        }
+      ]
+    },
+    {
+      "id": "history-02-02",
+      "scene": "rough chipped stone tool beside a smoothly polished stone tool",
+      "base": "./public/assets/history/history-02-02.webp",
+      "actors": [
+        {
+          "id": "huan",
+          "name": "幻",
+          "identity": "the bottom row character only in the supplied legacy sprite sheet: chibi young man with half black half white bobbed hair, purple kimono-style outer robe, cream tied inner clothing, sandals",
+          "reference": "git:b71e648:public/assets/characters.webp#bottom-row",
+          "action": "kneeling and polishing one plain stone with water"
+        },
+        {
+          "id": "lu",
+          "name": "格木",
+          "identity": "blocky brown-haired human explorer in a green-blue shirt and blue trousers",
+          "reference": "./public/assets/partners/lu/idle_default.webp",
+          "action": "holding a rough chipped stone and reacting with a surprised rounded mouth to its jagged texture"
+        }
+      ]
+    },
+    {
+      "id": "history-03-01",
+      "scene": "three distinct small groups of ancient cultivated grain plants, rice and two millet types, no labels",
+      "base": "./public/assets/history/history-03-01.webp",
+      "actors": [
+        {
+          "id": "ling",
+          "name": "Shadow",
+          "identity": "Shadow, black hedgehog with red quill streaks and red-striped shoes",
+          "reference": "./public/assets/partners/ling/idle_default.webp",
+          "action": "planting a rice seedling in shallow water, muddy boots and determined face"
+        },
+        {
+          "id": "gu",
+          "name": "蛋仔",
+          "identity": "round yellow egg adventurer with cream face, goggles, blue scarf and satchel",
+          "reference": "./public/assets/partners/gu/idle_default.webp",
+          "action": "carrying a little sheaf of millet above the mud with a happy careful step"
+        }
+      ]
+    },
+    {
+      "id": "history-04-01",
+      "scene": "ancient inscribed bone beside a prehistoric stone tool, conceptual contrast",
+      "base": "./public/assets/history/history-04-01.webp",
+      "actors": [
+        {
+          "id": "mario",
+          "name": "齿轮",
+          "identity": "small blocky brown-haired engineer with goggles and warm orange work clothes",
+          "reference": "./public/assets/partners/mario/idle_default.webp",
+          "action": "lifting a plain ancient bone tablet onto a low display stand"
+        },
+        {
+          "id": "prism",
+          "name": "棱镜",
+          "identity": "small colorful blue-purple harlequin girl with a two-point jester hat",
+          "reference": "./public/assets/partners/prism/idle_default.webp",
+          "action": "unrolling a blank strip of bamboo slips on a mat, curious focused face"
+        }
+      ]
+    },
+    {
+      "id": "history-05-01",
+      "scene": "painted Neolithic pottery bowl with simple geometric patterns",
+      "base": "./public/assets/history/history-05-01.webp",
+      "actors": [
+        {
+          "id": "comet",
+          "name": "尾星",
+          "identity": "small dark-blue fox adventurer with white muzzle and starry blue cloak",
+          "reference": "./public/assets/partners/comet/idle_default.webp",
+          "action": "holding a clay bowl steady for a human potter"
+        },
+        {
+          "id": "moss",
+          "name": "苔点",
+          "identity": "little blocky forest explorer with leafy green hood and brown boots",
+          "reference": "./public/assets/partners/moss/idle_default.webp",
+          "action": "dabbing a simple geometric painted pattern on a separate tiny pottery piece with intense concentration"
+        }
+      ]
+    },
+    {
+      "id": "history-06-01",
+      "scene": "ancient object, inscribed tablet and a storyteller in three balanced areas",
+      "base": "./public/assets/history/history-06-01.webp",
+      "actors": [
+        {
+          "id": "blackegg",
+          "name": "黑色蛋仔",
+          "identity": "the black egg character in the supplied reference: cream face, black eye mask, turquoise eyes, ball antenna, white boots",
+          "reference": "user-provided:blackegg",
+          "action": "carrying a small artifact tray with both hands"
+        },
+        {
+          "id": "lu",
+          "name": "格木",
+          "identity": "blocky brown-haired human explorer in a green-blue shirt and blue trousers",
+          "reference": "./public/assets/partners/lu/idle_default.webp",
+          "action": "sitting beside the human storyteller and acting out a tiny part with theatrical open arms"
+        }
+      ]
+    },
+    {
+      "id": "history-06-02",
+      "scene": "original ancient artifact beside a later scholar examining notes, no text",
+      "base": "./public/assets/history/history-06-02.webp",
+      "actors": [
+        {
+          "id": "kirby",
+          "name": "卡比",
+          "identity": "Kirby, small round pink body, blue eyes, rosy cheeks, red oval feet",
+          "reference": "./public/assets/partners/kirby/idle_default.webp",
+          "action": "carefully uncovering an object with a soft brush"
+        },
+        {
+          "id": "ling",
+          "name": "Shadow",
+          "identity": "Shadow, black hedgehog with red quill streaks and red-striped shoes",
+          "reference": "./public/assets/partners/ling/idle_default.webp",
+          "action": "looking between an original object and a later plain scroll while scratching their head in puzzlement"
+        }
+      ]
+    },
+    {
+      "id": "history-07-01",
+      "scene": "conceptual early settlement with stored goods, different social groups and a central assembly",
+      "base": "./public/assets/history/history-07-01.webp",
+      "actors": [
+        {
+          "id": "gen",
+          "name": "贾克斯",
+          "identity": "Jax, tall slim purple rabbit, long upright ears, half-lidded yellow eyes, pink overalls",
+          "reference": "./public/assets/partners/gen/idle_default.webp",
+          "action": "helping carry baskets of grain into the settlement store"
+        },
+        {
+          "id": "sonic",
+          "name": "索尼克",
+          "identity": "Sonic, blue hedgehog, peach muzzle and belly, green eyes, white gloves, red-and-white shoes",
+          "reference": null,
+          "action": "tying a bundle of gathered goods beside the village assembly, friendly cooperative expression"
+        }
+      ]
+    },
+    {
+      "id": "history-07-02",
+      "scene": "conceptual ancient walled settlement near a broad river, archaeological reconstruction",
+      "base": "./public/assets/history/history-07-02.webp",
+      "actors": [
+        {
+          "id": "gu",
+          "name": "蛋仔",
+          "identity": "round yellow egg adventurer with cream face, goggles, blue scarf and satchel",
+          "reference": "./public/assets/partners/gu/idle_default.webp",
+          "action": "kneeling to brush dust from an exposed foundation stone"
+        },
+        {
+          "id": "bell",
+          "name": "铃幕",
+          "identity": "small cheerful fair-haired circus girl with red-and-gold jester hat",
+          "reference": "./public/assets/partners/bell/idle_default.webp",
+          "action": "walking a basket of loose soil away from the excavated ancient wall"
+        }
+      ]
+    },
+    {
+      "id": "history-07-03",
+      "scene": "archaeological reconstruction of an ancient settlement beside a yellow-brown river valley",
+      "base": "./public/assets/history/history-07-03.webp",
+      "actors": [
+        {
+          "id": "huan",
+          "name": "幻",
+          "identity": "the bottom row character only in the supplied legacy sprite sheet: chibi young man with half black half white bobbed hair, purple kimono-style outer robe, cream tied inner clothing, sandals",
+          "reference": "git:b71e648:public/assets/characters.webp#bottom-row",
+          "action": "helping stretch a plain cord between two low excavation markers"
+        },
+        {
+          "id": "pebble",
+          "name": "砾砾",
+          "identity": "small friendly square stone robot with glowing amber eyes and teal collar",
+          "reference": "./public/assets/partners/pebble/idle_default.webp",
+          "action": "sitting on a mat sorting pottery fragments, holding one up with a victorious little smile"
+        }
+      ]
+    },
+    {
+      "id": "history-08-01",
+      "scene": "several warm-colored streams of light converging around ancient Chinese pottery, conceptual illustration",
+      "base": "./public/assets/history/history-08-01.webp",
+      "actors": [
+        {
+          "id": "mario",
+          "name": "齿轮",
+          "identity": "small blocky brown-haired engineer with goggles and warm orange work clothes",
+          "reference": "./public/assets/partners/mario/idle_default.webp",
+          "action": "carrying a pottery vessel carefully toward a shared courtyard"
+        },
+        {
+          "id": "yoshi",
+          "name": "叶舟",
+          "identity": "friendly little green dinosaur with cream belly, orange shoes and rounded nose",
+          "reference": "./public/assets/partners/yoshi/idle_default.webp",
+          "action": "welcoming another traveler into the common courtyard with an excited two-arm gesture"
+        }
+      ]
+    },
+    {
+      "id": "history-09-01",
+      "scene": "early Chinese ruler in plain ancient robes addressing a small settlement, no imperial later costume",
+      "base": "./public/assets/history/history-09-01.webp",
+      "actors": [
+        {
+          "id": "prism",
+          "name": "棱镜",
+          "identity": "small colorful blue-purple harlequin girl with a two-point jester hat",
+          "reference": "./public/assets/partners/prism/idle_default.webp",
+          "action": "laying a reed mat for the people attending the ancient assembly"
+        },
+        {
+          "id": "comet",
+          "name": "尾星",
+          "identity": "small dark-blue fox adventurer with white muzzle and starry blue cloak",
+          "reference": "./public/assets/partners/comet/idle_default.webp",
+          "action": "helping stack plain wooden seats beside the assembly with a cheerful strained face"
+        }
+      ]
+    },
+    {
+      "id": "history-10-01",
+      "scene": "Shang-period ruler and attendants moving bronze vessels toward a new ancient settlement",
+      "base": "./public/assets/history/history-10-01.webp",
+      "actors": [
+        {
+          "id": "gen",
+          "name": "贾克斯",
+          "identity": "Jax, tall slim purple rabbit, long upright ears, half-lidded yellow eyes, pink overalls",
+          "reference": "./public/assets/partners/gen/idle_default.webp",
+          "action": "pulling a tiny cart of household goods alongside the relocating people"
+        },
+        {
+          "id": "bell",
+          "name": "铃幕",
+          "identity": "small cheerful fair-haired circus girl with red-and-gold jester hat",
+          "reference": "./public/assets/partners/bell/idle_default.webp",
+          "action": "cushioning a bronze vessel in straw in a basket, very careful concerned expression"
+        }
+      ]
+    },
+    {
+      "id": "history-10-02",
+      "scene": "dim ancient Shang palace hall with an empty bronze-decorated throne, no text",
+      "base": "./public/assets/history/history-10-02.webp",
+      "actors": [
+        {
+          "id": "blackegg",
+          "name": "黑色蛋仔",
+          "identity": "the black egg character in the supplied reference: cream face, black eye mask, turquoise eyes, ball antenna, white boots",
+          "reference": "user-provided:blackegg",
+          "action": "closing a plain wooden chest in the quiet palace side room"
+        },
+        {
+          "id": "pebble",
+          "name": "砾砾",
+          "identity": "small friendly square stone robot with glowing amber eyes and teal collar",
+          "reference": "./public/assets/partners/pebble/idle_default.webp",
+          "action": "sitting with a folded cloth in the subdued side room, thoughtful rather than celebratory"
+        }
+      ]
+    },
+    {
+      "id": "history-11-01",
+      "scene": "restrained ancient battlefield aftermath, Zhou leader and army banners without writing, no gore",
+      "base": "./public/assets/history/history-11-01.webp",
+      "actors": [
+        {
+          "id": "kirby",
+          "name": "卡比",
+          "identity": "Kirby, small round pink body, blue eyes, rosy cheeks, red oval feet",
+          "reference": "./public/assets/partners/kirby/idle_default.webp",
+          "action": "helping roll up an empty cloth banner away from the ended battle"
+        },
+        {
+          "id": "moss",
+          "name": "苔点",
+          "identity": "little blocky forest explorer with leafy green hood and brown boots",
+          "reference": "./public/assets/partners/moss/idle_default.webp",
+          "action": "carrying a water flask toward resting soldiers, kind and calm expression"
+        }
+      ]
+    },
+    {
+      "id": "history-11-02",
+      "scene": "four levels of ancient court attendants arranged on broad steps, conceptual hierarchy",
+      "base": "./public/assets/history/history-11-02.webp",
+      "actors": [
+        {
+          "id": "huan",
+          "name": "幻",
+          "identity": "the bottom row character only in the supplied legacy sprite sheet: chibi young man with half black half white bobbed hair, purple kimono-style outer robe, cream tied inner clothing, sandals",
+          "reference": "git:b71e648:public/assets/characters.webp#bottom-row",
+          "action": "arranging four plain wooden stools of different heights for a playful courtyard reenactment"
+        },
+        {
+          "id": "mario",
+          "name": "齿轮",
+          "identity": "small blocky brown-haired engineer with goggles and warm orange work clothes",
+          "reference": "./public/assets/partners/mario/idle_default.webp",
+          "action": "standing on the lowest stool with an exaggerated puzzled look, no crown or official role"
+        }
+      ]
+    },
+    {
+      "id": "history-11-03",
+      "scene": "Zhou ruler handing a ceremonial token to a noble in an ancient court",
+      "base": "./public/assets/history/history-11-03.webp",
+      "actors": [
+        {
+          "id": "ling",
+          "name": "Shadow",
+          "identity": "Shadow, black hedgehog with red quill streaks and red-striped shoes",
+          "reference": "./public/assets/partners/ling/idle_default.webp",
+          "action": "carrying a ceremonial token box to a side table while human nobles meet"
+        },
+        {
+          "id": "lu",
+          "name": "格木",
+          "identity": "blocky brown-haired human explorer in a green-blue shirt and blue trousers",
+          "reference": "./public/assets/partners/lu/idle_default.webp",
+          "action": "straightening a plain carpet at the edge of the ceremony with a focused bend"
+        }
+      ]
+    },
+    {
+      "id": "history-11-04",
+      "scene": "ancient central court connected symbolically to several distant settlements, no map or labels",
+      "base": "./public/assets/history/history-11-04.webp",
+      "actors": [
+        {
+          "id": "sonic",
+          "name": "索尼克",
+          "identity": "Sonic, blue hedgehog, peach muzzle and belly, green eyes, white gloves, red-and-white shoes",
+          "reference": null,
+          "action": "unfolding a plain travel cloth for messengers at the edge of the human court"
+        },
+        {
+          "id": "prism",
+          "name": "棱镜",
+          "identity": "small colorful blue-purple harlequin girl with a two-point jester hat",
+          "reference": "./public/assets/partners/prism/idle_default.webp",
+          "action": "carrying a bundle of supplies toward a road leading to a distant settlement"
+        }
+      ]
+    },
+    {
+      "id": "history-11-05",
+      "scene": "several ancient nobles facing separate fortified towns, central throne in distance",
+      "base": "./public/assets/history/history-11-05.webp",
+      "actors": [
+        {
+          "id": "gu",
+          "name": "蛋仔",
+          "identity": "round yellow egg adventurer with cream face, goggles, blue scarf and satchel",
+          "reference": "./public/assets/partners/gu/idle_default.webp",
+          "action": "trying to keep two plain fluttering banner ropes untangled, comically worried"
+        },
+        {
+          "id": "yoshi",
+          "name": "叶舟",
+          "identity": "friendly little green dinosaur with cream belly, orange shoes and rounded nose",
+          "reference": "./public/assets/partners/yoshi/idle_default.webp",
+          "action": "helping tie one loose rope back to its post with a calm reassuring gesture"
+        }
+      ]
+    },
+    {
+      "id": "history-12-01",
+      "scene": "Spring and Autumn ruler at a solemn assembly of ancient nobles, no writing",
+      "base": "./public/assets/history/history-12-01.webp",
+      "actors": [
+        {
+          "id": "comet",
+          "name": "尾星",
+          "identity": "small dark-blue fox adventurer with white muzzle and starry blue cloak",
+          "reference": "./public/assets/partners/comet/idle_default.webp",
+          "action": "rolling a plain assembly banner upward beside the historical leader"
+        },
+        {
+          "id": "bell",
+          "name": "铃幕",
+          "identity": "small cheerful fair-haired circus girl with red-and-gold jester hat",
+          "reference": "./public/assets/partners/bell/idle_default.webp",
+          "action": "offering a small water cup to a tired traveler at the gathering"
+        }
+      ]
+    },
+    {
+      "id": "history-12-02",
+      "scene": "two distinct ancient Chinese rulers with retinues at separate assembly pavilions",
+      "base": "./public/assets/history/history-12-02.webp",
+      "actors": [
+        {
+          "id": "kirby",
+          "name": "卡比",
+          "identity": "Kirby, small round pink body, blue eyes, rosy cheeks, red oval feet",
+          "reference": "./public/assets/partners/kirby/idle_default.webp",
+          "action": "pulling out a wooden bench for arriving delegates"
+        },
+        {
+          "id": "gu",
+          "name": "蛋仔",
+          "identity": "round yellow egg adventurer with cream face, goggles, blue scarf and satchel",
+          "reference": "./public/assets/partners/gu/idle_default.webp",
+          "action": "bowing politely at the side of the two human rulers, holding a plain tray"
+        }
+      ]
+    },
+    {
+      "id": "history-13-01",
+      "scene": "ancient farmer guiding an ox with an iron plough in a field",
+      "base": "./public/assets/history/history-13-01.webp",
+      "actors": [
+        {
+          "id": "gen",
+          "name": "贾克斯",
+          "identity": "Jax, tall slim purple rabbit, long upright ears, half-lidded yellow eyes, pink overalls",
+          "reference": "./public/assets/partners/gen/idle_default.webp",
+          "action": "carrying a small basket of seedlings behind the human plough team"
+        },
+        {
+          "id": "huan",
+          "name": "幻",
+          "identity": "the bottom row character only in the supplied legacy sprite sheet: chibi young man with half black half white bobbed hair, purple kimono-style outer robe, cream tied inner clothing, sandals",
+          "reference": "git:b71e648:public/assets/characters.webp#bottom-row",
+          "action": "kneeling to crumble soil gently with both hands, pleased discovery expression"
+        }
+      ]
+    },
+    {
+      "id": "history-14-01",
+      "scene": "Spring and Autumn marketplace with goods exchanged and small ancient metal coins",
+      "base": "./public/assets/history/history-14-01.webp",
+      "actors": [
+        {
+          "id": "blackegg",
+          "name": "黑色蛋仔",
+          "identity": "the black egg character in the supplied reference: cream face, black eye mask, turquoise eyes, ball antenna, white boots",
+          "reference": "user-provided:blackegg",
+          "action": "helping a market vendor lift a basket of produce"
+        },
+        {
+          "id": "ling",
+          "name": "Shadow",
+          "identity": "Shadow, black hedgehog with red quill streaks and red-striped shoes",
+          "reference": "./public/assets/partners/ling/idle_default.webp",
+          "action": "counting a few plain ancient metal coins on a cloth, amused surprised face"
+        }
+      ]
+    },
+    {
+      "id": "history-15-01",
+      "scene": "seven distinct ancient city gates in a panoramic conceptual scene, no map, no writing",
+      "base": "./public/assets/history/history-15-01.webp",
+      "actors": [
+        {
+          "id": "lu",
+          "name": "格木",
+          "identity": "blocky brown-haired human explorer in a green-blue shirt and blue trousers",
+          "reference": "./public/assets/partners/lu/idle_default.webp",
+          "action": "carrying a rolled plain cloth banner between the ancient city gates"
+        },
+        {
+          "id": "moss",
+          "name": "苔点",
+          "identity": "little blocky forest explorer with leafy green hood and brown boots",
+          "reference": "./public/assets/partners/moss/idle_default.webp",
+          "action": "hoisting a small supply pack onto their shoulder and stepping forward confidently"
+        }
+      ]
+    },
+    {
+      "id": "history-15-02",
+      "scene": "seven ancient banners with different plain colors above city walls, no text, no geographic map",
+      "base": "./public/assets/history/history-15-02.webp",
+      "actors": [
+        {
+          "id": "mario",
+          "name": "齿轮",
+          "identity": "small blocky brown-haired engineer with goggles and warm orange work clothes",
+          "reference": "./public/assets/partners/mario/idle_default.webp",
+          "action": "trying to keep several plain colored banners upright in a gentle breeze"
+        },
+        {
+          "id": "comet",
+          "name": "尾星",
+          "identity": "small dark-blue fox adventurer with white muzzle and starry blue cloak",
+          "reference": "./public/assets/partners/comet/idle_default.webp",
+          "action": "kneeling to tie the last banner to a low wooden support, comic tongue-out concentration"
+        }
+      ]
+    },
+    {
+      "id": "history-16-01",
+      "scene": "Qin ruler meeting a reformer holding plain bamboo slips, ancient court",
+      "base": "./public/assets/history/history-16-01.webp",
+      "actors": [
+        {
+          "id": "sonic",
+          "name": "索尼克",
+          "identity": "Sonic, blue hedgehog, peach muzzle and belly, green eyes, white gloves, red-and-white shoes",
+          "reference": null,
+          "action": "holding a closed bamboo-slip bundle for an attendant while the human reformer speaks"
+        },
+        {
+          "id": "pebble",
+          "name": "砾砾",
+          "identity": "small friendly square stone robot with glowing amber eyes and teal collar",
+          "reference": "./public/assets/partners/pebble/idle_default.webp",
+          "action": "taking a small step back to clear a path in the human court, alert attentive face"
+        }
+      ]
+    },
+    {
+      "id": "history-16-02",
+      "scene": "ancient Qin granaries and orderly soldiers in a balanced split scene, no writing",
+      "base": "./public/assets/history/history-16-02.webp",
+      "actors": [
+        {
+          "id": "yoshi",
+          "name": "叶舟",
+          "identity": "friendly little green dinosaur with cream belly, orange shoes and rounded nose",
+          "reference": "./public/assets/partners/yoshi/idle_default.webp",
+          "action": "hauling a small grain sack toward a granary"
+        },
+        {
+          "id": "prism",
+          "name": "棱镜",
+          "identity": "small colorful blue-purple harlequin girl with a two-point jester hat",
+          "reference": "./public/assets/partners/prism/idle_default.webp",
+          "action": "helping place a training shield on a rack, friendly hard-working grin without fighting"
+        }
+      ]
+    },
+    {
+      "id": "history-17-01",
+      "scene": "conceptual Warring States agricultural settlement with farmers and a noble residence",
+      "base": "./public/assets/history/history-17-01.webp",
+      "actors": [
+        {
+          "id": "sonic",
+          "name": "索尼克",
+          "identity": "Sonic, blue hedgehog, peach muzzle and belly, green eyes, white gloves, red-and-white shoes",
+          "reference": null,
+          "action": "working beside a human farmer carrying harvested grain"
+        },
+        {
+          "id": "moss",
+          "name": "苔点",
+          "identity": "little blocky forest explorer with leafy green hood and brown boots",
+          "reference": "./public/assets/partners/moss/idle_default.webp",
+          "action": "pushing a small wooden barrow past the settlement store, determined cheerful face"
+        }
+      ]
+    },
+    {
+      "id": "history-18-01",
+      "scene": "ancient engineer overseeing a broad stone-and-earth river waterworks",
+      "base": "./public/assets/history/history-18-01.webp",
+      "actors": [
+        {
+          "id": "kirby",
+          "name": "卡比",
+          "identity": "Kirby, small round pink body, blue eyes, rosy cheeks, red oval feet",
+          "reference": "./public/assets/partners/kirby/idle_default.webp",
+          "action": "carrying a woven basket of stones to human waterworks builders"
+        },
+        {
+          "id": "bell",
+          "name": "铃幕",
+          "identity": "small cheerful fair-haired circus girl with red-and-gold jester hat",
+          "reference": "./public/assets/partners/bell/idle_default.webp",
+          "action": "holding a plain cord taut beside the channel edge, kneeling safely on dry ground"
+        }
+      ]
+    },
+    {
+      "id": "history-18-02",
+      "scene": "ancient river waterworks diverting water into farmland with a small boat downstream",
+      "base": "./public/assets/history/history-18-02.webp",
+      "actors": [
+        {
+          "id": "gen",
+          "name": "贾克斯",
+          "identity": "Jax, tall slim purple rabbit, long upright ears, half-lidded yellow eyes, pink overalls",
+          "reference": "./public/assets/partners/gen/idle_default.webp",
+          "action": "guiding water gently into a tiny field furrow with a wooden scoop"
+        },
+        {
+          "id": "comet",
+          "name": "尾星",
+          "identity": "small dark-blue fox adventurer with white muzzle and starry blue cloak",
+          "reference": "./public/assets/partners/comet/idle_default.webp",
+          "action": "helping pull a small empty boat to a safe bank using a rope, braced boots and joyful effort"
+        }
+      ]
+    },
+    {
+      "id": "history-19-01",
+      "scene": "ancient Daoist thinker beside a stream with a closed bamboo scroll, quiet natural setting",
+      "base": "./public/assets/history/history-19-01.webp",
+      "actors": [
+        {
+          "id": "huan",
+          "name": "幻",
+          "identity": "the bottom row character only in the supplied legacy sprite sheet: chibi young man with half black half white bobbed hair, purple kimono-style outer robe, cream tied inner clothing, sandals",
+          "reference": "git:b71e648:public/assets/characters.webp#bottom-row",
+          "action": "sitting beside the stream trying to balance a flat pebble, serene smile"
+        },
+        {
+          "id": "yoshi",
+          "name": "叶舟",
+          "identity": "friendly little green dinosaur with cream belly, orange shoes and rounded nose",
+          "reference": "./public/assets/partners/yoshi/idle_default.webp",
+          "action": "pouring a little cup of water into a bowl beside a closed scroll, relaxed careful expression"
+        }
+      ]
+    },
+    {
+      "id": "history-19-02",
+      "scene": "two ancient Chinese thinkers conversing peacefully under a tree",
+      "base": "./public/assets/history/history-19-02.webp",
+      "actors": [
+        {
+          "id": "ling",
+          "name": "Shadow",
+          "identity": "Shadow, black hedgehog with red quill streaks and red-striped shoes",
+          "reference": "./public/assets/partners/ling/idle_default.webp",
+          "action": "leaning back laughing at a gentle story told by the human thinkers"
+        },
+        {
+          "id": "mario",
+          "name": "齿轮",
+          "identity": "small blocky brown-haired engineer with goggles and warm orange work clothes",
+          "reference": "./public/assets/partners/mario/idle_default.webp",
+          "action": "offering a cushion to another listener under the tree, warm friendly smile"
+        }
+      ]
+    },
+    {
+      "id": "history-20-01",
+      "scene": "ancient teacher speaking with disciples who hold bamboo slips, no visible writing",
+      "base": "./public/assets/history/history-20-01.webp",
+      "actors": [
+        {
+          "id": "blackegg",
+          "name": "黑色蛋仔",
+          "identity": "the black egg character in the supplied reference: cream face, black eye mask, turquoise eyes, ball antenna, white boots",
+          "reference": "user-provided:blackegg",
+          "action": "holding a blank bamboo-slip bundle steady for a human disciple"
+        },
+        {
+          "id": "prism",
+          "name": "棱镜",
+          "identity": "small colorful blue-purple harlequin girl with a two-point jester hat",
+          "reference": "./public/assets/partners/prism/idle_default.webp",
+          "action": "sitting cross-legged listening while offering a spare writing tool, earnest focused face"
+        }
+      ]
+    },
+    {
+      "id": "history-20-02",
+      "scene": "ancient Confucian thinker discussing humane conduct with a younger scholar in a courtyard",
+      "base": "./public/assets/history/history-20-02.webp",
+      "actors": [
+        {
+          "id": "gu",
+          "name": "蛋仔",
+          "identity": "round yellow egg adventurer with cream face, goggles, blue scarf and satchel",
+          "reference": "./public/assets/partners/gu/idle_default.webp",
+          "action": "helping a younger student pick up dropped plain bamboo slips"
+        },
+        {
+          "id": "lu",
+          "name": "格木",
+          "identity": "blocky brown-haired human explorer in a green-blue shirt and blue trousers",
+          "reference": "./public/assets/partners/lu/idle_default.webp",
+          "action": "offering a small bowl to another traveler in the human teaching courtyard"
+        }
+      ]
+    },
+    {
+      "id": "history-21-01",
+      "scene": "many ancient scholars debating respectfully around a courtyard, scrolls without visible text",
+      "base": "./public/assets/history/history-21-01.webp",
+      "actors": [
+        {
+          "id": "yoshi",
+          "name": "叶舟",
+          "identity": "friendly little green dinosaur with cream belly, orange shoes and rounded nose",
+          "reference": "./public/assets/partners/yoshi/idle_default.webp",
+          "action": "gesturing theatrically in a tiny side debate with open palms and delighted curiosity"
+        },
+        {
+          "id": "pebble",
+          "name": "砾砾",
+          "identity": "small friendly square stone robot with glowing amber eyes and teal collar",
+          "reference": "./public/assets/partners/pebble/idle_default.webp",
+          "action": "rolling out a mat so more listeners can join the human scholars"
+        }
+      ]
+    },
+    {
+      "id": "history-21-02",
+      "scene": "two ancient scholars in distinct simple robes discussing governance and peaceful cooperation",
+      "base": "./public/assets/history/history-21-02.webp",
+      "actors": [
+        {
+          "id": "gen",
+          "name": "贾克斯",
+          "identity": "Jax, tall slim purple rabbit, long upright ears, half-lidded yellow eyes, pink overalls",
+          "reference": "./public/assets/partners/gen/idle_default.webp",
+          "action": "holding a plain official tablet beside a human scholar, serious but kind face"
+        },
+        {
+          "id": "ling",
+          "name": "Shadow",
+          "identity": "Shadow, black hedgehog with red quill streaks and red-striped shoes",
+          "reference": "./public/assets/partners/ling/idle_default.webp",
+          "action": "mending a broken small toy cart wheel beside two cooperating people, patient expression"
+        }
+      ]
+    },
+    {
+      "id": "history-21-03",
+      "scene": "ancient military strategist studying closed bamboo scrolls beside a quiet army tent, no text",
+      "base": "./public/assets/history/history-21-03.webp",
+      "actors": [
+        {
+          "id": "blackegg",
+          "name": "黑色蛋仔",
+          "identity": "the black egg character in the supplied reference: cream face, black eye mask, turquoise eyes, ball antenna, white boots",
+          "reference": "user-provided:blackegg",
+          "action": "trying to organize a few plain wooden training tokens on a mat, tongue-out concentration"
+        },
+        {
+          "id": "gu",
+          "name": "蛋仔",
+          "identity": "round yellow egg adventurer with cream face, goggles, blue scarf and satchel",
+          "reference": "./public/assets/partners/gu/idle_default.webp",
+          "action": "rolling up a blank bamboo scroll beside the human strategist, triumphant little nod"
+        }
+      ]
+    },
+    {
+      "id": "history-22-01",
+      "scene": "ancient Chinese physician consulting a seated patient and gently taking a wrist pulse",
+      "base": "./public/assets/history/history-22-01.webp",
+      "actors": [
+        {
+          "id": "kirby",
+          "name": "卡比",
+          "identity": "Kirby, small round pink body, blue eyes, rosy cheeks, red oval feet",
+          "reference": "./public/assets/partners/kirby/idle_default.webp",
+          "action": "bringing a small clean cloth to the physician on a tray"
+        },
+        {
+          "id": "huan",
+          "name": "幻",
+          "identity": "the bottom row character only in the supplied legacy sprite sheet: chibi young man with half black half white bobbed hair, purple kimono-style outer robe, cream tied inner clothing, sandals",
+          "reference": "git:b71e648:public/assets/characters.webp#bottom-row",
+          "action": "offering a stool to a waiting patient, gentle caring expression"
+        }
+      ]
+    },
+    {
+      "id": "history-22-02",
+      "scene": "closed ancient medical bamboo scroll beside simple herbs, no writing",
+      "base": "./public/assets/history/history-22-02.webp",
+      "actors": [
+        {
+          "id": "lu",
+          "name": "格木",
+          "identity": "blocky brown-haired human explorer in a green-blue shirt and blue trousers",
+          "reference": "./public/assets/partners/lu/idle_default.webp",
+          "action": "sorting a few plain dried herbs into two small bowls with a careful crouch"
+        },
+        {
+          "id": "bell",
+          "name": "铃幕",
+          "identity": "small cheerful fair-haired circus girl with red-and-gold jester hat",
+          "reference": "./public/assets/partners/bell/idle_default.webp",
+          "action": "tying a closed bamboo-scroll bundle with a ribbon, proud satisfied smile"
+        }
+      ]
+    },
+    {
+      "id": "history-23-01",
+      "scene": "close view of ancient bronze bell and tripod vessel with indistinct decorative marks, no readable inscriptions",
+      "base": "./public/assets/history/history-23-01.webp",
+      "actors": [
+        {
+          "id": "mario",
+          "name": "齿轮",
+          "identity": "small blocky brown-haired engineer with goggles and warm orange work clothes",
+          "reference": "./public/assets/partners/mario/idle_default.webp",
+          "action": "polishing a small separate bronze surface with a soft cloth, inquisitive face"
+        },
+        {
+          "id": "moss",
+          "name": "苔点",
+          "identity": "little blocky forest explorer with leafy green hood and brown boots",
+          "reference": "./public/assets/partners/moss/idle_default.webp",
+          "action": "carrying a padded tray beneath the large bronze bell, cautious braced stance"
+        }
+      ]
+    },
+    {
+      "id": "history-23-02",
+      "scene": "ancient Shu bronze mask displayed against a quiet archaeological excavation background",
+      "base": "./public/assets/history/history-23-02.webp",
+      "actors": [
+        {
+          "id": "prism",
+          "name": "棱镜",
+          "identity": "small colorful blue-purple harlequin girl with a two-point jester hat",
+          "reference": "./public/assets/partners/prism/idle_default.webp",
+          "action": "brushing soil carefully from the base of a bronze mask display support"
+        },
+        {
+          "id": "pebble",
+          "name": "砾砾",
+          "identity": "small friendly square stone robot with glowing amber eyes and teal collar",
+          "reference": "./public/assets/partners/pebble/idle_default.webp",
+          "action": "helping move an empty padded basket in the excavation camp, amazed wide eyes"
+        }
+      ]
+    },
+    {
+      "id": "history-23-03",
+      "scene": "massive rectangular four-legged ancient bronze ding vessel on a museum-neutral background",
+      "base": "./public/assets/history/history-23-03.webp",
+      "actors": [
+        {
+          "id": "sonic",
+          "name": "索尼克",
+          "identity": "Sonic, blue hedgehog, peach muzzle and belly, green eyes, white gloves, red-and-white shoes",
+          "reference": null,
+          "action": "pushing a small empty wooden transport dolly beside the huge bronze ding to suggest scale"
+        },
+        {
+          "id": "comet",
+          "name": "尾星",
+          "identity": "small dark-blue fox adventurer with white muzzle and starry blue cloak",
+          "reference": "./public/assets/partners/comet/idle_default.webp",
+          "action": "stretching both arms in comic amazement beside the huge vessel, not lifting or climbing on it"
+        }
+      ]
+    },
+    {
+      "id": "history-24-01",
+      "scene": "ancient poetry bamboo slips with a simple stringed instrument, no readable text",
+      "base": "./public/assets/history/history-24-01.webp",
+      "actors": [
+        {
+          "id": "huan",
+          "name": "幻",
+          "identity": "the bottom row character only in the supplied legacy sprite sheet: chibi young man with half black half white bobbed hair, purple kimono-style outer robe, cream tied inner clothing, sandals",
+          "reference": "git:b71e648:public/assets/characters.webp#bottom-row",
+          "action": "plucking one string gently on a small ancient stringed instrument, listening closely"
+        },
+        {
+          "id": "comet",
+          "name": "尾星",
+          "identity": "small dark-blue fox adventurer with white muzzle and starry blue cloak",
+          "reference": "./public/assets/partners/comet/idle_default.webp",
+          "action": "swaying softly while carrying a closed poetry scroll, peaceful smile"
+        }
+      ]
+    },
+    {
+      "id": "history-24-02",
+      "scene": "ancient Chu poet standing thoughtfully by a river holding a scroll, dignified illustration",
+      "base": "./public/assets/history/history-24-02.webp",
+      "actors": [
+        {
+          "id": "ling",
+          "name": "Shadow",
+          "identity": "Shadow, black hedgehog with red quill streaks and red-striped shoes",
+          "reference": "./public/assets/partners/ling/idle_default.webp",
+          "action": "holding a plain scroll case at the riverside near the human poet"
+        },
+        {
+          "id": "yoshi",
+          "name": "叶舟",
+          "identity": "friendly little green dinosaur with cream belly, orange shoes and rounded nose",
+          "reference": "./public/assets/partners/yoshi/idle_default.webp",
+          "action": "sitting on a dry bank folding a reed leaf, calm contemplative expression"
+        }
+      ]
+    },
+    {
+      "id": "history-24-03",
+      "scene": "two ancient scrolls side by side with two subtle streams merging below, conceptual metaphor",
+      "base": "./public/assets/history/history-24-03.webp",
+      "actors": [
+        {
+          "id": "gu",
+          "name": "蛋仔",
+          "identity": "round yellow egg adventurer with cream face, goggles, blue scarf and satchel",
+          "reference": "./public/assets/partners/gu/idle_default.webp",
+          "action": "carrying two closed scroll bundles toward a shared reading mat"
+        },
+        {
+          "id": "mario",
+          "name": "齿轮",
+          "identity": "small blocky brown-haired engineer with goggles and warm orange work clothes",
+          "reference": "./public/assets/partners/mario/idle_default.webp",
+          "action": "unfurling a plain ribbon between the two scroll bundles, playful satisfied smile"
+        }
+      ]
+    },
+    {
+      "id": "history-25-01",
+      "scene": "Qin ruler in restrained ancient formal robes overlooking an ancient capital city",
+      "base": "./public/assets/history/history-25-01.webp",
+      "actors": [
+        {
+          "id": "blackegg",
+          "name": "黑色蛋仔",
+          "identity": "the black egg character in the supplied reference: cream face, black eye mask, turquoise eyes, ball antenna, white boots",
+          "reference": "user-provided:blackegg",
+          "action": "pulling a small supplies cart through the ancient capital street"
+        },
+        {
+          "id": "moss",
+          "name": "苔点",
+          "identity": "little blocky forest explorer with leafy green hood and brown boots",
+          "reference": "./public/assets/partners/moss/idle_default.webp",
+          "action": "helping straighten a plain cloth canopy at street level below the human ruler"
+        }
+      ]
+    },
+    {
+      "id": "history-25-02",
+      "scene": "ancient war banners lowered as people enter a peaceful unified city, no maps or writing",
+      "base": "./public/assets/history/history-25-02.webp",
+      "actors": [
+        {
+          "id": "kirby",
+          "name": "卡比",
+          "identity": "Kirby, small round pink body, blue eyes, rosy cheeks, red oval feet",
+          "reference": "./public/assets/partners/kirby/idle_default.webp",
+          "action": "offering a bowl of water to a relieved traveler entering the peaceful city"
+        },
+        {
+          "id": "prism",
+          "name": "棱镜",
+          "identity": "small colorful blue-purple harlequin girl with a two-point jester hat",
+          "reference": "./public/assets/partners/prism/idle_default.webp",
+          "action": "rolling an empty battle banner neatly and setting it aside, gentle hopeful expression"
+        }
+      ]
+    },
+    {
+      "id": "history-25-03",
+      "scene": "Qin central court with officials oriented toward a single elevated ruler, conceptual reconstruction",
+      "base": "./public/assets/history/history-25-03.webp",
+      "actors": [
+        {
+          "id": "sonic",
+          "name": "索尼克",
+          "identity": "Sonic, blue hedgehog, peach muzzle and belly, green eyes, white gloves, red-and-white shoes",
+          "reference": null,
+          "action": "carrying a closed bamboo-slip bundle to a side-table attendant in the Qin court"
+        },
+        {
+          "id": "lu",
+          "name": "格木",
+          "identity": "blocky brown-haired human explorer in a green-blue shirt and blue trousers",
+          "reference": "./public/assets/partners/lu/idle_default.webp",
+          "action": "setting a plain wooden stool upright at the edge of the court, brisk helpful movement"
+        }
+      ]
+    },
+    {
+      "id": "history-25-04",
+      "scene": "small Qin round coins with square holes beside a balance, measures and a sealed bamboo scroll, no text",
+      "base": "./public/assets/history/history-25-04.webp",
+      "actors": [
+        {
+          "id": "bell",
+          "name": "铃幕",
+          "identity": "small cheerful fair-haired circus girl with red-and-gold jester hat",
+          "reference": "./public/assets/partners/bell/idle_default.webp",
+          "action": "balancing a few round square-holed coins in a shallow wooden tray"
+        },
+        {
+          "id": "pebble",
+          "name": "砾砾",
+          "identity": "small friendly square stone robot with glowing amber eyes and teal collar",
+          "reference": "./public/assets/partners/pebble/idle_default.webp",
+          "action": "carefully holding a small measuring vessel beside a human craftsperson, delighted discovery face"
+        }
+      ]
+    },
+    {
+      "id": "history-25-05",
+      "scene": "somber symbolic ancient closed scrolls near embers, no people harmed, no gore",
+      "base": "./public/assets/history/history-25-05.webp",
+      "actors": [
+        {
+          "id": "gen",
+          "name": "贾克斯",
+          "identity": "Jax, tall slim purple rabbit, long upright ears, half-lidded yellow eyes, pink overalls",
+          "reference": "./public/assets/partners/gen/idle_default.webp",
+          "action": "placing a closed scroll safely into a wooden chest away from the embers, solemn focused face"
+        },
+        {
+          "id": "gu",
+          "name": "蛋仔",
+          "identity": "round yellow egg adventurer with cream face, goggles, blue scarf and satchel",
+          "reference": "./public/assets/partners/gu/idle_default.webp",
+          "action": "crouching beside a small bird near the chest, quiet protective expression, no celebration"
+        }
+      ]
+    },
+    {
+      "id": "history-25-06",
+      "scene": "ancient rammed-earth defensive wall through hills with a separate quiet canal foreground, no map",
+      "base": "./public/assets/history/history-25-06.webp",
+      "actors": [
+        {
+          "id": "sonic",
+          "name": "索尼克",
+          "identity": "Sonic, blue hedgehog, peach muzzle and belly, green eyes, white gloves, red-and-white shoes",
+          "reference": null,
+          "action": "helping carry a small reed basket toward workers at the ancient earthen wall"
+        },
+        {
+          "id": "huan",
+          "name": "幻",
+          "identity": "the bottom row character only in the supplied legacy sprite sheet: chibi young man with half black half white bobbed hair, purple kimono-style outer robe, cream tied inner clothing, sandals",
+          "reference": "git:b71e648:public/assets/characters.webp#bottom-row",
+          "action": "pulling an empty little boat along the canal bank with a rope, safe dry footing"
+        }
+      ]
+    },
+    {
+      "id": "history-25-07",
+      "scene": "ancient narrow navigable canal joining waterways among southern green hills",
+      "base": "./public/assets/history/history-25-07.webp",
+      "actors": [
+        {
+          "id": "lu",
+          "name": "格木",
+          "identity": "blocky brown-haired human explorer in a green-blue shirt and blue trousers",
+          "reference": "./public/assets/partners/lu/idle_default.webp",
+          "action": "paddling a tiny boat slowly beside human canal boats, wearing no modern equipment"
+        },
+        {
+          "id": "pebble",
+          "name": "砾砾",
+          "identity": "small friendly square stone robot with glowing amber eyes and teal collar",
+          "reference": "./public/assets/partners/pebble/idle_default.webp",
+          "action": "kneeling on the bank to pass a coiled rope to the boat helper, enthusiastic careful reach"
+        }
+      ]
+    },
+    {
+      "id": "history-25-08",
+      "scene": "ancient Qin central palace with repeated later palace silhouettes fading into distance, conceptual continuity",
+      "base": "./public/assets/history/history-25-08.webp",
+      "actors": [
+        {
+          "id": "yoshi",
+          "name": "叶舟",
+          "identity": "friendly little green dinosaur with cream belly, orange shoes and rounded nose",
+          "reference": "./public/assets/partners/yoshi/idle_default.webp",
+          "action": "handing a closed plain scroll bundle from one side-table attendant to another"
+        },
+        {
+          "id": "comet",
+          "name": "尾星",
+          "identity": "small dark-blue fox adventurer with white muzzle and starry blue cloak",
+          "reference": "./public/assets/partners/comet/idle_default.webp",
+          "action": "carefully carrying a small model wooden building across the palace side-courtyard"
+        }
+      ]
+    },
+    {
+      "id": "history-25-09",
+      "scene": "ancient Qin throne above a group of court officials, no crowns from later dynasties",
+      "base": "./public/assets/history/history-25-09.webp",
+      "actors": [
+        {
+          "id": "mario",
+          "name": "齿轮",
+          "identity": "small blocky brown-haired engineer with goggles and warm orange work clothes",
+          "reference": "./public/assets/partners/mario/idle_default.webp",
+          "action": "pulling aside a plain entrance curtain for human officials approaching the throne room"
+        },
+        {
+          "id": "bell",
+          "name": "铃幕",
+          "identity": "small cheerful fair-haired circus girl with red-and-gold jester hat",
+          "reference": "./public/assets/partners/bell/idle_default.webp",
+          "action": "setting a closed wooden document box on a side table, tiny dignified bow"
+        }
+      ]
+    },
+    {
+      "id": "history-25-10",
+      "scene": "three Qin officials holding distinct symbolic administrative scroll, military token and inspection tablet, no labels",
+      "base": "./public/assets/history/history-25-10.webp",
+      "actors": [
+        {
+          "id": "kirby",
+          "name": "卡比",
+          "identity": "Kirby, small round pink body, blue eyes, rosy cheeks, red oval feet",
+          "reference": "./public/assets/partners/kirby/idle_default.webp",
+          "action": "carrying three small plain props in separate baskets for a playful side reenactment of official duties"
+        },
+        {
+          "id": "gen",
+          "name": "贾克斯",
+          "identity": "Jax, tall slim purple rabbit, long upright ears, half-lidded yellow eyes, pink overalls",
+          "reference": "./public/assets/partners/gen/idle_default.webp",
+          "action": "pointing with a rounded hand at the separate baskets, amused puzzled expression, no labels"
+        }
+      ]
+    },
+    {
+      "id": "history-25-11",
+      "scene": "ancient county administration building with officials receiving local residents",
+      "base": "./public/assets/history/history-25-11.webp",
+      "actors": [
+        {
+          "id": "ling",
+          "name": "Shadow",
+          "identity": "Shadow, black hedgehog with red quill streaks and red-striped shoes",
+          "reference": "./public/assets/partners/ling/idle_default.webp",
+          "action": "helping a resident carry a produce basket toward the local administration office"
+        },
+        {
+          "id": "moss",
+          "name": "苔点",
+          "identity": "little blocky forest explorer with leafy green hood and brown boots",
+          "reference": "./public/assets/partners/moss/idle_default.webp",
+          "action": "holding a door curtain aside for an elderly resident, warm helpful smile"
+        }
+      ]
+    },
+    {
+      "id": "history-26-01",
+      "scene": "two ancient peasant leaders speaking to a group of farmers under overcast skies, no violence",
+      "base": "./public/assets/history/history-26-01.webp",
+      "actors": [
+        {
+          "id": "blackegg",
+          "name": "黑色蛋仔",
+          "identity": "the black egg character in the supplied reference: cream face, black eye mask, turquoise eyes, ball antenna, white boots",
+          "reference": "user-provided:blackegg",
+          "action": "sharing a small food basket with the gathered human farmers"
+        },
+        {
+          "id": "kirby",
+          "name": "卡比",
+          "identity": "Kirby, small round pink body, blue eyes, rosy cheeks, red oval feet",
+          "reference": "./public/assets/partners/kirby/idle_default.webp",
+          "action": "helping tie a plain cloth banner to a pole, determined supportive expression, no battle"
+        }
+      ]
+    },
+    {
+      "id": "history-27-01",
+      "scene": "two rival ancient leaders facing each other from separate camps, a distant empty throne as a subtle symbol",
+      "base": "./public/assets/history/history-27-01.webp",
+      "actors": [
+        {
+          "id": "ling",
+          "name": "Shadow",
+          "identity": "Shadow, black hedgehog with red quill streaks and red-striped shoes",
+          "reference": "./public/assets/partners/ling/idle_default.webp",
+          "action": "arranging two plain rival camp pennants on a side mat, playful but thoughtful face"
+        },
+        {
+          "id": "prism",
+          "name": "棱镜",
+          "identity": "small colorful blue-purple harlequin girl with a two-point jester hat",
+          "reference": "./public/assets/partners/prism/idle_default.webp",
+          "action": "moving an empty little wooden chair between the pennants, expressive comic effort, never impersonating either historical leader"
+        }
+      ]
+    }
+  ]
+}

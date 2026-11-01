@@ -61,9 +61,9 @@ test("authorized eight-to-three reset preserves old sessions/rewards and does no
     submitScience(d, "biology", t, next.questions[next.index].answer);
     advanceScience(d, "biology", t);
   }
-  assert.equal(next.partnerReward.partner, "gen");
+  assert.equal(next.partnerReward.partner, "blackegg");
   migrateAcademy(d);
-  assert.deepEqual(d.academy.unlocked, ["ling", "gu", "kirby", "gen"]);
+  assert.deepEqual(d.academy.unlocked, ["ling", "gu", "kirby", "blackegg"]);
   const merged = mergeStates(d, before);
   assert.deepEqual(merged.academy.unlocked, d.academy.unlocked);
   validate(merged);

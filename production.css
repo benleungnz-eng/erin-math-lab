@@ -1896,3 +1896,17 @@ nav button[aria-pressed="true"] {
   min-height: 100px;
   resize: vertical;
 }
+
+.update-guide {
+  border: 1px solid #8da99b;
+}
+.update-guide ol {
+  padding-left: 1.5rem;
+  line-height: 1.8;
+}
+.update-guide li + li {
+  margin-top: 0.45rem;
+}
+.update-guide #homeUpdateStatus {
+  font-size: 0.9rem;
+}

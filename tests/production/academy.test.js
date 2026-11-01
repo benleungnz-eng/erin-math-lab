@@ -93,7 +93,7 @@ test("14 science day groups plus optional groups contain 84 distinct authored qu
       }
   assert.equal(seen.size, 84);
   assert.equal(d.academy.unlocked.length, partners.length);
-  assert.equal(d.academy.stars, 19);
+  assert.equal(d.academy.stars, 28 - (partners.length - 3));
   assert.deepEqual(d.inventory, inventory);
   assert.throws(() => startScience(d, "biology", 0, date(7)), /七次/);
   assert.throws(() => startScience(d, "geography", 0, date(7)), /七次/);

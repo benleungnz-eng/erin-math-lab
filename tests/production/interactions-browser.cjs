@@ -338,9 +338,9 @@ const { chromium } = require("playwright"),
         await i.decode();
         if (i.naturalWidth !== 320) throw Error(p.id + s);
       }
-    return 120;
+    return partners.length * poses.length;
   });
-  assert.equal(loaded, 120);
+  assert.equal(loaded, 130);
   await page.waitForFunction(() =>
     document.querySelector("#offline").textContent.includes("离线已就绪"),
   );
@@ -389,7 +389,7 @@ const { chromium } = require("playwright"),
   await context.close();
   await browser.close();
   console.log(
-    "PASS 3 starter mystery roster, removed extras, direct touch hotspots, live light stimulus, relevant guide, four cities, real-time Sun/latitude/longitude drags, day/night spin, 120 decoded poses and offline globe",
+    "PASS 3 starter mystery roster, removed extras, direct touch hotspots, live light stimulus, relevant guide, four cities, real-time Sun/latitude/longitude drags, day/night spin, 130 decoded poses and offline globe",
   );
 })().catch((e) => {
   console.error(e);

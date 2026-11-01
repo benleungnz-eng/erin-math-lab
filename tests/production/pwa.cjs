@@ -147,6 +147,52 @@ const path = require("node:path");
     "PASS updated version reopens offline under subpath with completed session intact",
   );
   await context.setOffline(false);
+  await offline.waitForSelector("#checkForUpdate");
+  assert.match(
+    await offline.locator(".update-guide").textContent(),
+    /向上划掉/,
+  );
+  await offline.click("#startBiology");
+  await offline.waitForSelector("[data-science-index]");
+  await offline.click('[data-view="home"]');
+  const pausedScience = await offline.evaluate(async () => {
+    const { db } = await import("./src/app.js");
+    await db.serial;
+    return structuredClone(db.state.academy.science);
+  });
+  version = initialVersion + "-paused-update-test";
+  await offline.click("#checkForUpdate");
+  await offline.waitForSelector("#installHomeUpdate:not([hidden])");
+  await offline.click("#installHomeUpdate");
+  await offline.waitForSelector("#checkForUpdate");
+  await offline.waitForFunction(
+    async (expected) =>
+      (await caches.keys()).some((k) => k.includes("v" + expected)),
+    version,
+  );
+  assert.deepEqual(
+    await offline.evaluate(async () => {
+      const { db } = await import("./src/app.js");
+      return db.state.academy.science;
+    }),
+    pausedScience,
+  );
+  await context.setOffline(true);
+  await offline.click("#checkForUpdate");
+  await offline.waitForFunction(() =>
+    document
+      .querySelector("#homeUpdateStatus")
+      .textContent.includes("先连接网络"),
+  );
+  assert.ok(
+    !(await offline.locator("#homeUpdateStatus").textContent()).includes(
+      "已是最新",
+    ),
+  );
+  await context.setOffline(false);
+  console.log(
+    "PASS home update guide installs after pausing, preserves science progress, and reports offline honestly",
+  );
   await offline.evaluate(async () => {
     const { db } = await import("./src/app.js");
     await db.mutate((d) => (d.schema = 999));
@@ -161,7 +207,7 @@ const path = require("node:path");
   );
   await browser.close();
   await new Promise((resolve) => server.close(resolve));
-  console.log("6 PWA resilience scenarios passed");
+  console.log("7 PWA resilience scenarios passed");
 })().catch((e) => {
   console.error(e);
   process.exit(1);
