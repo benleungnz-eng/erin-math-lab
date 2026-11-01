@@ -1,5 +1,10 @@
 import { hash } from "../engine/templates.js";
-export const subjects = { math: "数学", biology: "生物", geography: "地理" };
+export const subjects = {
+  math: "数学",
+  biology: "生物",
+  geography: "地理",
+  history: "历史",
+};
 export const packs = {
   biology: [
     [

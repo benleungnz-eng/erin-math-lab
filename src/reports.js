@@ -1,6 +1,10 @@
+import { historyTopicIds, historyTopicNames } from "./content/history.js";
 import { subjects, topicIds, topicNames } from "./content/science.js";
 export const reportTypeName = (id) =>
-  topicNames[id] || names[templateIds.indexOf(id)] || id;
+  historyTopicNames[id] ||
+  topicNames[id] ||
+  names[templateIds.indexOf(id)] ||
+  id;
 import { templateIds, names } from "./engine/templates.js";
 export const REPORT_KEY = "erin-parent-reports-v1";
 const modes = ["independent", "retried", "helped", "studied", "deferred"];
@@ -17,6 +21,7 @@ export function makeReport(state, date = null) {
   for (const s of [
     ...Object.values(state.sessions),
     ...Object.values(state.academy?.science.sessions || {}),
+    ...Object.values(state.academy?.history?.sessions || {}),
   ]) {
     if (date && s.date !== date) continue;
     s.questions.forEach((q, i) => {
@@ -67,7 +72,7 @@ export function validateReport(raw) {
       !Number.isSafeInteger(r.revision) ||
       r.revision < 1 ||
       ![0, 1, 2].includes(r.stage) ||
-      ![...templateIds, ...topicIds].includes(r.template) ||
+      ![...templateIds, ...topicIds, ...historyTopicIds].includes(r.template) ||
       (r.subject === undefined && !templateIds.includes(r.template)) ||
       (r.subject !== undefined && !Object.hasOwn(subjects, r.subject)) ||
       (r.subject !== undefined &&
@@ -164,7 +169,7 @@ export function summarize(report, subject = "all") {
       name,
       ...group(allRecords.filter((r) => r.subject === id)),
     })),
-    types: [...templateIds, ...topicIds]
+    types: [...templateIds, ...topicIds, ...historyTopicIds]
       .map((id, i) => ({
         id,
         name: reportTypeName(id),

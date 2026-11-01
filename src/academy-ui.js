@@ -1,4 +1,9 @@
 import {
+  createHistoryUI,
+  historyCard,
+  historyProgressHTML,
+} from "./history-ui.js";
+import {
   partners,
   partnerById,
   partnerArt,
@@ -48,9 +53,11 @@ export function createAcademyUI({
   const math = () => db.state.sessions[db.state.active];
   const science = () => a().science.sessions[a().science.active[subject]];
   const currentId = () =>
-    subject === "math"
-      ? math()?.partnerId || a().selected
-      : science()?.partnerId || a().selected;
+    subject === "history"
+      ? historyUI.current()?.partnerId || a().selected
+      : subject === "math"
+        ? math()?.partnerId || a().selected
+        : science()?.partnerId || a().selected;
   function panel(id, event = "thinking", knowledge = "", initialPose = null) {
     const fx =
       effect?.id === id && effect.event === event
@@ -110,7 +117,7 @@ export function createAcademyUI({
       s = math(),
       today = d.sessions[`${learningDate()}:0`],
       pending = s && !s.completed;
-    main.innerHTML = `<section class="hero academy-hero"><div class="hero-copy"><p class="eyebrow">A LITTLE WONDER, ONE SUBJECT TODAY</p><h1>欢迎回来。<br>今天想探索什么？</h1><p class="muted">选一科就好，周末也能做。<br>没有补签，也不需要三科全做。</p><p>数学保持原来难度；生物、地理先看图，再慢慢认词。</p></div><div class="home-partner">${panel(a().selected, "greet", "", "idle_default")}<button id="bounceHome">看看搭档的欢迎动作</button></div></section><section class="subject-cards" aria-label="学科选择"><article class="card subject-math"><span class="subject-icon">±</span><h2>数学 · 数字训练营</h2><p>5题基础 + 自愿加练，约5～8分钟。第一、二章：有理数、整式加减。</p><button id="start" class="gold">${pending ? "继续数学 · " + (s.index + 1) + "/" + s.questions.length : today?.completed ? "看看数学收获" : "开始今天的数学 →"}</button></article>${[
+    main.innerHTML = `<section class="hero academy-hero"><div class="hero-copy"><p class="eyebrow">A LITTLE WONDER, ONE SUBJECT TODAY</p><h1>欢迎回来。<br>今天想探索什么？</h1><p class="muted">选一科就好，周末也能做。<br>没有补签，也不需要四科全做。</p><p>数学保持原来难度；生物、地理看图探索，历史用联想图补关键词。</p></div><div class="home-partner">${panel(a().selected, "greet", "", "idle_default")}<button id="bounceHome">看看搭档的欢迎动作</button></div></section><section class="subject-cards" aria-label="学科选择"><article class="card subject-math"><span class="subject-icon">±</span><h2>数学 · 数字训练营</h2><p>5题基础 + 自愿加练，约5～8分钟。第一、二章：有理数、整式加减。</p><button id="start" class="gold">${pending ? "继续数学 · " + (s.index + 1) + "/" + s.questions.length : today?.completed ? "看看数学收获" : "开始今天的数学 →"}</button></article>${[
       "biology",
       "geography",
     ]
@@ -122,8 +129,12 @@ export function createAcademyUI({
       })
       .join(
         "",
-      )}</section><section class="card"><div class="row"><div><p class="eyebrow">YOUR LEARNING PARTNER</p><h2>选一个搭档，陪你走完这一轮。</h2></div><button id="collectionLink">打开搭档图鉴</button></div><p>当前选择：${partnerById(a().selected).name}。每轮开始后搭档固定，切换对下一轮生效。看提示、看讲解也能获得完整奖励。</p>${pickers()}<p class="caption">已解锁 ${a().unlocked.length}/${partners.length} 位 · 收藏星星 ${a().stars}。完成基础或自愿加练，解锁下一位搭档；全部解锁后获得星星。</p></section><section class="card"><h2>学习小记</h2><button id="progressLink">三科学习进度</button></section>`;
+      )}${historyCard(a())}</section><section class="card"><div class="row"><div><p class="eyebrow">YOUR LEARNING PARTNER</p><h2>选一个搭档，陪你走完这一轮。</h2></div><button id="collectionLink">打开搭档图鉴</button></div><p>当前选择：${partnerById(a().selected).name}。每轮开始后搭档固定，切换对下一轮生效。看提示、看讲解也能获得完整奖励。</p>${pickers()}<p class="caption">已解锁 ${a().unlocked.length}/${partners.length} 位 · 收藏星星 ${a().stars}。完成基础或自愿加练，解锁下一位搭档；全部解锁后获得星星。</p></section><section class="card"><h2>学习小记</h2><button id="progressLink">四科学习进度</button></section>`;
     main.querySelector("#start").onclick = () => go("math");
+    main.querySelector("#startHistory").onclick = () => {
+      subject = "history";
+      return historyUI.start();
+    };
     for (const sub of ["biology", "geography"])
       main.querySelector(
         sub === "biology" ? "#startBiology" : "#startGeography",
@@ -230,16 +241,18 @@ export function createAcademyUI({
             "</details>",
         )
         .join("") || "<p>还没有生物或地理记录。</p>";
-    main.innerHTML = `<section class="card"><h1>按自己的节奏，走过七次探索。</h1><p>一天只选一科就可以。漏掉几天不扣进度，也不用补作业。</p><h2>数学</h2><p>已完成 ${new Set(mathDates).size} 个学习日；原有题目引擎与难度保留，每天更换数字和组合。</p>${["biology", "geography"].map((sub) => `<h2>${subjects[sub]}</h2><ol class="week-plan">${packs[sub].map((p, day) => `<li><strong>第${day + 1}次 · ${p[0]}</strong><span>${p[1]}</span><em>${Object.values(a().science.sessions).some((s) => s.subject === sub && s.day === day && !s.stage && s.completed) ? "已完成" : "待探索"}</em></li>`).join("")}</ol>`).join("")}<h2>生物与地理学习历史</h2><p>可回看每题的完成方式、图解和讲解；不会重复发奖励。</p>${scienceHistory}<h2>保留的数学历史</h2>${
-      Object.values(d.sessions)
-        .slice(-20)
-        .reverse()
-        .map(
-          (s) =>
-            `<p>${s.date} · ${["基础5题", "加练3题", "加练2题"][s.stage]} · ${s.index}/${s.questions.length} · ${s.completed ? "已完成" : "可继续"}</p>`,
-        )
-        .join("") || "<p>还没有数学记录。</p>"
-    }</section>`;
+    main.innerHTML =
+      historyProgressHTML(a()) +
+      `<section class="card"><h1>按自己的节奏，走过七次探索。</h1><p>一天只选一科就可以。漏掉几天不扣进度，也不用补作业。</p><h2>数学</h2><p>已完成 ${new Set(mathDates).size} 个学习日；原有题目引擎与难度保留，每天更换数字和组合。</p>${["biology", "geography"].map((sub) => `<h2>${subjects[sub]}</h2><ol class="week-plan">${packs[sub].map((p, day) => `<li><strong>第${day + 1}次 · ${p[0]}</strong><span>${p[1]}</span><em>${Object.values(a().science.sessions).some((s) => s.subject === sub && s.day === day && !s.stage && s.completed) ? "已完成" : "待探索"}</em></li>`).join("")}</ol>`).join("")}<h2>生物与地理学习历史</h2><p>可回看每题的完成方式、图解和讲解；不会重复发奖励。</p>${scienceHistory}<h2>保留的数学历史</h2>${
+        Object.values(d.sessions)
+          .slice(-20)
+          .reverse()
+          .map(
+            (s) =>
+              `<p>${s.date} · ${["基础5题", "加练3题", "加练2题"][s.stage]} · ${s.index}/${s.questions.length} · ${s.completed ? "已完成" : "可继续"}</p>`,
+          )
+          .join("") || "<p>还没有数学记录。</p>"
+      }</section>`;
   }
   function sciencePage() {
     const referenceOpen = main.querySelector("#earthReference")?.open;
@@ -451,7 +464,22 @@ export function createAcademyUI({
         }
       };
   }
+  const historyUI = createHistoryUI({
+    db,
+    main,
+    action,
+    notify,
+    go,
+    panel,
+    event,
+    rewardHTML,
+    reportPreview,
+  });
   return {
+    historyPage: () => {
+      subject = "history";
+      historyUI.page();
+    },
     home,
     collection,
     progress,

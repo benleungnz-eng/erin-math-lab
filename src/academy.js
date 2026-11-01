@@ -1,11 +1,13 @@
 import { partners, states } from "./partners.js";
 import { learningDate } from "./engine/scheduler.js";
 import { scienceQuestions, validateScienceSession } from "./content/science.js";
+import { ensureHistory, validateHistory, mergeHistory } from "./history.js";
 const validId = (id) => partners.some((p) => p.id === id);
 export const starterPartners = ["ling", "gu", "kirby"];
 export function migrateAcademy(data, returning = true) {
   if (data.academy) {
     const a = data.academy;
+    ensureHistory(a);
     if (a.rosterVersion !== 2) {
       a.rosterResetFrom = [...a.unlocked];
       a.unlocked = [...starterPartners];
@@ -30,6 +32,7 @@ export function migrateAcademy(data, returning = true) {
       nextDay: { biology: 0, geography: 0 },
     },
   };
+  ensureHistory(data.academy);
   for (const s of Object.values(data.sessions)) s.partnerId ||= "ling";
   return data.academy;
 }
@@ -206,6 +209,7 @@ export function validateAcademy(data) {
     if (id !== s.id || !validId(s.partnerId)) throw Error("学科搭档无效");
     validateScienceSession(s);
   }
+  validateHistory(a);
   const scienceIds = new Set();
   for (const s of Object.values(b.sessions))
     for (const q of s.questions) {
@@ -218,6 +222,7 @@ export function validateAcademy(data) {
   for (const s of [
     ...Object.values(data.sessions),
     ...Object.values(b.sessions),
+    ...Object.values(a.history?.sessions || {}),
   ])
     if (
       s.partnerReward &&
@@ -229,7 +234,11 @@ export function validateAcademy(data) {
     throw Error("收藏星星与账本不一致");
   for (const [key, r] of Object.entries(a.rewards)) {
     const s =
-      r.subject === "math" ? data.sessions[r.session] : b.sessions[r.session];
+      r.subject === "math"
+        ? data.sessions[r.session]
+        : r.subject === "history"
+          ? a.history?.sessions[r.session]
+          : b.sessions[r.session];
     if (
       key !== `${r.subject}:${r.session}` ||
       !s?.completed ||
@@ -249,6 +258,7 @@ export function mergeAcademy(out, incoming) {
   // Old pre-reset backups contribute learning evidence, not obsolete unlocks.
   migrateAcademy({ academy: b, sessions: incoming.sessions });
   a.unlocked = [...new Set([...a.unlocked, ...b.unlocked])];
+  mergeHistory(a, b);
   for (const [id, s] of Object.entries(b.science.sessions)) {
     const old = a.science.sessions[id];
     if (
@@ -269,7 +279,9 @@ export function mergeAcademy(out, incoming) {
     const s =
       r.subject === "math"
         ? out.sessions[r.session]
-        : a.science.sessions[r.session];
+        : r.subject === "history"
+          ? a.history.sessions[r.session]
+          : a.science.sessions[r.session];
     if (!a.rewards[k] && s?.completed) a.rewards[k] = structuredClone(r);
   }
   a.stars = Object.values(a.rewards).reduce((n, r) => n + r.stars, 0);
