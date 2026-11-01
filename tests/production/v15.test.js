@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { initial, validate, mergeStates } from "../../src/storage/state.js";
 import {
   migrateAcademy,
@@ -18,6 +19,30 @@ import {
 import { APP_VERSION } from "../../src/release.js";
 import { updateGuideHTML } from "../../src/update-guide.js";
 import { historyRows } from "../../src/content/history.js";
+test("all partners keep their original image bytes and receive ten individually authored extra poses", () => {
+  const plan = JSON.parse(
+    readFileSync("docs/partner-extra-poses-v1.5.json", "utf8"),
+  );
+  assert.equal(plan.poses.length, partners.length * 10);
+  assert.equal(
+    new Set(plan.poses.map((p) => p.action)).size,
+    plan.poses.length,
+  );
+  for (const p of partners) {
+    const items = plan.poses.filter((x) => x.character === p.id);
+    assert.equal(items.length, 10, p.id);
+    assert.equal(new Set(items.map((x) => x.state)).size, 10);
+    for (const x of items) assert.ok(x.file.endsWith(x.state + "-v2.webp"));
+  }
+  for (const [path, expected] of Object.entries(plan.originalGitBlobHashes)) {
+    const bytes = readFileSync(path);
+    const hash = createHash("sha1")
+      .update(`blob ${bytes.length}\0`)
+      .update(bytes)
+      .digest("hex");
+    assert.equal(hash, expected, path + " original changed");
+  }
+});
 function finish(d) {
   const s = startScience(d, "biology", 0, new Date("2026-11-02T06:00:00Z"));
   while (!s.completed) {

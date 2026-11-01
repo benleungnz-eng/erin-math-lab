@@ -67,7 +67,7 @@ export function createAcademyUI({
             state: initialPose || eventStates[event] || "idle_default",
             variant: 0,
           };
-    return `<div id="partnerStage" class="partner-stage ${effect?.id === id ? "reacting" : ""}" data-partner-id="${id}" data-state="${fx.state}" data-variant="${fx.variant}">${partnerArt(id, fx.state, fx.variant)}<div><strong>${partnerById(id).name} · 本轮搭档</strong><p role="status">${E(partnerLine(id, event, fx.variant, knowledge))}</p></div></div>`;
+    return `<div id="partnerStage" class="partner-stage ${effect?.id === id ? "reacting" : ""}" data-partner-id="${id}" data-state="${fx.state}" data-variant="${fx.variant}">${partnerArt(id, fx.state, fx.variant, fx.artVariant)}<div><strong>${partnerById(id).name} · 本轮搭档</strong><p role="status">${E(partnerLine(id, event, fx.variant, knowledge))}</p></div></div>`;
   }
   async function event(name, knowledge = "", id = currentId()) {
     let fx;
@@ -177,7 +177,17 @@ export function createAcademyUI({
     bindPickers();
   }
   function collection() {
-    main.innerHTML = `<section class="card"><h1>学习搭档图鉴</h1><p>每位搭档有10种不同立绘姿势，按15类学习事件反馈；部分状态复用姿势，同一事件最近三次避免重复同一变化。轻微动效可以关闭。</p>${pickers()}<details><summary>看看当前搭档的15种反应</summary><div class="state-gallery">${states.map((state, i) => `<div>${partnerArt(a().selected, state)}<p>${["待机", "欢迎", "思考", "轻提示", "拆步骤", "答对", "漂亮完成", "温和纠错", "再试一次", "完成", "新搭档", "加练完成", "看解法", "三题连对", "五题连对"][i]}</p></div>`).join("")}</div></details><p>已收藏 ${a().unlocked.length}/${partners.length} 位 · 星星 ${a().stars}。旧版本可用的七个角色位置迁移为七位原创搭档；旧基地不减少。</p><button id="backHome">回到首页选择学科</button></section>`;
+    main.innerHTML = `<section class="card"><h1>学习搭档图鉴</h1><p>每位搭档保留原来的10张立绘，新增10张按角色个性设计的动作，共20张。根据学习情境抽取适合的动作，避免连续出现同一张；话术也会轮换。轻微动效可以关闭。</p>${pickers()}<details><summary>看看当前搭档的20个动作</summary><div class="state-gallery">${states
+      .slice(0, 10)
+      .flatMap((state, i) =>
+        [0, 1].map(
+          (artVariant) =>
+            `<div>${partnerArt(a().selected, state, 0, artVariant)}<p>${["待机", "欢迎", "思考", "轻提示", "拆步骤", "答对", "漂亮完成", "温和纠错", "再试一次", "完成", "新搭档", "加练完成", "看解法", "三题连对", "五题连对"][i]} · ${artVariant === 0 ? "原版" : "新动作"}</p></div>`,
+        ),
+      )
+      .join(
+        "",
+      )}</div></details><p>已收藏 ${a().unlocked.length}/${partners.length} 位 · 星星 ${a().stars}。旧版本可用的七个角色位置迁移为七位原创搭档；旧基地不减少。</p><button id="backHome">回到首页选择学科</button></section>`;
     main.querySelectorAll("[data-partner]").forEach(
       (b) =>
         (b.onclick = async () => {

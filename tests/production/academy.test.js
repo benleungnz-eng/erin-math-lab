@@ -163,12 +163,18 @@ test("every original partner covers 15 semantic states, four event variants avoi
       assert.ok(svg.includes(`state-${state}`));
     }
     for (const event of Object.keys(eventStates)) {
-      const history = [];
+      const history = [],
+        artHistory = [];
       for (let n = 0; n < 12; n++) {
         const fx = chooseEffect(d, p.id, event);
         assert.equal(fx.state, eventStates[event]);
         assert.ok(!history.slice(-3).includes(fx.variant));
         history.push(fx.variant);
+        assert.ok([0, 1].includes(fx.artVariant));
+        assert.notEqual(fx.artVariant, artHistory.at(-1));
+        artHistory.push(fx.artVariant);
+        const html = partnerArt(p.id, fx.state, fx.variant, fx.artVariant);
+        assert.equal(html.includes("-v2.webp"), fx.artVariant === 1);
       }
     }
   }
@@ -179,6 +185,25 @@ test("every original partner covers 15 semantic states, four event variants avoi
   assert.equal(new Set(lines).size, 4);
   assert.ok(lines.every((t) => t.includes("植物细胞通常有细胞壁。")));
   assert.equal(validate(d), d);
+});
+test("shared raster states avoid repeat across event aliases and recover prior valid effect records", () => {
+  const d = initial();
+  migrateAcademy(d);
+  d.academy.effects["ling:art:hint_step"] = [3];
+  let previous;
+  for (const event of ["solution", "hint_step", "solution", "hint_step"]) {
+    const fx = chooseEffect(d, "ling", event);
+    assert.ok([0, 1].includes(fx.artVariant));
+    assert.notEqual(fx.artVariant, previous);
+    previous = fx.artVariant;
+    validate(d);
+  }
+  const resumed = structuredClone(d);
+  assert.notEqual(
+    chooseEffect(resumed, "ling", "solution").artVariant,
+    previous,
+  );
+  validate(resumed);
 });
 test("legacy v1 parent reports merge with v2 math and science without double counting", () => {
   const d = initial(),

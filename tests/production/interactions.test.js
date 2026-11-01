@@ -98,7 +98,7 @@ test("hemisphere boundary and illumination are geographically distinct from long
   assert.ok(illumination([-1, 0, 0], [1, 0, 0]) < 0);
   assert.equal(illumination([0, 1, 0], [1, 0, 0]), 0);
 });
-test("each partner ships ten distinct actual local raster files", () => {
+test("each partner retains ten originals and ships ten distinct additional local raster files", () => {
   const states = [
     "idle_default",
     "greet",
@@ -113,14 +113,16 @@ test("each partner ships ten distinct actual local raster files", () => {
   ];
   for (const p of partners) {
     const hashes = new Set(
-      states.map((s) => {
-        const b = readFileSync(`public/assets/partners/${p.id}/${s}.webp`);
-        assert.equal(b.toString("ascii", 8, 12), "WEBP");
-        assert.ok(b.length > 1000);
-        return createHash("sha256").update(b).digest("hex");
-      }),
+      states
+        .flatMap((s) => [s, s + "-v2"])
+        .map((s) => {
+          const b = readFileSync(`public/assets/partners/${p.id}/${s}.webp`);
+          assert.equal(b.toString("ascii", 8, 12), "WEBP");
+          assert.ok(b.length > 1000);
+          return createHash("sha256").update(b).digest("hex");
+        }),
     );
-    assert.equal(hashes.size, 10, p.id);
+    assert.equal(hashes.size, 20, p.id);
   }
 });
 test("everyday observations show large generated pictures and clues without giving the classification", () => {

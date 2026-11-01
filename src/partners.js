@@ -216,12 +216,19 @@ export function chooseEffect(data, partnerId, event) {
   const key = partnerId + ":" + event,
     history = a.effects[key] || [],
     available = [0, 1, 2, 3].filter((i) => !history.includes(i));
-  const values = new Uint32Array(1);
+  const values = new Uint32Array(2);
   globalThis.crypto?.getRandomValues(values);
   const variant =
     available[(values[0] || Object.keys(a.effects).length) % available.length];
   a.effects[key] = [...history, variant].slice(-3);
-  return { state: eventStates[event] || "idle_default", variant };
+  const state = eventStates[event] || "idle_default";
+  // Track the actual raster independently of dialogue and shared event aliases.
+  const artKey = partnerId + ":art:" + rasterState(state);
+  const previousArt = a.effects[artKey]?.[0];
+  const artVariant =
+    previousArt === 0 || previousArt === 1 ? 1 - previousArt : values[1] % 2;
+  a.effects[artKey] = [artVariant];
+  return { state, variant, artVariant };
 }
 const blackEggPhrases = {
   greet: [
@@ -314,15 +321,24 @@ export function partnerLine(id, event, variant = 0, knowledge = "") {
   return `${p.name}：${line}`;
 }
 // Generated raster poses are primary; vector art remains as the existing fallback.
-export function partnerArt(id, state = "idle_default", variant = 0) {
-  const artState =
+export function rasterState(state) {
+  return (
     {
       unlock_new_partner: "complete",
       bonus_complete: "correct_big",
       full_solution_react: "hint_step",
       streak_3: "correct_big",
       streak_5: "complete",
-    }[state] || (states.includes(state) ? state : "idle_default");
+    }[state] || (states.includes(state) ? state : "idle_default")
+  );
+}
+export function partnerArt(
+  id,
+  state = "idle_default",
+  variant = 0,
+  artVariant = 0,
+) {
+  const artState = rasterState(state) + (artVariant === 1 ? "-v2" : "");
   const p = partnerById(id),
     n = states.indexOf(state),
     happy = /correct|complete|streak|unlock/.test(state),
