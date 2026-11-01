@@ -164,7 +164,10 @@ const path = require("node:path");
   version = initialVersion + "-paused-update-test";
   await offline.click("#checkForUpdate");
   await offline.waitForSelector("#installHomeUpdate:not([hidden])");
-  await offline.click("#installHomeUpdate");
+  await Promise.all([
+    offline.waitForNavigation({ waitUntil: "load" }),
+    offline.click("#installHomeUpdate"),
+  ]);
   await offline.waitForSelector("#checkForUpdate");
   await offline.waitForFunction(
     async (expected) =>
