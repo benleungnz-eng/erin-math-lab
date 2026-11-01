@@ -1,0 +1,1386 @@
+{
+  "base": "https://benleungnz-eng.github.io/erin-math-lab/",
+  "clock": "synthetic dates 2026-11-01 through 2026-11-08 in isolated context",
+  "topics": [
+    {
+      "sub": "biology",
+      "day": 1,
+      "topic": "认识生物",
+      "visual": "living",
+      "regions": [
+        {
+          "id": "plant",
+          "caption": "豆苗：能生长、呼吸等，属于生物。",
+          "highlight": 1,
+          "svg": "<rect x=\"30\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"95\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🌱</text><text x=\"95\" y=\"190\" text-anchor=\"middle\">植物</text><rect x=\"180\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"245\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🐌</text><text x=\"245\" y=\"190\" text-anchor=\"middle\">蜗牛</text><rect x=\"330\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"395\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">◒</text><text x=\"395\" y=\"190\" text-anchor=\"middle\">石头</text><rect x=\"480\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"545\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">▰</text><text x=\"545\" y=\"190\" text-anchor=\"middle\">汽车</text><text x=\"320\" y=\"260\" text-anchor=\"middle\">观察：生长、营养、呼吸、繁殖、对刺激作出反应……</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"30\" y=\"60\" width=\"140\" height=\"160\" rx=\"16\"></rect></g>"
+        },
+        {
+          "id": "snail",
+          "caption": "蜗牛：摄取食物、呼吸、生长，属于生物。",
+          "highlight": 1,
+          "svg": "<rect x=\"30\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"95\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🌱</text><text x=\"95\" y=\"190\" text-anchor=\"middle\">植物</text><rect x=\"180\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"245\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🐌</text><text x=\"245\" y=\"190\" text-anchor=\"middle\">蜗牛</text><rect x=\"330\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"395\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">◒</text><text x=\"395\" y=\"190\" text-anchor=\"middle\">石头</text><rect x=\"480\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"545\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">▰</text><text x=\"545\" y=\"190\" text-anchor=\"middle\">汽车</text><text x=\"320\" y=\"260\" text-anchor=\"middle\">观察：生长、营养、呼吸、繁殖、对刺激作出反应……</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"180\" y=\"60\" width=\"140\" height=\"160\" rx=\"16\"></rect></g>"
+        },
+        {
+          "id": "rock",
+          "caption": "石头：没有生命活动，不属于生物。",
+          "highlight": 1,
+          "svg": "<rect x=\"30\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"95\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🌱</text><text x=\"95\" y=\"190\" text-anchor=\"middle\">植物</text><rect x=\"180\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"245\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🐌</text><text x=\"245\" y=\"190\" text-anchor=\"middle\">蜗牛</text><rect x=\"330\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"395\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">◒</text><text x=\"395\" y=\"190\" text-anchor=\"middle\">石头</text><rect x=\"480\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"545\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">▰</text><text x=\"545\" y=\"190\" text-anchor=\"middle\">汽车</text><text x=\"320\" y=\"260\" text-anchor=\"middle\">观察：生长、营养、呼吸、繁殖、对刺激作出反应……</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"330\" y=\"60\" width=\"140\" height=\"160\" rx=\"16\"></rect></g>"
+        },
+        {
+          "id": "car",
+          "caption": "汽车：耗燃料和移动不等于有生命，不属于生物。",
+          "highlight": 1,
+          "svg": "<rect x=\"30\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"95\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🌱</text><text x=\"95\" y=\"190\" text-anchor=\"middle\">植物</text><rect x=\"180\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"245\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🐌</text><text x=\"245\" y=\"190\" text-anchor=\"middle\">蜗牛</text><rect x=\"330\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"395\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">◒</text><text x=\"395\" y=\"190\" text-anchor=\"middle\">石头</text><rect x=\"480\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"545\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">▰</text><text x=\"545\" y=\"190\" text-anchor=\"middle\">汽车</text><text x=\"320\" y=\"260\" text-anchor=\"middle\">观察：生长、营养、呼吸、繁殖、对刺激作出反应……</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"330\" y=\"60\" width=\"140\" height=\"160\" rx=\"16\"></rect></g>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "窗边的豆苗慢慢长高。哪条线索支持它是生物？",
+          "hint": "看变化，不只看颜色。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：看变化，不只看颜色。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“豆苗”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "石头和蜗牛放在桌上，谁属于生物？",
+          "hint": "生物有生命活动。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：生物有生命活动。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“豆苗”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "向日葵幼苗会对光的方向作出反应。这说明什么？",
+          "hint": "先找外界变化，再找回应。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：先找外界变化，再找回应。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“豆苗”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "汽车也需要“吃”燃料。只凭需要能量就能判断它是生物吗？",
+          "hint": "一条相似现象还不够。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：一条相似现象还不够。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“豆苗”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "小猫长成大猫，属于哪种生命现象？",
+          "hint": "身体由小变大，要看是不是生命活动。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：身体由小变大，要看是不是生命活动。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“豆苗”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "种子暂时没有发芽，就一定没有生命吗？",
+          "hint": "不动不等于没有生命。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：不动不等于没有生命。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“豆苗”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    },
+    {
+      "sub": "geography",
+      "day": 1,
+      "topic": "地球与地球仪",
+      "visual": "globe",
+      "regions": [
+        {
+          "id": "equator",
+          "caption": "赤道：0°纬线，是南北半球的分界线。",
+          "highlight": 1,
+          "svg": "<circle cx=\"320\" cy=\"150\" r=\"114\" fill=\"#d3e8ee\" stroke=\"#527f8b\" stroke-width=\"3\"></circle><ellipse cx=\"320\" cy=\"150\" rx=\"54\" ry=\"114\" fill=\"none\" stroke=\"#7ba0ac\"></ellipse><ellipse cx=\"320\" cy=\"150\" rx=\"114\" ry=\"35\" fill=\"none\" stroke=\"#bd7654\" stroke-width=\"4\"></ellipse><path d=\"M206 150H434M320 36V264\" stroke=\"#7ba0ac\" stroke-width=\"2\"></path><text x=\"300\" y=\"25\">北极 N</text><text x=\"300\" y=\"292\">南极 S</text><text x=\"445\" y=\"155\">赤道 0°纬线</text><text x=\"50\" y=\"100\">经线：南北</text><text x=\"50\" y=\"210\">纬线：东西</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><ellipse cx=\"320\" cy=\"150\" rx=\"114\" ry=\"35\"></ellipse></g>"
+        },
+        {
+          "id": "longitude",
+          "caption": "经线：连接南北两极，指示南北方向。",
+          "highlight": 1,
+          "svg": "<circle cx=\"320\" cy=\"150\" r=\"114\" fill=\"#d3e8ee\" stroke=\"#527f8b\" stroke-width=\"3\"></circle><ellipse cx=\"320\" cy=\"150\" rx=\"54\" ry=\"114\" fill=\"none\" stroke=\"#7ba0ac\"></ellipse><ellipse cx=\"320\" cy=\"150\" rx=\"114\" ry=\"35\" fill=\"none\" stroke=\"#bd7654\" stroke-width=\"4\"></ellipse><path d=\"M206 150H434M320 36V264\" stroke=\"#7ba0ac\" stroke-width=\"2\"></path><text x=\"300\" y=\"25\">北极 N</text><text x=\"300\" y=\"292\">南极 S</text><text x=\"445\" y=\"155\">赤道 0°纬线</text><text x=\"50\" y=\"100\">经线：南北</text><text x=\"50\" y=\"210\">纬线：东西</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><ellipse cx=\"320\" cy=\"150\" rx=\"54\" ry=\"114\"></ellipse></g>"
+        },
+        {
+          "id": "latitude",
+          "caption": "纬线：与赤道平行，指示东西方向。",
+          "highlight": 1,
+          "svg": "<circle cx=\"320\" cy=\"150\" r=\"114\" fill=\"#d3e8ee\" stroke=\"#527f8b\" stroke-width=\"3\"></circle><ellipse cx=\"320\" cy=\"150\" rx=\"54\" ry=\"114\" fill=\"none\" stroke=\"#7ba0ac\"></ellipse><ellipse cx=\"320\" cy=\"150\" rx=\"114\" ry=\"35\" fill=\"none\" stroke=\"#bd7654\" stroke-width=\"4\"></ellipse><path d=\"M206 150H434M320 36V264\" stroke=\"#7ba0ac\" stroke-width=\"2\"></path><text x=\"300\" y=\"25\">北极 N</text><text x=\"300\" y=\"292\">南极 S</text><text x=\"445\" y=\"155\">赤道 0°纬线</text><text x=\"50\" y=\"100\">经线：南北</text><text x=\"50\" y=\"210\">纬线：东西</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><path d=\"M215 110Q320 70 425 110\"></path></g>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "地球的整体形状接近什么？",
+          "hint": "照片中的圆形只是球体的一种投影。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：照片中的圆形只是球体的一种投影。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“赤道”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "地球仪上的赤道把地球分为？",
+          "hint": "赤道在南北极之间。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：赤道在南北极之间。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“赤道”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "地球仪上的经线主要指示什么方向？",
+          "hint": "经线连接南北两极。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：经线连接南北两极。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“赤道”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "在地球仪上，纬度为0°的线是？",
+          "hint": "经度与纬度不要混为一谈。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：经度与纬度不要混为一谈。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“赤道”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "地球仪上纬线的形状通常是什么？",
+          "hint": "比较横向圈与纵向线。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：比较横向圈与纵向线。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“赤道”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "地球绕太阳运行，它属于哪个行星系统？",
+          "hint": "找地球绕着哪颗恒星运行。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：找地球绕着哪颗恒星运行。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“赤道”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    },
+    {
+      "sub": "biology",
+      "day": 2,
+      "topic": "身边的生命",
+      "visual": "field",
+      "regions": [
+        {
+          "id": "plant",
+          "caption": "校园植物：观察形态、数量和生长环境，记录可核对的事实。",
+          "highlight": 1,
+          "svg": "<rect x=\"30\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"95\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🌱</text><text x=\"95\" y=\"190\" text-anchor=\"middle\">植物</text><rect x=\"180\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"245\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🐌</text><text x=\"245\" y=\"190\" text-anchor=\"middle\">蜗牛</text><rect x=\"330\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"395\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">◒</text><text x=\"395\" y=\"190\" text-anchor=\"middle\">石头</text><rect x=\"480\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"545\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">▰</text><text x=\"545\" y=\"190\" text-anchor=\"middle\">汽车</text><text x=\"320\" y=\"260\" text-anchor=\"middle\">观察：生长、营养、呼吸、繁殖、对刺激作出反应……</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"30\" y=\"60\" width=\"140\" height=\"160\" rx=\"16\"></rect></g>"
+        },
+        {
+          "id": "snail",
+          "caption": "潮湿角落：蜗牛常在阴暗潮湿处活动，观察时不破坏栖息环境。",
+          "highlight": 1,
+          "svg": "<rect x=\"30\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"95\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🌱</text><text x=\"95\" y=\"190\" text-anchor=\"middle\">植物</text><rect x=\"180\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"245\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🐌</text><text x=\"245\" y=\"190\" text-anchor=\"middle\">蜗牛</text><rect x=\"330\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"395\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">◒</text><text x=\"395\" y=\"190\" text-anchor=\"middle\">石头</text><rect x=\"480\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"545\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">▰</text><text x=\"545\" y=\"190\" text-anchor=\"middle\">汽车</text><text x=\"320\" y=\"260\" text-anchor=\"middle\">观察：生长、营养、呼吸、繁殖、对刺激作出反应……</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"180\" y=\"60\" width=\"140\" height=\"160\" rx=\"16\"></rect></g>"
+        },
+        {
+          "id": "record",
+          "caption": "观察记录：写下地点、日期和观察结果；区分事实与推测。",
+          "highlight": 1,
+          "svg": "<rect x=\"30\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"95\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🌱</text><text x=\"95\" y=\"190\" text-anchor=\"middle\">植物</text><rect x=\"180\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"245\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">🐌</text><text x=\"245\" y=\"190\" text-anchor=\"middle\">蜗牛</text><rect x=\"330\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"395\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">◒</text><text x=\"395\" y=\"190\" text-anchor=\"middle\">石头</text><rect x=\"480\" y=\"65\" width=\"130\" height=\"150\" rx=\"16\" fill=\"#e7efd9\"></rect><text x=\"545\" y=\"140\" text-anchor=\"middle\" font-size=\"48\">▰</text><text x=\"545\" y=\"190\" text-anchor=\"middle\">汽车</text><text x=\"320\" y=\"260\" text-anchor=\"middle\">观察：生长、营养、呼吸、繁殖、对刺激作出反应……</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"330\" y=\"60\" width=\"140\" height=\"160\" rx=\"16\"></rect></g>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "观察校园植物，哪种记录更具体？",
+          "hint": "写下能观察到的特征和地点。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：写下能观察到的特征和地点。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“校园植物”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "想观察蜗牛喜欢的环境，先找哪里？",
+          "hint": "想想怎样保护柔软的身体不失水。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：想想怎样保护柔软的身体不失水。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“校园植物”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "观察到蚂蚁搬食物，怎样做更合适？",
+          "hint": "观察不等于干扰。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：观察不等于干扰。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“校园植物”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "给观察到的生物分类，哪组使用同一个标准？",
+          "hint": "同一次分类用同一条依据。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：同一次分类用同一条依据。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“校园植物”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "想知道花坛里有几种植物，应该怎么做？",
+          "hint": "先确定观察范围。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：先确定观察范围。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“校园植物”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "同一处连续几天观察，有什么好处？",
+          "hint": "把不同时间的记录放在一起。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：把不同时间的记录放在一起。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“校园植物”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    },
+    {
+      "sub": "geography",
+      "day": 2,
+      "topic": "昼夜怎么来",
+      "visual": "rotation",
+      "regions": [
+        {
+          "id": "day",
+          "caption": "亮面：白昼：面对太阳、得到照亮的一侧。",
+          "highlight": 0,
+          "svg": "<circle cx=\"65\" cy=\"148\" r=\"42\" fill=\"#edc65d\"></circle><text x=\"65\" y=\"216\" text-anchor=\"middle\">太阳</text><path d=\"M125 115H231M125 148H231M125 182H231\" stroke=\"#d7b652\" stroke-width=\"5\"></path><circle cx=\"360\" cy=\"148\" r=\"104\" fill=\"#344457\"></circle><path d=\"M360 44A104 104 0 0 0 360 252Z\" fill=\"#cce2e3\"></path><text x=\"284\" y=\"280\">昼 ← 亮面 | 暗面 → 夜</text><circle cx=\"415.1543289325507\" cy=\"203.1543289325507\" r=\"10\" fill=\"#e79458\" stroke=\"#fff\" stroke-width=\"3\"></circle><text x=\"493\" y=\"104\">观察点现在：</text><text x=\"493\" y=\"145\">黑夜</text><text x=\"270\" y=\"22\">↶ 自转（从北极上空看）</text>"
+        },
+        {
+          "id": "night",
+          "caption": "暗面：黑夜：背向太阳、没有被照亮的一侧。",
+          "highlight": 0,
+          "svg": "<circle cx=\"65\" cy=\"148\" r=\"42\" fill=\"#edc65d\"></circle><text x=\"65\" y=\"216\" text-anchor=\"middle\">太阳</text><path d=\"M125 115H231M125 148H231M125 182H231\" stroke=\"#d7b652\" stroke-width=\"5\"></path><circle cx=\"360\" cy=\"148\" r=\"104\" fill=\"#344457\"></circle><path d=\"M360 44A104 104 0 0 0 360 252Z\" fill=\"#cce2e3\"></path><text x=\"284\" y=\"280\">昼 ← 亮面 | 暗面 → 夜</text><circle cx=\"415.1543289325507\" cy=\"203.1543289325507\" r=\"10\" fill=\"#e79458\" stroke=\"#fff\" stroke-width=\"3\"></circle><text x=\"493\" y=\"104\">观察点现在：</text><text x=\"493\" y=\"145\">黑夜</text><text x=\"270\" y=\"22\">↶ 自转（从北极上空看）</text>"
+        },
+        {
+          "id": "spin",
+          "caption": "自转：绕地轴转动，约一天一周，自西向东。",
+          "highlight": 0,
+          "svg": "<circle cx=\"65\" cy=\"148\" r=\"42\" fill=\"#edc65d\"></circle><text x=\"65\" y=\"216\" text-anchor=\"middle\">太阳</text><path d=\"M125 115H231M125 148H231M125 182H231\" stroke=\"#d7b652\" stroke-width=\"5\"></path><circle cx=\"360\" cy=\"148\" r=\"104\" fill=\"#344457\"></circle><path d=\"M360 44A104 104 0 0 0 360 252Z\" fill=\"#cce2e3\"></path><text x=\"284\" y=\"280\">昼 ← 亮面 | 暗面 → 夜</text><circle cx=\"415.1543289325507\" cy=\"203.1543289325507\" r=\"10\" fill=\"#e79458\" stroke=\"#fff\" stroke-width=\"3\"></circle><text x=\"493\" y=\"104\">观察点现在：</text><text x=\"493\" y=\"145\">黑夜</text><text x=\"270\" y=\"22\">↶ 自转（从北极上空看）</text>"
+        },
+        {
+          "id": "orbit",
+          "caption": "公转：地球绕太阳运行，约一年一周；公转且地轴倾斜，与四季变化有关。",
+          "highlight": 0,
+          "svg": "<circle cx=\"65\" cy=\"148\" r=\"42\" fill=\"#edc65d\"></circle><text x=\"65\" y=\"216\" text-anchor=\"middle\">太阳</text><path d=\"M125 115H231M125 148H231M125 182H231\" stroke=\"#d7b652\" stroke-width=\"5\"></path><circle cx=\"360\" cy=\"148\" r=\"104\" fill=\"#344457\"></circle><path d=\"M360 44A104 104 0 0 0 360 252Z\" fill=\"#cce2e3\"></path><text x=\"284\" y=\"280\">昼 ← 亮面 | 暗面 → 夜</text><circle cx=\"415.1543289325507\" cy=\"203.1543289325507\" r=\"10\" fill=\"#e79458\" stroke=\"#fff\" stroke-width=\"3\"></circle><text x=\"493\" y=\"104\">观察点现在：</text><text x=\"493\" y=\"145\">黑夜</text><text x=\"270\" y=\"22\">↶ 自转（从北极上空看）</text>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "面对太阳的一侧通常是？",
+          "hint": "光来自太阳方向。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：光来自太阳方向。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“亮面：白昼”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "同一地点昼夜交替，主要与什么有关？",
+          "hint": "看一个地点在亮面和暗面之间移动。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：看一个地点在亮面和暗面之间移动。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“亮面：白昼”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "地球自转一周大约需要多久？",
+          "hint": "联系白天和夜晚的一轮变化。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：联系白天和夜晚的一轮变化。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“亮面：白昼”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "地球自转与公转，哪一种是绕地轴转？",
+          "hint": "自转像原地转身。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：自转像原地转身。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“亮面：白昼”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "一年中四季变化，与哪组条件有关？",
+          "hint": "自转和公转分别解释不同现象。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：自转和公转分别解释不同现象。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“亮面：白昼”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "通常说地球自转方向是？",
+          "hint": "想想太阳通常从东边升起。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：想想太阳通常从东边升起。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“亮面：白昼”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ],
+      "rotationChanged": true
+    },
+    {
+      "sub": "biology",
+      "day": 3,
+      "topic": "走近细胞",
+      "visual": "microscope",
+      "regions": [
+        {
+          "id": "eyepiece",
+          "caption": "目镜：靠近眼睛一端，用来观察。",
+          "highlight": 1,
+          "svg": "<path d=\"M300 45 345 60 310 142 275 128Z\" fill=\"#a9bac2\" stroke=\"#425d69\" stroke-width=\"4\"></path><path d=\"M320 95 Q420 125 385 230L275 230\" fill=\"none\" stroke=\"#698693\" stroke-width=\"24\"></path><path d=\"M246 164H359M310 170V220M260 256H425\" stroke=\"#415e66\" stroke-width=\"12\" stroke-linecap=\"round\"></path><path d=\"M296 211V179\" stroke=\"#e1bc47\" stroke-width=\"5\"></path><text x=\"355\" y=\"49\">目镜</text><text x=\"193\" y=\"130\">物镜</text><text x=\"380\" y=\"169\">载物台</text><text x=\"164\" y=\"225\">光经过标本 ↑</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><circle cx=\"320\" cy=\"52\" r=\"30\"></circle></g>"
+        },
+        {
+          "id": "objective",
+          "caption": "物镜：靠近标本一端，与目镜共同放大。",
+          "highlight": 1,
+          "svg": "<path d=\"M300 45 345 60 310 142 275 128Z\" fill=\"#a9bac2\" stroke=\"#425d69\" stroke-width=\"4\"></path><path d=\"M320 95 Q420 125 385 230L275 230\" fill=\"none\" stroke=\"#698693\" stroke-width=\"24\"></path><path d=\"M246 164H359M310 170V220M260 256H425\" stroke=\"#415e66\" stroke-width=\"12\" stroke-linecap=\"round\"></path><path d=\"M296 211V179\" stroke=\"#e1bc47\" stroke-width=\"5\"></path><text x=\"355\" y=\"49\">目镜</text><text x=\"193\" y=\"130\">物镜</text><text x=\"380\" y=\"169\">载物台</text><text x=\"164\" y=\"225\">光经过标本 ↑</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><circle cx=\"295\" cy=\"129\" r=\"26\"></circle></g>"
+        },
+        {
+          "id": "stage",
+          "caption": "载物台：承载标本，让光通过标本进入物镜。",
+          "highlight": 1,
+          "svg": "<path d=\"M300 45 345 60 310 142 275 128Z\" fill=\"#a9bac2\" stroke=\"#425d69\" stroke-width=\"4\"></path><path d=\"M320 95 Q420 125 385 230L275 230\" fill=\"none\" stroke=\"#698693\" stroke-width=\"24\"></path><path d=\"M246 164H359M310 170V220M260 256H425\" stroke=\"#415e66\" stroke-width=\"12\" stroke-linecap=\"round\"></path><path d=\"M296 211V179\" stroke=\"#e1bc47\" stroke-width=\"5\"></path><text x=\"355\" y=\"49\">目镜</text><text x=\"193\" y=\"130\">物镜</text><text x=\"380\" y=\"169\">载物台</text><text x=\"164\" y=\"225\">光经过标本 ↑</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><ellipse cx=\"300\" cy=\"164\" rx=\"64\" ry=\"20\"></ellipse></g>"
+        },
+        {
+          "id": "light",
+          "caption": "光路：普通光学显微镜观察时，光要经过薄而透明的标本。",
+          "highlight": 1,
+          "svg": "<path d=\"M300 45 345 60 310 142 275 128Z\" fill=\"#a9bac2\" stroke=\"#425d69\" stroke-width=\"4\"></path><path d=\"M320 95 Q420 125 385 230L275 230\" fill=\"none\" stroke=\"#698693\" stroke-width=\"24\"></path><path d=\"M246 164H359M310 170V220M260 256H425\" stroke=\"#415e66\" stroke-width=\"12\" stroke-linecap=\"round\"></path><path d=\"M296 211V179\" stroke=\"#e1bc47\" stroke-width=\"5\"></path><text x=\"355\" y=\"49\">目镜</text><text x=\"193\" y=\"130\">物镜</text><text x=\"380\" y=\"169\">载物台</text><text x=\"164\" y=\"225\">光经过标本 ↑</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><circle cx=\"296\" cy=\"205\" r=\"32\"></circle></g>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "许多细胞很小，观察它们通常借助什么？",
+          "hint": "小结构需要被放大。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：小结构需要被放大。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“目镜”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "显微镜上，靠近眼睛的一端叫什么？",
+          "hint": "“目”就是眼睛。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：“目”就是眼睛。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“目镜”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "把标本放在显微镜的哪里？",
+          "hint": "“载物”就是承载标本。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：“载物”就是承载标本。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“目镜”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "目镜10倍、物镜10倍，总放大倍数是多少？",
+          "hint": "两级放大要相乘。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：两级放大要相乘。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“目镜”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "开始观察时，先用低倍物镜的好处是什么？",
+          "hint": "先找得到，再看细节。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：先找得到，再看细节。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“目镜”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "观察薄而透明的材料，为什么比较合适？",
+          "hint": "光要经过标本。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：光要经过标本。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“目镜”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    },
+    {
+      "sub": "geography",
+      "day": 3,
+      "topic": "读懂小地图",
+      "visual": "map",
+      "regions": [
+        {
+          "id": "north",
+          "caption": "方向：本图指北箭头向上，因此上北下南、左西右东。",
+          "highlight": 1,
+          "svg": "<rect x=\"15\" y=\"25\" width=\"610\" height=\"250\" rx=\"16\" fill=\"#eff0d9\"></rect><path d=\"M30 210Q210 100 320 215T610 180\" stroke=\"#6aacc4\" stroke-width=\"14\" fill=\"none\"></path><path d=\"M40 90H560\" stroke=\"#b87a61\" stroke-width=\"8\"></path><rect x=\"155\" y=\"48\" width=\"100\" height=\"60\" fill=\"#fff8dd\" stroke=\"#7a8c77\"></rect><text x=\"205\" y=\"84\" text-anchor=\"middle\">图书馆</text><rect x=\"380\" y=\"48\" width=\"100\" height=\"60\" fill=\"#fff8dd\" stroke=\"#7a8c77\"></rect><text x=\"430\" y=\"84\" text-anchor=\"middle\">校：学校</text><path d=\"M565 105V37l-8 12m8-12 8 12\" stroke=\"#263438\" fill=\"none\" stroke-width=\"3\"></path><text x=\"560\" y=\"25\">N</text><text x=\"35\" y=\"250\">图例：蓝线 河流 / 红线 公路 / 校 学校</text><text x=\"410\" y=\"250\">比例尺 1:10000</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><circle cx=\"565\" cy=\"65\" r=\"38\"></circle></g>"
+        },
+        {
+          "id": "legend",
+          "caption": "图例：蓝色弯线代表河流，红色道路代表公路，方框内的校字代表学校。",
+          "highlight": 1,
+          "svg": "<rect x=\"15\" y=\"25\" width=\"610\" height=\"250\" rx=\"16\" fill=\"#eff0d9\"></rect><path d=\"M30 210Q210 100 320 215T610 180\" stroke=\"#6aacc4\" stroke-width=\"14\" fill=\"none\"></path><path d=\"M40 90H560\" stroke=\"#b87a61\" stroke-width=\"8\"></path><rect x=\"155\" y=\"48\" width=\"100\" height=\"60\" fill=\"#fff8dd\" stroke=\"#7a8c77\"></rect><text x=\"205\" y=\"84\" text-anchor=\"middle\">图书馆</text><rect x=\"380\" y=\"48\" width=\"100\" height=\"60\" fill=\"#fff8dd\" stroke=\"#7a8c77\"></rect><text x=\"430\" y=\"84\" text-anchor=\"middle\">校：学校</text><path d=\"M565 105V37l-8 12m8-12 8 12\" stroke=\"#263438\" fill=\"none\" stroke-width=\"3\"></path><text x=\"560\" y=\"25\">N</text><text x=\"35\" y=\"250\">图例：蓝线 河流 / 红线 公路 / 校 学校</text><text x=\"410\" y=\"250\">比例尺 1:10000</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"26\" y=\"228\" width=\"365\" height=\"34\" rx=\"8\"></rect></g>"
+        },
+        {
+          "id": "scale",
+          "caption": "比例尺：本图1:10000，图上1厘米对应实地100米。",
+          "highlight": 1,
+          "svg": "<rect x=\"15\" y=\"25\" width=\"610\" height=\"250\" rx=\"16\" fill=\"#eff0d9\"></rect><path d=\"M30 210Q210 100 320 215T610 180\" stroke=\"#6aacc4\" stroke-width=\"14\" fill=\"none\"></path><path d=\"M40 90H560\" stroke=\"#b87a61\" stroke-width=\"8\"></path><rect x=\"155\" y=\"48\" width=\"100\" height=\"60\" fill=\"#fff8dd\" stroke=\"#7a8c77\"></rect><text x=\"205\" y=\"84\" text-anchor=\"middle\">图书馆</text><rect x=\"380\" y=\"48\" width=\"100\" height=\"60\" fill=\"#fff8dd\" stroke=\"#7a8c77\"></rect><text x=\"430\" y=\"84\" text-anchor=\"middle\">校：学校</text><path d=\"M565 105V37l-8 12m8-12 8 12\" stroke=\"#263438\" fill=\"none\" stroke-width=\"3\"></path><text x=\"560\" y=\"25\">N</text><text x=\"35\" y=\"250\">图例：蓝线 河流 / 红线 公路 / 校 学校</text><text x=\"410\" y=\"250\">比例尺 1:10000</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"400\" y=\"228\" width=\"205\" height=\"34\" rx=\"8\"></rect></g>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "这张标有指北箭头的地图，箭头指向哪里？",
+          "hint": "先找写着N的箭头。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：先找写着N的箭头。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“方向”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "图例中，蓝色弯线标注河流，那么图上同样符号表示？",
+          "hint": "把图上符号与图例对应。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：把图上符号与图例对应。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“方向”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "地图比例尺1:10000，表示图上1厘米对应实地？",
+          "hint": "先把10000厘米换成米。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：先把10000厘米换成米。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“方向”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "为什么地图需要图例？",
+          "hint": "符号要有说明。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：符号要有说明。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“方向”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "同一张图上，学校在图书馆右边；指北箭头朝上，学校在图书馆的？",
+          "hint": "在上北下南的图上，右边是哪边？",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：在上北下南的图上，右边是哪边？ 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“方向”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "外出找公交路线，优先选什么地图？",
+          "hint": "地图主题要符合用途。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：地图主题要符合用途。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“方向”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    },
+    {
+      "sub": "biology",
+      "day": 4,
+      "topic": "两种细胞",
+      "visual": "cells",
+      "regions": [
+        {
+          "id": "wall",
+          "caption": "细胞壁：植物细胞膜外较厚的一层，起支持和保护作用。",
+          "highlight": 1,
+          "svg": "<text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"22\" y=\"42\" width=\"271\" height=\"231\" rx=\"30\"></rect></g>"
+        },
+        {
+          "id": "membrane",
+          "caption": "细胞膜：控制物质进出的薄边界，植物和动物细胞都有。",
+          "highlight": 1,
+          "svg": "<text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\"></rect><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\"></ellipse></g>"
+        },
+        {
+          "id": "nucleus",
+          "caption": "细胞核：含有重要的遗传信息，植物和动物细胞都有。",
+          "highlight": 1,
+          "svg": "<text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><circle cx=\"77\" cy=\"174\" r=\"28\"></circle><circle cx=\"479\" cy=\"149\" r=\"34\"></circle></g>"
+        },
+        {
+          "id": "chloroplast",
+          "caption": "叶绿体：光合作用的主要场所；常见于绿色部位的细胞，不是所有植物细胞都有。",
+          "highlight": 1,
+          "svg": "<text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><ellipse cx=\"70\" cy=\"244\" rx=\"21\" ry=\"12\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"21\" ry=\"12\"></ellipse></g>"
+        },
+        {
+          "id": "vacuole",
+          "caption": "液泡：内部有细胞液，成熟植物细胞常有较大的中央液泡。",
+          "highlight": 1,
+          "svg": "<text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"108\" y=\"80\" width=\"145\" height=\"153\" rx=\"37\"></rect></g>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "比较图中两种细胞，哪一种有细胞壁？",
+          "hint": "找细胞膜外面较厚的一层。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：找细胞膜外面较厚的一层。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞壁”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "两种细胞共有的结构是哪一个？",
+          "hint": "看两张图中都有的边界。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：看两张图中都有的边界。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞壁”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "植物根部的细胞也一定有叶绿体吗？",
+          "hint": "植物细胞的结构也会因部位而不同。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：植物细胞的结构也会因部位而不同。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞壁”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "植物细胞中，常占较大空间、里面有细胞液的结构是？",
+          "hint": "找图里较大的储液空间。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：找图里较大的储液空间。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞壁”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "图中的动物细胞外面也有边界，那就是细胞壁吗？",
+          "hint": "“膜”和“壁”是不同结构。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：“膜”和“壁”是不同结构。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞壁”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "判断植物细胞时，哪种依据更可靠？",
+          "hint": "图的外形只是画法，结构才是证据。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：图的外形只是画法，结构才是证据。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞壁”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    },
+    {
+      "sub": "geography",
+      "day": 4,
+      "topic": "方向和地形",
+      "visual": "contours",
+      "regions": [
+        {
+          "id": "dense",
+          "caption": "密线：较陡：相同等高距下，等高线较密表示坡度较陡。",
+          "highlight": 1,
+          "svg": "<ellipse cx=\"200\" cy=\"150\" rx=\"140\" ry=\"108\" fill=\"none\" stroke=\"#aa8e5d\" stroke-width=\"3\"></ellipse><text x=\"60\" y=\"148\">100</text><ellipse cx=\"210\" cy=\"150\" rx=\"110\" ry=\"85\" fill=\"none\" stroke=\"#aa8e5d\" stroke-width=\"3\"></ellipse><text x=\"100\" y=\"148\">200</text><ellipse cx=\"220\" cy=\"150\" rx=\"80\" ry=\"62\" fill=\"none\" stroke=\"#aa8e5d\" stroke-width=\"3\"></ellipse><text x=\"140\" y=\"148\">300</text><ellipse cx=\"230\" cy=\"150\" rx=\"50\" ry=\"39\" fill=\"none\" stroke=\"#aa8e5d\" stroke-width=\"3\"></ellipse><text x=\"180\" y=\"148\">400</text><text x=\"390\" y=\"95\">左边：线较疏</text><text x=\"390\" y=\"140\">右边：线较密</text><text x=\"390\" y=\"200\">等高距 100 米</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><circle cx=\"280\" cy=\"150\" r=\"45\"></circle></g>"
+        },
+        {
+          "id": "sparse",
+          "caption": "疏线：较缓：相同等高距下，等高线较疏表示坡度较缓。",
+          "highlight": 1,
+          "svg": "<ellipse cx=\"200\" cy=\"150\" rx=\"140\" ry=\"108\" fill=\"none\" stroke=\"#aa8e5d\" stroke-width=\"3\"></ellipse><text x=\"60\" y=\"148\">100</text><ellipse cx=\"210\" cy=\"150\" rx=\"110\" ry=\"85\" fill=\"none\" stroke=\"#aa8e5d\" stroke-width=\"3\"></ellipse><text x=\"100\" y=\"148\">200</text><ellipse cx=\"220\" cy=\"150\" rx=\"80\" ry=\"62\" fill=\"none\" stroke=\"#aa8e5d\" stroke-width=\"3\"></ellipse><text x=\"140\" y=\"148\">300</text><ellipse cx=\"230\" cy=\"150\" rx=\"50\" ry=\"39\" fill=\"none\" stroke=\"#aa8e5d\" stroke-width=\"3\"></ellipse><text x=\"180\" y=\"148\">400</text><text x=\"390\" y=\"95\">左边：线较疏</text><text x=\"390\" y=\"140\">右边：线较密</text><text x=\"390\" y=\"200\">等高距 100 米</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><circle cx=\"120\" cy=\"150\" r=\"45\"></circle></g>"
+        },
+        {
+          "id": "height",
+          "caption": "等高线：同一条等高线上，各点海拔相同；本图等高距为100米。",
+          "highlight": 1,
+          "svg": "<ellipse cx=\"200\" cy=\"150\" rx=\"140\" ry=\"108\" fill=\"none\" stroke=\"#aa8e5d\" stroke-width=\"3\"></ellipse><text x=\"60\" y=\"148\">100</text><ellipse cx=\"210\" cy=\"150\" rx=\"110\" ry=\"85\" fill=\"none\" stroke=\"#aa8e5d\" stroke-width=\"3\"></ellipse><text x=\"100\" y=\"148\">200</text><ellipse cx=\"220\" cy=\"150\" rx=\"80\" ry=\"62\" fill=\"none\" stroke=\"#aa8e5d\" stroke-width=\"3\"></ellipse><text x=\"140\" y=\"148\">300</text><ellipse cx=\"230\" cy=\"150\" rx=\"50\" ry=\"39\" fill=\"none\" stroke=\"#aa8e5d\" stroke-width=\"3\"></ellipse><text x=\"180\" y=\"148\">400</text><text x=\"390\" y=\"95\">左边：线较疏</text><text x=\"390\" y=\"140\">右边：线较密</text><text x=\"390\" y=\"200\">等高距 100 米</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><circle cx=\"120\" cy=\"150\" r=\"45\"></circle></g>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "两处等高线间隔相同，一边线密、一边线疏，通常哪边较陡？",
+          "hint": "同样高度差，在较短距离内升降更多。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：同样高度差，在较短距离内升降更多。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“密线：较陡”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "标着100米的同一条等高线上，各点海拔通常？",
+          "hint": "“等高”就是高度相等。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：“等高”就是高度相等。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“密线：较陡”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "海拔是从哪里作为起算基准的高度？",
+          "hint": "基准要统一，地图才可比较。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：基准要统一，地图才可比较。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“密线：较陡”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "图中A海拔300米，B海拔100米，它们相对高度为？",
+          "hint": "两个海拔相减。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：两个海拔相减。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“密线：较陡”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "地图若把指北箭头画向右上，能直接把纸面上方当北吗？",
+          "hint": "先认方向标，别机械套口诀。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：先认方向标，别机械套口诀。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“密线：较陡”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "读一张陌生地图时，先核对什么更稳妥？",
+          "hint": "地图有自己的阅读工具。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：地图有自己的阅读工具。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“密线：较陡”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    },
+    {
+      "sub": "biology",
+      "day": 5,
+      "topic": "细胞里的分工",
+      "visual": "structures",
+      "regions": [
+        {
+          "id": "wall",
+          "caption": "细胞壁：植物细胞膜外较厚的一层，起支持和保护作用。",
+          "highlight": 1,
+          "svg": "<text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"22\" y=\"42\" width=\"271\" height=\"231\" rx=\"30\"></rect></g>"
+        },
+        {
+          "id": "membrane",
+          "caption": "细胞膜：控制物质进出的薄边界，植物和动物细胞都有。",
+          "highlight": 1,
+          "svg": "<text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\"></rect><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\"></ellipse></g>"
+        },
+        {
+          "id": "nucleus",
+          "caption": "细胞核：含有重要的遗传信息，植物和动物细胞都有。",
+          "highlight": 1,
+          "svg": "<text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><circle cx=\"77\" cy=\"174\" r=\"28\"></circle><circle cx=\"479\" cy=\"149\" r=\"34\"></circle></g>"
+        },
+        {
+          "id": "chloroplast",
+          "caption": "叶绿体：光合作用的主要场所；常见于绿色部位的细胞，不是所有植物细胞都有。",
+          "highlight": 1,
+          "svg": "<text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><ellipse cx=\"70\" cy=\"244\" rx=\"21\" ry=\"12\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"21\" ry=\"12\"></ellipse></g>"
+        },
+        {
+          "id": "vacuole",
+          "caption": "液泡：内部有细胞液，成熟植物细胞常有较大的中央液泡。",
+          "highlight": 1,
+          "svg": "<text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"108\" y=\"80\" width=\"145\" height=\"153\" rx=\"37\"></rect></g>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "哪种结构控制物质进出细胞？",
+          "hint": "想象一道有选择的门。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：想象一道有选择的门。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞壁”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "哪种结构中有重要的遗传信息？",
+          "hint": "找细胞中管理遗传信息的部分。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：找细胞中管理遗传信息的部分。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞壁”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "绿色植物细胞能把光能转为储存在有机物中的能量，主要依靠？",
+          "hint": "找绿色部位中的光合作用场所。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：找绿色部位中的光合作用场所。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞壁”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "植物细胞较坚挺，与哪个外层结构有关？",
+          "hint": "看看最外侧支持细胞的结构。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：看看最外侧支持细胞的结构。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞壁”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "图中液泡里装的是不是一团空气？",
+          "hint": "“液泡”里的“液”是线索。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：“液泡”里的“液”是线索。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞壁”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "动物细胞没有叶绿体，是否就不能进行生命活动？",
+          "hint": "获得营养的方式可以不同。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：获得营养的方式可以不同。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞壁”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    },
+    {
+      "sub": "geography",
+      "day": 5,
+      "topic": "蓝色星球",
+      "visual": "oceans",
+      "regions": [
+        {
+          "id": "ocean",
+          "caption": "海洋约71%：海洋面积较大，各大洋彼此连通。",
+          "highlight": 0,
+          "svg": "<rect x=\"40\" y=\"70\" width=\"560\" height=\"90\" rx=\"15\" fill=\"#c5d4a1\"></rect><path d=\"M55 70H438V160H55Q40 160 40 145V85Q40 70 55 70\" fill=\"#70a9bd\"></path><text x=\"230\" y=\"122\" text-anchor=\"middle\">海洋约 71%</text><text x=\"520\" y=\"122\" text-anchor=\"middle\">陆地约 29%</text><text x=\"320\" y=\"220\" text-anchor=\"middle\">示意比例条：大约七分海洋，三分陆地</text>"
+        },
+        {
+          "id": "land",
+          "caption": "陆地约29%：大陆与岛屿都是陆地；大陆和附近岛屿合称大洲。",
+          "highlight": 0,
+          "svg": "<rect x=\"40\" y=\"70\" width=\"560\" height=\"90\" rx=\"15\" fill=\"#c5d4a1\"></rect><path d=\"M55 70H438V160H55Q40 160 40 145V85Q40 70 55 70\" fill=\"#70a9bd\"></path><text x=\"230\" y=\"122\" text-anchor=\"middle\">海洋约 71%</text><text x=\"520\" y=\"122\" text-anchor=\"middle\">陆地约 29%</text><text x=\"320\" y=\"220\" text-anchor=\"middle\">示意比例条：大约七分海洋，三分陆地</text>"
+        },
+        {
+          "id": "island",
+          "caption": "岛屿与半岛：岛屿四面环水；半岛一面与大陆相连、三面临海。",
+          "highlight": 0,
+          "svg": "<rect x=\"40\" y=\"70\" width=\"560\" height=\"90\" rx=\"15\" fill=\"#c5d4a1\"></rect><path d=\"M55 70H438V160H55Q40 160 40 145V85Q40 70 55 70\" fill=\"#70a9bd\"></path><text x=\"230\" y=\"122\" text-anchor=\"middle\">海洋约 71%</text><text x=\"520\" y=\"122\" text-anchor=\"middle\">陆地约 29%</text><text x=\"320\" y=\"220\" text-anchor=\"middle\">示意比例条：大约七分海洋，三分陆地</text>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "地球表面海洋和陆地，面积更大的是？",
+          "hint": "看大约七成与三成的比较。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：看大约七成与三成的比较。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“海洋约71%”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "一个巨大的陆地整体叫大陆，散布在海中的较小陆地叫？",
+          "hint": "先分清陆地与水域。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：先分清陆地与水域。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“海洋约71%”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "大陆和它附近的岛屿合起来，通常称为？",
+          "hint": "大洲不只包含大陆本身。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：大洲不只包含大陆本身。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“海洋约71%”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "连接两片海域的狭窄水道通常叫？",
+          "hint": "想象海水通过一个窄通道。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：想象海水通过一个窄通道。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“海洋约71%”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "三面临海、一面与大陆相连的陆地通常叫？",
+          "hint": "一面仍和大陆相连。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：一面仍和大陆相连。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“海洋约71%”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "地图把海洋分成四大洋，海水实际上完全不相通吗？",
+          "hint": "名称分区不等于隔断海水。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：名称分区不等于隔断海水。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“海洋约71%”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    },
+    {
+      "sub": "biology",
+      "day": 6,
+      "topic": "从小到大的层次",
+      "visual": "levels",
+      "regions": [
+        {
+          "id": "cell",
+          "caption": "细胞：生物体结构和功能的基本单位。",
+          "highlight": 1,
+          "svg": "<text x=\"15\" y=\"50\">动物体：</text><text x=\"15\" y=\"175\">绿色开花植物：</text><rect x=\"20\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"72\" y=\"101\" text-anchor=\"middle\">细胞</text><text x=\"127\" y=\"100\">→</text><rect x=\"144\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"196\" y=\"101\" text-anchor=\"middle\">组织</text><text x=\"251\" y=\"100\">→</text><rect x=\"268\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"320\" y=\"101\" text-anchor=\"middle\">器官</text><text x=\"375\" y=\"100\">→</text><rect x=\"392\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"444\" y=\"101\" text-anchor=\"middle\">系统</text><text x=\"499\" y=\"100\">→</text><rect x=\"516\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"568\" y=\"101\" text-anchor=\"middle\">动物体</text><rect x=\"20\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"83\" y=\"228\" text-anchor=\"middle\">细胞</text><text x=\"148\" y=\"228\">→</text><rect x=\"175\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"238\" y=\"228\" text-anchor=\"middle\">组织</text><text x=\"303\" y=\"228\">→</text><rect x=\"330\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"393\" y=\"228\" text-anchor=\"middle\">器官</text><text x=\"458\" y=\"228\">→</text><rect x=\"485\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"548\" y=\"228\" text-anchor=\"middle\">植物体</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"20\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\"></rect></g>"
+        },
+        {
+          "id": "tissue",
+          "caption": "组织：形态相似、结构和功能相近的细胞构成。",
+          "highlight": 1,
+          "svg": "<text x=\"15\" y=\"50\">动物体：</text><text x=\"15\" y=\"175\">绿色开花植物：</text><rect x=\"20\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"72\" y=\"101\" text-anchor=\"middle\">细胞</text><text x=\"127\" y=\"100\">→</text><rect x=\"144\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"196\" y=\"101\" text-anchor=\"middle\">组织</text><text x=\"251\" y=\"100\">→</text><rect x=\"268\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"320\" y=\"101\" text-anchor=\"middle\">器官</text><text x=\"375\" y=\"100\">→</text><rect x=\"392\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"444\" y=\"101\" text-anchor=\"middle\">系统</text><text x=\"499\" y=\"100\">→</text><rect x=\"516\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"568\" y=\"101\" text-anchor=\"middle\">动物体</text><rect x=\"20\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"83\" y=\"228\" text-anchor=\"middle\">细胞</text><text x=\"148\" y=\"228\">→</text><rect x=\"175\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"238\" y=\"228\" text-anchor=\"middle\">组织</text><text x=\"303\" y=\"228\">→</text><rect x=\"330\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"393\" y=\"228\" text-anchor=\"middle\">器官</text><text x=\"458\" y=\"228\">→</text><rect x=\"485\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"548\" y=\"228\" text-anchor=\"middle\">植物体</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"144\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\"></rect></g>"
+        },
+        {
+          "id": "organ",
+          "caption": "器官：多种组织构成，具有一定的功能，例如胃、叶。",
+          "highlight": 1,
+          "svg": "<text x=\"15\" y=\"50\">动物体：</text><text x=\"15\" y=\"175\">绿色开花植物：</text><rect x=\"20\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"72\" y=\"101\" text-anchor=\"middle\">细胞</text><text x=\"127\" y=\"100\">→</text><rect x=\"144\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"196\" y=\"101\" text-anchor=\"middle\">组织</text><text x=\"251\" y=\"100\">→</text><rect x=\"268\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"320\" y=\"101\" text-anchor=\"middle\">器官</text><text x=\"375\" y=\"100\">→</text><rect x=\"392\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"444\" y=\"101\" text-anchor=\"middle\">系统</text><text x=\"499\" y=\"100\">→</text><rect x=\"516\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"568\" y=\"101\" text-anchor=\"middle\">动物体</text><rect x=\"20\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"83\" y=\"228\" text-anchor=\"middle\">细胞</text><text x=\"148\" y=\"228\">→</text><rect x=\"175\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"238\" y=\"228\" text-anchor=\"middle\">组织</text><text x=\"303\" y=\"228\">→</text><rect x=\"330\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"393\" y=\"228\" text-anchor=\"middle\">器官</text><text x=\"458\" y=\"228\">→</text><rect x=\"485\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"548\" y=\"228\" text-anchor=\"middle\">植物体</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"268\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\"></rect></g>"
+        },
+        {
+          "id": "system",
+          "caption": "动物的系统：多个器官协作，例如消化系统；植物通常不分出这一级。",
+          "highlight": 1,
+          "svg": "<text x=\"15\" y=\"50\">动物体：</text><text x=\"15\" y=\"175\">绿色开花植物：</text><rect x=\"20\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"72\" y=\"101\" text-anchor=\"middle\">细胞</text><text x=\"127\" y=\"100\">→</text><rect x=\"144\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"196\" y=\"101\" text-anchor=\"middle\">组织</text><text x=\"251\" y=\"100\">→</text><rect x=\"268\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"320\" y=\"101\" text-anchor=\"middle\">器官</text><text x=\"375\" y=\"100\">→</text><rect x=\"392\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"444\" y=\"101\" text-anchor=\"middle\">系统</text><text x=\"499\" y=\"100\">→</text><rect x=\"516\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"568\" y=\"101\" text-anchor=\"middle\">动物体</text><rect x=\"20\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"83\" y=\"228\" text-anchor=\"middle\">细胞</text><text x=\"148\" y=\"228\">→</text><rect x=\"175\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"238\" y=\"228\" text-anchor=\"middle\">组织</text><text x=\"303\" y=\"228\">→</text><rect x=\"330\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"393\" y=\"228\" text-anchor=\"middle\">器官</text><text x=\"458\" y=\"228\">→</text><rect x=\"485\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"548\" y=\"228\" text-anchor=\"middle\">植物体</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"392\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\"></rect></g>"
+        },
+        {
+          "id": "body",
+          "caption": "生物体：人体：细胞→组织→器官→系统→人体；植物：细胞→组织→器官→植物体。",
+          "highlight": 1,
+          "svg": "<text x=\"15\" y=\"50\">动物体：</text><text x=\"15\" y=\"175\">绿色开花植物：</text><rect x=\"20\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"72\" y=\"101\" text-anchor=\"middle\">细胞</text><text x=\"127\" y=\"100\">→</text><rect x=\"144\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"196\" y=\"101\" text-anchor=\"middle\">组织</text><text x=\"251\" y=\"100\">→</text><rect x=\"268\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"320\" y=\"101\" text-anchor=\"middle\">器官</text><text x=\"375\" y=\"100\">→</text><rect x=\"392\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"444\" y=\"101\" text-anchor=\"middle\">系统</text><text x=\"499\" y=\"100\">→</text><rect x=\"516\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\" fill=\"#e5ddf1\"></rect><text x=\"568\" y=\"101\" text-anchor=\"middle\">动物体</text><rect x=\"20\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"83\" y=\"228\" text-anchor=\"middle\">细胞</text><text x=\"148\" y=\"228\">→</text><rect x=\"175\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"238\" y=\"228\" text-anchor=\"middle\">组织</text><text x=\"303\" y=\"228\">→</text><rect x=\"330\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"393\" y=\"228\" text-anchor=\"middle\">器官</text><text x=\"458\" y=\"228\">→</text><rect x=\"485\" y=\"192\" width=\"126\" height=\"58\" rx=\"12\" fill=\"#e2edcf\"></rect><text x=\"548\" y=\"228\" text-anchor=\"middle\">植物体</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"516\" y=\"65\" width=\"105\" height=\"58\" rx=\"12\"></rect></g>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "许多形态和功能相近的细胞联合在一起，形成什么？",
+          "hint": "先从细胞迈上一小级。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：先从细胞迈上一小级。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "胃由多种组织构成，具有一定功能，属于哪一级？",
+          "hint": "不同组织一起完成工作。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：不同组织一起完成工作。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "人体的结构层次顺序正确的是？",
+          "hint": "先小后大，器官协作形成系统。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：先小后大，器官协作形成系统。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "一株绿色开花植物通常按哪条层次线理解？",
+          "hint": "植物和动物的层次并不完全相同。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：植物和动物的层次并不完全相同。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "一个草履虫就能完成生命活动，说明什么？",
+          "hint": "“单细胞”就是只有一个细胞。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：“单细胞”就是只有一个细胞。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "细胞分裂的重要结果是什么？",
+          "hint": "看一个变成几个。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：看一个变成几个。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    },
+    {
+      "sub": "geography",
+      "day": 6,
+      "topic": "大洲与大洋",
+      "visual": "continents",
+      "regions": [
+        {
+          "id": "asia",
+          "caption": "亚洲：面积最大的大洲，主要在东半球和北半球。",
+          "highlight": 0,
+          "svg": "<rect x=\"12\" y=\"12\" width=\"616\" height=\"274\" rx=\"20\" fill=\"#d8edf1\"></rect><path d=\"M20 153H620\" stroke=\"#a86152\" stroke-dasharray=\"6 5\"></path><text x=\"20\" y=\"148\">赤道</text><rect x=\"42\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"85\" y=\"70\" text-anchor=\"middle\">北美洲</text><rect x=\"107\" y=\"179\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"150\" y=\"205\" text-anchor=\"middle\">南美洲</text><rect x=\"262\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"305\" y=\"70\" text-anchor=\"middle\">欧洲</text><rect x=\"412\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"455\" y=\"70\" text-anchor=\"middle\">亚洲</text><rect x=\"267\" y=\"149\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"310\" y=\"175\" text-anchor=\"middle\">非洲</text><rect x=\"472\" y=\"197\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"515\" y=\"223\" text-anchor=\"middle\">大洋洲</text><rect x=\"277\" y=\"243\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"320\" y=\"269\" text-anchor=\"middle\">南极洲</text><text x=\"310\" y=\"33\">北冰洋</text><text x=\"210\" y=\"120\">大西洋</text><text x=\"405\" y=\"190\">印度洋</text><text x=\"20\" y=\"220\">太平洋</text><text x=\"548\" y=\"135\">太平洋</text>"
+        },
+        {
+          "id": "africa",
+          "caption": "非洲：赤道经过非洲，因此跨南北半球。",
+          "highlight": 0,
+          "svg": "<rect x=\"12\" y=\"12\" width=\"616\" height=\"274\" rx=\"20\" fill=\"#d8edf1\"></rect><path d=\"M20 153H620\" stroke=\"#a86152\" stroke-dasharray=\"6 5\"></path><text x=\"20\" y=\"148\">赤道</text><rect x=\"42\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"85\" y=\"70\" text-anchor=\"middle\">北美洲</text><rect x=\"107\" y=\"179\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"150\" y=\"205\" text-anchor=\"middle\">南美洲</text><rect x=\"262\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"305\" y=\"70\" text-anchor=\"middle\">欧洲</text><rect x=\"412\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"455\" y=\"70\" text-anchor=\"middle\">亚洲</text><rect x=\"267\" y=\"149\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"310\" y=\"175\" text-anchor=\"middle\">非洲</text><rect x=\"472\" y=\"197\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"515\" y=\"223\" text-anchor=\"middle\">大洋洲</text><rect x=\"277\" y=\"243\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"320\" y=\"269\" text-anchor=\"middle\">南极洲</text><text x=\"310\" y=\"33\">北冰洋</text><text x=\"210\" y=\"120\">大西洋</text><text x=\"405\" y=\"190\">印度洋</text><text x=\"20\" y=\"220\">太平洋</text><text x=\"548\" y=\"135\">太平洋</text>"
+        },
+        {
+          "id": "antarctica",
+          "caption": "南极洲：南极附近的大洲，以陆地为主体。",
+          "highlight": 0,
+          "svg": "<rect x=\"12\" y=\"12\" width=\"616\" height=\"274\" rx=\"20\" fill=\"#d8edf1\"></rect><path d=\"M20 153H620\" stroke=\"#a86152\" stroke-dasharray=\"6 5\"></path><text x=\"20\" y=\"148\">赤道</text><rect x=\"42\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"85\" y=\"70\" text-anchor=\"middle\">北美洲</text><rect x=\"107\" y=\"179\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"150\" y=\"205\" text-anchor=\"middle\">南美洲</text><rect x=\"262\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"305\" y=\"70\" text-anchor=\"middle\">欧洲</text><rect x=\"412\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"455\" y=\"70\" text-anchor=\"middle\">亚洲</text><rect x=\"267\" y=\"149\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"310\" y=\"175\" text-anchor=\"middle\">非洲</text><rect x=\"472\" y=\"197\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"515\" y=\"223\" text-anchor=\"middle\">大洋洲</text><rect x=\"277\" y=\"243\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"320\" y=\"269\" text-anchor=\"middle\">南极洲</text><text x=\"310\" y=\"33\">北冰洋</text><text x=\"210\" y=\"120\">大西洋</text><text x=\"405\" y=\"190\">印度洋</text><text x=\"20\" y=\"220\">太平洋</text><text x=\"548\" y=\"135\">太平洋</text>"
+        },
+        {
+          "id": "pacific",
+          "caption": "太平洋：面积最大的大洋，跨越地图左右边界所示区域。",
+          "highlight": 0,
+          "svg": "<rect x=\"12\" y=\"12\" width=\"616\" height=\"274\" rx=\"20\" fill=\"#d8edf1\"></rect><path d=\"M20 153H620\" stroke=\"#a86152\" stroke-dasharray=\"6 5\"></path><text x=\"20\" y=\"148\">赤道</text><rect x=\"42\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"85\" y=\"70\" text-anchor=\"middle\">北美洲</text><rect x=\"107\" y=\"179\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"150\" y=\"205\" text-anchor=\"middle\">南美洲</text><rect x=\"262\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"305\" y=\"70\" text-anchor=\"middle\">欧洲</text><rect x=\"412\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"455\" y=\"70\" text-anchor=\"middle\">亚洲</text><rect x=\"267\" y=\"149\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"310\" y=\"175\" text-anchor=\"middle\">非洲</text><rect x=\"472\" y=\"197\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"515\" y=\"223\" text-anchor=\"middle\">大洋洲</text><rect x=\"277\" y=\"243\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"320\" y=\"269\" text-anchor=\"middle\">南极洲</text><text x=\"310\" y=\"33\">北冰洋</text><text x=\"210\" y=\"120\">大西洋</text><text x=\"405\" y=\"190\">印度洋</text><text x=\"20\" y=\"220\">太平洋</text><text x=\"548\" y=\"135\">太平洋</text>"
+        },
+        {
+          "id": "arctic",
+          "caption": "北冰洋：环绕北极地区的大洋。",
+          "highlight": 0,
+          "svg": "<rect x=\"12\" y=\"12\" width=\"616\" height=\"274\" rx=\"20\" fill=\"#d8edf1\"></rect><path d=\"M20 153H620\" stroke=\"#a86152\" stroke-dasharray=\"6 5\"></path><text x=\"20\" y=\"148\">赤道</text><rect x=\"42\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"85\" y=\"70\" text-anchor=\"middle\">北美洲</text><rect x=\"107\" y=\"179\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"150\" y=\"205\" text-anchor=\"middle\">南美洲</text><rect x=\"262\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"305\" y=\"70\" text-anchor=\"middle\">欧洲</text><rect x=\"412\" y=\"44\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"455\" y=\"70\" text-anchor=\"middle\">亚洲</text><rect x=\"267\" y=\"149\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"310\" y=\"175\" text-anchor=\"middle\">非洲</text><rect x=\"472\" y=\"197\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"515\" y=\"223\" text-anchor=\"middle\">大洋洲</text><rect x=\"277\" y=\"243\" width=\"86\" height=\"40\" rx=\"12\" fill=\"#c2d3a4\" stroke=\"#6b8959\"></rect><text x=\"320\" y=\"269\" text-anchor=\"middle\">南极洲</text><text x=\"310\" y=\"33\">北冰洋</text><text x=\"210\" y=\"120\">大西洋</text><text x=\"405\" y=\"190\">印度洋</text><text x=\"20\" y=\"220\">太平洋</text><text x=\"548\" y=\"135\">太平洋</text>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "面积最大的大洲是？",
+          "hint": "在示意图中找到欧亚大陆东部的大洲。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：在示意图中找到欧亚大陆东部的大洲。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“亚洲”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "环绕北极地区的大洋是？",
+          "hint": "看北极附近的海域。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：看北极附近的海域。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“亚洲”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "南极附近以陆地为主体的区域是？",
+          "hint": "南极是大陆，北极主要是海洋。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：南极是大陆，北极主要是海洋。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“亚洲”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "面积最大的大洋是？",
+          "hint": "太平洋位于亚洲、大洋洲与美洲之间。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：太平洋位于亚洲、大洋洲与美洲之间。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“亚洲”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "按本教材基础划分，地球有几大洲、几大洋？",
+          "hint": "大洲与大洋分别数。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：大洲与大洋分别数。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“亚洲”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "赤道穿过非洲，能说非洲完全在北半球吗？",
+          "hint": "赤道是南北半球的分界线。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：赤道是南北半球的分界线。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“亚洲”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    },
+    {
+      "sub": "biology",
+      "day": 7,
+      "topic": "生命观察小结",
+      "visual": "division",
+      "regions": [
+        {
+          "id": "division",
+          "caption": "细胞分裂：一个细胞分成两个，细胞数量增加；多细胞生物的个体数不因此增加。",
+          "highlight": 0,
+          "svg": "<text x=\"320\" y=\"292\" text-anchor=\"middle\">细胞分裂：一个 → 两个（细胞数量增加）</text><text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text>"
+        },
+        {
+          "id": "wall",
+          "caption": "细胞壁：植物细胞膜外较厚的一层，起支持和保护作用。",
+          "highlight": 1,
+          "svg": "<text x=\"320\" y=\"292\" text-anchor=\"middle\">细胞分裂：一个 → 两个（细胞数量增加）</text><text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"22\" y=\"42\" width=\"271\" height=\"231\" rx=\"30\"></rect></g>"
+        },
+        {
+          "id": "membrane",
+          "caption": "细胞膜：控制物质进出的薄边界，植物和动物细胞都有。",
+          "highlight": 1,
+          "svg": "<text x=\"320\" y=\"292\" text-anchor=\"middle\">细胞分裂：一个 → 两个（细胞数量增加）</text><text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\"></rect><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\"></ellipse></g>"
+        },
+        {
+          "id": "nucleus",
+          "caption": "细胞核：含有重要的遗传信息，植物和动物细胞都有。",
+          "highlight": 1,
+          "svg": "<text x=\"320\" y=\"292\" text-anchor=\"middle\">细胞分裂：一个 → 两个（细胞数量增加）</text><text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><circle cx=\"77\" cy=\"174\" r=\"28\"></circle><circle cx=\"479\" cy=\"149\" r=\"34\"></circle></g>"
+        },
+        {
+          "id": "chloroplast",
+          "caption": "叶绿体：光合作用的主要场所；常见于绿色部位的细胞，不是所有植物细胞都有。",
+          "highlight": 1,
+          "svg": "<text x=\"320\" y=\"292\" text-anchor=\"middle\">细胞分裂：一个 → 两个（细胞数量增加）</text><text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><ellipse cx=\"70\" cy=\"244\" rx=\"21\" ry=\"12\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"21\" ry=\"12\"></ellipse></g>"
+        },
+        {
+          "id": "vacuole",
+          "caption": "液泡：内部有细胞液，成熟植物细胞常有较大的中央液泡。",
+          "highlight": 1,
+          "svg": "<text x=\"320\" y=\"292\" text-anchor=\"middle\">细胞分裂：一个 → 两个（细胞数量增加）</text><text x=\"155\" y=\"24\" text-anchor=\"middle\">叶肉细胞（示意）</text><text x=\"470\" y=\"24\" text-anchor=\"middle\">动物细胞（示意）</text><rect x=\"25\" y=\"45\" width=\"265\" height=\"225\" rx=\"28\" fill=\"#dbe8b8\" stroke=\"#648946\" stroke-width=\"9\"></rect><rect x=\"36\" y=\"56\" width=\"243\" height=\"203\" rx=\"22\" fill=\"#f9f6cf\" stroke=\"#b07b52\" stroke-width=\"3\"></rect><rect x=\"111\" y=\"83\" width=\"139\" height=\"147\" rx=\"35\" fill=\"#cce7f1\" stroke=\"#70a6bc\" stroke-width=\"2\"></rect><circle cx=\"77\" cy=\"174\" r=\"25\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><ellipse cx=\"70\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"122\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"185\" cy=\"244\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"243\" cy=\"70\" rx=\"18\" ry=\"8\" fill=\"#719e4f\"></ellipse><ellipse cx=\"470\" cy=\"151\" rx=\"132\" ry=\"103\" fill=\"#f7e4ce\" stroke=\"#b07b52\" stroke-width=\"4\"></ellipse><circle cx=\"479\" cy=\"149\" r=\"31\" fill=\"#b4a0cc\" stroke=\"#715383\" stroke-width=\"3\"></circle><text x=\"77\" y=\"180\" text-anchor=\"middle\">③</text><text x=\"479\" y=\"155\" text-anchor=\"middle\">③</text><text x=\"180\" y=\"159\" text-anchor=\"middle\">⑤</text><text x=\"20\" y=\"145\">①</text><text x=\"42\" y=\"110\">②</text><text x=\"580\" y=\"155\">②</text><text x=\"120\" y=\"70\">④</text><g fill=\"none\" stroke=\"#dd8a30\" stroke-width=\"5\" stroke-dasharray=\"8 4\"><rect x=\"108\" y=\"80\" width=\"145\" height=\"153\" rx=\"37\"></rect></g>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "一个细胞分裂后形成两个，主要改变的是？",
+          "hint": "细胞数和个体数不是一回事。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：细胞数和个体数不是一回事。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞分裂”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "想找控制物质进出的结构，应点击哪一个？",
+          "hint": "先找包围细胞内部的薄边界。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：先找包围细胞内部的薄边界。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞分裂”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "从一片叶观察到叶绿体，可以断言每个根细胞都有吗？",
+          "hint": "观察结论要有边界。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：观察结论要有边界。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞分裂”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "叶是由不同组织组成并进行一定功能的结构，属于？",
+          "hint": "回看层次图：组织的下一级组合是什么？",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：回看层次图：组织的下一级组合是什么？ 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞分裂”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "能动的机器人与不动的树，谁是生物？",
+          "hint": "会不会移动不是唯一标准。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：会不会移动不是唯一标准。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞分裂”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "把显微镜看到的结构画下来，怎样记录更好？",
+          "hint": "记录事实，区分看到与推测。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：记录事实，区分看到与推测。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“细胞分裂”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    },
+    {
+      "sub": "geography",
+      "day": 7,
+      "topic": "地球观察小结",
+      "visual": "changes",
+      "regions": [
+        {
+          "id": "plates",
+          "caption": "板块：地表岩石圈分成板块，板块交界地带通常较活跃。",
+          "highlight": 0,
+          "svg": "<path d=\"M30 160H240l30-20 30 40 30-40 30 40 30-20H610\" fill=\"none\" stroke=\"#92724f\" stroke-width=\"12\"></path><path d=\"M80 105H240m-20-10 20 10-20 10M560 105H400m20-10-20 10 20 10\" stroke=\"#af7559\" stroke-width=\"5\" fill=\"none\"></path><text x=\"110\" y=\"70\">板块运动示意</text><text x=\"248\" y=\"240\">交界地带通常较活跃</text>"
+        },
+        {
+          "id": "evidence",
+          "caption": "海陆变化证据：海底古河道、山地海洋生物化石等可为海陆变迁提供证据。",
+          "highlight": 0,
+          "svg": "<path d=\"M30 160H240l30-20 30 40 30-40 30 40 30-20H610\" fill=\"none\" stroke=\"#92724f\" stroke-width=\"12\"></path><path d=\"M80 105H240m-20-10 20 10-20 10M560 105H400m20-10-20 10 20 10\" stroke=\"#af7559\" stroke-width=\"5\" fill=\"none\"></path><text x=\"110\" y=\"70\">板块运动示意</text><text x=\"248\" y=\"240\">交界地带通常较活跃</text>"
+        },
+        {
+          "id": "drift",
+          "caption": "大陆漂移：大陆过去可能相连，之后逐渐分离，要结合多方面证据。",
+          "highlight": 0,
+          "svg": "<path d=\"M30 160H240l30-20 30 40 30-40 30 40 30-20H610\" fill=\"none\" stroke=\"#92724f\" stroke-width=\"12\"></path><path d=\"M80 105H240m-20-10 20 10-20 10M560 105H400m20-10-20 10 20 10\" stroke=\"#af7559\" stroke-width=\"5\" fill=\"none\"></path><text x=\"110\" y=\"70\">板块运动示意</text><text x=\"248\" y=\"240\">交界地带通常较活跃</text>"
+        }
+      ],
+      "questions": [
+        {
+          "stage": 0,
+          "index": 0,
+          "prompt": "海底发现古河道等证据，可能说明什么？",
+          "hint": "用证据判断过去，而非只看现在。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：用证据判断过去，而非只看现在。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“板块”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 1,
+          "prompt": "大陆漂移说认为，今天分离的大陆过去可能？",
+          "hint": "把轮廓相近的陆地当作线索之一。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：把轮廓相近的陆地当作线索之一。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“板块”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 2,
+          "prompt": "想解释一天内的昼夜交替，先观察哪种运动？",
+          "hint": "现象时间尺度不同。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：现象时间尺度不同。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“板块”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 0,
+          "index": 3,
+          "prompt": "一张校园图的1厘米代表20米，图上3厘米大约是？",
+          "hint": "每厘米20米，三段相加。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：每厘米20米，三段相加。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“板块”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 0,
+          "prompt": "板块交界处通常较活跃，常见什么现象？",
+          "hint": "看板块边缘的相互运动。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：看板块边缘的相互运动。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“板块”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        },
+        {
+          "stage": 1,
+          "index": 1,
+          "prompt": "读示意地图时，能直接用图上画出来的符号大小算真实大洲面积吗？",
+          "hint": "看清图的用途和限制。",
+          "guide": [
+            "先看一个线索棱夜：看清这个规则：看清图的用途和限制。 不必硬猜，先把这一条抓稳。",
+            "先完成一个小观察在图示中点击“板块”，读一遍旁边的短解释。我已经找到这条线索先示范这一小步"
+          ]
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "welcome": {
+        "before": {
+          "scroll": 767,
+          "stage": {
+            "x": 430,
+            "y": -627.5625,
+            "width": 340,
+            "height": 220.734375,
+            "top": -627.5625,
+            "right": 770,
+            "bottom": -406.828125,
+            "left": 430
+          }
+        },
+        "after": {
+          "scroll": 767,
+          "state": "greet",
+          "animation": "partner-pop",
+          "stage": {
+            "x": 430,
+            "y": -627.5625,
+            "width": 340,
+            "height": 220.734375,
+            "top": -627.5625,
+            "right": 770,
+            "bottom": -406.828125,
+            "left": 430
+          }
+        }
+      }
+    },
+    {
+      "reportDedupMetrics": "练习天数 7\n\n记录样本 84 题 · 完成 84 题（含学习与稍后再练）\n\n独立首次答对 0% · 0/84 题\n\n正式答错 0 次 · 求助 84 题（求助不等于答错）"
+    },
+    {
+      "offline": "离线已就绪 · 所有学习与建造资源已缓存",
+      "restoredUnlocked": 12
+    }
+  ],
+  "errors": [],
+  "final": {
+    "unlocked": [
+      "ling",
+      "gu",
+      "lu",
+      "kirby",
+      "mario",
+      "yoshi",
+      "gen",
+      "prism",
+      "comet",
+      "moss",
+      "bell",
+      "pebble"
+    ],
+    "stars": 20,
+    "nextDay": {
+      "biology": 7,
+      "geography": 7
+    }
+  }
+}
