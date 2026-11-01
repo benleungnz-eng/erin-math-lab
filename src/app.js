@@ -1,4 +1,11 @@
 import { createAcademyUI } from "./academy-ui.js";
+import {
+  audioPreferences,
+  setAudioPreferences,
+  installedSoundCount,
+  stopPartnerSound,
+  playPartnerSound,
+} from "./partner-audio.js";
 import { lockMathPartner } from "./academy.js";
 import {
   partners,
@@ -10,7 +17,7 @@ import {
 import { subjects } from "./content/science.js";
 import { reportTypeName } from "./reports.js";
 import { presentQuestion, answerInstructions } from "./algebra-presentation.js";
-import { characters, sprite, banter } from "./characters.js";
+import { banter } from "./characters.js";
 import {
   makeReport,
   validateReport,
@@ -34,12 +41,25 @@ import {
 import { generate, templateIds, names, hash } from "./engine/templates.js";
 import { learningDate } from "./engine/scheduler.js";
 import { parse, equal, show } from "./engine/rational.js";
-import { catalog, skins } from "./world/catalog.js";
-import { editWorld } from "./world/actions.js";
 import { sketch } from "./components/sketch.js";
 import { escape as E, visual } from "./components/visual.js";
 const $ = (s) => document.querySelector(s),
   main = $("#main");
+// Keep the existing local vector as a visible fallback if a raster is unavailable.
+document.addEventListener(
+  "error",
+  (e) => {
+    if (e.target?.classList?.contains("partner-raster")) {
+      const host = e.target.parentElement;
+      e.target.remove();
+      host.setAttribute(
+        "aria-label",
+        host.getAttribute("aria-label") + " · 图片暂不可用，显示备用图",
+      );
+    }
+  },
+  true,
+);
 function notify(message) {
   $("#notice").hidden = false;
   $("#notice").textContent = message;
@@ -51,12 +71,6 @@ let view = location.hash === "#reports" ? "reports" : "home",
   token = null,
   practiceMode = false,
   activeInput = null,
-  selectedItem = "tree",
-  selectedCell = null,
-  previewCell = null,
-  moving = false,
-  studioTimer = null,
-  studioFrame = 0,
   eraseMode = false;
 const state = () => db.state;
 const session = () => activeSession(state());
@@ -95,8 +109,6 @@ function modal(html) {
   $("#dialog").showModal();
 }
 $("#closeDialog").onclick = () => $("#dialog").close();
-const buddy = (id, name, pose = 0) =>
-  `<div class="companion">${sprite(id, pose)}<p>${E(name)}</p></div>`;
 function feedbackText(r) {
   if (!r.resolved && !r.mode) return "";
   if (r.mode === "studied")
@@ -117,38 +129,6 @@ function celebrate() {
     ) + '<span class="confetti">✦ · ✧ · ✦</span>';
   slot.append(node);
   setTimeout(() => node.remove(), 1300);
-}
-function instructionText(kind) {
-  const text =
-    kind === "world"
-      ? "这是装饰基地的小空间。① 在仓库选物件；② 点空格预览；③ 确认放下。点已有物件可旋转、移动或收回。旧物件完整保留，随时能玩。新版完成练习解锁搭档，不再发新摆件。"
-      : "这是三张角色画面的短片实验台。① 每格选一个角色；② 点换位调整顺序；③ 选择转场，再播放。它不需要做题解锁，只在本机预览，不会生成或上传视频。";
-  return text;
-}
-function instructions(kind) {
-  modal(
-    `<h2>${kind === "world" ? "基地怎么玩？" : "三格短片怎么玩？"}</h2><p>${instructionText(kind)}</p>`,
-  );
-  try {
-    localStorage.setItem("erin-tutorial-" + kind, "seen");
-  } catch {
-    /* still usable without storage */
-  }
-}
-function bindInstructions(kind) {
-  $("#howToPlay").onclick = () => instructions(kind);
-  try {
-    if (!localStorage.getItem("erin-tutorial-" + kind)) {
-      const note = document.createElement("details");
-      note.open = true;
-      note.className = "tutorial card";
-      note.innerHTML = `<summary>第一次玩？先看这里</summary><p>${instructionText(kind)}</p>`;
-      main.prepend(note);
-      localStorage.setItem("erin-tutorial-" + kind, "seen");
-    }
-  } catch {
-    /* inline instructions remain visible */
-  }
 }
 const academyUI = createAcademyUI({
   db,
@@ -184,15 +164,12 @@ async function advanceMath(deferred = false) {
     );
 }
 function render() {
-  clearInterval(studioTimer);
-  studioTimer = null;
+  stopPartnerSound();
   document.body.className = `theme-${state().prefs.theme} skin-${state().prefs.skin} ${state().prefs.reduced ? "reduced" : ""}`;
   document
     .querySelectorAll("[data-view]")
     .forEach((b) => b.setAttribute("aria-pressed", b.dataset.view === view));
   if (view === "learn") renderLearn();
-  else if (view === "world") renderWorld();
-  else if (view === "studio") renderStudio();
   else if (view === "settings") renderSettings();
   else if (view === "reports") renderParentReports();
   else if (view === "science") academyUI.sciencePage();
@@ -690,183 +667,6 @@ function renderParentReports(subjectFilter = "all") {
     }
   };
 }
-function renderWorld() {
-  const d = state(),
-    selected = catalog.find((x) => x.id === selectedItem);
-  main.innerHTML = `<p class="eyebrow">YOUR WORLD / 随时能玩</p><div class="row"><div><h1>一格一格，搭成你的航站。</h1><p class="muted">选物件 → 点空格预览 → 确认放下。点已有物件可旋转、移动或收回。</p></div><button id="howToPlay"><span class="button-icon" aria-hidden="true">?</span>基地怎么玩？</button><button id="undoBuild">撤销上次摆放</button></div><div class="grid"><section class="card"><div class="board" aria-label="六行六列基地">${Array.from(
-    { length: 36 },
-    (_, cell) => {
-      const item = d.layout.find((x) => x.cell === cell),
-        c = item && catalog.find((x) => x.id === item.id);
-      return `<button data-cell="${cell}" class="${selectedCell === cell ? "selected" : ""} ${previewCell === cell ? "preview" : ""}" aria-label="第 ${Math.floor(cell / 6) + 1} 行第 ${(cell % 6) + 1} 列 ${c ? c.name : "空地"}">${c ? `<span class="object" style="--item-color:${c.color};transform:rotate(${item.rotation * 90}deg)">${c.symbol}</span>` : "·"}</button>`;
-    },
-  ).join(
-    "",
-  )}</div><p class="caption board-caption">物件数量不会因收回而损失。当前外观：${skins.find((x) => x[0] === d.prefs.skin)[1]}。</p><div id="buildControls" class="actions">${previewCell !== null ? `<button id="confirmPlace" class="primary">${moving ? "移动到这里" : "放到这里"}</button><button id="cancelPlace">取消预览</button>` : selectedCell !== null ? '<button id="rotate">旋转</button><button id="move">移动到空格</button><button id="remove">收回库存</button>' : `<span class="caption">正在拿着：${selected.name}</span>`}</div><p id="buildFeedback" class="feedback" role="status"></p></section><section class="card"><h2>蓝图仓库</h2><p class="caption">已拥有物件可以反复摆弄，不需要刷题解锁操作。旧版蓝图作为收藏保留。新版学习奖励是搭档和星星。</p><div class="catalog">${catalog
-    .map((c) => {
-      const total = d.inventory[c.id] || 0,
-        used = d.layout.filter((x) => x.id === c.id).length;
-      return `<button data-item="${c.id}" ${total > used ? "" : "disabled"} aria-pressed="${selectedItem === c.id}"><span class="symbol">${c.symbol}</span>${c.name}<small>${total ? `可用 ${total - used} / 共 ${total}` : "等待蓝图"}</small></button>`;
-    })
-    .join(
-      "",
-    )}</div><h3>能量外观</h3><div class="actions">${skins.map(([id, name]) => `<button data-skin="${id}" aria-pressed="${d.prefs.skin === id}">${name}</button>`).join("")}</div><div class="companions">${buddy("gu", "蛋仔")}</div><button id="bounce">点一下，蛋仔弹跳</button></section></div>`;
-  bindInstructions("world");
-  document.querySelectorAll("[data-item]").forEach(
-    (b) =>
-      (b.onclick = () => {
-        selectedItem = b.dataset.item;
-        selectedCell = null;
-        previewCell = null;
-        moving = false;
-        renderWorld();
-      }),
-  );
-  document.querySelectorAll("[data-cell]").forEach(
-    (b) =>
-      (b.onclick = () => {
-        const cell = Number(b.dataset.cell),
-          item = state().layout.find((x) => x.cell === cell);
-        if (item) {
-          selectedCell = cell;
-          previewCell = null;
-          moving = false;
-        } else previewCell = cell;
-        renderWorld();
-      }),
-  );
-  if ($("#confirmPlace"))
-    $("#confirmPlace").onclick = async () => {
-      const dest = previewCell,
-        source = selectedCell,
-        expectedId = state().layout.find((x) => x.cell === source)?.id;
-      const result = await action(
-        (data) =>
-          editWorld(
-            data,
-            moving
-              ? { type: "move", cell: source, to: dest, expectedId }
-              : { type: "place", cell: dest, id: selectedItem },
-          ),
-        false,
-      );
-      selectedCell = null;
-      previewCell = null;
-      moving = false;
-      renderWorld();
-      if (!result)
-        $("#buildFeedback").textContent =
-          "这个格子或库存刚发生变化，已保留最新布局，请再选一次。";
-    };
-  if ($("#cancelPlace"))
-    $("#cancelPlace").onclick = () => {
-      previewCell = null;
-      moving = false;
-      renderWorld();
-    };
-  if ($("#rotate"))
-    $("#rotate").onclick = () =>
-      action((data) => editWorld(data, { type: "rotate", cell: selectedCell }));
-  if ($("#move"))
-    $("#move").onclick = () => {
-      moving = true;
-      $("#buildFeedback").textContent = "现在点一个空格，预览移动位置。";
-    };
-  if ($("#remove"))
-    $("#remove").onclick = async () => {
-      await action(
-        (data) => editWorld(data, { type: "remove", cell: selectedCell }),
-        false,
-      );
-      selectedCell = null;
-      renderWorld();
-    };
-  $("#undoBuild").onclick = () =>
-    action((data) => editWorld(data, { type: "undo" }));
-  document
-    .querySelectorAll("[data-skin]")
-    .forEach(
-      (b) =>
-        (b.onclick = () =>
-          action((data) => (data.prefs.skin = b.dataset.skin))),
-    );
-  $("#bounce").onclick = () => {
-    const img = main.querySelector(".companion .partner-art");
-    img.classList.remove("bounce");
-    void img.offsetWidth;
-    img.classList.add("bounce");
-  };
-}
-function renderStudio() {
-  const c = state().clip;
-  main.innerHTML = `<p class="eyebrow">THREE LITTLE SHOTS</p><h1>给伙伴剪一段三格短片。</h1><button id="howToPlay"><span class="button-icon" aria-hidden="true">?</span>短片怎么玩？</button><p class="muted">选镜头、换顺序、调转场。只是本机循环预览，不会导出或上传视频。</p><section class="card"><div class="shot-strip">${c.shots
-    .map(
-      (id, i) =>
-        `<div class="shot-box"><p class="caption">镜头 ${i + 1}</p>${sprite(id)}<label>选伙伴<select data-shot="${i}">${characters
-          .filter(([key]) => state().academy.unlocked.includes(key))
-          .map(
-            ([key, name]) =>
-              `<option value="${key}" ${id === key ? "selected" : ""}>${name}</option>`,
-          )
-          .join(
-            "",
-          )}</select></label><button data-swap="${i}">与下一格换位</button></div>`,
-    )
-    .join(
-      "",
-    )}</div><div class="actions"><label>转场<select id="transition">${["淡入", "切换", "滑动"].map((x) => `<option ${c.transition === x ? "selected" : ""}>${x}</option>`).join("")}</select></label><button id="playClip" class="primary">播放循环预览</button><button id="stopClip">停止</button></div><div id="clipPreview" class="shot-preview">${sprite(c.shots[0])}</div><p id="clipLabel" class="caption">镜头 1 / 3 · ${c.transition}</p></section>`;
-  bindInstructions("studio");
-  document
-    .querySelectorAll("[data-shot]")
-    .forEach(
-      (b) =>
-        (b.onchange = () =>
-          action(
-            (data) => (data.clip.shots[Number(b.dataset.shot)] = b.value),
-          )),
-    );
-  document.querySelectorAll("[data-swap]").forEach(
-    (b) =>
-      (b.onclick = () =>
-        action((data) => {
-          const i = Number(b.dataset.swap),
-            j = (i + 1) % 3;
-          [data.clip.shots[i], data.clip.shots[j]] = [
-            data.clip.shots[j],
-            data.clip.shots[i],
-          ];
-        })),
-  );
-  $("#transition").onchange = () =>
-    action((data) => (data.clip.transition = $("#transition").value));
-  $("#playClip").onclick = () => {
-    clearInterval(studioTimer);
-    studioFrame = 0;
-    const update = () => {
-      const id = state().clip.shots[studioFrame % 3];
-      $("#clipPreview").innerHTML = sprite(id);
-      $("#clipPreview").classList.toggle(
-        "sliding",
-        state().clip.transition === "滑动",
-      );
-      $("#clipLabel").textContent =
-        `镜头 ${(studioFrame % 3) + 1} / 3 · ${state().clip.transition}`;
-      studioFrame++;
-    };
-    update();
-    if (
-      !state().prefs.reduced &&
-      !matchMedia("(prefers-reduced-motion: reduce)").matches
-    )
-      studioTimer = setInterval(update, 2000);
-    else $("#clipLabel").textContent = "减少动态效果已开启 · 静态镜头预览";
-  };
-  $("#stopClip").onclick = () => {
-    clearInterval(studioTimer);
-    studioTimer = null;
-    $("#clipLabel").textContent = "已停止，随时可以再播放。";
-  };
-}
 function download(data, name) {
   const url = URL.createObjectURL(
       new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }),
@@ -880,7 +680,7 @@ function download(data, name) {
 function renderSettings() {
   const d = state();
   main.innerHTML = `<p class="eyebrow">A QUIET CORNER</p><h1>按你舒服的方式来。</h1><div class="settings-grid"><section class="card"><h2>外观与动效</h2><p class="caption">主题只改变氛围，不改变题目难度。</p><div class="actions">${[
-    ["block", "方块建造"],
+    ["block", "清新绿意"],
     ["shadow", "暗影能量"],
     ["bounce", "欢乐弹跳"],
   ]
@@ -890,7 +690,36 @@ function renderSettings() {
     )
     .join(
       "",
-    )}</div><div class="actions"><button id="reduce" aria-pressed="${d.prefs.reduced}">减少动态效果：${d.prefs.reduced ? "开" : "关"}</button><button id="jokes" aria-pressed="${d.prefs.jokes}">轻量彩蛋：${d.prefs.jokes ? "开" : "关"}</button></div><p class="caption">声音默认关闭：本版没有音频资源。系统的减少动态效果设置也会被尊重。</p><h3>添加到 iPad 主屏幕</h3><p class="muted">用 Safari 打开最终正式地址，等“离线已就绪”，点分享 → 添加到主屏幕。第一次缓存需要联网。</p></section><section class="card"><h2>本机记录与备份</h2><p class="muted">无账号、不上传。清除浏览器数据、系统清理存储或更换域名可能丢记录；安装主屏幕不保证永久保存。</p><div class="actions"><button id="export"><span class="button-icon" aria-hidden="true">↓</span>导出学习备份</button><label class="button">导入备份<input id="import" type="file" accept=".json,application/json" hidden></label><button id="recovery">导出上次导入前备份</button></div><p class="caption">默认合并，保留当前基地布局；相同关卡题面冲突时保留本机版本。确认导入前会自动保留现有快照。</p><p id="importStatus" role="status"></p></section><section class="card"><h2>本机学习小记</h2><p class="caption">样本数只描述本机记录，不评定长期能力。求助与正式错误分开统计。</p><div id="localStats"></div><button id="showLegacy">查看旧版迁移说明</button></section><section class="card"><h2>版本与更新</h2><p class="muted">1.2.0 · 三科学习搭档。源码与自动部署由 GitHub 管理；练习和记录只在你的设备中运行与保存。</p><p class="caption">有新版本时会提示，当前关卡不会被自动刷新。跨域换站前先导出，再在新域名导入。</p></section></div>`;
+    )}</div><div class="actions"><button id="reduce" aria-pressed="${d.prefs.reduced}">减少动态效果：${d.prefs.reduced ? "开" : "关"}</button><button id="jokes" aria-pressed="${d.prefs.jokes}">轻量彩蛋：${d.prefs.jokes ? "开" : "关"}</button></div><p class="caption">声音默认关闭，可在下方查看角色声效。系统的减少动态效果设置也会被尊重。</p><h3>添加到 iPad 主屏幕</h3><p class="muted">用 Safari 打开最终正式地址，等“离线已就绪”，点分享 → 添加到主屏幕。第一次缓存需要联网。</p></section><section class="card"><h2>本机记录与备份</h2><p class="muted">无账号、不上传。清除浏览器数据、系统清理存储或更换域名可能丢记录；安装主屏幕不保证永久保存。</p><div class="actions"><button id="export"><span class="button-icon" aria-hidden="true">↓</span>导出学习备份</button><label class="button">导入备份<input id="import" type="file" accept=".json,application/json" hidden></label><button id="recovery">导出上次导入前备份</button></div><p class="caption">默认合并，保留本机旧数据；相同关卡题面冲突时保留本机版本。确认导入前会自动保留现有快照。</p><p id="importStatus" role="status"></p></section><section class="card"><h2>本机学习小记</h2><p class="caption">样本数只描述本机记录，不评定长期能力。求助与正式错误分开统计。</p><div id="localStats"></div><button id="showLegacy">查看旧版迁移说明</button></section><section class="card"><h2>版本与更新</h2><p class="muted">1.2.0 · 三科学习搭档。源码与自动部署由 GitHub 管理；练习和记录只在你的设备中运行与保存。</p><p class="caption">有新版本时会提示，当前关卡不会被自动刷新。跨域换站前先导出，再在新域名导入。</p></section></div>`;
+  const sound = audioPreferences(),
+    soundCount = installedSoundCount();
+  main.insertAdjacentHTML(
+    "beforeend",
+    `<section class="card"><h2>角色原声</h2><p>${soundCount ? `已安装 ${soundCount} 段本地声效。` : "角色原声素材尚未安装，当前保持静音。"}</p><button id="partnerSound" aria-pressed="${sound.enabled}" ${soundCount ? "" : "disabled"}>角色声效：${sound.enabled && soundCount ? "开" : "关"}</button><label>音量<input id="partnerVolume" type="range" min="0" max="1" step="0.05" value="${sound.volume}"></label><button id="previewPartnerSound" ${soundCount ? "" : "disabled"}>试听当前搭档</button><p id="soundStatus" role="status"></p></section>`,
+  );
+  $("#partnerSound").onclick = () => {
+    setAudioPreferences({
+      ...audioPreferences(),
+      enabled: !audioPreferences().enabled,
+    });
+    renderSettings();
+  };
+  $("#partnerVolume").oninput = () =>
+    setAudioPreferences({
+      ...audioPreferences(),
+      volume: $("#partnerVolume").value,
+    });
+  $("#previewPartnerSound").onclick = async () => {
+    const status = await playPartnerSound(state().academy.selected, "greet");
+    $("#soundStatus").textContent =
+      status === "playing"
+        ? "正在播放当前搭档的欢迎声效。"
+        : status === "muted"
+          ? "请先开启角色声效。"
+          : status === "not-installed"
+            ? "这位搭档的欢迎原声尚未安装。"
+            : "浏览器暂未允许播放，请再点一次试听。";
+  };
   document
     .querySelectorAll("[data-theme]")
     .forEach(
@@ -917,7 +746,7 @@ function renderSettings() {
       if (f.size > 8_000_000) throw Error("备份太大");
       const incoming = validate(JSON.parse(await f.text()));
       modal(
-        `<h2>导入预览</h2><p>这份备份包含 ${Object.keys(incoming.sessions).length} 轮学习、${incoming.layout.length} 件基地摆放。</p><p class="caption">默认保守合并，保留本机布局与冲突关卡。替换会采用备份中的全部内容。两种方式都先自动保存当前快照。</p><div class="actions"><button id="mergeImport" class="primary">确认合并（推荐）</button><button id="replaceImport">确认替换</button></div>`,
+        `<h2>导入预览</h2><p>这份备份包含 ${Object.keys(incoming.sessions).length} 轮学习、${incoming.layout.length} 件旧装饰记录。</p><p class="caption">默认保守合并，保留本机布局与冲突关卡。替换会采用备份中的全部内容。两种方式都先自动保存当前快照。</p><div class="actions"><button id="mergeImport" class="primary">确认合并（推荐）</button><button id="replaceImport">确认替换</button></div>`,
       );
       for (const [id, replace] of [
         ["mergeImport", false],

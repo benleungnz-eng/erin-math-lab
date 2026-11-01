@@ -2,11 +2,22 @@ import { partners, states } from "./partners.js";
 import { learningDate } from "./engine/scheduler.js";
 import { scienceQuestions, validateScienceSession } from "./content/science.js";
 const validId = (id) => partners.some((p) => p.id === id);
+export const starterPartners = ["ling", "gu", "kirby"];
 export function migrateAcademy(data, returning = true) {
-  if (data.academy) return data.academy;
-  const unlocked = partners.slice(0, returning ? 7 : 4).map((p) => p.id);
+  if (data.academy) {
+    const a = data.academy;
+    if (a.rosterVersion !== 2) {
+      a.rosterResetFrom = [...a.unlocked];
+      a.unlocked = [...starterPartners];
+      if (!a.unlocked.includes(a.selected)) a.selected = "ling";
+      a.rosterVersion = 2;
+    }
+    return a;
+  }
+  const unlocked = [...starterPartners];
   data.academy = {
     version: 1,
+    rosterVersion: 2,
     selected: "ling",
     unlocked,
     stars: 0,
@@ -26,7 +37,11 @@ export function awardPartner(data, s, subject = "math") {
   const a = migrateAcademy(data),
     key = `${subject}:${s.id}`;
   if (a.rewards[key]) return a.rewards[key];
-  const next = partners.find((p) => !a.unlocked.includes(p.id));
+  // Prioritize the requested Jax without changing existing IDs or saved unlocks.
+  const next = [
+    partners.find((p) => p.id === "gen"),
+    ...partners.filter((p) => p.id !== "gen"),
+  ].find((p) => !a.unlocked.includes(p.id));
   const r = {
     subject,
     session: s.id,
@@ -143,6 +158,11 @@ export function validateAcademy(data) {
   if (!a) return data;
   if (
     a.version !== 1 ||
+    (a.rosterVersion !== undefined && a.rosterVersion !== 2) ||
+    (a.rosterResetFrom !== undefined &&
+      (!Array.isArray(a.rosterResetFrom) ||
+        a.rosterResetFrom.length > 12 ||
+        !a.rosterResetFrom.every(validId))) ||
     !Array.isArray(a.unlocked) ||
     new Set(a.unlocked).size !== a.unlocked.length ||
     !a.unlocked.every(validId) ||
@@ -155,8 +175,7 @@ export function validateAcademy(data) {
   )
     throw Error("搭档存档不完整");
   for (const s of Object.values(data.sessions))
-    if (s.partnerId && !a.unlocked.includes(s.partnerId))
-      throw Error("数学搭档记录无效");
+    if (s.partnerId && !validId(s.partnerId)) throw Error("数学搭档记录无效");
   for (const [key, h] of Object.entries(a.effects))
     if (
       !validId(key.split(":")[0]) ||
@@ -184,8 +203,7 @@ export function validateAcademy(data) {
     )
       throw Error("学科进度无效");
   for (const [id, s] of Object.entries(b.sessions)) {
-    if (id !== s.id || !a.unlocked.includes(s.partnerId))
-      throw Error("学科搭档无效");
+    if (id !== s.id || !validId(s.partnerId)) throw Error("学科搭档无效");
     validateScienceSession(s);
   }
   const scienceIds = new Set();
@@ -217,7 +235,7 @@ export function validateAcademy(data) {
       !s?.completed ||
       s.date !== r.date ||
       s.stage !== r.stage ||
-      (r.partner !== null && !a.unlocked.includes(r.partner)) ||
+      (r.partner !== null && !validId(r.partner)) ||
       r.stars !== (r.partner ? 0 : 1)
     )
       throw Error("搭档奖励记录无效");
@@ -227,7 +245,9 @@ export function validateAcademy(data) {
 export function mergeAcademy(out, incoming) {
   if (!incoming.academy) return;
   const a = migrateAcademy(out),
-    b = incoming.academy;
+    b = structuredClone(incoming.academy);
+  // Old pre-reset backups contribute learning evidence, not obsolete unlocks.
+  migrateAcademy({ academy: b, sessions: incoming.sessions });
   a.unlocked = [...new Set([...a.unlocked, ...b.unlocked])];
   for (const [id, s] of Object.entries(b.science.sessions)) {
     const old = a.science.sessions[id];

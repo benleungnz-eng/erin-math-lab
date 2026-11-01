@@ -32,8 +32,11 @@ export class Database {
       });
       if (existing) this.state = validate(existing);
       else await this.mutate((data) => validate(data));
-      if (!this.state.academy)
-        await this.mutate((d) => migrateAcademy(d, Boolean(existing)));
+      if (!this.state.academy || this.state.academy.rosterVersion !== 2)
+        await this.mutate((d) => {
+          migrateAcademy(d, Boolean(existing));
+          validate(d);
+        }, Boolean(existing));
       this.db.onversionchange = () => {
         this.db.close();
         this.db = null;

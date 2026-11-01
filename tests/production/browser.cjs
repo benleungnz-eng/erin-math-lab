@@ -84,38 +84,21 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
     fullPage: true,
   });
   ok("three-subject home, original companions and complete offline inventory");
-  await page.click("#homeBuild");
-  await page.click("#bounce");
-  assert.equal(await page.locator("[data-cell]").count(), 36);
-  assert.equal(await page.locator("[data-item]:not([disabled])").count(), 3);
-  await page.click('[data-item="tree"]');
-  await page.click('[data-cell="0"]');
-  await page.click("#confirmPlace");
-  await page.click('[data-cell="0"]');
-  await page.click("#rotate");
-  await page.click("#move");
-  await page.click('[data-cell="1"]');
-  await page.click("#confirmPlace");
-  let data = await get();
-  assert.ok(
-    data.layout.some(
-      (x) => x.id === "tree" && x.cell === 1 && x.rotation === 1,
-    ),
+  const legacySnapshot = await get();
+  assert.equal(
+    await page
+      .locator(
+        '[data-view="world"],[data-view="studio"],#homeBuild,#studioLink',
+      )
+      .count(),
+    0,
   );
-  await page.click('[data-cell="1"]');
-  await page.click("#remove");
-  await page.click("#undoBuild");
-  await page.click('[data-skin="mint"]');
-  await waitSave();
   await page.reload();
-  await page.click('[data-view="world"]');
-  assert.ok((await get()).layout.some((x) => x.cell === 1));
-  assert.equal((await get()).prefs.skin, "mint");
-  await page.screenshot({
-    path: "artifacts/production/world.png",
-    fullPage: true,
-  });
-  ok("36-cell build, place/preview/rotate/move/recover/undo and saved skin");
+  for (const field of ["inventory", "layout", "clip"])
+    assert.deepEqual((await get())[field], legacySnapshot[field]);
+  ok(
+    "removed base/studio entries with legacy inventory, layout and clips preserved",
+  );
   await page.click('[data-view="home"]');
   await page.click("#start");
   await page.waitForSelector("#submitAnswer");
@@ -340,21 +323,12 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
     "offline page closed/reopened, remaining five-question session completed and saved",
   );
   await context.setOffline(false);
-  await reopened.click('[data-view="studio"]');
-  await reopened.locator('[data-shot="0"]').selectOption("gu");
-  await reopened.click('[data-swap="1"]');
-  await reopened.locator("#transition").selectOption("滑动");
-  await reopened.click("#playClip");
-  await reopened.waitForTimeout(2200);
-  assert.match(await reopened.locator("#clipLabel").textContent(), /镜头 2/);
-  await reopened.click("#stopClip");
   await reopened.reload();
-  await reopened.click('[data-view="studio"]');
-  assert.equal(await reopened.locator('[data-shot="0"]').inputValue(), "gu");
-  assert.equal(await reopened.locator("#transition").inputValue(), "滑动");
-  ok(
-    "three-shot studio selection, reordering, transition, play/stop and persistence",
+  assert.equal(
+    await reopened.locator('[data-view="studio"],[data-view="world"]').count(),
+    0,
   );
+  ok("retired views remain absent after offline reload and reconnect");
   await reopened.click('[data-view="settings"]');
   const downloadPromise = reopened.waitForEvent("download");
   await reopened.click("#export");
@@ -416,7 +390,7 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
     );
-    await reopened.click('[data-view="world"]');
+    await reopened.click('[data-view="collection"]');
     assert.ok(
       await reopened.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -440,7 +414,9 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
       fullPage: true,
     });
   }
-  ok("all specified iPad/phone sizes including narrow 375, home and building");
+  ok(
+    "all specified iPad/phone sizes including narrow 375, home and collection",
+  );
   const denied = await browser.newContext();
   await denied.addInitScript(() => {
     Object.defineProperty(window, "indexedDB", {

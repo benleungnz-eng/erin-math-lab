@@ -67,7 +67,7 @@ test("migration preserves old math questions, drafts, rewards, layout and clips;
     assert.deepEqual(d[k], before[k]);
   assert.deepEqual(s.questions, before.sessions[s.id].questions);
   assert.deepEqual(s.records, before.sessions[s.id].records);
-  assert.equal(d.academy.unlocked.length, 7);
+  assert.equal(d.academy.unlocked.length, 3);
   assert.equal(validate(d), d);
 });
 test("14 science day groups plus optional groups contain 84 distinct authored questions, no silent day-eight repeats", () => {
@@ -93,7 +93,7 @@ test("14 science day groups plus optional groups contain 84 distinct authored qu
       }
   assert.equal(seen.size, 84);
   assert.equal(d.academy.unlocked.length, partners.length);
-  assert.equal(d.academy.stars, 20);
+  assert.equal(d.academy.stars, 19);
   assert.deepEqual(d.inventory, inventory);
   assert.throws(() => startScience(d, "biology", 0, date(7)), /七次/);
   assert.throws(() => startScience(d, "geography", 0, date(7)), /七次/);
@@ -127,10 +127,10 @@ test("subject sessions resume across dates independently and keep the selected p
   migrateAcademy(d, false);
   selectPartner(d, "gu");
   const b = startScience(d, "biology", 0, date(0));
-  selectPartner(d, "lu");
+  selectPartner(d, "kirby");
   const g = startScience(d, "geography", 0, date(0));
   assert.equal(b.partnerId, "gu");
-  assert.equal(g.partnerId, "lu");
+  assert.equal(g.partnerId, "kirby");
   assert.equal(startScience(d, "biology", 0, date(3)).id, b.id);
   assert.equal(startScience(d, "geography", 0, date(3)).id, g.id);
   assert.equal(d.active, null);
