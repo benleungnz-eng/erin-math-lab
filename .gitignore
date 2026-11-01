@@ -1,0 +1,13 @@
+node_modules/
+dist/
+artifacts/
+*.log
+.env*
+playwright-report/
+test-results/
+
+# Student materials and learning backups never belong in source control.
+*.pdf
+*backup*.json
+backups/
+student-records/
