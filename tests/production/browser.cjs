@@ -173,6 +173,7 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
   assert.equal(s.questions.length, 5);
   await page.click("#later");
   await page.click("#finishStudying");
+  await page.click("#nextQuestion");
   ok(
     "direct explanation adds no errors, transfer uses new content and can be skipped",
   );
@@ -189,8 +190,8 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
   assert.equal(JSON.stringify((await get()).inventory), inventory);
   await page.click('[data-reflection="通分"]');
   await page.click("#share");
-  assert.match(await page.locator("#shareText").inputValue(), /通分/);
-  await page.locator("#shareText").fill("我想自己说说今天学到什么");
+  assert.match(await page.locator("#dialogBody").textContent(), /只包含日期/);
+  assert.equal(await page.locator("#downloadReport").count(), 1);
   await page.click("#closeDialog");
   ok(
     "five questions completed with honest help reporting, full reward and no reload duplicates",
@@ -276,6 +277,7 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
       fullPage: true,
     });
     await page.click("#finishStudying");
+    await page.click("#nextQuestion");
     await finish();
     ok(templateId + " interactive local steps and distinct guided accounting");
   }
@@ -298,6 +300,7 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
   await other.click("#start");
   await page.click("#explain");
   await page.click("#finishStudying");
+  await page.click("#nextQuestion");
   await other.waitForFunction(async () => {
     const { db } = await import("./src/app.js");
     return db.state.sessions[db.state.active]?.index === 1;
@@ -318,6 +321,7 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
       await db.serial;
     });
     await reopened.click("#finishStudying");
+    await reopened.click("#nextQuestion");
     await reopened.evaluate(async () => {
       const { db } = await import("./src/app.js");
       await db.serial;

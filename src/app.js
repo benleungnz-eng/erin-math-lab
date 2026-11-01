@@ -1,3 +1,12 @@
+import { characters, sprite, banter } from "./characters.js";
+import {
+  makeReport,
+  validateReport,
+  readReports,
+  importReport,
+  summarize,
+  modeNames,
+} from "./reports.js";
 import { Database } from "./storage/database.js";
 import {
   activeSession,
@@ -25,7 +34,7 @@ function notify(message) {
 }
 const db = new Database(notify);
 await db.open();
-let view = "home",
+let view = location.hash === "#reports" ? "reports" : "home",
   busy = false,
   token = null,
   practiceMode = false,
@@ -74,8 +83,61 @@ function modal(html) {
   $("#dialog").showModal();
 }
 $("#closeDialog").onclick = () => $("#dialog").close();
-const buddy = (id, name) =>
-  `<div class="companion"><img src="./public/assets/${id}.svg" alt="原创伙伴${name}"><p>${name}</p></div>`;
+const buddy = (id, name, pose = 0) =>
+  `<div class="companion">${sprite(id, pose)}<p>${E(name)}</p></div>`;
+function feedbackText(r) {
+  if (!r.resolved && !r.mode) return "";
+  if (r.mode === "studied")
+    return "这题学完了。看懂一步也是进步，可以进入下一题。";
+  if (r.mode === "deferred") return "已留到稍后再练。";
+  return `答对了！${{ independent: "这题你独立完成了。", retried: "重新检查后做对了。", helped: "借助提示，你也把这题做对了。" }[r.mode] || ""} 点击“下一题 →”继续。`;
+}
+function celebrate() {
+  const slot = $("#feedback");
+  if (!slot) return;
+  const node = document.createElement("div");
+  node.className = "correct-celebration";
+  node.setAttribute("aria-hidden", "true");
+  node.innerHTML =
+    sprite(
+      characters[hash(currentQuestion().instanceId) % characters.length][0],
+      2,
+    ) + '<span class="confetti">✦ · ✧ · ✦</span>';
+  slot.append(node);
+  setTimeout(() => node.remove(), 3000);
+}
+function instructionText(kind) {
+  const text =
+    kind === "world"
+      ? "这是装饰基地的小空间。① 在仓库选物件；② 点空格预览；③ 确认放下。点已有物件可旋转、移动或收回。完成每日基础练习可获得新摆件，使用提示、看讲解也不减少奖励。已有物件随时能玩。"
+      : "这是三张角色画面的短片实验台。① 每格选一个角色；② 点换位调整顺序；③ 选择转场，再播放。它不需要做题解锁，只在本机预览，不会生成或上传视频。";
+  return text;
+}
+function instructions(kind) {
+  modal(
+    `<h2>${kind === "world" ? "基地怎么玩？" : "三格短片怎么玩？"}</h2><p>${instructionText(kind)}</p>`,
+  );
+  try {
+    localStorage.setItem("erin-tutorial-" + kind, "seen");
+  } catch {
+    /* still usable without storage */
+  }
+}
+function bindInstructions(kind) {
+  $("#howToPlay").onclick = () => instructions(kind);
+  try {
+    if (!localStorage.getItem("erin-tutorial-" + kind)) {
+      const note = document.createElement("details");
+      note.open = true;
+      note.className = "tutorial card";
+      note.innerHTML = `<summary>第一次玩？先看这里</summary><p>${instructionText(kind)}</p>`;
+      main.prepend(note);
+      localStorage.setItem("erin-tutorial-" + kind, "seen");
+    }
+  } catch {
+    /* inline instructions remain visible */
+  }
+}
 function render() {
   clearInterval(studioTimer);
   studioTimer = null;
@@ -87,14 +149,24 @@ function render() {
   else if (view === "world") renderWorld();
   else if (view === "studio") renderStudio();
   else if (view === "settings") renderSettings();
+  else if (view === "reports") renderParentReports();
   else renderHome();
 }
 for (const b of document.querySelectorAll("[data-view]"))
   b.onclick = () => {
     view = b.dataset.view;
+    history.replaceState(
+      null,
+      "",
+      view === "reports" ? "#reports" : location.pathname,
+    );
     practiceMode = false;
     render();
   };
+window.addEventListener("storage", (e) => {
+  if (e.key === "erin-parent-reports-v1" && view === "reports")
+    renderParentReports();
+});
 db.onchange = () => {
   render();
   notify("已接上另一页面保存的最新进度。");
@@ -103,7 +175,7 @@ function renderHome() {
   const s = session(),
     today = state().sessions[`${learningDate()}:0`],
     pending = s && !s.completed;
-  main.innerHTML = `<section class="hero"><div class="hero-copy"><p class="eyebrow">A LITTLE WONDER, EVERY DAY</p><h1>欢迎回来。<br>航站等你接上灵感。</h1><p class="muted">今天 5 题，做完就可以收工。<br>不会也没关系，我们一步一步搭起来。</p><div class="actions"><button class="gold" id="start">${pending ? "继续上次 · " + (s.index + 1) + "/" + s.questions.length : today?.completed ? "看看今天的收获" : "开始今天的 5 题 →"}</button><button id="homeBuild">先去摆摆基地</button></div><p class="caption" style="color:#b9c8bf">不计时，不排名。所有练习只留在你的设备。</p></div><img class="hero-art" src="./public/assets/station.webp" alt="原创方块航站：暮色小岛、灯光与几何伙伴"></section><div class="grid"><section class="card"><p class="eyebrow">YOUR LITTLE STATION</p><h2>今天可以让哪里不一样？</h2><p class="muted">你已拥有 ${Object.keys(state().inventory).length} 种蓝图，基地上放了 ${state().layout.length} 件物件。已有物件可以随时收回重摆，不用再做题。</p><div class="actions"><button id="buildLink">打开 6 × 6 基地</button><button id="studioLink">玩一段三格混剪</button></div><div class="pill">今天${today?.completed ? "已经完成基础练习" : "按你的节奏来"}</div></section><section class="card"><p class="eyebrow">YOUR CREW</p><h2>三个伙伴，一起想办法。</h2><div class="companions">${buddy("ling", "棱影 · 看符号")}${buddy("gu", "咕弹 · 拆两步")}${buddy("lu", "小苔 · 找位置")}</div><p class="caption">提示不是扣分项。棱影陪你找规则，咕弹帮你拆步骤，小苔提醒最后核对。</p><button id="bounceHome">让咕弹跳一下</button></section></div>`;
+  main.innerHTML = `<section class="hero"><div class="hero-copy"><p class="eyebrow">A LITTLE WONDER, EVERY DAY</p><h1>欢迎回来。<br>航站等你接上灵感。</h1><p class="muted">每天都有 5 题，周末也能练。<br>不会也没关系，我们一步一步搭起来。</p><div class="actions"><button class="gold" id="start">${pending ? "继续上次 · " + (s.index + 1) + "/" + s.questions.length : today?.completed ? "看看今天的收获" : "开始今天的 5 题 →"}</button><button id="homeBuild">装饰基地 · 休息时玩</button></div><p class="caption" style="color:#b9c8bf">不计时，不排名。所有练习只留在你的设备。</p></div><div class="hero-art hero-crew" aria-label="夏特、卡比和 Steve 在航站陪你练习"><div>${sprite("ling", 1)}${sprite("kirby", 2)}${sprite("lu", 0)}</div><span>先练 5 题，再去基地放松一下。</span></div></section><div class="grid"><section class="card"><p class="eyebrow">YOUR LITTLE STATION</p><h2>做题拿摆件，休息时装饰基地。</h2><p class="muted">完成每日练习 → 获得新摆件 → 装饰基地。使用提示或看讲解也有完整奖励。<br>你已拥有 ${Object.keys(state().inventory).length} 种蓝图，基地上放了 ${state().layout.length} 件物件。已有物件可以随时收回重摆，不用再做题。</p><div class="actions"><button id="buildLink">打开 6 × 6 基地</button><button id="studioLink">玩一段三格混剪</button></div><div class="pill">今天${today?.completed ? "已经完成基础练习" : "按你的节奏来"}</div></section><section class="card"><p class="eyebrow">YOUR CREW</p><h2>喜欢的角色，陪你拆小步骤。</h2><div class="companions">${characters.map(([id, name]) => buddy(id, name)).join("")}</div><p class="caption">提示不是扣分项。先理解，再练习；角色彩蛋可以在设置中关闭。</p><button id="bounceHome">让蛋仔跳一下</button></section></div>`;
   $("#start").onclick = async () => {
     await action((d) => begin(d, 0), false);
     view = "learn";
@@ -120,7 +192,7 @@ function renderHome() {
     render();
   };
   $("#bounceHome").onclick = () => {
-    const img = document.querySelector('img[alt="原创伙伴咕弹 · 拆两步"]');
+    const img = main.querySelectorAll(".character")[1];
     img.classList.remove("bounce");
     void img.offsetWidth;
     img.classList.add("bounce");
@@ -165,7 +237,7 @@ function renderLearn() {
   if (practiceMode && !mainRecord.practice) practiceMode = false;
   const r = currentRecord(),
     q = currentQuestion();
-  main.innerHTML = `<section class="card"><div class="row"><div><p class="eyebrow">${practiceMode ? "TRY A NEW NUMBER / 自愿迁移题" : "DAILY SIDE QUEST / " + ["基础 5 题", "自愿加练 3 题", "自愿加练 2 题"][s.stage]}</p><h2>${practiceMode ? "换一组数字，试着自己接上。" : "每次接上一小段。"}</h2></div><span class="pill">${s.date} · ${practiceMode ? "不计入基础题数" : `${s.index + 1} / ${s.questions.length}`}</span></div><div class="progress">${s.questions.map((_, i) => `<span class="${i < s.index ? "done" : ""}"></span>`).join("")}</div><div class="practice-layout"><section><p class="question-label">${names[templateIds.indexOf(q.templateId)]} · ${q.kind === "review" ? "换数字再遇见" : q.difficulty === 3 ? "多步拼接" : q.difficulty === 2 ? "接上两步" : "轻轻热身"}</p>${q.context ? `<p class="caption">${E(q.context)}</p>` : ""}<h2 class="question">${E(q.prompt)}</h2>${visual(q, r)}<div id="answerArea">${q.choices ? `<div class="actions">${q.choices.map((c) => `<button class="choice" data-choice="${E(c)}" aria-pressed="${r.input[0] === c}">${E(c)}</button>`).join("")}</div>` : `<div class="answer-grid">${q.labels.map((label, i) => `<label>${E(label)}<input class="answer" data-answer="${i}" aria-label="${E(label)}" autocomplete="off" maxlength="30" value="${E(r.input[i] || "")}" ${r.resolved ? "disabled" : ""}></label>`).join("")}</div><p class="caption">整数 / 小数 / 分数均可，例如 −2、0.5、1/2。代数题只填每栏对应的数。</p><div class="keypad">${["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "−", ".", "/", "⌫", "清空"].map((k) => `<button data-key="${k}" aria-label="键盘 ${k}">${k === "/" ? "分数 /" : k}</button>`).join("")}</div>`}</div><div class="actions"><button class="primary" id="submitAnswer" ${r.resolved ? "hidden" : ""}>确认这一步</button><button class="gold" id="nextQuestion" ${r.resolved ? "" : "hidden"}>${practiceMode ? "返回原题" : "接上下一段 →"}</button></div><div class="feedback" id="feedback" role="status">${r.resolved ? "这一步接上了。你可以自己点按钮继续。" : ""}</div><div class="actions"><button id="hint1">一点思路</button><button id="hint2">带我一步一步做 · 推荐</button><button id="explain">我不会，直接看讲解</button><button id="later">${practiceMode ? "跳过这道小题" : "稍后再练"}</button></div><div id="helpArea">${helpHTML(q, r)}</div></section><aside><div class="row"><h3>手写停靠区</h3><button id="collapseSketch">展开 / 收起</button></div><p class="caption">只供思考，不识别、不上传。当前题会保存；切到下一题后清理这页草稿。</p><div class="sketch-tools"><button id="pen" aria-pressed="true">笔</button><button id="eraser">橡皮</button><button id="undoInk">撤销</button><button id="clearInk">清空</button></div><canvas class="sketch" aria-label="当前题手写草稿"></canvas><div class="companions">${buddy("ling", "棱影")}${buddy("gu", "咕弹")}</div><p class="caption">${state().prefs.jokes ? "负号没有消失，它只是换了工位。" : "每一步都可以慢慢检查。"}</p></aside></div></section>`;
+  main.innerHTML = `<section class="card"><div class="row"><div><p class="eyebrow">${practiceMode ? "TRY A NEW NUMBER / 自愿迁移题" : "DAILY SIDE QUEST / " + ["基础 5 题", "自愿加练 3 题", "自愿加练 2 题"][s.stage]}</p><h2>${practiceMode ? "换一组数字，试着自己接上。" : "每次接上一小段。"}</h2></div><span class="pill">${s.date} · ${practiceMode ? "不计入基础题数" : `${s.index + 1} / ${s.questions.length}`}</span></div><div class="progress">${s.questions.map((_, i) => `<span class="${i < s.index ? "done" : ""}"></span>`).join("")}</div><div class="practice-layout"><section><p class="question-label">${names[templateIds.indexOf(q.templateId)]} · ${q.kind === "review" ? "换数字再遇见" : q.difficulty === 3 ? "多步拼接" : q.difficulty === 2 ? "接上两步" : "轻轻热身"}</p>${q.context ? `<p class="caption">${E(q.context)}</p>` : ""}<h2 class="question">${E(q.prompt)}</h2>${visual(q, r)}<div id="answerArea">${q.choices ? `<div class="actions">${q.choices.map((c) => `<button class="choice" data-choice="${E(c)}" aria-pressed="${r.input[0] === c}">${E(c)}</button>`).join("")}</div>` : `<div class="answer-grid">${q.labels.map((label, i) => `<label>${E(label)}<input class="answer" data-answer="${i}" aria-label="${E(label)}" autocomplete="off" maxlength="30" value="${E(r.input[i] || "")}" ${r.resolved ? "disabled" : ""}></label>`).join("")}</div><p class="caption">整数 / 小数 / 分数均可，例如 −2、0.5、1/2。代数题只填每栏对应的数。</p><div class="keypad">${["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "−", ".", "/", "⌫", "清空"].map((k) => `<button data-key="${k}" aria-label="键盘 ${k}">${k === "/" ? "分数 /" : k}</button>`).join("")}</div>`}</div><div class="actions"><button class="primary" id="submitAnswer" ${r.resolved ? "hidden" : ""}>确认这一步</button><button class="gold" id="nextQuestion" ${r.resolved ? "" : "hidden"}>${practiceMode ? "返回原题" : "下一题 →"}</button></div><div class="feedback" id="feedback" role="status">${E(feedbackText(r))}</div><div class="actions"><button id="hint1">一点思路</button><button id="hint2">带我一步一步做 · 推荐</button><button id="explain">我不会，直接看讲解</button><button id="later">${practiceMode ? "跳过这道小题" : "稍后再练"}</button></div><div id="helpArea">${helpHTML(q, r)}</div></section><aside><div class="row"><h3>手写停靠区</h3><button id="collapseSketch">展开 / 收起</button></div><p class="caption">只供思考，不识别、不上传。当前题会保存；切到下一题后清理这页草稿。</p><div class="sketch-tools"><button id="pen" aria-pressed="true">笔</button><button id="eraser">橡皮</button><button id="undoInk">撤销</button><button id="clearInk">清空</button></div><canvas class="sketch" aria-label="当前题手写草稿"></canvas><div class="companions">${buddy("ling", "夏特", 1)}${buddy("gu", "蛋仔", 1)}</div><p class="caption">${state().prefs.jokes ? banter[q.templateId][0] : "每一步都可以慢慢检查。"}</p></aside></div></section>`;
   bindAnswers(q, r);
   bindHelp(q, r);
   const ink = sketch($("canvas"), r, (lines) =>
@@ -219,7 +291,7 @@ function helpHTML(q, r) {
     html += `<section class="hint-section"><h3>① 先观察</h3><p class="muted">${E(q.observation.prompt)}</p><div class="actions">${q.observation.choices.map((c) => `<button data-observe="${E(c)}">${E(c)}</button>`).join("")}</div><p id="observationFeedback" class="caption">${E(r.guideValues.observationFeedback || "先作一个小决定，再看看它为什么成立。")}</p></section>`;
   if (r.maxHint >= 2) {
     const step = q.guidedSteps[r.guideIndex];
-    html += `<section class="hint-section"><h3>② 一步一步搭</h3><div class="steps-history">${r.guideEvents.map((e) => `<p>${E(q.guidedSteps[e.index]?.feedback)} <small>（${{ independent: "自己完成这一步", helped: "局部提示后完成", demonstrated: "看过这一步示范" }[e.mode]}）</small></p>`).join("")}</div>${
+    html += `<section class="hint-section"><h3>② 一步一步搭</h3><div class="steps-history">${r.guideEvents.map((e) => `<p>${E((e.mode === "demonstrated" ? "看过这一步示范：" : "这一步对了！") + q.guidedSteps[e.index]?.feedback)} <small>（${{ independent: "自己完成这一步", helped: "局部提示后完成", demonstrated: "看过这一步示范" }[e.mode]}）</small></p>`).join("")}</div>${
       step
         ? `<div class="step"><p class="math">${E(step.prompt)}</p>${
             step.type === "choice"
@@ -241,7 +313,7 @@ function helpHTML(q, r) {
     }</section>`;
   }
   if (r.maxHint >= 3)
-    html += `<section class="hint-section"><h3>③ 完整分步解法</h3>${q.explanation.map((s, i) => `<div class="step"><p class="math">${i + 1}. ${E(s.math)}</p><p>${E(s.detail)}</p></div>`).join("")}<p class="caption">这是讲解陪伴学习，不计为独立首次答对。</p><div class="actions"><button id="finishStudying" class="primary">${practiceMode ? "这道小题先学到这里" : "这题先学到这里"}</button>${!practiceMode ? `<button id="transfer">${r.practice ? "继续换数字的小题" : "自愿试一道换数字的小题"}</button>` : ""}</div></section>`;
+    html += `<section class="hint-section"><h3>③ 完整分步解法</h3>${q.explanation.map((s, i) => `<div class="step"><p class="math">${i + 1}. ${E(s.math)}</p><p>${E(s.detail)}</p>${i === 0 ? `<p class="explanation-note">${E(banter[q.templateId][1])}</p>${state().prefs.jokes ? `<p class="caption">${E(banter[q.templateId][0])}</p>` : ""}` : ""}</div>`).join("")}<p class="caption">这是讲解陪伴学习，不计为独立首次答对。</p><div class="actions"><button id="finishStudying" class="primary">${practiceMode ? "这道小题先学到这里" : "这题先学到这里"}</button>${!practiceMode ? `<button id="transfer">${r.practice ? "继续换数字的小题" : "自愿试一道换数字的小题"}</button>` : ""}</div></section>`;
   return html;
 }
 function bindAnswers(q, r) {
@@ -317,6 +389,7 @@ function bindAnswers(q, r) {
     }
     if (result.correct) {
       renderLearn();
+      celebrate();
     } else
       $("#feedback").textContent =
         "这次先停一下，保留你的想法。核对每一项的符号、运算顺序和输入栏；也可以让伙伴陪你拆一步。";
@@ -340,7 +413,7 @@ function bindHelp(q, r) {
       (b.onclick = () => {
         const correct = b.dataset.observe === q.observation.expected;
         const feedback = correct
-          ? q.observation.feedback
+          ? "这一步对了！" + q.observation.feedback
           : "先不用急着选，再看看这一步的对象；可以点“带我一步一步做”，把这里拆小。";
         changeRecord(
           (record) => (record.guideValues.observationFeedback = feedback),
@@ -436,11 +509,23 @@ function bindHelp(q, r) {
   if ($("#checkGroups")) $("#checkGroups").onclick = () => guided("sorted");
   if ($("#demoStep")) $("#demoStep").onclick = () => guided("", true);
   if ($("#finishStudying"))
-    $("#finishStudying").onclick = () => {
+    $("#finishStudying").onclick = async () => {
       if (practiceMode) {
-        practiceMode = false;
-        renderLearn();
-      } else action((d) => advance(d, token));
+        await changeRecord((record) => {
+          if (!record.resolved) {
+            record.resolved = true;
+            record.mode = "studied";
+          }
+        });
+      } else {
+        await action((d) => {
+          const t = target(d, token);
+          if (t && !t.r.resolved) {
+            t.r.resolved = true;
+            t.r.mode = "studied";
+          }
+        });
+      }
     };
   if ($("#transfer"))
     $("#transfer").onclick = async () => {
@@ -465,7 +550,7 @@ function renderSummary(s) {
     })
     .join(
       "",
-    )}</div><p class="caption">库存已经记好。建造页可选择物件，再点空格放置；奖励不因提示或重试减少。</p><div class="actions"><button id="goBuild" class="gold">回基地，摆上新东西</button><button id="doneToday" class="primary">今天到这里</button>${s.stage < 2 ? `<button id="extra">自愿再玩 ${s.stage === 0 ? 3 : 2} 题</button>` : ""}</div><h3>今天想记住哪一步？（可跳过）</h3><div class="actions">${["符号", "通分", "变量与常数", "去括号", "最后一步计算", "填写答案", "暂时没有"].map((x) => `<button data-reflection="${x}" aria-pressed="${s.reflection === x}">${x}</button>`).join("")}</div><div class="actions"><button id="share">发给爸爸 · 先预览</button><button id="performance">点亮轨道 · 可跳过的短演出</button></div><div id="showArea"></div></section>`;
+    )}</div><p class="caption">库存已经记好。建造页可选择物件，再点空格放置；奖励不因提示或重试减少。</p><div class="actions"><button id="goBuild" class="gold">回基地，摆上新东西</button><button id="doneToday" class="primary">今天到这里</button>${s.stage < 2 ? `<button id="extra">自愿再玩 ${s.stage === 0 ? 3 : 2} 题</button>` : ""}</div><h3>今天想记住哪一步？（可跳过）</h3><div class="actions">${["符号", "通分", "变量与常数", "去括号", "最后一步计算", "填写答案", "暂时没有"].map((x) => `<button data-reflection="${x}" aria-pressed="${s.reflection === x}">${x}</button>`).join("")}</div><div class="actions"><button id="share">给爸爸的学习报告</button><button id="performance">角色整活小剧场 · 可跳过</button></div><div id="showArea"></div></section>`;
   $("#goBuild").onclick = () => {
     view = "world";
     render();
@@ -491,36 +576,87 @@ function renderSummary(s) {
         })),
   );
   $("#share").onclick = () => share(s);
-  $("#performance").onclick = () => {
-    $("#showArea").innerHTML =
-      '<div class="performance"><img src="./public/assets/ling.svg" alt="棱影沿轨道滑行"></div><button id="skipShow">跳过演出</button>';
-    $("#skipShow").onclick = () => $("#showArea").replaceChildren();
-  };
+  $("#performance").onclick = playShow;
+}
+function playShow() {
+  $("#showArea").innerHTML =
+    `<div class="comedy-stage"><h3>庆祝可以很隆重，彩纸先别喷到月球。</h3><div class="comedy-cast">${sprite("gu", 2)}${sprite("kirby", 2)}${sprite("gen", 2)}</div><p>蛋仔：我负责滚进场。卡比：我负责接住彩纸。幻：好，预算又超了。</p></div><div class="actions"><button id="skipShow">跳过演出</button><button id="replayShow">再看一次</button></div>`;
+  $("#skipShow").onclick = () => $("#showArea").replaceChildren();
+  $("#replayShow").onclick = playShow;
 }
 function share(s) {
-  const r = s.records,
-    ind = r.filter((x) => x.mode === "independent").length,
-    helped = r.filter((x) => x.mode === "helped").length,
-    studied = r.filter((x) => x.viewedExplanation).length;
+  reportPreview(makeReport(state(), s.date), s.date);
+}
+function reportPreview(report, date = "全部日期") {
+  const stats = summarize(report);
   modal(
-    '<h2>发给爸爸</h2><p class="muted">由你修改和复制，不会自动发送。</p><textarea id="shareText" aria-label="分享文字"></textarea><div class="actions"><button id="copyShare">复制文字</button></div><p id="copyStatus" role="status"></p>',
+    `<h2>给爸爸的学习报告</h2><p>${E(date)} · ${stats.n} 题记录，独立首次答对 ${stats.independent} 题，正式答错 ${stats.errors} 次，求助 ${stats.helped} 题。</p><p>只包含日期、题型、完成方式和求助统计，不含草稿、基地或私人备注。文件不会自动发送；由你选择分享给谁。</p><details><summary>逐题预览</summary>${report.records.map((r) => `<p>${r.date} · ${E(names[templateIds.indexOf(r.template)])} · ${modeNames[r.mode]} · 错误 ${r.errors} 次 · 提示 ${r.hint} 级</p>`).join("")}</details><div class="actions"><button id="sendReport" class="primary">选择分享方式</button><button id="downloadReport">下载报告文件</button></div><p id="reportStatus" role="status"></p>`,
   );
-  $("#shareText").value =
-    `${s.date} 我完成了${["基础5题", "自愿加练3题", "自愿加练2题"][s.stage]}。独立首次完成 ${ind} 题，借助提示完成 ${helped} 题；${studied} 题看过完整讲解（不等于答错）。${s.reflection ? "我想再看看：" + s.reflection + "。" : ""}基地新增：${s.rewardIds.map((id) => catalog.find((x) => x.id === id).name).join("、")}。今天的能量够了，收工！`;
-  $("#copyShare").onclick = async () => {
+  const filename = `erin-learning-${date === "全部日期" ? "all" : date}.json`;
+  $("#downloadReport").onclick = () => download(report, filename);
+  $("#sendReport").onclick = async () => {
+    const file = new File([JSON.stringify(report)], filename, {
+      type: "application/json",
+    });
+    if (navigator.canShare?.({ files: [file] })) {
+      try {
+        await navigator.share({ files: [file], title: "学习报告" });
+        $("#reportStatus").textContent =
+          "分享面板已关闭，请在接收设备确认文件。";
+      } catch (e) {
+        $("#reportStatus").textContent =
+          e.name === "AbortError"
+            ? "已取消分享，可以稍后再发。"
+            : "分享未完成，请使用下载报告文件。";
+      }
+    } else {
+      download(report, filename);
+      $("#reportStatus").textContent =
+        "已请求下载。请把文件发给爸爸，再在家长报告页导入。";
+    }
+  };
+}
+function renderParentReports() {
+  let report;
+  try {
+    report = readReports();
+  } catch {
+    main.innerHTML =
+      '<section class="card"><h1>家长报告暂时无法读取</h1><p>存储被禁用或原报告损坏，原数据未覆盖。请检查浏览器存储权限。</p></section>';
+    return;
+  }
+  const a = summarize(report);
+  main.innerHTML = `<section class="card"><p class="eyebrow">LOCAL FAMILY REPORT</p><h1>家长报告 · 只在这台设备保存</h1><p>Erin 导出文件并发给你 → 在这里导入 → 累计查看趋势。没有自动同步。报告存储独立于学生练习，清除浏览器数据会丢失，请定期备份。</p><div class="actions"><label class="button">导入一份或多份报告<input id="importReport" type="file" accept=".json,application/json" multiple hidden></label><button id="exportReports">备份累计报告</button><button id="studentReport">导出本机学生记录 · 先预览</button></div><p id="parentStatus" role="status"></p><div class="report-metrics"><p>练习天数 <strong>${a.days}</strong></p><p>记录样本 <strong>${a.n} 题</strong> · 完成 ${a.finished} 题（含学习与稍后再练）</p><p>独立首次答对 <strong>${a.finished ? Math.round((a.independent / a.finished) * 100) + "%" : "暂无"}</strong> · ${a.independent}/${a.finished} 题</p><p>正式答错 ${a.errors} 次 · 求助 ${a.helped} 题（求助不等于答错）</p></div><h2>每天的变化</h2><div class="table-scroll"><table><thead><tr><th>日期</th><th>样本 / 完成</th><th>独立首次答对</th><th>答错次数</th><th>求助题数</th></tr></thead><tbody>${a.dates.map((x) => `<tr><td>${x.date}</td><td>${x.n} / ${x.finished}</td><td>${x.independent}/${x.finished}</td><td>${x.errors}</td><td>${x.helped}</td></tr>`).join("")}</tbody></table></div><h2>哪些题型更需要陪练？</h2>${a.types.map((x) => `<p>${x.name} · 样本 ${x.n} 题 · 正式答错 ${x.errors} 次 · 求助 ${x.helped} 题 · 独立首次答对 ${x.independent}/${x.finished}</p>`).join("") || "<p>还没有报告。导入后会显示趋势。</p>"}<p class="caption">数据只描述已导入的样本，不推断长期能力。同一记录重复导入不重复计数，旧文件不会覆盖新记录。首次答对比例包含已走完的学习流程，不把看讲解当成答错。</p></section>`;
+  $("#exportReports").onclick = () =>
+    download(report, "erin-parent-report-backup.json");
+  $("#studentReport").onclick = () => reportPreview(makeReport(state()));
+  $("#importReport").onchange = async (e) => {
+    const files = [...e.target.files];
+    e.target.value = "";
     try {
-      await navigator.clipboard.writeText($("#shareText").value);
-      $("#copyStatus").textContent = "已复制，由你决定什么时候发送。";
-    } catch {
-      $("#shareText").select();
-      $("#copyStatus").textContent = "请长按文字选择复制。";
+      let combined = report;
+      const { mergeReports } = await import("./reports.js");
+      for (const f of files) {
+        if (f.size > 8_000_000) throw Error("文件太大");
+        combined = mergeReports(
+          combined,
+          validateReport(JSON.parse(await f.text())),
+        );
+      }
+      importReport(combined);
+      renderParentReports();
+      $("#parentStatus").textContent =
+        "已导入。重复记录已去重，学生进度未更改。";
+    } catch (e) {
+      $("#parentStatus").textContent =
+        "未导入：" + e.message + "。原记录已保留。";
     }
   };
 }
 function renderWorld() {
   const d = state(),
     selected = catalog.find((x) => x.id === selectedItem);
-  main.innerHTML = `<p class="eyebrow">YOUR WORLD / 随时能玩</p><div class="row"><div><h1>一格一格，搭成你的航站。</h1><p class="muted">选物件 → 点空格预览 → 确认放下。点已有物件可旋转、移动或收回。</p></div><button id="undoBuild">撤销上次摆放</button></div><div class="grid"><section class="card"><div class="board" aria-label="六行六列基地">${Array.from(
+  main.innerHTML = `<p class="eyebrow">YOUR WORLD / 随时能玩</p><div class="row"><div><h1>一格一格，搭成你的航站。</h1><p class="muted">选物件 → 点空格预览 → 确认放下。点已有物件可旋转、移动或收回。</p></div><button id="howToPlay">基地怎么玩？</button><button id="undoBuild">撤销上次摆放</button></div><div class="grid"><section class="card"><div class="board" aria-label="六行六列基地">${Array.from(
     { length: 36 },
     (_, cell) => {
       const item = d.layout.find((x) => x.cell === cell),
@@ -537,7 +673,8 @@ function renderWorld() {
     })
     .join(
       "",
-    )}</div><h3>能量外观</h3><div class="actions">${skins.map(([id, name]) => `<button data-skin="${id}" aria-pressed="${d.prefs.skin === id}">${name}</button>`).join("")}</div><div class="companions">${buddy("gu", "咕弹")}</div><button id="bounce">点一下，咕弹弹跳</button></section></div>`;
+    )}</div><h3>能量外观</h3><div class="actions">${skins.map(([id, name]) => `<button data-skin="${id}" aria-pressed="${d.prefs.skin === id}">${name}</button>`).join("")}</div><div class="companions">${buddy("gu", "蛋仔")}</div><button id="bounce">点一下，蛋仔弹跳</button></section></div>`;
+  bindInstructions("world");
   document.querySelectorAll("[data-item]").forEach(
     (b) =>
       (b.onclick = () => {
@@ -617,7 +754,7 @@ function renderWorld() {
           action((data) => (data.prefs.skin = b.dataset.skin))),
     );
   $("#bounce").onclick = () => {
-    const img = main.querySelector(".companion img");
+    const img = main.querySelector(".companion .character");
     img.classList.remove("bounce");
     void img.offsetWidth;
     img.classList.add("bounce");
@@ -625,7 +762,8 @@ function renderWorld() {
 }
 function renderStudio() {
   const c = state().clip;
-  main.innerHTML = `<p class="eyebrow">THREE LITTLE SHOTS</p><h1>给伙伴剪一段三格短片。</h1><p class="muted">选镜头、换顺序、调转场。只是本机循环预览，不会导出或上传视频。</p><section class="card"><div class="shot-strip">${c.shots.map((id, i) => `<div class="shot-box"><p class="caption">镜头 ${i + 1}</p><img src="./public/assets/${id}.svg" alt="镜头 ${i + 1} 的原创伙伴"><label>选伙伴<select data-shot="${i}"><option value="ling" ${id === "ling" ? "selected" : ""}>棱影</option><option value="gu" ${id === "gu" ? "selected" : ""}>咕弹</option><option value="lu" ${id === "lu" ? "selected" : ""}>小苔</option></select></label><button data-swap="${i}">与下一格换位</button></div>`).join("")}</div><div class="actions"><label>转场<select id="transition">${["淡入", "切换", "滑动"].map((x) => `<option ${c.transition === x ? "selected" : ""}>${x}</option>`).join("")}</select></label><button id="playClip" class="primary">播放循环预览</button><button id="stopClip">停止</button></div><div id="clipPreview" class="shot-preview"><img src="./public/assets/${c.shots[0]}.svg" alt="当前镜头"></div><p id="clipLabel" class="caption">镜头 1 / 3 · ${c.transition}</p></section>`;
+  main.innerHTML = `<p class="eyebrow">THREE LITTLE SHOTS</p><h1>给伙伴剪一段三格短片。</h1><button id="howToPlay">短片怎么玩？</button><p class="muted">选镜头、换顺序、调转场。只是本机循环预览，不会导出或上传视频。</p><section class="card"><div class="shot-strip">${c.shots.map((id, i) => `<div class="shot-box"><p class="caption">镜头 ${i + 1}</p>${sprite(id)}<label>选伙伴<select data-shot="${i}">${characters.map(([key, name]) => `<option value="${key}" ${id === key ? "selected" : ""}>${name}</option>`).join("")}</select></label><button data-swap="${i}">与下一格换位</button></div>`).join("")}</div><div class="actions"><label>转场<select id="transition">${["淡入", "切换", "滑动"].map((x) => `<option ${c.transition === x ? "selected" : ""}>${x}</option>`).join("")}</select></label><button id="playClip" class="primary">播放循环预览</button><button id="stopClip">停止</button></div><div id="clipPreview" class="shot-preview">${sprite(c.shots[0])}</div><p id="clipLabel" class="caption">镜头 1 / 3 · ${c.transition}</p></section>`;
+  bindInstructions("studio");
   document
     .querySelectorAll("[data-shot]")
     .forEach(
@@ -654,8 +792,7 @@ function renderStudio() {
     studioFrame = 0;
     const update = () => {
       const id = state().clip.shots[studioFrame % 3];
-      $("#clipPreview").innerHTML =
-        `<img src="./public/assets/${id}.svg" alt="第 ${(studioFrame % 3) + 1} 格伙伴镜头">`;
+      $("#clipPreview").innerHTML = sprite(id);
       $("#clipPreview").classList.toggle(
         "sliding",
         state().clip.transition === "滑动",
@@ -665,7 +802,12 @@ function renderStudio() {
       studioFrame++;
     };
     update();
-    studioTimer = setInterval(update, 2000);
+    if (
+      !state().prefs.reduced &&
+      !matchMedia("(prefers-reduced-motion: reduce)").matches
+    )
+      studioTimer = setInterval(update, 2000);
+    else $("#clipLabel").textContent = "减少动态效果已开启 · 静态镜头预览";
   };
   $("#stopClip").onclick = () => {
     clearInterval(studioTimer);
@@ -696,7 +838,7 @@ function renderSettings() {
     )
     .join(
       "",
-    )}</div><div class="actions"><button id="reduce" aria-pressed="${d.prefs.reduced}">减少动态效果：${d.prefs.reduced ? "开" : "关"}</button><button id="jokes" aria-pressed="${d.prefs.jokes}">轻量彩蛋：${d.prefs.jokes ? "开" : "关"}</button></div><p class="caption">声音默认关闭：本版没有音频资源。系统的减少动态效果设置也会被尊重。</p><h3>添加到 iPad 主屏幕</h3><p class="muted">用 Safari 打开最终正式地址，等“离线已就绪”，点分享 → 添加到主屏幕。第一次缓存需要联网。</p></section><section class="card"><h2>本机记录与备份</h2><p class="muted">无账号、不上传。清除浏览器数据、系统清理存储或更换域名可能丢记录；安装主屏幕不保证永久保存。</p><div class="actions"><button id="export">导出学习备份</button><label class="button">导入备份<input id="import" type="file" accept=".json,application/json" hidden></label><button id="recovery">导出上次导入前备份</button></div><p class="caption">默认合并，保留当前基地布局；相同关卡题面冲突时保留本机版本。确认导入前会自动保留现有快照。</p><p id="importStatus" role="status"></p></section><section class="card"><h2>本机学习小记</h2><p class="caption">样本数只描述本机记录，不评定长期能力。求助与正式错误分开统计。</p><div id="localStats"></div><button id="showLegacy">查看旧版迁移说明</button></section><section class="card"><h2>版本与更新</h2><p class="muted">1.0.1 · 方块航站。源码与自动部署由 GitHub 管理；练习和记录只在你的设备中运行与保存。</p><p class="caption">有新版本时会提示，当前关卡不会被自动刷新。跨域换站前先导出，再在新域名导入。</p></section></div>`;
+    )}</div><div class="actions"><button id="reduce" aria-pressed="${d.prefs.reduced}">减少动态效果：${d.prefs.reduced ? "开" : "关"}</button><button id="jokes" aria-pressed="${d.prefs.jokes}">轻量彩蛋：${d.prefs.jokes ? "开" : "关"}</button></div><p class="caption">声音默认关闭：本版没有音频资源。系统的减少动态效果设置也会被尊重。</p><h3>添加到 iPad 主屏幕</h3><p class="muted">用 Safari 打开最终正式地址，等“离线已就绪”，点分享 → 添加到主屏幕。第一次缓存需要联网。</p></section><section class="card"><h2>本机记录与备份</h2><p class="muted">无账号、不上传。清除浏览器数据、系统清理存储或更换域名可能丢记录；安装主屏幕不保证永久保存。</p><div class="actions"><button id="export">导出学习备份</button><label class="button">导入备份<input id="import" type="file" accept=".json,application/json" hidden></label><button id="recovery">导出上次导入前备份</button></div><p class="caption">默认合并，保留当前基地布局；相同关卡题面冲突时保留本机版本。确认导入前会自动保留现有快照。</p><p id="importStatus" role="status"></p></section><section class="card"><h2>本机学习小记</h2><p class="caption">样本数只描述本机记录，不评定长期能力。求助与正式错误分开统计。</p><div id="localStats"></div><button id="showLegacy">查看旧版迁移说明</button></section><section class="card"><h2>版本与更新</h2><p class="muted">1.1.0 · 角色陪练航站。源码与自动部署由 GitHub 管理；练习和记录只在你的设备中运行与保存。</p><p class="caption">有新版本时会提示，当前关卡不会被自动刷新。跨域换站前先导出，再在新域名导入。</p></section></div>`;
   document
     .querySelectorAll("[data-theme]")
     .forEach(

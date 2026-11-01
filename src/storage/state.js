@@ -1,3 +1,4 @@
+import { characters } from "../characters.js";
 import { generate, templateIds } from "../engine/templates.js";
 import {
   stageQuestions,
@@ -397,7 +398,7 @@ export function validate(data) {
     typeof data.prefs.jokes !== "boolean" ||
     !Array.isArray(data.clip.shots) ||
     data.clip.shots.length !== 3 ||
-    !data.clip.shots.every((x) => ["ling", "gu", "lu"].includes(x)) ||
+    !data.clip.shots.every((x) => characters.some(([id]) => id === x)) ||
     !["淡入", "切换", "滑动"].includes(data.clip.transition)
   )
     throw Error("偏好不正确");
