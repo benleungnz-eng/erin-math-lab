@@ -193,6 +193,12 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
   assert.match(await page.locator("#dialogBody").textContent(), /只包含日期/);
   assert.equal(await page.locator("#downloadReport").count(), 1);
   await page.click("#closeDialog");
+  await page.click("#performance");
+  assert.equal(await page.locator(".comedy-cast .character").count(), 3);
+  await page.click("#replayShow");
+  assert.equal(await page.locator(".comedy-cast .character").count(), 3);
+  await page.click("#skipShow");
+  assert.equal(await page.locator(".comedy-stage").count(), 0);
   ok(
     "five questions completed with honest help reporting, full reward and no reload duplicates",
   );
@@ -358,6 +364,9 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
     mimeType: "application/json",
     buffer: Buffer.from('{"schema":99}'),
   });
+  await reopened.waitForFunction(() =>
+    document.querySelector("#notice").textContent.includes("没有更改"),
+  );
   assert.match(await reopened.locator("#notice").textContent(), /没有更改/);
   await reopened.locator("#import").setInputFiles({
     name: "backup.json",
