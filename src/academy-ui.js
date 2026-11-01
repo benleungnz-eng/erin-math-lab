@@ -26,6 +26,7 @@ import {
 } from "./science-visuals.js";
 import { learningDate } from "./engine/scheduler.js";
 import { mountEarthLab, selectEarthRegion } from "./earth-lab.js";
+import { mountPlantLab } from "./plant-lab.js";
 import { playPartnerSound } from "./partner-audio.js";
 import { escape as E } from "./components/visual.js";
 export function createAcademyUI({
@@ -41,6 +42,7 @@ export function createAcademyUI({
     frame = 0,
     earthMode = "spin",
     effectTimer = null,
+    welcomeTimer = null,
     effect = null;
   const a = () => db.state.academy;
   const math = () => db.state.sessions[db.state.active];
@@ -49,12 +51,12 @@ export function createAcademyUI({
     subject === "math"
       ? math()?.partnerId || a().selected
       : science()?.partnerId || a().selected;
-  function panel(id, event = "thinking", knowledge = "") {
+  function panel(id, event = "thinking", knowledge = "", initialPose = null) {
     const fx =
       effect?.id === id && effect.event === event
         ? effect
         : {
-            state: eventStates[event] || "idle_default",
+            state: initialPose || eventStates[event] || "idle_default",
             variant: 0,
           };
     return `<div id="partnerStage" class="partner-stage ${effect?.id === id ? "reacting" : ""}" data-partner-id="${id}" data-state="${fx.state}" data-variant="${fx.variant}">${partnerArt(id, fx.state, fx.variant)}<div><strong>${partnerById(id).name} · 本轮搭档</strong><p role="status">${E(partnerLine(id, event, fx.variant, knowledge))}</p></div></div>`;
@@ -102,12 +104,13 @@ export function createAcademyUI({
     );
   }
   function home() {
+    clearTimeout(welcomeTimer);
     effect = null;
     const d = db.state,
       s = math(),
       today = d.sessions[`${learningDate()}:0`],
       pending = s && !s.completed;
-    main.innerHTML = `<section class="hero academy-hero"><div class="hero-copy"><p class="eyebrow">A LITTLE WONDER, ONE SUBJECT TODAY</p><h1>欢迎回来。<br>今天想探索什么？</h1><p class="muted">选一科就好，周末也能做。<br>没有补签，也不需要三科全做。</p><p>数学保持原来难度；生物、地理先看图，再慢慢认词。</p></div><div class="home-partner">${panel(a().selected, "greet")}</div></section><section class="subject-cards" aria-label="学科选择"><article class="card subject-math"><span class="subject-icon">±</span><h2>数学 · 数字训练营</h2><p>5题基础 + 自愿加练，约5～8分钟。第一、二章：有理数、整式加减。</p><button id="start" class="gold">${pending ? "继续数学 · " + (s.index + 1) + "/" + s.questions.length : today?.completed ? "看看数学收获" : "开始今天的数学 →"}</button></article>${[
+    main.innerHTML = `<section class="hero academy-hero"><div class="hero-copy"><p class="eyebrow">A LITTLE WONDER, ONE SUBJECT TODAY</p><h1>欢迎回来。<br>今天想探索什么？</h1><p class="muted">选一科就好，周末也能做。<br>没有补签，也不需要三科全做。</p><p>数学保持原来难度；生物、地理先看图，再慢慢认词。</p></div><div class="home-partner">${panel(a().selected, "greet", "", "idle_default")}<button id="bounceHome">看看搭档的欢迎动作</button></div></section><section class="subject-cards" aria-label="学科选择"><article class="card subject-math"><span class="subject-icon">±</span><h2>数学 · 数字训练营</h2><p>5题基础 + 自愿加练，约5～8分钟。第一、二章：有理数、整式加减。</p><button id="start" class="gold">${pending ? "继续数学 · " + (s.index + 1) + "/" + s.questions.length : today?.completed ? "看看数学收获" : "开始今天的数学 →"}</button></article>${[
       "biology",
       "geography",
     ]
@@ -119,7 +122,7 @@ export function createAcademyUI({
       })
       .join(
         "",
-      )}</section><section class="card"><div class="row"><div><p class="eyebrow">YOUR LEARNING PARTNER</p><h2>选一个搭档，陪你走完这一轮。</h2></div><button id="collectionLink">打开搭档图鉴</button></div><p>当前选择：${partnerById(a().selected).name}。每轮开始后搭档固定，切换对下一轮生效。看提示、看讲解也能获得完整奖励。</p>${pickers()}<p class="caption">已解锁 ${a().unlocked.length}/${partners.length} 位 · 收藏星星 ${a().stars}。完成基础或自愿加练，解锁下一位搭档；全部解锁后获得星星。</p><button id="bounceHome">看看搭档的欢迎动作</button></section><section class="card"><h2>学习小记</h2><button id="progressLink">三科学习进度</button></section>`;
+      )}</section><section class="card"><div class="row"><div><p class="eyebrow">YOUR LEARNING PARTNER</p><h2>选一个搭档，陪你走完这一轮。</h2></div><button id="collectionLink">打开搭档图鉴</button></div><p>当前选择：${partnerById(a().selected).name}。每轮开始后搭档固定，切换对下一轮生效。看提示、看讲解也能获得完整奖励。</p>${pickers()}<p class="caption">已解锁 ${a().unlocked.length}/${partners.length} 位 · 收藏星星 ${a().stars}。完成基础或自愿加练，解锁下一位搭档；全部解锁后获得星星。</p></section><section class="card"><h2>学习小记</h2><button id="progressLink">三科学习进度</button></section>`;
     main.querySelector("#start").onclick = () => go("math");
     for (const sub of ["biology", "geography"])
       main.querySelector(
@@ -140,10 +143,23 @@ export function createAcademyUI({
     main.querySelector("#progressLink").onclick = () => go("progress");
     main.querySelector("#collectionLink").onclick = () => go("collection");
     main.querySelector("#bounceHome").onclick = async () => {
+      clearTimeout(welcomeTimer);
       main
         .querySelector("#partnerStage")
         .scrollIntoView({ block: "center", behavior: "instant" });
       await event("greet", "", a().selected);
+      const previewId = a().selected;
+      welcomeTimer = setTimeout(() => {
+        if (main.querySelector("#bounceHome") && a().selected === previewId) {
+          effect = null;
+          main.querySelector("#partnerStage").outerHTML = panel(
+            previewId,
+            "greet",
+            "",
+            "idle_default",
+          );
+        }
+      }, 2500);
     };
     bindPickers();
   }
@@ -291,6 +307,12 @@ export function createAcademyUI({
           b.onclick();
         }
       };
+    });
+    mountPlantLab(main, q.id, async (region) => {
+      await db.mutate((d) => {
+        const t = scienceTarget(d, subject, token);
+        if (t && !t.r.visited.includes(region)) t.r.visited.push(region);
+      });
     });
     if (main.querySelector("#earthMode"))
       main.querySelector("#earthMode").onclick = () => {

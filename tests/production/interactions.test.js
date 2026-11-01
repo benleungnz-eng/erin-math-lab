@@ -123,3 +123,17 @@ test("each partner ships ten distinct actual local raster files", () => {
     assert.equal(hashes.size, 10, p.id);
   }
 });
+test("everyday observations show large generated pictures and clues without giving the classification", () => {
+  const q = scienceQuestions("biology", 0, 0, "2026-11-01")[0];
+  const html = scienceVisual(q);
+  for (const id of ["seedling", "snail", "rock", "car"]) {
+    assert.ok(html.includes(`observation/${id}.webp`));
+    assert.ok(
+      readFileSync(`public/assets/observation/${id}.webp`).length > 1000,
+    );
+  }
+  assert.doesNotMatch(html, /[🌱🐌◒▰]/u);
+  for (const [, , note] of diagramParts(q))
+    assert.doesNotMatch(note, /属于生物|不属于生物|不是生物|是生物/);
+  assert.match(diagramParts(q)[0][2], /我会慢慢长高，还会呼吸/);
+});

@@ -46,8 +46,33 @@ const { chromium } = require("playwright"),
     0,
   );
   await shot("home-three-starters-mystery");
+  assert.equal(await page.locator(".home-partner #bounceHome").count(), 1);
+  const idleSource = await page
+    .locator("#partnerStage .partner-raster")
+    .getAttribute("src");
+  assert.ok(idleSource.endsWith("/idle_default.webp"));
   await page.locator("#bounceHome").tap();
   await get();
+  await page.waitForFunction(() =>
+    document
+      .querySelector("#partnerStage .partner-raster")
+      .getAttribute("src")
+      .endsWith("/greet.webp"),
+  );
+  assert.notEqual(
+    await page.locator("#partnerStage .partner-raster").getAttribute("src"),
+    idleSource,
+  );
+  await page
+    .locator("#partnerStage .partner-raster")
+    .evaluate((i) => i.decode());
+  assert.equal(
+    await page
+      .locator("#partnerStage .partner-art")
+      .evaluate((e) => getComputedStyle(e).animationName),
+    "none",
+  );
+  await shot("welcome-pose-under-hero");
   assert.ok(
     await page.locator("#partnerStage").evaluate((e) => {
       const r = e.getBoundingClientRect();
@@ -57,6 +82,7 @@ const { chromium } = require("playwright"),
   await page.locator("#startBiology").tap();
   await page.waitForSelector("[data-science-choice]");
   const tapSvg = async (x, y) => {
+    await page.locator(".science-diagram svg").scrollIntoViewIfNeeded();
     const b = await page.locator(".science-diagram svg").boundingBox();
     await page.touchscreen.tap(
       b.x + (x * b.width) / 640,
@@ -66,6 +92,49 @@ const { chromium } = require("playwright"),
   };
   await tapSvg(95, 140);
   assert.match(await page.locator(".diagram-caption").innerText(), /豆苗/);
+  const imageSizes = await page.evaluate(async () => {
+    const sizes = [];
+    for (const node of document.querySelectorAll(".observation-illustration")) {
+      const image = new Image();
+      image.src = node.getAttribute("href");
+      await image.decode();
+      const c = document.createElement("canvas");
+      c.width = c.height = 320;
+      const x = c.getContext("2d");
+      x.drawImage(image, 0, 0, 320, 320);
+      const data = x.getImageData(0, 0, 320, 320).data;
+      let minX = 320,
+        minY = 320,
+        maxX = 0,
+        maxY = 0;
+      for (let y = 0; y < 320; y++)
+        for (let z = 0; z < 320; z++)
+          if (data[(y * 320 + z) * 4 + 3] > 100) {
+            minX = Math.min(minX, z);
+            minY = Math.min(minY, y);
+            maxX = Math.max(maxX, z);
+            maxY = Math.max(maxY, y);
+          }
+      sizes.push({
+        id: node.dataset.object,
+        width: ((maxX - minX) / 320) * 112,
+        height: ((maxY - minY) / 320) * 112,
+      });
+    }
+    return sizes;
+  });
+  assert.equal(imageSizes.length, 4);
+  for (const size of imageSizes) {
+    assert.ok(size.width >= 48 && size.height >= 48, JSON.stringify(size));
+  }
+  for (const id of ["plant", "snail", "rock", "car"]) {
+    await page.locator(`button[data-region=${id}]`).tap();
+    await get();
+    assert.doesNotMatch(
+      await page.locator(".diagram-caption").innerText(),
+      /属于生物|不属于生物/,
+    );
+  }
   await page.locator("button[data-region=car]").tap();
   await get();
   assert.equal(
@@ -92,6 +161,11 @@ const { chromium } = require("playwright"),
   assert.match(await page.locator(".step").last().innerText(), /光照方向/);
   const before = await page.locator(".science-diagram svg").innerHTML();
   await tapSvg(525, 80);
+  await page.waitForFunction(() =>
+    document
+      .querySelector(".diagram-caption")
+      .textContent.includes("光是外界刺激"),
+  );
   assert.match(
     await page.locator(".diagram-caption").innerText(),
     /光是外界刺激/,
@@ -99,6 +173,40 @@ const { chromium } = require("playwright"),
   assert.notEqual(
     await page.locator(".science-diagram svg").innerHTML(),
     before,
+  );
+  await page.waitForFunction(
+    () =>
+      document.querySelector(".sunflower-illustration").dataset.stage === "2",
+  );
+  const rightPlant = await page
+    .locator(".sunflower-illustration")
+    .getAttribute("href");
+  assert.ok(rightPlant.endsWith("sunflower-2.webp"));
+  await page.locator("[data-plant=grow]").tap();
+  assert.equal(
+    await page.locator(".sunflower-illustration").getAttribute("data-stage"),
+    "0",
+  );
+  await page.waitForFunction(
+    () =>
+      document.querySelector(".sunflower-illustration").dataset.stage === "2",
+  );
+  await page.locator("[data-plant=side]").tap();
+  assert.equal(
+    await page
+      .locator(".sunflower-illustration")
+      .getAttribute("data-light-side"),
+    "left",
+  );
+  await page.locator("[data-plant=grow]").tap();
+  assert.match(
+    await page.locator(".sunflower-illustration").getAttribute("transform"),
+    /scale\(-1 1\)/,
+  );
+  await page.locator("[data-plant=reset]").tap();
+  assert.equal(
+    await page.locator(".sunflower-illustration").getAttribute("data-stage"),
+    "0",
   );
   await page.locator("#checkScienceStep").tap();
   await get();

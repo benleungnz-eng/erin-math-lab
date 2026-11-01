@@ -1,9 +1,10 @@
-# Erin Math Lab · v1.2.0
+# Erin Math Lab · v1.3.0
 
 轻量三科学习PWA：数学保持原有难度，生物和地理用图示与短句建立概念。每次选一科，原创搭档陪完整轮；没有倒计时、排名或补签压力。
 
 - 正式站点：https://benleungnz-eng.github.io/erin-math-lab/
 - 家长报告：https://benleungnz-eng.github.io/erin-math-lab/#reports
+- [v1.3 大图观察、向日葵互动、生活地球与搭档更新](docs/V1_3_RELEASE.md)
 - [v1.2功能、七天内容、迁移、资源依据与验收](docs/V1_2_HANDOFF.md)
 - [部署与iPad步骤](docs/GITHUB_PAGES.md) · [测试记录](docs/QA_REPORT.md)
 

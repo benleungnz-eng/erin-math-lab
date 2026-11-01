@@ -1,5 +1,7 @@
 import { escape as E } from "./components/visual.js";
 import { earthLabHTML } from "./earth-lab.js";
+import { observationNotes } from "./content/observation-notes.js";
+import { plantScene, plantControls } from "./plant-lab.js";
 const cells = [
   ["wall", "细胞壁", "植物细胞膜外较厚的一层，起支持和保护作用。"],
   ["membrane", "细胞膜", "控制物质进出的薄边界，植物和动物细胞都有。"],
@@ -13,10 +15,10 @@ const cells = [
 ];
 export const sceneParts = {
   living: [
-    ["plant", "豆苗", "能生长、呼吸等，属于生物。"],
-    ["snail", "蜗牛", "摄取食物、呼吸、生长，属于生物。"],
-    ["rock", "石头", "没有生命活动，不属于生物。"],
-    ["car", "汽车", "耗燃料和移动不等于有生命，不属于生物。"],
+    ["plant", "豆苗", observationNotes.living.plant],
+    ["snail", "蜗牛", observationNotes.living.snail],
+    ["rock", "石头", observationNotes.living.rock],
+    ["car", "汽车", observationNotes.living.car],
   ],
   field: [
     ["plant", "校园植物", "观察形态、数量和生长环境，记录可核对的事实。"],
@@ -107,7 +109,11 @@ export const sceneParts = {
 };
 export function diagramParts(q) {
   q = diagramQuestion(q);
-  return sceneParts[q.visual] || cells;
+  return (sceneParts[q.visual] || cells).map(([id, name, text]) => [
+    id,
+    name,
+    observationNotes[q.visual]?.[id] || text,
+  ]);
 }
 // Presentation is derived from stable content IDs. Stored questions remain unchanged,
 // so existing validated sessions and backups retain their exact content.
@@ -187,7 +193,7 @@ function geometry(v, id, mode = "spin") {
       160,
     );
   if (v === "stimulus")
-    return id === "light" ? circle(525, 80, 50) : rect(170, 100, 210, 170);
+    return id === "light" ? circle(525, 80, 50) : rect(155, 30, 290, 250);
   if (["cells", "structures", "division"].includes(v))
     return (
       {
@@ -287,6 +293,30 @@ function geometry(v, id, mode = "spin") {
 function cellDiagram() {
   return `<text x="155" y="24" text-anchor="middle">叶肉细胞（示意）</text><text x="470" y="24" text-anchor="middle">动物细胞（示意）</text><rect x="25" y="45" width="265" height="225" rx="28" fill="#dbe8b8" stroke="#648946" stroke-width="9"/><rect x="36" y="56" width="243" height="203" rx="22" fill="#f9f6cf" stroke="#b07b52" stroke-width="3"/><rect x="111" y="83" width="139" height="147" rx="35" fill="#cce7f1" stroke="#70a6bc" stroke-width="2"/><circle cx="77" cy="174" r="25" fill="#b4a0cc" stroke="#715383" stroke-width="3"/>${[70, 122, 185, 243].map((x, i) => `<ellipse cx="${x}" cy="${i % 2 ? 70 : 244}" rx="18" ry="8" fill="#719e4f"/>`).join("")}<ellipse cx="470" cy="151" rx="132" ry="103" fill="#f7e4ce" stroke="#b07b52" stroke-width="4"/><circle cx="479" cy="149" r="31" fill="#b4a0cc" stroke="#715383" stroke-width="3"/><text x="77" y="180" text-anchor="middle">③</text><text x="479" y="155" text-anchor="middle">③</text><text x="180" y="159" text-anchor="middle">⑤</text><text x="20" y="145">①</text><text x="42" y="110">②</text><text x="580" y="155">②</text><text x="120" y="70">④</text>`;
 }
+function everydayObjects(field = false) {
+  const objects = field
+    ? [
+        ["校园植物", "seedling", 95],
+        ["蜗牛", "snail", 245],
+      ]
+    : [
+        ["豆苗", "seedling", 95],
+        ["蜗牛", "snail", 245],
+        ["石头", "rock", 395],
+        ["汽车", "car", 545],
+      ];
+  return (
+    objects
+      .map(
+        ([name, asset, x]) =>
+          `<rect x="${x - 65}" y="65" width="130" height="150" rx="16" fill="#e7efd9"/><image class="observation-illustration" data-object="${asset}" href="./public/assets/observation/${asset}.webp" x="${x - 56}" y="72" width="112" height="112" preserveAspectRatio="xMidYMid meet"/><text class="observation-object-label" x="${x}" y="205" text-anchor="middle">${name}</text>`,
+      )
+      .join("") +
+    (field
+      ? '<rect x="340" y="65" width="260" height="150" rx="8" fill="#fff7de" stroke="#a89466" stroke-width="3"/><text x="360" y="100">观察记录</text><text x="360" y="130">地点：向阳花坛</text><text x="360" y="160">叶片：细长</text><text x="360" y="190">日期、数量：逐次记录</text>'
+      : '<text x="320" y="260" text-anchor="middle">点一张图，再看看下方的观察小记吧！</text>')
+  );
+}
 function world() {
   return `<rect x="12" y="12" width="616" height="274" rx="20" fill="#d8edf1"/><path d="M20 153H620" stroke="#a86152" stroke-dasharray="6 5"/><text x="20" y="148">赤道</text>${[
     [85, 65, "北美洲"],
@@ -311,10 +341,9 @@ export function scienceVisual(q, selected = "", frame = 0, earthMode = "spin") {
     caption = "教学简图，形状、大小和距离不按真实比例。";
   const v = q.visual;
   if (v === "stimulus") {
-    const reacted = ["light", "response"].includes(selected);
-    body = `<circle cx="525" cy="80" r="35" fill="#edc65d"/><text x="525" y="30" text-anchor="middle">光照</text><path d="M480 80 375 120" stroke="#dfbd52" stroke-width="5"/><rect x="230" y="235" width="70" height="35" fill="#b78659"/><path d="M265 235Q${reacted ? 285 : 265} 165 ${reacted ? 340 : 265} 120" fill="none" stroke="#578c50" stroke-width="10"/><ellipse cx="${reacted ? 330 : 265}" cy="130" rx="28" ry="12" fill="#82aa56"/><text x="320" y="295" text-anchor="middle">${reacted ? "受到光照后：幼苗向光生长" : "点太阳，观察幼苗向光生长的反应"}</text>`;
+    body = plantScene();
     caption =
-      "两幅状态压缩展示缓慢生长，不代表幼苗瞬间转头。光是刺激，向光生长是反应。";
+      "这是一株向日葵幼苗。先记住茎尖和叶片的位置，再改变光照或观察时间。";
   } else if (v === "division" && (!selected || selected === "division")) {
     body =
       '<circle cx="155" cy="150" r="48" fill="#edd9ed" stroke="#8d6798" stroke-width="4"/><circle cx="155" cy="150" r="13" fill="#9564ae"/><text x="300" y="160" font-size="40">→</text><circle cx="420" cy="150" r="42" fill="#edd9ed" stroke="#8d6798" stroke-width="4"/><circle cx="515" cy="150" r="42" fill="#edd9ed" stroke="#8d6798" stroke-width="4"/><circle cx="420" cy="150" r="12" fill="#9564ae"/><circle cx="515" cy="150" r="12" fill="#9564ae"/><text x="155" y="235" text-anchor="middle">一个细胞</text><text x="470" y="235" text-anchor="middle">两个细胞：数量增加</text>';
@@ -333,21 +362,11 @@ export function scienceVisual(q, selected = "", frame = 0, earthMode = "spin") {
   else if (v === "microscope")
     body =
       '<path d="M300 45 345 60 310 142 275 128Z" fill="#a9bac2" stroke="#425d69" stroke-width="4"/><path d="M320 95 Q420 125 385 230L275 230" fill="none" stroke="#698693" stroke-width="24"/><path d="M246 164H359M310 170V220M260 256H425" stroke="#415e66" stroke-width="12" stroke-linecap="round"/><path d="M296 211V179" stroke="#e1bc47" stroke-width="5"/><text x="355" y="49">目镜</text><text x="193" y="130">物镜</text><text x="380" y="169">载物台</text><text x="164" y="225">光经过标本 ↑</text>';
-  else if (["living", "field"].includes(v))
-    body = `${[
-      ["植物", "🌱", 95],
-      ["蜗牛", "🐌", 245],
-      ["石头", "◒", 395],
-      ["汽车", "▰", 545],
-    ]
-      .map(
-        ([t, icon, x]) =>
-          `<rect x="${x - 65}" y="65" width="130" height="150" rx="16" fill="#e7efd9"/><text x="${x}" y="140" text-anchor="middle" font-size="48">${icon}</text><text x="${x}" y="190" text-anchor="middle">${t}</text>`,
-      )
-      .join(
-        "",
-      )}<text x="320" y="260" text-anchor="middle">观察：生长、营养、呼吸、繁殖、对刺激作出反应……</text>`;
-  else if (v === "distance")
+  else if (["living", "field"].includes(v)) {
+    body = everydayObjects(v === "field");
+    caption =
+      "图片帮助我们观察外形，不代表真实大小比例。点图片或同名按钮，就能看到下方的观察小记。";
+  } else if (v === "distance")
     body =
       '<text x="320" y="45" text-anchor="middle">图上每1厘米代表实地20米</text><path d="M110 130H530M110 110v40m140-40v40m140-40v40m140-40v40" stroke="#547f8c" stroke-width="5"/><text x="155" y="190">20米</text><text x="295" y="190">20米</text><text x="435" y="190">20米</text><text x="320" y="260" text-anchor="middle">图上3厘米 → 实地60米</text>';
   else if (v === "globe")
@@ -393,10 +412,6 @@ export function scienceVisual(q, selected = "", frame = 0, earthMode = "spin") {
     caption =
       "公转及地轴倾斜共同影响四季。图中轨道、地球和太阳的大小、距离均不按比例；四季不是简单由离太阳远近决定。";
   }
-  if (v === "field") {
-    body =
-      '<rect x="30" y="65" width="130" height="150" rx="16" fill="#e7efd9"/><text x="95" y="140" text-anchor="middle" font-size="48">🌱</text><text x="95" y="190" text-anchor="middle">校园植物</text><rect x="180" y="65" width="130" height="150" rx="16" fill="#e7efd9"/><text x="245" y="140" text-anchor="middle" font-size="48">🐌</text><text x="245" y="190" text-anchor="middle">潮湿角落</text><rect x="340" y="65" width="260" height="150" rx="8" fill="#fff7de" stroke="#a89466" stroke-width="3"/><text x="360" y="100">观察记录</text><text x="360" y="130">地点：向阳花坛</text><text x="360" y="160">叶片：细长</text><text x="360" y="190">日期、数量：逐次记录</text>';
-  }
   if (v === "oceans") {
     body =
       '<rect x="40" y="25" width="560" height="65" fill="#c5d4a1"/><rect x="40" y="25" width="398" height="65" fill="#70a9bd"/><text x="230" y="65" text-anchor="middle">海洋约71%</text><text x="520" y="65" text-anchor="middle">陆地约29%</text><rect x="40" y="125" width="560" height="150" fill="#cfe5ec"/><ellipse cx="150" cy="190" rx="35" ry="28" fill="#99b575"/><path d="M275 125H440V155H385V215H340V155H275Z" fill="#99b575"/><path d="M460 125H495V190H460ZM530 200H570V275H530Z" fill="#99b575"/><text x="150" y="252" text-anchor="middle">岛屿：四面环水</text><text x="355" y="252" text-anchor="middle">半岛：一面连陆</text><text x="515" y="295" text-anchor="middle">海峡：狭窄水道</text>';
@@ -409,7 +424,9 @@ export function scienceVisual(q, selected = "", frame = 0, earthMode = "spin") {
     const shape = geometry(v, selected, earthMode);
     if (shape)
       body +=
-        '<g class="region-highlight" fill="none" stroke="#dd8a30" stroke-width="5" stroke-dasharray="8 4">' +
+        '<g class="region-highlight" data-highlight="' +
+        E(selected) +
+        '" fill="none" stroke="#dd8a30" stroke-width="5" stroke-dasharray="8 4">' +
         shape +
         "</g>";
   }
@@ -440,5 +457,5 @@ export function scienceVisual(q, selected = "", frame = 0, earthMode = "spin") {
   const parts = diagramParts(q),
     chosen = parts.find((p) => p[0] === selected);
   const hasLab = ["rotation", "globe", "continents"].includes(v);
-  return `<section class="science-diagram"><h3>先看图，点一个线索</h3>${hasLab ? earthLabHTML() + '<details id="earthReference"><summary>查看本题关系简图</summary>' : ""}<svg viewBox="0 0 640 310" role="img" aria-label="${E(q.topic)}教学图示">${body}</svg><p class="caption">${caption}</p>${v === "rotation" ? `<div class="actions"><button id="rotateEarth">↶ ${earthMode === "orbit" ? "沿轨道走一格" : "让观察点转动一格"}</button><button id="earthMode">${earthMode === "orbit" ? "看自转与昼夜" : "看公转与地轴"}</button></div>` : ""}${hasLab ? "</details>" : ""}<div class="diagram-parts">${parts.map(([id, name]) => `<button data-region="${id}" aria-pressed="${selected === id}">${E(name)}</button>`).join("")}</div><p class="diagram-caption" role="status">${chosen ? E(chosen[1] + "：" + chosen[2]) : "点上方标签，图示旁会出现名称和一句白话解释。"}</p></section>`;
+  return `<section class="science-diagram"><h3>先看图，点一个线索</h3>${hasLab ? earthLabHTML() + '<details id="earthReference"><summary>查看本题关系简图</summary>' : ""}<svg viewBox="0 0 640 310" role="img" aria-label="${E(q.topic)}教学图示">${body}</svg><p class="caption">${caption}</p>${v === "stimulus" ? plantControls() : ""}${v === "rotation" ? `<div class="actions"><button id="rotateEarth">↶ ${earthMode === "orbit" ? "沿轨道走一格" : "让观察点转动一格"}</button><button id="earthMode">${earthMode === "orbit" ? "看自转与昼夜" : "看公转与地轴"}</button></div>` : ""}${hasLab ? "</details>" : ""}<div class="diagram-parts">${parts.map(([id, name]) => `<button data-region="${id}" aria-pressed="${selected === id}">${E(name)}</button>`).join("")}</div><p class="diagram-caption" role="status">${chosen ? "<strong>" + E(chosen[1]) + " · 观察小记</strong><span>" + E(chosen[2]) + "</span>" : "点图片或下方同名按钮，这里会出现它的观察小记。"}</p></section>`;
 }
