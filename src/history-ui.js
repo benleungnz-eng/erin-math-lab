@@ -102,16 +102,16 @@ export function createHistoryUI({
         });
         main.querySelector(`#historyCheck${i}`).textContent = `第${i + 1}空`;
       };
-      input.oncompositionstart = () => {
+      input.addEventListener("compositionstart", () => {
         composing = true;
-      };
+      });
       input.oninput = (e) => {
         if (!e.isComposing) save();
       };
-      input.oncompositionend = () => {
+      input.addEventListener("compositionend", () => {
         composing = false;
         save();
-      };
+      });
     });
     main.querySelector("#historyForm").onsubmit = async (e) => {
       e.preventDefault();
