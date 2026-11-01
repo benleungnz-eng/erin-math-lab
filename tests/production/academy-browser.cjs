@@ -220,12 +220,12 @@ const fs = require("node:fs");
   assert.equal(d.academy.science.nextDay.biology, 7);
   assert.equal(d.academy.science.nextDay.geography, 7);
   assert.equal(Object.keys(d.academy.science.sessions).length, 28);
-  assert.equal(d.academy.unlocked.length, 12);
-  assert.equal(d.academy.stars, 19);
+  assert.equal(d.academy.unlocked.length, 13);
+  assert.equal(d.academy.stars, 18);
   await page.locator('[data-view="home"]').tap();
   assert.equal(
     await page.locator("[data-partner]:not([disabled])").count(),
-    12,
+    13,
   );
   await page.locator("#start").tap();
   await page.waitForSelector("#submitAnswer");
@@ -266,7 +266,7 @@ const fs = require("node:fs");
   await page.locator('[data-view="collection"]').tap();
   assert.equal(
     await page.locator("[data-partner]:not([disabled])").count(),
-    12,
+    13,
   );
   for (const width of [375, 390, 768, 820, 1024, 1180]) {
     await page.setViewportSize({ width, height: 1024 });

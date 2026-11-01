@@ -12,6 +12,7 @@ export const partners = [
   ["moss", "苔点", "block", "#78945f", "观察，标记，再前进"],
   ["bell", "铃幕", "circus", "#b27892", "欢迎来到小小发现秀"],
   ["pebble", "砾砾", "block", "#ac926c", "把陌生词拆成小块"],
+  ["blackegg", "黑色蛋仔", "bounce", "#303a49", "悄悄找到线索，再一起出发"],
 ].map(([id, name, kind, color, tagline]) => ({
   id,
   name,
@@ -215,16 +216,61 @@ export function chooseEffect(data, partnerId, event) {
   const key = partnerId + ":" + event,
     history = a.effects[key] || [],
     available = [0, 1, 2, 3].filter((i) => !history.includes(i));
-  const values = new Uint32Array(1);
+  const values = new Uint32Array(2);
   globalThis.crypto?.getRandomValues(values);
   const variant =
     available[(values[0] || Object.keys(a.effects).length) % available.length];
   a.effects[key] = [...history, variant].slice(-3);
-  return { state: eventStates[event] || "idle_default", variant };
+  const state = eventStates[event] || "idle_default";
+  // Track the actual raster independently of dialogue and shared event aliases.
+  const artKey = partnerId + ":art:" + rasterState(state);
+  const previousArt = a.effects[artKey]?.[0];
+  const artVariant =
+    previousArt === 0 || previousArt === 1 ? 1 - previousArt : values[1] % 2;
+  a.effects[artKey] = [artVariant];
+  return { state, variant, artVariant };
 }
+const blackEggPhrases = {
+  greet: [
+    "嘘，小侦探到位！今天查哪条线索？",
+    "黑色装备穿好了，脑袋可以慢慢热身。",
+    "我来啦！这次也一起破个小谜。",
+    "先碰个拳，再挑一科出发！",
+  ],
+  thinking: [
+    "让我把这条线索翻出来……",
+    "别看我一身黑，线索可要看清楚。",
+    "先认出一个关键词，谜题就松一点。",
+    "我们把条件排排队，谁也别偷跑。",
+  ],
+  wrong: [
+    "唔，这条路暂时没接通，换个线索试试。",
+    "侦探也会绕路呀，想法先留着。",
+    "这次没对上，咱们只检查这一小段。",
+    "答案还在躲猫猫，我陪你再找找。",
+  ],
+  retry: [
+    "启动小步模式！先把第一步拿稳。",
+    "不用硬猜，请讲解来帮忙也很聪明。",
+    "换条路线，我的白靴子已经准备好了。",
+    "先歇一下也行，线索不会偷偷跑掉。",
+  ],
+  correct: [
+    "逮到线索啦！这一空对上了！",
+    "嘿嘿，证据拼起来了！",
+    "漂亮，我的天线都替你翘起来了。",
+    "成功接上！给你一个侦探击掌！",
+  ],
+  complete: [
+    "线索收进小口袋，今天可以收工啦！",
+    "侦探小队完成一轮！提示队友也有功劳。",
+    "白靴子踩稳，今天的发现都带走。",
+    "下次回来继续查案，我给你留位置！",
+  ],
+};
 export function partnerLine(id, event, variant = 0, knowledge = "") {
   const p = partnerById(id),
-    pool = phrases[p.kind];
+    pool = p.id === "blackegg" ? blackEggPhrases : phrases[p.kind];
   const key = ["hint_light", "hint_step", "solution"].includes(event)
     ? "thinking"
     : ["excellent", "streak3", "streak5"].includes(event)
@@ -274,16 +320,25 @@ export function partnerLine(id, event, variant = 0, knowledge = "") {
   }
   return `${p.name}：${line}`;
 }
-// All original vector art. State names change facial expression, props, pose and semantic caption.
-export function partnerArt(id, state = "idle_default", variant = 0) {
-  const artState =
+// Generated raster poses are primary; vector art remains as the existing fallback.
+export function rasterState(state) {
+  return (
     {
       unlock_new_partner: "complete",
       bonus_complete: "correct_big",
       full_solution_react: "hint_step",
       streak_3: "correct_big",
       streak_5: "complete",
-    }[state] || (states.includes(state) ? state : "idle_default");
+    }[state] || (states.includes(state) ? state : "idle_default")
+  );
+}
+export function partnerArt(
+  id,
+  state = "idle_default",
+  variant = 0,
+  artVariant = 0,
+) {
+  const artState = rasterState(state) + (artVariant === 1 ? "-v2" : "");
   const p = partnerById(id),
     n = states.indexOf(state),
     happy = /correct|complete|streak|unlock/.test(state),

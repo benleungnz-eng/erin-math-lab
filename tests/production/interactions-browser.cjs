@@ -38,7 +38,7 @@ const { chromium } = require("playwright"),
       .count(),
     0,
   );
-  assert.equal(await page.locator(".partner-mystery").count(), 9);
+  assert.equal(await page.locator(".partner-mystery").count(), 10);
   assert.equal(
     await page
       .locator("[data-view=world],[data-view=studio],#homeBuild,#studioLink")
@@ -54,14 +54,30 @@ const { chromium } = require("playwright"),
   await page.locator("#bounceHome").tap();
   await get();
   await page.waitForFunction(() =>
-    document
-      .querySelector("#partnerStage .partner-raster")
-      .getAttribute("src")
-      .endsWith("/greet.webp"),
+    /\/greet(?:-v2)?\.webp$/.test(
+      document
+        .querySelector("#partnerStage .partner-raster")
+        .getAttribute("src"),
+    ),
   );
   assert.notEqual(
     await page.locator("#partnerStage .partner-raster").getAttribute("src"),
     idleSource,
+  );
+  await page
+    .locator("#partnerStage .partner-raster")
+    .evaluate((i) => i.decode());
+  const greetingOne = await page
+    .locator("#partnerStage .partner-raster")
+    .getAttribute("src");
+  await page.locator("#bounceHome").tap();
+  await get();
+  await page.waitForFunction(
+    (previous) =>
+      document
+        .querySelector("#partnerStage .partner-raster")
+        .getAttribute("src") !== previous,
+    greetingOne,
   );
   await page
     .locator("#partnerStage .partner-raster")
@@ -79,6 +95,17 @@ const { chromium } = require("playwright"),
       return r.top >= 0 && r.bottom <= innerHeight;
     }),
   );
+  await page.locator('[data-view="collection"]').click();
+  await page
+    .locator(".state-gallery img")
+    .first()
+    .waitFor({ state: "attached" });
+  assert.equal(await page.locator(".state-gallery img").count(), 20);
+  assert.equal(
+    await page.locator('.state-gallery img[src$="-v2.webp"]').count(),
+    10,
+  );
+  await page.locator("#backHome").click();
   await page.locator("#startBiology").tap();
   await page.waitForSelector("[data-science-choice]");
   const tapSvg = async (x, y) => {
@@ -332,15 +359,15 @@ const { chromium } = require("playwright"),
       "complete",
     ];
     for (const p of partners)
-      for (const s of poses) {
+      for (const s of poses.flatMap((s) => [s, s + "-v2"])) {
         const i = new Image();
         i.src = `./public/assets/partners/${p.id}/${s}.webp`;
         await i.decode();
         if (i.naturalWidth !== 320) throw Error(p.id + s);
       }
-    return 120;
+    return partners.length * poses.length * 2;
   });
-  assert.equal(loaded, 120);
+  assert.equal(loaded, 260);
   await page.waitForFunction(() =>
     document.querySelector("#offline").textContent.includes("离线已就绪"),
   );
@@ -389,7 +416,7 @@ const { chromium } = require("playwright"),
   await context.close();
   await browser.close();
   console.log(
-    "PASS 3 starter mystery roster, removed extras, direct touch hotspots, live light stimulus, relevant guide, four cities, real-time Sun/latitude/longitude drags, day/night spin, 120 decoded poses and offline globe",
+    "PASS 3 starter mystery roster, removed extras, direct touch hotspots, live light stimulus, relevant guide, four cities, real-time Sun/latitude/longitude drags, day/night spin, 260 decoded poses and offline globe",
   );
 })().catch((e) => {
   console.error(e);

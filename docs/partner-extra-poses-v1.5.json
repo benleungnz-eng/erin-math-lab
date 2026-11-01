@@ -1,0 +1,1184 @@
+{
+  "retainsOriginals": true,
+  "existingPosesPerPartner": 10,
+  "newPosesPerPartner": 10,
+  "partners": 13,
+  "poses": [
+    {
+      "id": "ling-idle_default",
+      "character": "ling",
+      "state": "idle_default",
+      "file": "./public/assets/partners/ling/idle_default-v2.webp",
+      "reference": "./public/assets/partners/ling/idle_default.webp",
+      "action": "Lounging on a low plain rock with one knee raised, gloved arms resting loosely, quietly confident sideways gaze."
+    },
+    {
+      "id": "ling-greet",
+      "character": "ling",
+      "state": "greet",
+      "file": "./public/assets/partners/ling/greet-v2.webp",
+      "reference": "./public/assets/partners/ling/idle_default.webp",
+      "action": "Three-quarter back turn with an over-the-shoulder nod and a restrained two-finger greeting, red-striped shoes braced apart."
+    },
+    {
+      "id": "ling-thinking",
+      "character": "ling",
+      "state": "thinking",
+      "file": "./public/assets/partners/ling/thinking-v2.webp",
+      "reference": "./public/assets/partners/ling/idle_default.webp",
+      "action": "Deep crouch with elbows resting on knees and chin lowered, intense thoughtful eyes, quills angled behind."
+    },
+    {
+      "id": "ling-hint_light",
+      "character": "ling",
+      "state": "hint_light",
+      "file": "./public/assets/partners/ling/hint_light-v2.webp",
+      "reference": "./public/assets/partners/ling/idle_default.webp",
+      "action": "Kneeling on one knee and tracing a simple non-letter curved line on a small blank sand tray with one finger, the other hand loosely folded."
+    },
+    {
+      "id": "ling-hint_step",
+      "character": "ling",
+      "state": "hint_step",
+      "file": "./public/assets/partners/ling/hint_step-v2.webp",
+      "reference": "./public/assets/partners/ling/idle_default.webp",
+      "action": "Seated leaning against a small plain rock, one leg stretched and one knee bent; open blank book balanced diagonally in one hand, other finger pointing to its page."
+    },
+    {
+      "id": "ling-correct_small",
+      "character": "ling",
+      "state": "correct_small",
+      "file": "./public/assets/partners/ling/correct_small-v2.webp",
+      "reference": "./public/assets/partners/ling/idle_default.webp",
+      "action": "Subtle sideways fist bump extended toward the viewer, body angled in profile and a tiny proud smirk; no thumbs-up."
+    },
+    {
+      "id": "ling-correct_big",
+      "character": "ling",
+      "state": "correct_big",
+      "file": "./public/assets/partners/ling/correct_big-v2.webp",
+      "reference": "./public/assets/partners/ling/idle_default.webp",
+      "action": "Airborne athletic half-turn with one knee tucked and one leg extended, gloved hands spread, joyous confident grin."
+    },
+    {
+      "id": "ling-wrong_soft",
+      "character": "ling",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/ling/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/ling/idle_default.webp",
+      "action": "Sitting with one knee up, gently offering an open palm at low height, soft understanding gaze instead of sternness."
+    },
+    {
+      "id": "ling-wrong_retry",
+      "character": "ling",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/ling/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/ling/idle_default.webp",
+      "action": "Forward-leaning sprint-ready stance with one shoe behind and a playful two-finger beckon, encouraging determined expression."
+    },
+    {
+      "id": "ling-complete",
+      "character": "ling",
+      "state": "complete",
+      "file": "./public/assets/partners/ling/complete-v2.webp",
+      "reference": "./public/assets/partners/ling/idle_default.webp",
+      "action": "Relaxed seated lean with legs stretched, both hands resting behind head, faint satisfied smile and peaceful eyes."
+    },
+    {
+      "id": "gu-idle_default",
+      "character": "gu",
+      "state": "idle_default",
+      "file": "./public/assets/partners/gu/idle_default-v2.webp",
+      "reference": "./public/assets/partners/gu/idle_default.webp",
+      "action": "Sitting low with short feet dangling from a tiny plain crate, hugging the satchel with a content rounded smile."
+    },
+    {
+      "id": "gu-greet",
+      "character": "gu",
+      "state": "greet",
+      "file": "./public/assets/partners/gu/greet-v2.webp",
+      "reference": "./public/assets/partners/gu/idle_default.webp",
+      "action": "Bouncing on one boot while both small arms swing in an exuberant greeting, goggles tilted slightly, delighted open smile."
+    },
+    {
+      "id": "gu-thinking",
+      "character": "gu",
+      "state": "thinking",
+      "file": "./public/assets/partners/gu/thinking-v2.webp",
+      "reference": "./public/assets/partners/gu/idle_default.webp",
+      "action": "Lying on belly, elbows propping up round face, goggles pushed to forehead, eyebrows curious and one boot kicked up."
+    },
+    {
+      "id": "gu-hint_light",
+      "character": "gu",
+      "state": "hint_light",
+      "file": "./public/assets/partners/gu/hint_light-v2.webp",
+      "reference": "./public/assets/partners/gu/idle_default.webp",
+      "action": "Crouching behind a large plain clue card and peeking through a rolled blank paper tube like a toy telescope, mischievous curious face."
+    },
+    {
+      "id": "gu-hint_step",
+      "character": "gu",
+      "state": "hint_step",
+      "file": "./public/assets/partners/gu/hint_step-v2.webp",
+      "reference": "./public/assets/partners/gu/idle_default.webp",
+      "action": "Sitting cross-legged on the floor with a large blank notebook lying open flat in front, leaning forward to tap a page with both round hands."
+    },
+    {
+      "id": "gu-correct_small",
+      "character": "gu",
+      "state": "correct_small",
+      "file": "./public/assets/partners/gu/correct_small-v2.webp",
+      "reference": "./public/assets/partners/gu/idle_default.webp",
+      "action": "Happy quick two-handed clap at chest height, cheeks lifted, body tilted onto one foot; no thumbs-up."
+    },
+    {
+      "id": "gu-correct_big",
+      "character": "gu",
+      "state": "correct_big",
+      "file": "./public/assets/partners/gu/correct_big-v2.webp",
+      "reference": "./public/assets/partners/gu/idle_default.webp",
+      "action": "Joyful round midair tumble with boots splayed and arms extended, delighted laughing face and goggles secure."
+    },
+    {
+      "id": "gu-wrong_soft",
+      "character": "gu",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/gu/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/gu/idle_default.webp",
+      "action": "Seated beside a few blank cards, holding one toward the viewer with a gentle puzzled smile and relaxed feet."
+    },
+    {
+      "id": "gu-wrong_retry",
+      "character": "gu",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/gu/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/gu/idle_default.webp",
+      "action": "A tiny low ready-to-bounce pose, one hand adjusting goggles and the other gesturing forward, encouraging grin."
+    },
+    {
+      "id": "gu-complete",
+      "character": "gu",
+      "state": "complete",
+      "file": "./public/assets/partners/gu/complete-v2.webp",
+      "reference": "./public/assets/partners/gu/idle_default.webp",
+      "action": "Lying comfortably on back with feet raised, hugging a little star-shaped cushion, dreamy relieved smile."
+    },
+    {
+      "id": "lu-idle_default",
+      "character": "lu",
+      "state": "idle_default",
+      "file": "./public/assets/partners/lu/idle_default-v2.webp",
+      "reference": "./public/assets/partners/lu/idle_default.webp",
+      "action": "Perched on one small cube block, squared knees bent, hands resting behind on the cube, relaxed friendly gaze."
+    },
+    {
+      "id": "lu-greet",
+      "character": "lu",
+      "state": "greet",
+      "file": "./public/assets/partners/lu/greet-v2.webp",
+      "reference": "./public/assets/partners/lu/idle_default.webp",
+      "action": "Half-kneeling beside two stacked blocks, offering a quick sideways salute while holding one more block at the hip."
+    },
+    {
+      "id": "lu-thinking",
+      "character": "lu",
+      "state": "thinking",
+      "file": "./public/assets/partners/lu/thinking-v2.webp",
+      "reference": "./public/assets/partners/lu/idle_default.webp",
+      "action": "Squatting beside three plain blocks, carefully testing a corner arrangement, tilted square head and focused eyes."
+    },
+    {
+      "id": "lu-hint_light",
+      "character": "lu",
+      "state": "hint_light",
+      "file": "./public/assets/partners/lu/hint_light-v2.webp",
+      "reference": "./public/assets/partners/lu/idle_default.webp",
+      "action": "Low wide crouch holding a small plain lantern at knee height and pointing with the other hand toward a simple blank tile."
+    },
+    {
+      "id": "lu-hint_step",
+      "character": "lu",
+      "state": "hint_step",
+      "file": "./public/assets/partners/lu/hint_step-v2.webp",
+      "reference": "./public/assets/partners/lu/idle_default.webp",
+      "action": "Sitting on a cube block with an open blank book balanced on raised square knees, one square hand turning a page in profile."
+    },
+    {
+      "id": "lu-correct_small",
+      "character": "lu",
+      "state": "correct_small",
+      "file": "./public/assets/partners/lu/correct_small-v2.webp",
+      "reference": "./public/assets/partners/lu/idle_default.webp",
+      "action": "Raising a tiny newly built block arch with both hands, delighted eyebrows and proud lopsided smile."
+    },
+    {
+      "id": "lu-correct_big",
+      "character": "lu",
+      "state": "correct_big",
+      "file": "./public/assets/partners/lu/correct_big-v2.webp",
+      "reference": "./public/assets/partners/lu/idle_default.webp",
+      "action": "Leaping over a low two-block stack, one fist raised, square boots stretched apart, excited triumphant expression."
+    },
+    {
+      "id": "lu-wrong_soft",
+      "character": "lu",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/lu/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/lu/idle_default.webp",
+      "action": "Crouching beside three toppled blocks and gently placing the first one upright, thoughtful kind expression."
+    },
+    {
+      "id": "lu-wrong_retry",
+      "character": "lu",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/lu/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/lu/idle_default.webp",
+      "action": "Braced wide-legged stance using both square hands to push a single plain block into place, determined cheerful face."
+    },
+    {
+      "id": "lu-complete",
+      "character": "lu",
+      "state": "complete",
+      "file": "./public/assets/partners/lu/complete-v2.webp",
+      "reference": "./public/assets/partners/lu/idle_default.webp",
+      "action": "Sitting on a low finished block wall with legs dangling, giving a relaxed small wave and a contented smile."
+    },
+    {
+      "id": "kirby-idle_default",
+      "character": "kirby",
+      "state": "idle_default",
+      "file": "./public/assets/partners/kirby/idle_default-v2.webp",
+      "reference": "./public/assets/partners/kirby/idle_default.webp",
+      "action": "Kirby in a green sleeping cap sits on a blue pillow holding a toy star, drowsy gentle expression.",
+      "generationReferenceMode": "New illustration using character and ability description; original portrait retained as identity reference in this manifest."
+    },
+    {
+      "id": "kirby-greet",
+      "character": "kirby",
+      "state": "greet",
+      "file": "./public/assets/partners/kirby/greet-v2.webp",
+      "reference": "./public/assets/partners/kirby/idle_default.webp",
+      "action": "Little hovering bounce with short arms fluttering at two different heights, red feet tucked, delighted welcoming face."
+    },
+    {
+      "id": "kirby-thinking",
+      "character": "kirby",
+      "state": "thinking",
+      "file": "./public/assets/partners/kirby/thinking-v2.webp",
+      "reference": "./public/assets/partners/kirby/idle_default.webp",
+      "action": "Playfully tilted almost upside down on one side, one tiny hand tapping cheek, big eyes looking upward in puzzlement."
+    },
+    {
+      "id": "kirby-hint_light",
+      "character": "kirby",
+      "state": "hint_light",
+      "file": "./public/assets/partners/kirby/hint_light-v2.webp",
+      "reference": "./public/assets/partners/kirby/idle_default.webp",
+      "action": "Lying flat on belly and squinting curiously at a tiny gold star held in both hands close to the face."
+    },
+    {
+      "id": "kirby-hint_step",
+      "character": "kirby",
+      "state": "hint_step",
+      "file": "./public/assets/partners/kirby/hint_step-v2.webp",
+      "reference": "./public/assets/partners/kirby/idle_default.webp",
+      "action": "Kirby wears a blue star wizard hat beside a wooden book lectern, reading a blank storybook and pointing to a page with a short star wand.",
+      "generationReferenceMode": "New illustration using character and ability description; original portrait retained as identity reference in this manifest."
+    },
+    {
+      "id": "kirby-correct_small",
+      "character": "kirby",
+      "state": "correct_small",
+      "file": "./public/assets/partners/kirby/correct_small-v2.webp",
+      "reference": "./public/assets/partners/kirby/idle_default.webp",
+      "action": "Beam Kirby in a red-and-yellow jester cap balances sideways on one red foot, winks proudly and raises a star wand in a congratulatory flourish.",
+      "generationReferenceMode": "New illustration using character and ability description; original portrait retained as identity reference in this manifest."
+    },
+    {
+      "id": "kirby-correct_big",
+      "character": "kirby",
+      "state": "correct_big",
+      "file": "./public/assets/partners/kirby/correct_big-v2.webp",
+      "reference": "./public/assets/partners/kirby/idle_default.webp",
+      "action": "Sword Kirby in a green cap does a happy sideways victory jump, holding a golden star-tipped toy sword away and down.",
+      "generationReferenceMode": "New illustration using character and ability description; original portrait retained as identity reference in this manifest."
+    },
+    {
+      "id": "kirby-wrong_soft",
+      "character": "kirby",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/kirby/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/kirby/idle_default.webp",
+      "action": "Sitting squished low while gently presenting one plain puzzle piece, soft wondering eyes and a reassuring smile."
+    },
+    {
+      "id": "kirby-wrong_retry",
+      "character": "kirby",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/kirby/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/kirby/idle_default.webp",
+      "action": "Playful little sideways cartwheel moment with one red foot low and the other high, determined happy face."
+    },
+    {
+      "id": "kirby-complete",
+      "character": "kirby",
+      "state": "complete",
+      "file": "./public/assets/partners/kirby/complete-v2.webp",
+      "reference": "./public/assets/partners/kirby/idle_default.webp",
+      "action": "Floating curled on a tiny soft cloud-like cushion while hugging a small star, eyes peacefully smiling."
+    },
+    {
+      "id": "mario-idle_default",
+      "character": "mario",
+      "state": "idle_default",
+      "file": "./public/assets/partners/mario/idle_default-v2.webp",
+      "reference": "./public/assets/partners/mario/idle_default.webp",
+      "action": "Leaning one elbow on a small toolbox with ankles casually crossed, goggles on head, easy friendly smile."
+    },
+    {
+      "id": "mario-greet",
+      "character": "mario",
+      "state": "greet",
+      "file": "./public/assets/partners/mario/greet-v2.webp",
+      "reference": "./public/assets/partners/mario/idle_default.webp",
+      "action": "Half-kneeling by a tiny work tray, raising a plain wrench in greeting with an eager grin."
+    },
+    {
+      "id": "mario-thinking",
+      "character": "mario",
+      "state": "thinking",
+      "file": "./public/assets/partners/mario/thinking-v2.webp",
+      "reference": "./public/assets/partners/mario/idle_default.webp",
+      "action": "Lying on back, boots bent upward, studying a loose plain gear held above the face with concentrated eyebrows."
+    },
+    {
+      "id": "mario-hint_light",
+      "character": "mario",
+      "state": "hint_light",
+      "file": "./public/assets/partners/mario/hint_light-v2.webp",
+      "reference": "./public/assets/partners/mario/idle_default.webp",
+      "action": "Crouching sideways and checking one loose gear on a shallow tray through a magnifier, other hand balancing the tray."
+    },
+    {
+      "id": "mario-hint_step",
+      "character": "mario",
+      "state": "hint_step",
+      "file": "./public/assets/partners/mario/hint_step-v2.webp",
+      "reference": "./public/assets/partners/mario/idle_default.webp",
+      "action": "Seated on a low stool beside a wooden crate, open blank book on the crate; leaning sideward and pointing at a page with a pencil."
+    },
+    {
+      "id": "mario-correct_small",
+      "character": "mario",
+      "state": "correct_small",
+      "file": "./public/assets/partners/mario/correct_small-v2.webp",
+      "reference": "./public/assets/partners/mario/idle_default.webp",
+      "action": "Wiping forehead with a soft cloth while proudly holding a small gear in the other hand, relieved bright smile."
+    },
+    {
+      "id": "mario-correct_big",
+      "character": "mario",
+      "state": "correct_big",
+      "file": "./public/assets/partners/mario/correct_big-v2.webp",
+      "reference": "./public/assets/partners/mario/idle_default.webp",
+      "action": "Excited twisting hop while lifting a little three-gear wooden mechanism, bent knees and wide triumphant grin."
+    },
+    {
+      "id": "mario-wrong_soft",
+      "character": "mario",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/mario/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/mario/idle_default.webp",
+      "action": "Kneeling and offering an unassembled harmless wooden piece with both open palms, patient kind expression."
+    },
+    {
+      "id": "mario-wrong_retry",
+      "character": "mario",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/mario/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/mario/idle_default.webp",
+      "action": "Low ready-to-work lunge with one hand on toolbox and the other making an encouraging come-along gesture, sleeves unchanged."
+    },
+    {
+      "id": "mario-complete",
+      "character": "mario",
+      "state": "complete",
+      "file": "./public/assets/partners/mario/complete-v2.webp",
+      "reference": "./public/assets/partners/mario/idle_default.webp",
+      "action": "Sitting sprawled against a toolbox with both legs straight, cradling a plain mug and smiling contentedly."
+    },
+    {
+      "id": "yoshi-idle_default",
+      "character": "yoshi",
+      "state": "idle_default",
+      "file": "./public/assets/partners/yoshi/idle_default-v2.webp",
+      "reference": "./public/assets/partners/yoshi/idle_default.webp",
+      "action": "Crouched comfortably with tail curled around feet, holding a broad leaf gently and smiling softly."
+    },
+    {
+      "id": "yoshi-greet",
+      "character": "yoshi",
+      "state": "greet",
+      "file": "./public/assets/partners/yoshi/greet-v2.webp",
+      "reference": "./public/assets/partners/yoshi/idle_default.webp",
+      "action": "Cheerful sideways step with tail sweeping behind, one hand waving above a shoulder and mouth joyfully open."
+    },
+    {
+      "id": "yoshi-thinking",
+      "character": "yoshi",
+      "state": "thinking",
+      "file": "./public/assets/partners/yoshi/thinking-v2.webp",
+      "reference": "./public/assets/partners/yoshi/idle_default.webp",
+      "action": "Lying on belly with chin resting on stacked broad leaves, studying a blank little card with curious eyes."
+    },
+    {
+      "id": "yoshi-hint_light",
+      "character": "yoshi",
+      "state": "hint_light",
+      "file": "./public/assets/partners/yoshi/hint_light-v2.webp",
+      "reference": "./public/assets/partners/yoshi/idle_default.webp",
+      "action": "Stretching neck around a curved small branch to inspect a tiny bud, one foot lifted in a careful balancing pose."
+    },
+    {
+      "id": "yoshi-hint_step",
+      "character": "yoshi",
+      "state": "hint_step",
+      "file": "./public/assets/partners/yoshi/hint_step-v2.webp",
+      "reference": "./public/assets/partners/yoshi/idle_default.webp",
+      "action": "Sitting cross-legged with tail stretched to one side and open blank book on lap, one hand following the page slowly."
+    },
+    {
+      "id": "yoshi-correct_small",
+      "character": "yoshi",
+      "state": "correct_small",
+      "file": "./public/assets/partners/yoshi/correct_small-v2.webp",
+      "reference": "./public/assets/partners/yoshi/idle_default.webp",
+      "action": "Balancing a small plain star token on the tip of rounded nose, delighted crossed gaze and tiny proud grin."
+    },
+    {
+      "id": "yoshi-correct_big",
+      "character": "yoshi",
+      "state": "correct_big",
+      "file": "./public/assets/partners/yoshi/correct_big-v2.webp",
+      "reference": "./public/assets/partners/yoshi/idle_default.webp",
+      "action": "Playful high hop with knees tucked and tail curled, hands lifted and eyes smiling with excitement."
+    },
+    {
+      "id": "yoshi-wrong_soft",
+      "character": "yoshi",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/yoshi/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/yoshi/idle_default.webp",
+      "action": "Lowering head gently while offering a tiny potted seedling, soft caring eyes and relaxed shoulders."
+    },
+    {
+      "id": "yoshi-wrong_retry",
+      "character": "yoshi",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/yoshi/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/yoshi/idle_default.webp",
+      "action": "Forward crouch ready for a little hop, one foot raised and one hand pointing onward with an encouraging grin."
+    },
+    {
+      "id": "yoshi-complete",
+      "character": "yoshi",
+      "state": "complete",
+      "file": "./public/assets/partners/yoshi/complete-v2.webp",
+      "reference": "./public/assets/partners/yoshi/idle_default.webp",
+      "action": "Lying on back with tail curled as a rest, holding a broad leaf like a little sunshade, peaceful relieved smile."
+    },
+    {
+      "id": "gen-idle_default",
+      "character": "gen",
+      "state": "idle_default",
+      "file": "./public/assets/partners/gen/idle_default-v2.webp",
+      "reference": "./public/assets/partners/gen/idle_default.webp",
+      "action": "Lanky lounging pose across a small plain crate, long legs loosely crossed, one arm dangling and a relaxed mischievous smirk."
+    },
+    {
+      "id": "gen-greet",
+      "character": "gen",
+      "state": "greet",
+      "file": "./public/assets/partners/gen/greet-v2.webp",
+      "reference": "./public/assets/partners/gen/idle_default.webp",
+      "action": "Exaggerated theatrical deep bow, one long arm sweeping outward and the other tucked behind, ears bent comically."
+    },
+    {
+      "id": "gen-thinking",
+      "character": "gen",
+      "state": "thinking",
+      "file": "./public/assets/partners/gen/thinking-v2.webp",
+      "reference": "./public/assets/partners/gen/idle_default.webp",
+      "action": "Sitting upside down with bent knees hooked over a low bench, one hand on chin, long ears dangling and puzzled half-lidded eyes."
+    },
+    {
+      "id": "gen-hint_light",
+      "character": "gen",
+      "state": "hint_light",
+      "file": "./public/assets/partners/gen/hint_light-v2.webp",
+      "reference": "./public/assets/partners/gen/idle_default.webp",
+      "action": "Tiptoeing in a sideways lean, holding one blank clue card secretly behind the back and presenting the other open palm with a sly grin."
+    },
+    {
+      "id": "gen-hint_step",
+      "character": "gen",
+      "state": "hint_step",
+      "file": "./public/assets/partners/gen/hint_step-v2.webp",
+      "reference": "./public/assets/partners/gen/idle_default.webp",
+      "action": "Sitting backward on a wooden chair, leaning over the backrest while holding an open blank book upside down and peeking around it with a harmless playful grin."
+    },
+    {
+      "id": "gen-correct_small",
+      "character": "gen",
+      "state": "correct_small",
+      "file": "./public/assets/partners/gen/correct_small-v2.webp",
+      "reference": "./public/assets/partners/gen/idle_default.webp",
+      "action": "Gentle exaggerated slow clap, shoulders leaning sideways and one eyebrow raised, amused but encouraging rather than mocking."
+    },
+    {
+      "id": "gen-correct_big",
+      "character": "gen",
+      "state": "correct_big",
+      "file": "./public/assets/partners/gen/correct_big-v2.webp",
+      "reference": "./public/assets/partners/gen/idle_default.webp",
+      "action": "Rubbery energetic sideways kick with both arms in jazz hands, ears flopped and a delighted toothy smile."
+    },
+    {
+      "id": "gen-wrong_soft",
+      "character": "gen",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/gen/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/gen/idle_default.webp",
+      "action": "One ear folded, head tilted while offering a plain puzzle piece with an unexpectedly gentle half-smile."
+    },
+    {
+      "id": "gen-wrong_retry",
+      "character": "gen",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/gen/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/gen/idle_default.webp",
+      "action": "Pulling a second blank card from overalls and presenting it with a jaunty weight shift, encouraging playful expression."
+    },
+    {
+      "id": "gen-complete",
+      "character": "gen",
+      "state": "complete",
+      "file": "./public/assets/partners/gen/complete-v2.webp",
+      "reference": "./public/assets/partners/gen/idle_default.webp",
+      "action": "Reclining on a crate with one ankle over a knee, holding a tiny plain medal casually at the side, satisfied relaxed grin."
+    },
+    {
+      "id": "prism-idle_default",
+      "character": "prism",
+      "state": "idle_default",
+      "file": "./public/assets/partners/prism/idle_default-v2.webp",
+      "reference": "./public/assets/partners/prism/idle_default.webp",
+      "action": "Balanced gentle toe-point pose with one hand steadying a jester-hat tip, calm curious smile and loose other arm."
+    },
+    {
+      "id": "prism-greet",
+      "character": "prism",
+      "state": "greet",
+      "file": "./public/assets/partners/prism/greet-v2.webp",
+      "reference": "./public/assets/partners/prism/idle_default.webp",
+      "action": "Half-curtsy with a sweeping arm and the other hand lifting one hat point, bright delighted greeting."
+    },
+    {
+      "id": "prism-thinking",
+      "character": "prism",
+      "state": "thinking",
+      "file": "./public/assets/partners/prism/thinking-v2.webp",
+      "reference": "./public/assets/partners/prism/idle_default.webp",
+      "action": "Seated sideways with head resting in one palm, other hand arranging three plain translucent prism-shaped props in a tray, thoughtful face."
+    },
+    {
+      "id": "prism-hint_light",
+      "character": "prism",
+      "state": "hint_light",
+      "file": "./public/assets/partners/prism/hint_light-v2.webp",
+      "reference": "./public/assets/partners/prism/idle_default.webp",
+      "action": "Crouched low looking through a small clear handheld prism, free hand shading eyes and curious mouth slightly open."
+    },
+    {
+      "id": "prism-hint_step",
+      "character": "prism",
+      "state": "hint_step",
+      "file": "./public/assets/partners/prism/hint_step-v2.webp",
+      "reference": "./public/assets/partners/prism/idle_default.webp",
+      "action": "Kneeling beside an angled low book stand, open blank book facing her; one hand holds a page and the other draws a small explanatory circle in the air."
+    },
+    {
+      "id": "prism-correct_small",
+      "character": "prism",
+      "state": "correct_small",
+      "file": "./public/assets/partners/prism/correct_small-v2.webp",
+      "reference": "./public/assets/partners/prism/idle_default.webp",
+      "action": "Spinning one blank triangular tile gently between fingers, one hip raised and eyes sparkling proudly."
+    },
+    {
+      "id": "prism-correct_big",
+      "character": "prism",
+      "state": "correct_big",
+      "file": "./public/assets/partners/prism/correct_big-v2.webp",
+      "reference": "./public/assets/partners/prism/idle_default.webp",
+      "action": "Joyful ballet-style leap with arms wide, colorful hat tips flaring outward and exuberant laughing face."
+    },
+    {
+      "id": "prism-wrong_soft",
+      "character": "prism",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/prism/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/prism/idle_default.webp",
+      "action": "Sitting with knees together and gently rearranging loose plain tiles, warm patient eyes and a small reassuring smile."
+    },
+    {
+      "id": "prism-wrong_retry",
+      "character": "prism",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/prism/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/prism/idle_default.webp",
+      "action": "Balancing on one toe while flipping a blank tile outward with a confident playful invitation to try again."
+    },
+    {
+      "id": "prism-complete",
+      "character": "prism",
+      "state": "complete",
+      "file": "./public/assets/partners/prism/complete-v2.webp",
+      "reference": "./public/assets/partners/prism/idle_default.webp",
+      "action": "Full graceful bow while holding the colorful jester hat at chest height, eyes smiling and hair identity unchanged."
+    },
+    {
+      "id": "comet-idle_default",
+      "character": "comet",
+      "state": "idle_default",
+      "file": "./public/assets/partners/comet/idle_default-v2.webp",
+      "reference": "./public/assets/partners/comet/idle_default.webp",
+      "action": "Seated with large tail wrapped around bent legs, paws resting on tail and a calm slightly shy smile."
+    },
+    {
+      "id": "comet-greet",
+      "character": "comet",
+      "state": "greet",
+      "file": "./public/assets/partners/comet/greet-v2.webp",
+      "reference": "./public/assets/partners/comet/idle_default.webp",
+      "action": "Playful little sideways skid with one paw lifted in greeting and the other holding starry cloak near the collar."
+    },
+    {
+      "id": "comet-thinking",
+      "character": "comet",
+      "state": "thinking",
+      "file": "./public/assets/partners/comet/thinking-v2.webp",
+      "reference": "./public/assets/partners/comet/idle_default.webp",
+      "action": "Lying flat on belly with nose close to a small plain compass, ears angled in concentration and paws bracketing it."
+    },
+    {
+      "id": "comet-hint_light",
+      "character": "comet",
+      "state": "hint_light",
+      "file": "./public/assets/partners/comet/hint_light-v2.webp",
+      "reference": "./public/assets/partners/comet/idle_default.webp",
+      "action": "Low crouch lifting a small plain lantern, starry cloak draped to one side and alert curious eyes."
+    },
+    {
+      "id": "comet-hint_step",
+      "character": "comet",
+      "state": "hint_step",
+      "file": "./public/assets/partners/comet/hint_step-v2.webp",
+      "reference": "./public/assets/partners/comet/idle_default.webp",
+      "action": "Lying comfortably on back using tail as a pillow, holding an open blank book above the face with both paws and reading with a focused grin."
+    },
+    {
+      "id": "comet-correct_small",
+      "character": "comet",
+      "state": "correct_small",
+      "file": "./public/assets/partners/comet/correct_small-v2.webp",
+      "reference": "./public/assets/partners/comet/idle_default.webp",
+      "action": "Offering a small warm paw fist bump at shoulder height, body turned sideways and eyes proudly smiling."
+    },
+    {
+      "id": "comet-correct_big",
+      "character": "comet",
+      "state": "correct_big",
+      "file": "./public/assets/partners/comet/correct_big-v2.webp",
+      "reference": "./public/assets/partners/comet/idle_default.webp",
+      "action": "Agile midair leap with starry cloak swirling and tail trailing, happy determined face in three-quarter profile."
+    },
+    {
+      "id": "comet-wrong_soft",
+      "character": "comet",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/comet/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/comet/idle_default.webp",
+      "action": "Kneeling low with tail curved around feet, offering an open paw with a gentle reassuring gaze."
+    },
+    {
+      "id": "comet-wrong_retry",
+      "character": "comet",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/comet/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/comet/idle_default.webp",
+      "action": "Poised start with one paw low and one foot forward, tail raised and eyes determined but friendly."
+    },
+    {
+      "id": "comet-complete",
+      "character": "comet",
+      "state": "complete",
+      "file": "./public/assets/partners/comet/complete-v2.webp",
+      "reference": "./public/assets/partners/comet/idle_default.webp",
+      "action": "Curled on the folded starry cloak using fluffy tail as a pillow, peaceful content eyes and relaxed ears."
+    },
+    {
+      "id": "moss-idle_default",
+      "character": "moss",
+      "state": "idle_default",
+      "file": "./public/assets/partners/moss/idle_default-v2.webp",
+      "reference": "./public/assets/partners/moss/idle_default.webp",
+      "action": "Sitting on a tiny stump with both boots together, leafy hood draping over shoulders and hands resting quietly on knees."
+    },
+    {
+      "id": "moss-greet",
+      "character": "moss",
+      "state": "greet",
+      "file": "./public/assets/partners/moss/greet-v2.webp",
+      "reference": "./public/assets/partners/moss/idle_default.webp",
+      "action": "Peeking around a short upright branch, one hand gripping the branch and the other waving shyly with a big smile."
+    },
+    {
+      "id": "moss-thinking",
+      "character": "moss",
+      "state": "thinking",
+      "file": "./public/assets/partners/moss/thinking-v2.webp",
+      "reference": "./public/assets/partners/moss/idle_default.webp",
+      "action": "Kneeling and arranging three different leaves, chin resting briefly on a knuckle and head tilted in thought."
+    },
+    {
+      "id": "moss-hint_light",
+      "character": "moss",
+      "state": "hint_light",
+      "file": "./public/assets/partners/moss/hint_light-v2.webp",
+      "reference": "./public/assets/partners/moss/idle_default.webp",
+      "action": "Lying prone and inspecting a small leaf closely with one hand cupped beside it, curious bright eyes and boots raised."
+    },
+    {
+      "id": "moss-hint_step",
+      "character": "moss",
+      "state": "hint_step",
+      "file": "./public/assets/partners/moss/hint_step-v2.webp",
+      "reference": "./public/assets/partners/moss/idle_default.webp",
+      "action": "Lying on one side with an elbow propping the head, open blank book on a flat leafy mat, other hand carefully turning a page."
+    },
+    {
+      "id": "moss-correct_small",
+      "character": "moss",
+      "state": "correct_small",
+      "file": "./public/assets/partners/moss/correct_small-v2.webp",
+      "reference": "./public/assets/partners/moss/idle_default.webp",
+      "action": "Lifting both little fists near the chest with a shy proud grin, shoulders tucked and one boot tip lifted."
+    },
+    {
+      "id": "moss-correct_big",
+      "character": "moss",
+      "state": "correct_big",
+      "file": "./public/assets/partners/moss/correct_big-v2.webp",
+      "reference": "./public/assets/partners/moss/idle_default.webp",
+      "action": "Joyful skipping jump with body twisting, leafy hood rustling and both arms swinging in opposite directions."
+    },
+    {
+      "id": "moss-wrong_soft",
+      "character": "moss",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/moss/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/moss/idle_default.webp",
+      "action": "Sitting low and offering a curled leaf in open hands, gentle puzzled eyes and a warm reassuring smile."
+    },
+    {
+      "id": "moss-wrong_retry",
+      "character": "moss",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/moss/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/moss/idle_default.webp",
+      "action": "Low squat finishing a bootlace adjustment with one foot already pointing forward, eager encouraging grin."
+    },
+    {
+      "id": "moss-complete",
+      "character": "moss",
+      "state": "complete",
+      "file": "./public/assets/partners/moss/complete-v2.webp",
+      "reference": "./public/assets/partners/moss/idle_default.webp",
+      "action": "Leaning against a short stump, holding a plain warm mug with both hands and smiling cozily."
+    },
+    {
+      "id": "bell-idle_default",
+      "character": "bell",
+      "state": "idle_default",
+      "file": "./public/assets/partners/bell/idle_default-v2.webp",
+      "reference": "./public/assets/partners/bell/idle_default.webp",
+      "action": "Sitting on a small round cushion with legs to one side, balancing one hat bell on a fingertip and smiling quietly."
+    },
+    {
+      "id": "bell-greet",
+      "character": "bell",
+      "state": "greet",
+      "file": "./public/assets/partners/bell/greet-v2.webp",
+      "reference": "./public/assets/partners/bell/idle_default.webp",
+      "action": "Sweeping circus curtsy with one foot extended and both arms arranged asymmetrically, delighted welcoming face."
+    },
+    {
+      "id": "bell-thinking",
+      "character": "bell",
+      "state": "thinking",
+      "file": "./public/assets/partners/bell/thinking-v2.webp",
+      "reference": "./public/assets/partners/bell/idle_default.webp",
+      "action": "Elbows resting on a low stage box, chin between both palms and eyes looking up thoughtfully beneath the red-gold hat."
+    },
+    {
+      "id": "bell-hint_light",
+      "character": "bell",
+      "state": "hint_light",
+      "file": "./public/assets/partners/bell/hint_light-v2.webp",
+      "reference": "./public/assets/partners/bell/idle_default.webp",
+      "action": "Tiptoeing and holding a tiny plain red curtain open to reveal one blank clue tile, excited conspiratorial smile."
+    },
+    {
+      "id": "bell-hint_step",
+      "character": "bell",
+      "state": "hint_step",
+      "file": "./public/assets/partners/bell/hint_step-v2.webp",
+      "reference": "./public/assets/partners/bell/idle_default.webp",
+      "action": "Seated with knees folded to one side, open blank book on lap and one hand making a flowing storyteller gesture."
+    },
+    {
+      "id": "bell-correct_small",
+      "character": "bell",
+      "state": "correct_small",
+      "file": "./public/assets/partners/bell/correct_small-v2.webp",
+      "reference": "./public/assets/partners/bell/idle_default.webp",
+      "action": "Delighted light clap near one cheek, head tilted sideways and one heel kicked gently back."
+    },
+    {
+      "id": "bell-correct_big",
+      "character": "bell",
+      "state": "correct_big",
+      "file": "./public/assets/partners/bell/correct_big-v2.webp",
+      "reference": "./public/assets/partners/bell/idle_default.webp",
+      "action": "Playful cartwheel pose with red-gold hat tips flowing, one hand low and boots high, cheerful confident expression."
+    },
+    {
+      "id": "bell-wrong_soft",
+      "character": "bell",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/bell/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/bell/idle_default.webp",
+      "action": "Kneeling with both palms open and a kind conspiratorial smile, body lowered as if meeting a learner at eye level."
+    },
+    {
+      "id": "bell-wrong_retry",
+      "character": "bell",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/bell/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/bell/idle_default.webp",
+      "action": "Jaunty toe-tap invitation while swinging a little plain ribbon in one hand, lively encouraging expression."
+    },
+    {
+      "id": "bell-complete",
+      "character": "bell",
+      "state": "complete",
+      "file": "./public/assets/partners/bell/complete-v2.webp",
+      "reference": "./public/assets/partners/bell/idle_default.webp",
+      "action": "Deep small bow while holding a plain gold bell in both hands at chest height, warm proud smile."
+    },
+    {
+      "id": "pebble-idle_default",
+      "character": "pebble",
+      "state": "idle_default",
+      "file": "./public/assets/partners/pebble/idle_default-v2.webp",
+      "reference": "./public/assets/partners/pebble/idle_default.webp",
+      "action": "Compact comfortable squat with stone hands resting on broad knees and softly glowing amber eyes."
+    },
+    {
+      "id": "pebble-greet",
+      "character": "pebble",
+      "state": "greet",
+      "file": "./public/assets/partners/pebble/greet-v2.webp",
+      "reference": "./public/assets/partners/pebble/idle_default.webp",
+      "action": "Cute stiff one-handed salute, square head tilted and one block foot lifting slightly in greeting."
+    },
+    {
+      "id": "pebble-thinking",
+      "character": "pebble",
+      "state": "thinking",
+      "file": "./public/assets/partners/pebble/thinking-v2.webp",
+      "reference": "./public/assets/partners/pebble/idle_default.webp",
+      "action": "Sitting upright with one hand rotating a plain wooden cube, square head turned to inspect it and eyes curious."
+    },
+    {
+      "id": "pebble-hint_light",
+      "character": "pebble",
+      "state": "hint_light",
+      "file": "./public/assets/partners/pebble/hint_light-v2.webp",
+      "reference": "./public/assets/partners/pebble/idle_default.webp",
+      "action": "Kneeling and holding a small plain triangular tile near glowing amber eyes, free block hand pointing to one corner."
+    },
+    {
+      "id": "pebble-hint_step",
+      "character": "pebble",
+      "state": "hint_step",
+      "file": "./public/assets/partners/pebble/hint_step-v2.webp",
+      "reference": "./public/assets/partners/pebble/idle_default.webp",
+      "action": "Sitting with both broad legs extended, open blank book between them; one block finger carefully turning a page and head bent in focus."
+    },
+    {
+      "id": "pebble-correct_small",
+      "character": "pebble",
+      "state": "correct_small",
+      "file": "./public/assets/partners/pebble/correct_small-v2.webp",
+      "reference": "./public/assets/partners/pebble/idle_default.webp",
+      "action": "Proud forward lean offering a sturdy gentle stone fist bump, warm amber eyes and teal collar visible."
+    },
+    {
+      "id": "pebble-correct_big",
+      "character": "pebble",
+      "state": "correct_big",
+      "file": "./public/assets/partners/pebble/correct_big-v2.webp",
+      "reference": "./public/assets/partners/pebble/idle_default.webp",
+      "action": "Small heavy-looking joyful hop with block arms lifted and square knees separated, bright happy eyes."
+    },
+    {
+      "id": "pebble-wrong_soft",
+      "character": "pebble",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/pebble/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/pebble/idle_default.webp",
+      "action": "Lowered one-knee kneel offering a loose harmless block on an open stone palm, soft caring eyes."
+    },
+    {
+      "id": "pebble-wrong_retry",
+      "character": "pebble",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/pebble/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/pebble/idle_default.webp",
+      "action": "Braced stance with one block foot forward, lifting the edge of a flat stone platform to reset it, determined encouraging eyes."
+    },
+    {
+      "id": "pebble-complete",
+      "character": "pebble",
+      "state": "complete",
+      "file": "./public/assets/partners/pebble/complete-v2.webp",
+      "reference": "./public/assets/partners/pebble/idle_default.webp",
+      "action": "Relaxed seated pose with stone hands folded on lap, broad feet out and amber eyes curved in calm satisfaction."
+    },
+    {
+      "id": "blackegg-idle_default",
+      "character": "blackegg",
+      "state": "idle_default",
+      "file": "./public/assets/partners/blackegg/idle_default-v2.webp",
+      "reference": "./public/assets/partners/blackegg/idle_default.webp",
+      "action": "Sitting with white heels together and both small arms hugging bent knees, turquoise eyes looking upward with a cozy smile."
+    },
+    {
+      "id": "blackegg-greet",
+      "character": "blackegg",
+      "state": "greet",
+      "file": "./public/assets/partners/blackegg/greet-v2.webp",
+      "reference": "./public/assets/partners/blackegg/idle_default.webp",
+      "action": "Sideways rolling bounce with one arm sweeping in greeting, antenna tilted and delighted mask-framed eyes."
+    },
+    {
+      "id": "blackegg-thinking",
+      "character": "blackegg",
+      "state": "thinking",
+      "file": "./public/assets/partners/blackegg/thinking-v2.webp",
+      "reference": "./public/assets/partners/blackegg/idle_default.webp",
+      "action": "Lying on belly with white boots raised behind, holding a blank clue card between both hands and thinking with a curious frown-free head tilt."
+    },
+    {
+      "id": "blackegg-hint_light",
+      "character": "blackegg",
+      "state": "hint_light",
+      "file": "./public/assets/partners/blackegg/hint_light-v2.webp",
+      "reference": "./public/assets/partners/blackegg/idle_default.webp",
+      "action": "Peeking mischievously from behind a large upright open blank book, holding one edge while the turquoise eyes look around it."
+    },
+    {
+      "id": "blackegg-hint_step",
+      "character": "blackegg",
+      "state": "hint_step",
+      "file": "./public/assets/partners/blackegg/hint_step-v2.webp",
+      "reference": "./public/assets/partners/blackegg/idle_default.webp",
+      "action": "Sitting cross-legged on a tiny plain cushion with a large open blank book propped upright in front; antenna tilted, one hand points to a page."
+    },
+    {
+      "id": "blackegg-correct_small",
+      "character": "blackegg",
+      "state": "correct_small",
+      "file": "./public/assets/partners/blackegg/correct_small-v2.webp",
+      "reference": "./public/assets/partners/blackegg/idle_default.webp",
+      "action": "Both hands raised toward the viewer for an enthusiastic double high-five, boots wide and a delighted open smile."
+    },
+    {
+      "id": "blackegg-correct_big",
+      "character": "blackegg",
+      "state": "correct_big",
+      "file": "./public/assets/partners/blackegg/correct_big-v2.webp",
+      "reference": "./public/assets/partners/blackegg/idle_default.webp",
+      "action": "Playful airborne somersault with white boots up and antenna curving with the motion, mask and turquoise eyes visible in three-quarter view."
+    },
+    {
+      "id": "blackegg-wrong_soft",
+      "character": "blackegg",
+      "state": "wrong_soft",
+      "file": "./public/assets/partners/blackegg/wrong_soft-v2.webp",
+      "reference": "./public/assets/partners/blackegg/idle_default.webp",
+      "action": "Curled seated pose holding a small blank puzzle piece close, gentle reassuring head tilt and relaxed white boots."
+    },
+    {
+      "id": "blackegg-wrong_retry",
+      "character": "blackegg",
+      "state": "wrong_retry",
+      "file": "./public/assets/partners/blackegg/wrong_retry-v2.webp",
+      "reference": "./public/assets/partners/blackegg/idle_default.webp",
+      "action": "Dramatic tiny detective half-step with one hand adjusting the edge of the eye mask and the other pointing onward, confident friendly grin."
+    },
+    {
+      "id": "blackegg-complete",
+      "character": "blackegg",
+      "state": "complete",
+      "file": "./public/assets/partners/blackegg/complete-v2.webp",
+      "reference": "./public/assets/partners/blackegg/idle_default.webp",
+      "action": "Lounging back with feet stretched and one hand behind head, a small plain gold star beside one boot, content relieved smile."
+    }
+  ],
+  "originalGitBlobHashes": {
+    "public/assets/partners/ling/idle_default.webp": "6008167499b333712dbd54771ae244692b675b76",
+    "public/assets/partners/ling/greet.webp": "c41f2a5c60e54a37ddb1d415369d895fc61f4390",
+    "public/assets/partners/ling/thinking.webp": "402eed89e4d83e1ca4620d4f2477b0ef131338cd",
+    "public/assets/partners/ling/hint_light.webp": "5954a8c4f0f4ebaf317be3a340f3f99a6d13e3a6",
+    "public/assets/partners/ling/hint_step.webp": "e56d97df971b9e0f59744e2df19d59298096ef8f",
+    "public/assets/partners/ling/correct_small.webp": "00f9c3ee753772405aa2d9ea72972da01958b7e8",
+    "public/assets/partners/ling/correct_big.webp": "fe9cfc443649f29af913813dc7f949da2f589a81",
+    "public/assets/partners/ling/wrong_soft.webp": "532e23b2414f2c518b323919513f1b2d96acee50",
+    "public/assets/partners/ling/wrong_retry.webp": "5ff8363b59ab986184c5221a188e0c42a954d54a",
+    "public/assets/partners/ling/complete.webp": "3375b8f981f7dcccdd6445901dee86351a9b3745",
+    "public/assets/partners/gu/idle_default.webp": "a5c373e4ab4a977a5e1099651677308d758f5ce0",
+    "public/assets/partners/gu/greet.webp": "130ce61e88ee9ab62946677eaceb0133bdedbd45",
+    "public/assets/partners/gu/thinking.webp": "9865e979301a6826e3c507301889fff1f5d76e0e",
+    "public/assets/partners/gu/hint_light.webp": "01893fc95f8b4d291692abec4d1f5058f70e9d6d",
+    "public/assets/partners/gu/hint_step.webp": "f0d10c0c0830e0603df445c70113b3ea74e01cf7",
+    "public/assets/partners/gu/correct_small.webp": "b33a899a9f189bb91683421e668a62049c45a44b",
+    "public/assets/partners/gu/correct_big.webp": "b8096da89bf30bb973256007ec38cd946ab4ba2e",
+    "public/assets/partners/gu/wrong_soft.webp": "50bc653f4748208512741f22866e40701a8d1084",
+    "public/assets/partners/gu/wrong_retry.webp": "6a8b9598caf23dcd16c0cf275071d38e7e2391a6",
+    "public/assets/partners/gu/complete.webp": "59ed426602d7d9e42ac99103c28af8e0882eb8c3",
+    "public/assets/partners/lu/idle_default.webp": "db14a98314095291414b1935687908b6b4e7088a",
+    "public/assets/partners/lu/greet.webp": "5645411cbcf39241b1e54cc652946da217ab7520",
+    "public/assets/partners/lu/thinking.webp": "dac0c528428d1ae6c886561aab05a879ddc8f16a",
+    "public/assets/partners/lu/hint_light.webp": "1bd9e73313fba30185307a2dbf88f1ac2f029b75",
+    "public/assets/partners/lu/hint_step.webp": "0bf85f12a79d577d8a30f4f8b7ccd8f5d695c0c5",
+    "public/assets/partners/lu/correct_small.webp": "783db7b59e1ece2c0bbf6910ac8ca6cdc418af8e",
+    "public/assets/partners/lu/correct_big.webp": "b1f4029072aa3a46f5a05ff4fead1023a287a767",
+    "public/assets/partners/lu/wrong_soft.webp": "91c4c6b9f076a6529b5db2341ea06887acbb4fe6",
+    "public/assets/partners/lu/wrong_retry.webp": "6018ecbeffcdb4b2c70be068ba633cf6a1fc2217",
+    "public/assets/partners/lu/complete.webp": "7169b9609a66377371cbec32950c5244e1ae13a9",
+    "public/assets/partners/kirby/idle_default.webp": "d4765d740cdde9b263257e41a68b4723cd7ca59f",
+    "public/assets/partners/kirby/greet.webp": "212937a3055f03b9829cb68643e313f05fba4a10",
+    "public/assets/partners/kirby/thinking.webp": "da866b22bfb3c433b5117c00b9f8b01b831e2bd9",
+    "public/assets/partners/kirby/hint_light.webp": "4026e64963b856688642fed67f29991ea9833aa9",
+    "public/assets/partners/kirby/hint_step.webp": "585b79e96a2d6cebc071f676216846cc6d51b109",
+    "public/assets/partners/kirby/correct_small.webp": "e0e1f40af60503d9f8d585700adf688119b6f6d0",
+    "public/assets/partners/kirby/correct_big.webp": "1ecd873cbc078c39b77bdcc69f4c0de8a37a2f85",
+    "public/assets/partners/kirby/wrong_soft.webp": "dbe0866991bae0a20010bc76e05359189cf87660",
+    "public/assets/partners/kirby/wrong_retry.webp": "6331c9a2b4ec2788a43c1b44f1af3b336c5c8dc7",
+    "public/assets/partners/kirby/complete.webp": "d59ebf64e90dc997fc0d0e7964f4df120feceae1",
+    "public/assets/partners/mario/idle_default.webp": "112014e7d5f6738b3be5dd41ab6fa27fb051e349",
+    "public/assets/partners/mario/greet.webp": "4dffe37c631ea49a802865ddef6b884b6963cea0",
+    "public/assets/partners/mario/thinking.webp": "2e27f3c62dd14daaaa2fd584e0c38b9fc5df12b8",
+    "public/assets/partners/mario/hint_light.webp": "ab6a019967a8ca0670ea890e11c718aee80d9e6e",
+    "public/assets/partners/mario/hint_step.webp": "8afe0bbad5eff19dafbbd5a20e32c99b8e4e0b6a",
+    "public/assets/partners/mario/correct_small.webp": "33d927eabf8cb988afa8b89405fa6b09a86121d5",
+    "public/assets/partners/mario/correct_big.webp": "da09de5fb530468e4eca8fe7cd76d7b8cfb6782b",
+    "public/assets/partners/mario/wrong_soft.webp": "f4f7ab5d71716598a92e2c1478f36f5eaf874481",
+    "public/assets/partners/mario/wrong_retry.webp": "6c10738ad68fb9df0eb5c9f2e52b261e17a4bebf",
+    "public/assets/partners/mario/complete.webp": "986fb4848560cd1cd2e4aa31f866da13574f41ea",
+    "public/assets/partners/yoshi/idle_default.webp": "2465908c8f4d0e4c071c7d08e49f64066c370f7a",
+    "public/assets/partners/yoshi/greet.webp": "e1fb253c8ca1016bf26e1dffbc82c920067d8122",
+    "public/assets/partners/yoshi/thinking.webp": "1395f9b3a7667a193d227bb24b22471e61d249f3",
+    "public/assets/partners/yoshi/hint_light.webp": "82e43c903b81d1a4afedaf3f6f63b2445902311d",
+    "public/assets/partners/yoshi/hint_step.webp": "bfe0715ae944fc79b97919d3607d0508f2a67276",
+    "public/assets/partners/yoshi/correct_small.webp": "62e47e8a4b57449af9cf9efb3e37d6130ffbd106",
+    "public/assets/partners/yoshi/correct_big.webp": "3385566225931e8b76e60cdcbd7b62259c46dc5e",
+    "public/assets/partners/yoshi/wrong_soft.webp": "ccbf85f1e9b35c8f2cfe8ee3d1e1de259e9aabac",
+    "public/assets/partners/yoshi/wrong_retry.webp": "9783087980734eafda519f1faed9dfa5b1d54404",
+    "public/assets/partners/yoshi/complete.webp": "db3592e47a66b6e4cab32759501199be5e225164",
+    "public/assets/partners/gen/idle_default.webp": "9f0d511c7a9765fac1d56ebd2e6f8f167deebeae",
+    "public/assets/partners/gen/greet.webp": "720e2327b4d9997887347eb48c0cb924869e83cf",
+    "public/assets/partners/gen/thinking.webp": "1853148ccdabad2eb81e3c9afc6cd704ef48e817",
+    "public/assets/partners/gen/hint_light.webp": "897d81d3880a22ba60c6f02ea6914757873bf438",
+    "public/assets/partners/gen/hint_step.webp": "421cde405c383986bf36e4e2aeeac5c2b91b893e",
+    "public/assets/partners/gen/correct_small.webp": "3acc255ad27c9ea8f0fbbf9d87a6f15ab0f9e1a5",
+    "public/assets/partners/gen/correct_big.webp": "0b05c7fd43ce5a9b0037de772353825c8a962330",
+    "public/assets/partners/gen/wrong_soft.webp": "3dc2c966ed9a3b6d29e20ba11ead9235f5ccf4a9",
+    "public/assets/partners/gen/wrong_retry.webp": "59289e459a147c017b36a13fee0d42dbe21715c2",
+    "public/assets/partners/gen/complete.webp": "399aa001d0f6b3378fd9aeab149b2d958b2b758b",
+    "public/assets/partners/prism/idle_default.webp": "de1062bb7859b94080eefec59091b0344863e582",
+    "public/assets/partners/prism/greet.webp": "4887ccf8dedb3bfb4af93c7b8e0b1a7499e8469d",
+    "public/assets/partners/prism/thinking.webp": "47e0e7f200ec7ea5fd649a4faf3078bf06ad1d8f",
+    "public/assets/partners/prism/hint_light.webp": "55f24959e65f260dae997387d1e92c2b24d0979a",
+    "public/assets/partners/prism/hint_step.webp": "e8c3beb02fa0f957eed6e6a04d5dd273bc16bbd2",
+    "public/assets/partners/prism/correct_small.webp": "b859fda46464f49ad2ab73c6ce84bedbbc3f646d",
+    "public/assets/partners/prism/correct_big.webp": "b1c17ca997b0cd1a4ddc30c4380782643b16911f",
+    "public/assets/partners/prism/wrong_soft.webp": "f9e2140270c7f2a4835ee6fec90c660cb3ba5a9c",
+    "public/assets/partners/prism/wrong_retry.webp": "f8dfb2d9ba989e80e224b64b083df2829b057e21",
+    "public/assets/partners/prism/complete.webp": "e2d9c44501cc188cce8bf85992b240e1c1c6a298",
+    "public/assets/partners/comet/idle_default.webp": "58411108b4524021f07265814dcef3e6d908effa",
+    "public/assets/partners/comet/greet.webp": "2bfd18924da2bdc2ae9e116c42117c9cb64d871e",
+    "public/assets/partners/comet/thinking.webp": "ca9024c7cacae0eb132bd2bbb012eb025c6d7b3a",
+    "public/assets/partners/comet/hint_light.webp": "6fc2fa330ffd4cd776ef9ed132b687d06fdfb11e",
+    "public/assets/partners/comet/hint_step.webp": "8454ef2825b62bb0d46c32327c68b0e9cd7ba10a",
+    "public/assets/partners/comet/correct_small.webp": "0eb91e52debc6054b68f3855d741b044d370dc77",
+    "public/assets/partners/comet/correct_big.webp": "53da33971d094b08408111b0c855e4b7281eef7a",
+    "public/assets/partners/comet/wrong_soft.webp": "7f92842f551e9b0762014d5dea142b1d1fc96bb0",
+    "public/assets/partners/comet/wrong_retry.webp": "d0f7766ef8c66dd9654e301ed1fcc049fd904909",
+    "public/assets/partners/comet/complete.webp": "14694e58f1f28ecd28ba0a324e8ecb4600afeda7",
+    "public/assets/partners/moss/idle_default.webp": "6f12666d0943b5665a9206f7ce95ba66c16540c1",
+    "public/assets/partners/moss/greet.webp": "90d43e89abc85376d9dea5d20d84b2764171aa6f",
+    "public/assets/partners/moss/thinking.webp": "97136faccc696ace7f3263d2342ea82a6ae45280",
+    "public/assets/partners/moss/hint_light.webp": "e9af347f1e2b8336b7e82c969183a6d2443c501c",
+    "public/assets/partners/moss/hint_step.webp": "1a6b0ed12fc2c9cc81202dd3ba43cd708473a7bb",
+    "public/assets/partners/moss/correct_small.webp": "638591a8fcb58de1657a16a72abeba010e6e8464",
+    "public/assets/partners/moss/correct_big.webp": "80786f5036bcfa0ce599dc490dd9d662f0c8e989",
+    "public/assets/partners/moss/wrong_soft.webp": "3b6534ec65a67428ffeec820219c5a5a3dca64f9",
+    "public/assets/partners/moss/wrong_retry.webp": "89f968593805620dd0649694d86924cb453695bb",
+    "public/assets/partners/moss/complete.webp": "16f275d8a8c7713d273754671286d0615a860eff",
+    "public/assets/partners/bell/idle_default.webp": "eda0508bb5b5724a9c6c7d7a961c70e5b4751667",
+    "public/assets/partners/bell/greet.webp": "affaa2d2cb239d3cc33db6fa4a657e66ab557e8c",
+    "public/assets/partners/bell/thinking.webp": "0b544e2992569cc79587d925cf524f3cbbde174a",
+    "public/assets/partners/bell/hint_light.webp": "25fafaa2dd64d6911674101e6d43a878a79c977b",
+    "public/assets/partners/bell/hint_step.webp": "56594ec6d80c8b3d0478a8805cb30e908abb318b",
+    "public/assets/partners/bell/correct_small.webp": "33c23bb71127e618935ead8665882d7395327017",
+    "public/assets/partners/bell/correct_big.webp": "5f71e75443179b2c543a993628f0afb3f37541de",
+    "public/assets/partners/bell/wrong_soft.webp": "a588c7ad67bb206b51ba9b70c50141ca8858ca66",
+    "public/assets/partners/bell/wrong_retry.webp": "b617a6e9c520e0ec6a09539c3cffb2b42b7e336e",
+    "public/assets/partners/bell/complete.webp": "2c29b9eefdcb4ca0fbfd8fc49c1c64482c3df653",
+    "public/assets/partners/pebble/idle_default.webp": "1502298e50c7c6c74013643825faa80cc45e3352",
+    "public/assets/partners/pebble/greet.webp": "6a61a981a738589093effa3947037cc5d0cc7b41",
+    "public/assets/partners/pebble/thinking.webp": "2f04724e1935ab051e01fc40def35c1b4012bf7c",
+    "public/assets/partners/pebble/hint_light.webp": "6742c986a21d273c5285d835283b22e053f0734c",
+    "public/assets/partners/pebble/hint_step.webp": "e771fe7ae9ca8f144ed918b9295ae9f1bc592db4",
+    "public/assets/partners/pebble/correct_small.webp": "6c18e30d0127799b2aaa85c71bbfd2503245a226",
+    "public/assets/partners/pebble/correct_big.webp": "d9d399dbbd3e359e236b510c74da8285cb6528d6",
+    "public/assets/partners/pebble/wrong_soft.webp": "50e4872e558d130dc42089a7ce7ea8901528e01b",
+    "public/assets/partners/pebble/wrong_retry.webp": "2e8081b1d266fb79fa534803bdfe0f07911bef4e",
+    "public/assets/partners/pebble/complete.webp": "e84ac7ca3a818fef4636dbec80405f2ab559b907",
+    "public/assets/partners/blackegg/idle_default.webp": "9c4d7896318c5d6b456e393c05442e5de0714712",
+    "public/assets/partners/blackegg/greet.webp": "7294a2581d0e829927d2f9e50ee53622a396fe46",
+    "public/assets/partners/blackegg/thinking.webp": "89bc8a8f812275192144f6ad9aa522ee46505b41",
+    "public/assets/partners/blackegg/hint_light.webp": "b04274863d38dc98066885a6641f66ecb3d4cb48",
+    "public/assets/partners/blackegg/hint_step.webp": "d900044c472030556f3dc4640891b49fff871921",
+    "public/assets/partners/blackegg/correct_small.webp": "09da89abe64f7c3a253dd8d64209cce65bbde76b",
+    "public/assets/partners/blackegg/correct_big.webp": "2c31fa2ac19a59144541fc6bfced197e514b4fb9",
+    "public/assets/partners/blackegg/wrong_soft.webp": "b05bb9718819a18343249d9bc1d746a9be17c825",
+    "public/assets/partners/blackegg/wrong_retry.webp": "183f6a0c842202c6705948efeb6e6efe82b14577",
+    "public/assets/partners/blackegg/complete.webp": "1a8a2dd51ddb394f062efe036ff9b3e056a8fa7a"
+  }
+}

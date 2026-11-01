@@ -40,10 +40,11 @@ export function awardPartner(data, s, subject = "math") {
   const a = migrateAcademy(data),
     key = `${subject}:${s.id}`;
   if (a.rewards[key]) return a.rewards[key];
-  // Prioritize the requested Jax without changing existing IDs or saved unlocks.
+  // The requested black egg is the next new unlock; keep Jax next and preserve all prior rewards.
   const next = [
+    partners.find((p) => p.id === "blackegg"),
     partners.find((p) => p.id === "gen"),
-    ...partners.filter((p) => p.id !== "gen"),
+    ...partners.filter((p) => !["blackegg", "gen"].includes(p.id)),
   ].find((p) => !a.unlocked.includes(p.id));
   const r = {
     subject,
@@ -164,7 +165,7 @@ export function validateAcademy(data) {
     (a.rosterVersion !== undefined && a.rosterVersion !== 2) ||
     (a.rosterResetFrom !== undefined &&
       (!Array.isArray(a.rosterResetFrom) ||
-        a.rosterResetFrom.length > 12 ||
+        a.rosterResetFrom.length > partners.length ||
         !a.rosterResetFrom.every(validId))) ||
     !Array.isArray(a.unlocked) ||
     new Set(a.unlocked).size !== a.unlocked.length ||
