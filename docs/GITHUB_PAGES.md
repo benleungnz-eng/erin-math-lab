@@ -38,19 +38,20 @@ npm ci → 公开文件扫描 → 格式 → 逻辑/构建测试 → build → d
 
 ## 当前环境权限与状态
 
-Git HTTPS读写已验证。GitHub管理API与Pages域名最初被云环境网络策略403拦截，所需域名已存入环境配置草稿：api.github.com、benleungnz-eng.github.io。需要环境设置保存/发布后重试。GitHub API认证尚不能据此判定有效或无效。
+Git HTTPS读写、GitHub仓库元数据及Actions日志读取现已恢复。已实际核实：仓库private=true、has_pages=false；远端工作流41259607211的verify任务全部通过，deploy在configure-pages报Pages未启用而失败。
 
-在管理API/站点访问恢复前，不能核实可见性、启用Pages、读取Actions日志或宣称URL已部署。后续以实际远端工作流状态和HTTP检查补充。本地测试结果不是远端发布成功。
+现有集成对公开仓库的PATCH和Pages创建/读取接口返回HTTP403（Resource not accessible by integration）。这是管理权限限制，不能用代码修改或重复运行解决。本会话没有电脑控制工具，无法复用用户本机已登录的浏览器。需由用户在设置中把仓库改Public并将Pages来源设为GitHub Actions，然后重新运行部署。没有创建付费服务。
 
 ## 公开内容与历史检查结果
 
 - 新 main 的当前文件已去除私人交接摘录、个人联系方式、诊断附件和旧部署账号地址；自动扫描覆盖已追踪文本与禁止文件类型。
 - 未发现密钥文件、学习备份或真实作答数据。运行资源只有HTML/CSS/JS、本地生成图片和图标。
-- 旧 production-v1 分支和 v1.0.0 标签曾发布早期背景说明；Git作者邮箱也在历史元数据中。这些旧引用没有被擅自删除或重写，当前文件扫描不应被解读为整个仓库历史已清洗。
-- 新main快照以原始main为父提交，不把旧production-v1历史并入main。若仓库仍为私有，公开前仍需仓库所有者审阅其他分支/标签和作者元数据。若需要清理旧发布引用，应单独批准，避免丢失版本回退依据。
+- 经用户明确批准，先创建并验证包含main、旧发布分支和标签完整历史的Git bundle，再删除远端production-v1分支和v1.0.0标签。备份仅保存在本地忽略目录artifacts/erin-before-pages-publication.bundle，未上传公开仓库。
+- 已核实远端只剩main、无标签。Git作者元数据仍保留，删除引用不等于GitHub服务器中所有缓存对象已被永久擦除。
+- 新main以原始main为父提交，没有引入旧production-v1的背景文档历史；未强制改写main。用户已授权公开，但API权限限制使可见性仍保持Private。
 
 ## 本地验证记录（v1.0.1）
 
 26 项逻辑/构建测试、19 个浏览器场景、6 个PWA恢复场景通过；增加同版本号资源修改后缓存标识变化的回归。构建清单验证相对路径、manifest、全量缓存资源与.nojekyll。现有学习数据库名字和schema未改动。
 
-本地构建与公开文件扫描通过不代表远端Actions已运行或Pages已上线。管理API与正式URL访问仍被环境策略阻断，后续以实际状态补充。
+远端Actions的测试与构建现已核实通过；Pages部署尚未成功。用户完成首次设置后，应重跑失败部署并核实正式URL，不能把测试通过当作上线。
