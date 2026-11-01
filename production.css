@@ -1252,6 +1252,117 @@ nav button[aria-pressed="true"] {
   height: auto;
   overflow: visible;
 }
+.partner-raster {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+.partner-mystery {
+  display: grid;
+  place-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 10px auto;
+  border: 2px dashed #a6a1bd;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 25% 25%, #faf4d4 0 3px, transparent 4px),
+    radial-gradient(circle at 75% 70%, #e0d7f2 0 5px, transparent 6px),
+    linear-gradient(135deg, #f7f1fb, #dfebe8);
+  color: #77618f;
+  font:
+    bold 58px Georgia,
+    serif;
+}
+.partner-art:has(.partner-raster) > svg {
+  display: none;
+}
+.diagram-hotspot {
+  cursor: pointer;
+}
+.diagram-hotspot:focus-visible {
+  stroke: #246c9b;
+  stroke-dasharray: 4 3;
+  outline: none;
+}
+.region-highlight {
+  pointer-events: none;
+}
+.earth-lab {
+  background: #182c40;
+  color: #eff5f4;
+  border-radius: 18px;
+  padding: 18px;
+  margin: 14px 0;
+}
+.earth-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: none;
+  border-radius: 12px;
+  cursor: grab;
+}
+.earth-canvas:active {
+  cursor: grabbing;
+}
+.earth-canvas:focus-visible {
+  outline: 3px solid #f1c658;
+}
+.earth-live {
+  background: #294457;
+  border-radius: 9px;
+  padding: 12px;
+  min-height: 3em;
+}
+.earth-place {
+  background: #36564c;
+  padding: 12px;
+  border-radius: 9px;
+  margin: 10px 0;
+}
+.earth-lab > label {
+  display: block;
+  margin: 14px 0;
+  color: #eff5f4;
+  font-size: 15px;
+}
+.earth-lab output {
+  color: #eff5f4;
+}
+.earth-lab input[type="checkbox"] {
+  display: inline-block;
+  min-height: 20px;
+  width: 20px;
+  vertical-align: middle;
+  padding: 0;
+  margin-right: 8px;
+}
+.earth-lab input[type="range"] {
+  width: min(240px, 70%);
+}
+.earth-lab output {
+  display: inline-block;
+  min-width: 110px;
+  padding-left: 8px;
+}
+.earth-lab button[aria-pressed="true"] {
+  background: #f2d073;
+  color: #172b3d;
+}
+.earth-lab button {
+  touch-action: manipulation;
+}
+.earth-lab .caption,
+.earth-lab details {
+  color: #d4e4e7;
+}
+.earth-lab input[type="range"] {
+  max-width: 100%;
+  vertical-align: middle;
+}
 .partner-stage {
   display: flex;
   align-items: center;
@@ -1375,6 +1486,51 @@ nav button[aria-pressed="true"] {
   height: auto;
   background: #fffdf6;
   border-radius: 14px;
+}
+.science-diagram svg text.observation-object-label {
+  font-size: 22px;
+  font-weight: 650;
+}
+.diagram-caption strong,
+.diagram-caption span {
+  display: block;
+}
+.diagram-caption strong {
+  margin-bottom: 8px;
+}
+.diagram-caption span {
+  font-size: 18px;
+  line-height: 1.8;
+}
+.plant-controls {
+  border: 1px solid #b5cba8;
+  background: #f4f8eb;
+  border-radius: 14px;
+  padding: 16px;
+  margin: 14px 0;
+}
+.plant-controls label {
+  font-size: 16px;
+  color: var(--ink);
+}
+.plant-controls input[type="range"] {
+  width: 100%;
+}
+.plant-status {
+  font-size: 17px;
+  line-height: 1.7;
+}
+.home-partner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+.home-partner #bounceHome {
+  align-self: center;
+}
+.home-partner .partner-stage.reacting .partner-art {
+  animation: none;
 }
 .science-diagram text {
   font-family: inherit;

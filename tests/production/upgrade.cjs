@@ -23,7 +23,7 @@ const fs = require("node:fs");
     });
   await page.goto(base);
   await page.waitForSelector("#start");
-  assert.equal(await page.locator("[data-partner]:not([disabled])").count(), 4);
+  assert.equal(await page.locator("[data-partner]:not([disabled])").count(), 3);
   await page.click("#start");
   let d = await get();
   let s = d.sessions[d.active];
@@ -111,17 +111,14 @@ const fs = require("node:fs");
   await parent.click('[data-view="reports"]');
   assert.match(await parent.locator(".report-metrics").textContent(), /2 题/);
   await parent.close();
-  await page.click('[data-view="studio"]');
-  await page.locator('[data-shot="0"]').selectOption("gu");
-  await get();
-  await page.reload();
-  await page.click('[data-view="studio"]');
-  assert.equal(await page.locator('[data-shot="0"]').inputValue(), "gu");
+  assert.equal(
+    await page.locator('[data-view="studio"],[data-view="world"]').count(),
+    0,
+  );
   await page.click('[data-view="settings"]');
   await page.click("#reduce");
-  await page.click('[data-view="studio"]');
-  await page.click("#playClip");
-  assert.match(await page.locator("#clipLabel").textContent(), /静态/);
+  await get();
+  assert.equal((await get()).prefs.reduced, true);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.click('[data-view="home"]');
   await page.screenshot({
@@ -129,7 +126,7 @@ const fs = require("node:fs");
     fullPage: true,
   });
   await page.setViewportSize({ width: 375, height: 812 });
-  for (const view of ["home", "reports", "studio", "world"]) {
+  for (const view of ["home", "reports", "collection", "progress"]) {
     await page.click(`[data-view="${view}"]`);
     assert.ok(
       await page.evaluate(
@@ -159,7 +156,7 @@ const fs = require("node:fs");
     "all requests same origin",
   );
   console.log(
-    "PASS upgrade: original partner collection, short correct feedback, explicit next, refresh safety, study status, file download, parent imports/dedup/rejection/persistence, student isolation, unlocked-partner studio, reduced motion, phone layout, offline reports",
+    "PASS upgrade: original partner collection, short correct feedback, explicit next, refresh safety, study status, file download, parent imports/dedup/rejection/persistence, student isolation, removed retired views, reduced motion, phone layout, offline reports",
   );
   await browser.close();
 })().catch((e) => {

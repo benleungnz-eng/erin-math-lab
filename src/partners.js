@@ -1,12 +1,12 @@
 import { escape as E } from "./components/visual.js";
 export const partners = [
-  ["ling", "棱夜", "shadow", "#73608d", "冷静，嘴硬但一直陪着你"],
-  ["gu", "团团", "bounce", "#e9b951", "我们一起试试！"],
+  ["ling", "Shadow", "shadow", "#73608d", "冷静，嘴硬但一直陪着你"],
+  ["gu", "蛋仔", "bounce", "#e9b951", "我们一起试试！"],
   ["lu", "格木", "block", "#599588", "一步一格，线索到位"],
-  ["kirby", "云芽", "bounce", "#d897b1", "慢一点，脑袋也要软着陆"],
+  ["kirby", "卡比 Kirby", "bounce", "#d897b1", "慢一点，脑袋也要软着陆"],
   ["mario", "齿轮", "block", "#c98258", "先把这一步装稳"],
   ["yoshi", "叶舟", "bounce", "#83a363", "一起找生命的小线索"],
-  ["gen", "谜弦", "circus", "#8d78b4", "线索登场，答案稍后揭幕"],
+  ["gen", "贾克斯 Jax", "circus", "#8d78b4", "嘿，线索可不会自己跳进答案里！"],
   ["prism", "棱镜", "circus", "#5b9cb7", "换个角度看世界"],
   ["comet", "尾星", "shadow", "#657aa5", "别慌，轨道还在"],
   ["moss", "苔点", "block", "#78945f", "观察，标记，再前进"],
@@ -276,6 +276,14 @@ export function partnerLine(id, event, variant = 0, knowledge = "") {
 }
 // All original vector art. State names change facial expression, props, pose and semantic caption.
 export function partnerArt(id, state = "idle_default", variant = 0) {
+  const artState =
+    {
+      unlock_new_partner: "complete",
+      bonus_complete: "correct_big",
+      full_solution_react: "hint_step",
+      streak_3: "correct_big",
+      streak_5: "complete",
+    }[state] || (states.includes(state) ? state : "idle_default");
   const p = partnerById(id),
     n = states.indexOf(state),
     happy = /correct|complete|streak|unlock/.test(state),
@@ -381,7 +389,7 @@ export function partnerArt(id, state = "idle_default", variant = 0) {
         : identity === 2
           ? '<path d="M86 59h18v13H86Z" fill="#fff3cc"/>'
           : '<path d="M85 69q10-24 20 0" fill="#fff3cc"/>';
-  return `<span class="partner-art kind-${p.kind} state-${E(state)} variant-${variant}" role="img" aria-label="${p.name} · ${labels[Math.max(n, 0)]}"><svg viewBox="0 0 190 195" aria-hidden="true"><ellipse cx="95" cy="179" rx="48" ry="7" fill="#26343818"/><g fill="${p.color}" stroke="#283740" stroke-width="3" stroke-linejoin="round">${body}<path d="M64 151 56 171 79 171M118 151 128 171 107 171"/><path class="partner-hand" d="M138 102 164 ${hint ? 65 : happy ? 54 : soft ? 120 : state === "greet" ? 62 : 108}" fill="none" stroke-width="10" stroke-linecap="round"/></g><g stroke="#263438" stroke-width="5" stroke-linecap="round" fill="none">${eyes}<path d="${mouth}" stroke-width="3"/></g>${p.kind === "shadow" ? '<path d="m65 80 15 5m30 0 15-5" stroke="#263438" stroke-width="3"/>' : ""}${emblem}<g class="state-prop"><circle cx="156" cy="41" r="22" fill="#fff8df" stroke="${p.color}" stroke-width="3"/><text x="156" y="49" text-anchor="middle" font-size="25" fill="#263438">${marks[Math.max(n, 0)]}</text></g>${props}</svg></span>`;
+  return `<span class="partner-art kind-${p.kind} state-${E(state)} variant-${variant}" role="img" aria-label="${p.name} · ${labels[Math.max(n, 0)]}"><img class="partner-raster" src="./public/assets/partners/${p.id}/${artState}.webp" alt="" width="320" height="320" decoding="async"><svg viewBox="0 0 190 195" aria-hidden="true"><ellipse cx="95" cy="179" rx="48" ry="7" fill="#26343818"/><g fill="${p.color}" stroke="#283740" stroke-width="3" stroke-linejoin="round">${body}<path d="M64 151 56 171 79 171M118 151 128 171 107 171"/><path class="partner-hand" d="M138 102 164 ${hint ? 65 : happy ? 54 : soft ? 120 : state === "greet" ? 62 : 108}" fill="none" stroke-width="10" stroke-linecap="round"/></g><g stroke="#263438" stroke-width="5" stroke-linecap="round" fill="none">${eyes}<path d="${mouth}" stroke-width="3"/></g>${p.kind === "shadow" ? '<path d="m65 80 15 5m30 0 15-5" stroke="#263438" stroke-width="3"/>' : ""}${emblem}<g class="state-prop"><circle cx="156" cy="41" r="22" fill="#fff8df" stroke="${p.color}" stroke-width="3"/><text x="156" y="49" text-anchor="middle" font-size="25" fill="#263438">${marks[Math.max(n, 0)]}</text></g>${props}</svg></span>`;
 }
 export function positiveEvent(records, index, keyQuestion = false) {
   const record = records[index];

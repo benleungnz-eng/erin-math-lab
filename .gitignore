@@ -5,6 +5,7 @@ artifacts/
 .env*
 playwright-report/
 test-results/
+.playwright-cli/
 
 # Student materials and learning backups never belong in source control.
 *.pdf

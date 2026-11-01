@@ -41,7 +41,7 @@ const fs = require("node:fs");
     await page.locator("#start,#startBiology,#startGeography").count(),
     3,
   );
-  assert.equal(await page.locator("[data-partner]:not([disabled])").count(), 4);
+  assert.equal(await page.locator("[data-partner]:not([disabled])").count(), 3);
   await page.locator('[data-partner="gu"]').tap();
   await page.waitForFunction(
     () =>
@@ -133,7 +133,7 @@ const fs = require("node:fs");
           await page.locator("#scienceStepFeedback").textContent(),
           /先点/,
         );
-        await page.locator("[data-region]").first().tap();
+        await page.locator("button[data-region]").first().tap();
         await page.locator("#checkScienceStep").tap();
         await page.waitForFunction(() =>
           document
@@ -155,11 +155,11 @@ const fs = require("node:fs");
         assert.equal((await current(sub)).records[0].errors, 2);
         assert.equal((await current(sub)).id, saved.id);
         await page.locator('[data-view="home"]').tap();
-        await page.locator('[data-partner="lu"]').tap();
+        await page.locator('[data-partner="kirby"]').tap();
         await page.waitForFunction(
           () =>
             document
-              .querySelector('[data-partner="lu"]')
+              .querySelector('[data-partner="kirby"]')
               .getAttribute("aria-pressed") === "true",
         );
         await page.locator("#startBiology").tap();
@@ -171,7 +171,7 @@ const fs = require("node:fs");
         await next(sub);
       }
       if (day === 3 && sub === "biology") {
-        await page.locator('[data-region="membrane"]').tap();
+        await page.locator('button[data-region="membrane"]').tap();
         await page.waitForFunction(() =>
           document
             .querySelector(".diagram-caption")
@@ -190,6 +190,7 @@ const fs = require("node:fs");
         });
       }
       if (day === 1 && sub === "geography") {
+        await page.locator("#earthReference > summary").tap();
         const svg = await page.locator(".science-diagram svg").innerHTML();
         await page.locator("#rotateEarth").tap();
         assert.notEqual(
@@ -220,7 +221,7 @@ const fs = require("node:fs");
   assert.equal(d.academy.science.nextDay.geography, 7);
   assert.equal(Object.keys(d.academy.science.sessions).length, 28);
   assert.equal(d.academy.unlocked.length, 12);
-  assert.equal(d.academy.stars, 20);
+  assert.equal(d.academy.stars, 19);
   await page.locator('[data-view="home"]').tap();
   assert.equal(
     await page.locator("[data-partner]:not([disabled])").count(),
@@ -324,7 +325,7 @@ const fs = require("node:fs");
     const { db } = await import("./src/app.js");
     return db.state;
   });
-  assert.equal(migrated.academy.unlocked.length, 7);
+  assert.equal(migrated.academy.unlocked.length, 3);
   assert.deepEqual(
     migrated.sessions[oldSnapshot.old.active].records,
     oldSnapshot.old.sessions[oldSnapshot.old.active].records,
@@ -344,7 +345,7 @@ const fs = require("node:fs");
   );
   await migrationContext.close();
   console.log(
-    "PASS real IndexedDB migration: old draft/input/inventory/clips and v1 parent report preserved, seven original slots restored",
+    "PASS real IndexedDB migration: old draft/input/inventory/clips and v1 parent report preserved, three starter partners restored without deleting legacy evidence",
   );
   assert.equal(errors.length, 0, errors.join("\n"));
   assert.ok(requests.every((u) => u.startsWith(new URL(base).origin)));
