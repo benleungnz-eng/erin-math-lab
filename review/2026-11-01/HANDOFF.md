@@ -1,5 +1,7 @@
 # Erin Math Lab 线上体验验收与角色资源交接
 
+> **最新补充优先：**用户随后授权修复，并明确移除基地/混剪台、隐藏未解锁身份、把已有解锁名单一次性重置为 Shadow／蛋仔／卡比3位；Jax为下一位新奖励。原声没有素材，尚未安装。现行修复交接和截图在[修复分支交接](https://github.com/benleungnz-eng/erin-math-lab/blob/fixes/erin-interactions-20261101/docs/INTERACTION_FIX_HANDOFF_20261101.md)，[草稿PR #1](https://github.com/benleungnz-eng/erin-math-lab/pull/1)。以下正文是改前正式站点的验收基线，不覆盖这些后续要求。
+
 验收日期：2026-11-01（Pacific/Auckland）。线上地址：https://benleungnz-eng.github.io/erin-math-lab/ 。页面显示 v1.2.0；检查时仓库 main 为 `e24adc313afecbe6e00a5af95c709921d8860119`。资源分支：`resources/erin-acceptance-20261101`。本交接没有修复或部署应用代码。
 
 **结论：学习流程可走通，角色表现和部分视觉教学未达到用户要求，不能以现有测试通过宣布体验验收通过。优先加入用户明确点名的《神奇数字马戏团》贾克斯 Jax。**

@@ -1,5 +1,9 @@
 # 学习搭档资源包
 
+最新ZIP已更新为实际卡比 Kirby 和实际贾克斯 Jax。初始开放 Shadow／蛋仔／卡比3位，Jax为下一次新奖励；其他角色显示统一问号。运行时已优化为本地WebP并接入[修复分支](https://github.com/benleungnz-eng/erin-math-lab/tree/fixes/erin-interactions-20261101)，没有部署。`concepts/`中的早期紫兔与云兔只是备查，不能当作Jax或Kirby使用。
+
+ZIP大小：52,155,494字节。SHA-256：`99b29e7407d9bdec104d7c1a4f0a0105528b26d419fd445a76c8940b121526f3`。
+
 最高优先级：**贾克斯 Jax，存储槽位 `gen`**。最终图为紫色长耳兔、黄色眼睛/手套、粉色背带裤的Jax，不是原来的紫色魔术兔概念稿。
 
 `erin-partner-assets-20261101.zip`：12位搭档各10张416×416透明PNG、12张原始5×2图集、manifest.json、完整生成提示词、preview.html、总览图。`concepts/`仅保留被Jax替换的早期概念稿，不作为正式角色。
