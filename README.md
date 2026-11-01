@@ -49,7 +49,7 @@ v0.1 的 `localStorage` 原始键不会被本版删除。设置中可导出旧�
 
 当前路线：提交到 main → GitHub Actions 安装锁定依赖、公开内容扫描、格式检查、26项逻辑/构建检查、生产构建、浏览器/PWA验收 → 部署 Pages。PR 只验证不部署，不使用其他托管平台。
 
-预定地址：`https://benleungnz-eng.github.io/erin-math-lab/`。请以仓库 Actions 中 deploy 的实际成功状态及 HTTP 检查为准，代码提交不代表站点已上线。免费 GitHub Pages 通常需要公开仓库；仓库可见性与 Pages 首次启用需具备管理权限。
+正式地址：**https://benleungnz-eng.github.io/erin-math-lab/**。仓库已公开、Pages已启用；Actions验证及部署成功，实际HTTPS与离线重开验收通过。广州家庭网络、iPad主屏幕与Pencil仍需真机验收。后续main提交自动测试、构建并发布，网址不变。
 
 所有资源使用相对路径，manifest start_url/scope 为 `./`；Service Worker 在 `/erin-math-lab/` 内工作。缓存标识包含构建内容哈希，未修改 package 版本的更新也能被发现。更新仅写 Cache Storage，不清理 IndexedDB 或 localStorage；不自动刷新未完成 session。
 

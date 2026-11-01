@@ -1,9 +1,9 @@
 # GitHub Pages 发布与验收
 
 目标仓库：`benleungnz-eng/erin-math-lab`；自动发布分支 main。
-预定网址：**https://benleungnz-eng.github.io/erin-math-lab/**
+正式网址：**https://benleungnz-eng.github.io/erin-math-lab/**
 
-网址只有在 Actions deploy 成功、HTTP 返回应用后才算已上线。不要把预定网址当成已验证结果。
+已核实仓库为Public且Pages已启用。工作流验证和部署均成功，正式HTTPS地址返回HTTP 200；云端Chromium的在线/离线验收通过。广州iPad真机仍需独立验收。
 
 ## 首次设置
 
@@ -36,11 +36,13 @@ npm ci → 公开文件扫描 → 格式 → 逻辑/构建测试 → build → d
 5. 缓存完成后断网、彻底关页，从图标重开，完成练习或建造。Pencil、横竖屏和画布外滚动需真机确认。
 6. 新版发布后联网打开，完成当前轮再点更新，确认历史、库存和基地均在。不要用清站点数据更新。
 
-## 当前环境权限与状态
+## 当前部署状态
 
-Git HTTPS读写、GitHub仓库元数据及Actions日志读取现已恢复。已实际核实：仓库private=true、has_pages=false；远端工作流41259607211的verify任务全部通过，deploy在configure-pages报Pages未启用而失败。
+仓库已由用户设置为Public，Pages来源设为GitHub Actions。重新运行工作流后verify和deploy均成功：[运行记录41260097772](https://github.com/benleungnz-eng/erin-math-lab/actions/runs/41260097772)。后续main提交仍按同一工作流自动验证及发布。
 
-现有集成对公开仓库的PATCH和Pages创建/读取接口返回HTTP403（Resource not accessible by integration）。这是管理权限限制，不能用代码修改或重复运行解决。本会话没有电脑控制工具，无法复用用户本机已登录的浏览器。需由用户在设置中把仓库改Public并将Pages来源设为GitHub Actions，然后重新运行部署。没有创建付费服务。
+正式地址已通过实际HTTPS浏览器验收：完整离线缓存、/erin-math-lab/范围、断网关闭后重开恢复相同题目与进度、离线完成基础五题、离线进入36格基地。检查的64次运行请求均同源，无失败资源响应或未捕获JS异常。没有操作真实学生设备或上传学习记录。
+
+集成仍缺少仓库可见性/Pages管理权限，但可以读取仓库与Actions记录、重跑任务和推送代码；日常自动部署使用工作流的Pages/OIDC权限，不需要提供个人Token。当前会话没有用户电脑控制工具，首次设置由用户在已登录浏览器完成。
 
 ## 公开内容与历史检查结果
 
@@ -48,10 +50,10 @@ Git HTTPS读写、GitHub仓库元数据及Actions日志读取现已恢复。已�
 - 未发现密钥文件、学习备份或真实作答数据。运行资源只有HTML/CSS/JS、本地生成图片和图标。
 - 经用户明确批准，先创建并验证包含main、旧发布分支和标签完整历史的Git bundle，再删除远端production-v1分支和v1.0.0标签。备份仅保存在本地忽略目录artifacts/erin-before-pages-publication.bundle，未上传公开仓库。
 - 已核实远端只剩main、无标签。Git作者元数据仍保留，删除引用不等于GitHub服务器中所有缓存对象已被永久擦除。
-- 新main以原始main为父提交，没有引入旧production-v1的背景文档历史；未强制改写main。用户已授权公开，但API权限限制使可见性仍保持Private。
+- 新main以原始main为父提交，没有引入旧production-v1的背景文档历史；未强制改写main。用户授权清理后，已在浏览器把仓库改为Public；当前可见性已通过API确认。
 
 ## 本地验证记录（v1.0.1）
 
 26 项逻辑/构建测试、19 个浏览器场景、6 个PWA恢复场景通过；增加同版本号资源修改后缓存标识变化的回归。构建清单验证相对路径、manifest、全量缓存资源与.nojekyll。现有学习数据库名字和schema未改动。
 
-远端Actions的测试与构建现已核实通过；Pages部署尚未成功。用户完成首次设置后，应重跑失败部署并核实正式URL，不能把测试通过当作上线。
+远端Actions测试、构建与Pages部署均已核实成功，正式URL的实际在线/离线验收已完成。自动化不代表广州iPad、Safari主屏幕或Pencil已实测。

@@ -88,3 +88,11 @@
 5. 断网、关闭并重开，继续练习/建造、生成分享文字；先导出备份再换域名或清数据。
 
 测试只能证明代码按这些场景工作，不能宣称单次操作已提高Erin的兴趣、理解或成绩。
+
+## GitHub Pages 实际部署验收补充（v1.0.1）
+
+正式地址 https://benleungnz-eng.github.io/erin-math-lab/ 已返回HTTP 200；仓库Public、has_pages=true。工作流41260097772的verify/deploy均成功。已在云端隔离Chromium profile执行真实HTTPS测试：完整缓存成功，manifest与SW范围为/erin-math-lab/，关闭页面后断网重开保留题目及学习内容，离线完成基础五题并进入36格基地。64次运行资源请求均同源，无失败资源响应/未捕获JS错误。
+
+证据位于本地忽略目录artifacts/pages-live/report.json、practice-ipad.png、offline-world.png；未提交合成学习备份。首次恢复测试对比忽略了“打开关卡”正常递增的内部revision，题目、记录、库存与基地等学习内容完全一致。没有清除学习数据库。
+
+这补充了历史报告中的平台部署待验项；真实广州网络、iPad Safari主屏幕、Apple Pencil与系统回收存储仍待设备验收，不据此宣称改善兴趣或成绩。
