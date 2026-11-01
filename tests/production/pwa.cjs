@@ -4,7 +4,7 @@ const http = require("node:http");
 const fs = require("node:fs");
 const path = require("node:path");
 (async () => {
-  let version = "1.1.1",
+  let version = "1.2.0",
     fail = true;
   const server = http.createServer((req, res) => {
     const pathname = new URL(req.url, "http://local").pathname;
@@ -42,7 +42,7 @@ const path = require("node:path");
     res.setHeader("Cache-Control", "no-store");
     let body = fs.readFileSync(target);
     if (file === "sw.js")
-      body = Buffer.from(body.toString().replaceAll("v1.1.1", "v" + version));
+      body = Buffer.from(body.toString().replaceAll("v1.2.0", "v" + version));
     res.end(body);
   });
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
@@ -70,7 +70,7 @@ const path = require("node:path");
   await page.evaluate(() => caches.open("other-app-sentinel"));
   await page.click("#start");
   await page.waitForSelector("#explain");
-  version = "1.1.2";
+  version = "1.2.1";
   await page.evaluate(async () => {
     const reg = await navigator.serviceWorker.getRegistration();
     await reg.update();
@@ -95,6 +95,16 @@ const path = require("node:path");
       await db.serial;
     });
   }
+  await page.waitForFunction(async () => {
+    const { db } = await import("./src/app.js");
+    const s = db.state.sessions[db.state.active];
+    const event = s.partnerReward?.partner
+      ? "unlock"
+      : s.stage
+        ? "bonus"
+        : "complete";
+    return db.state.academy.effects[`${s.partnerId}:${event}`]?.length > 0;
+  });
   const saved = await page.evaluate(async () => {
     const { db } = await import("./src/app.js");
     return db.state;
@@ -102,7 +112,7 @@ const path = require("node:path");
   await page.click("#update");
   await page.waitForFunction(async () => {
     const keys = await caches.keys();
-    return keys.some((k) => k.includes("v1.1.2"));
+    return keys.some((k) => k.includes("v1.2.1"));
   });
   await page.waitForSelector("#start");
   assert.deepEqual(
@@ -123,6 +133,9 @@ const path = require("node:path");
   const offline = await context.newPage();
   await offline.goto(url);
   await offline.click("#start");
+  await offline.waitForFunction(() =>
+    document.querySelector("main").textContent.includes("今天已经完成"),
+  );
   assert.match(await offline.locator("main").textContent(), /今天已经完成/);
   console.log(
     "PASS updated version reopens offline under subpath with completed session intact",

@@ -1,60 +1,41 @@
-当前版本：**v1.1.1**。新版功能、报告格式和 iPad 操作见 [验收说明](docs/V1_1_ACCEPTANCE.md)。
+# Erin Math Lab · v1.2.0
 
-# Erin Math Lab · 每日一关 / 方块航站
+轻量三科学习PWA：数学保持原有难度，生物和地理用图示与短句建立概念。每次选一科，原创搭档陪完整轮；没有倒计时、排名或补签压力。
 
-面向七年级学生的本地优先数学练习。正式源码目标仓库：`benleungnz-eng/erin-math-lab`，自动发布分支 `main`。这是新的独立实现，不使用扣子早期测试应用或 Erica 的任何资源。
+- 正式站点：https://benleungnz-eng.github.io/erin-math-lab/
+- 家长报告：https://benleungnz-eng.github.io/erin-math-lab/#reports
+- [v1.2功能、七天内容、迁移、资源依据与验收](docs/V1_2_HANDOFF.md)
+- [部署与iPad步骤](docs/GITHUB_PAGES.md) · [测试记录](docs/QA_REPORT.md)
 
-核心循环是观察、做一个小决定、看见中间结果、用数学语言解释，再自愿试一题新数字。没有计时、排行榜、连续签到处罚、登录、数据库、统计或在线 AI。
+## 本地开发
 
-## 开发、构建与检查
-
-Node.js >=22；本次实测 24.19.0。运行时零第三方包。开发工具由 lockfile 固定：Playwright 1.62.1、Prettier 3.6.2。
+Node >=22（Actions使用24），锁定依赖，无运行时第三方服务。
 
 ```sh
 npm ci
 npm test
 npm run build
-PORT=4180 npm start
-# 保持上述服务运行，在另一个终端执行：
-TEST_URL=http://127.0.0.1:4180/ npm run test:browser
-npm run test:pwa
-npm run format:check
-npm run package
+npm run verify:dist
+npm start
 ```
 
-浏览器测试默认使用 `/usr/bin/chromium`，可用 `CHROMIUM_PATH` 指定其他 Chromium。若没有系统浏览器，先 `npx playwright install chromium`，再将 `CHROMIUM_PATH` 设为 `node -p "require('playwright').chromium.executablePath()"` 的结果。Linux 新机器可能还需安装 Playwright 文档列出的系统依赖。
+浏览器验收用已有Chromium，默认`/usr/bin/chromium`，或通过`CHROMIUM_PATH`指定Playwright安装的浏览器。启动服务后运行：
 
-`npm run dev` 是源文件静态预览；改动后手动刷新。完整 PWA 验收必须运行 `npm run build` 后的 `npm start`。`npm start` 只服务 `dist/`，监听 `0.0.0.0`，读取平台提供的 `PORT`（本地默认 4173）。无业务 API，无密钥，无数据库。
+```sh
+TEST_URL=http://127.0.0.1:4173/ npm run test:browser
+npm run test:pwa
+npm run format:check
+npm run audit:public
+```
 
-`dist/` 是完整生产产物。`npm run package` 生成可选静态应急包 `artifacts/erin-math-lab-v1.0.1.zip`；正式更新以 GitHub 的明确 commit/tag 为准。源码 ZIP 是传输快照，不能代替仓库版本记录。
+生产文件在`dist/`，资源与manifest/SW均为相对路径。main提交由GitHub Actions测试、构建、部署到原Pages子路径；PR仅验证。缓存名包含内容哈希，不强制刷新未完成的任何学科练习，不清除IndexedDB、localStorage或其他应用缓存。
 
-## 功能与数据
+## 内容与数据
 
-- 基础 5 题完成即收工，自愿加练 3 题后才可再选 2 题。每阶段奖励唯一、事务保存，不按正确率减少。
-- 14 参数模板、14 天调度配置、精确分数/有限小数、分栏代数判等。按语义参数去重；当前未完成题恢复同一实例。参数空间耗尽时有限重抽、换模板；同类小题仅一题，可跳过。
-- 三级帮助：可点观察问题、逐步局部校验、完整解法。正式提交错误、求助、看讲解、微步骤自主/提示/示范和迁移题分别保存。
-- 草稿支持笔/橡皮、撤销/清空、展开收起。当前题草稿以比例坐标保存；旋转或刷新可恢复，切题后清理旧草稿。
-- 6×6 基地，12 种物件，初始三种可摆；选择/预览/放置/移动/旋转/收回/撤销。三种能量配色、七个生成角色、弹跳和三格混剪。
-- IndexedDB 单快照事务：提交、切题、奖励、库存和布局在同一状态中更新；多标签使用事务读取最新数据并广播变更。输入逐次保存，草稿每笔结束保存。
-- 广州日期开始时锁定；跨午夜继续原轮。到期回收最多两题计入基础五题；初始自然日 +2、后续 +5 候选，不补作业。
-- 分享为本地生成的最小化 JSON 学习报告，由 Erin 预览后主动分享或下载；家长可导入多日文件累计趋势。没有远程家长后台，不自动发送任何记录。
-- schema 2 备份验证题目重建、答案/讲解一致性、重复题目、奖励、布局与草稿。默认保守合并；相同题面的关卡取进度更前者，题面冲突保留本机，布局保留本机。可明确选择替换。两种方式都保存导入前快照供导出。
-- 存储不可用时显示临时练习警告；不会声称已永久保存。系统清理、清站点数据、更换域名可能丢失本地记录。
+数学仍为原有精确有理数/整式引擎，基础5题、可选3+2题，日期种子与内容指纹避免原题重复。生物和地理各7次，基础4题、可选2题，共84题；按完成次序推进，周末可做，缺席不惩罚，完成七次后不循环发旧题。
 
-## 旧版记录与升级
+12位原创SVG搭档，每位15类事件状态及4种变化，同事件最近3次避免重复。本轮搭档锁定；完成后解锁新搭档，全部解锁后得星星。旧基地、方块、奖励、数学题面与手写记录保留。旧七个角色位置转换为七位原创搭档，不继续使用官方形象。
 
-v0.1 的 `localStorage` 原始键不会被本版删除。设置中可导出旧键原始数据；它不是 schema 2 关卡，不伪装为正式版的独立完成。若旧版仍能打开，先从旧版导出其标准备份并单独保管。本版不自动把早期四题结构变成五题，正式迁移需要保留来源和重新核验。schema 2 本身的导入/合并/替换及更新保留均有测试。
+原schema2存档自动增加版本化academy扩展，支持导出/保守合并/替换及导入前恢复。新家长报告version2增加学科，向前读取旧version1数学报告，重复导入不重复计数。报告仅文件分享，无远程监控、自动上传、账号或数据库服务。家长记录与学生记录分开保存。
 
-部署更新必须整包发布，并同步修改 package、页面/文档版本和构建脚本 SW 版本。新版本等待学生确认，未结束 session 不自动刷新。缓存名含站点子路径；暂保留旧版本缓存以保护仍打开的旧标签，不删除其他应用缓存。长期使用可在有备份且关闭旧标签后清理旧版本；不能以清站点数据作为常规更新方式。
-
-## GitHub Pages 发布
-
-当前路线：提交到 main → GitHub Actions 安装锁定依赖、公开内容扫描、格式检查、34项逻辑/构建检查、生产构建、浏览器/PWA验收 → 部署 Pages。PR 只验证不部署，不使用其他托管平台。
-
-正式地址：**https://benleungnz-eng.github.io/erin-math-lab/**。仓库已公开、Pages已启用；Actions验证及部署成功，实际HTTPS与离线重开验收通过。广州家庭网络、iPad主屏幕与Pencil仍需真机验收。后续main提交自动测试、构建并发布，网址不变。
-
-所有资源使用相对路径，manifest start_url/scope 为 `./`；Service Worker 在 `/erin-math-lab/` 内工作。缓存标识包含构建内容哈希，未修改 package 版本的更新也能被发现。更新仅写 Cache Storage，不清理 IndexedDB 或 localStorage；不自动刷新未完成 session。
-
-详见 [Pages 设置和 iPad 步骤](docs/GITHUB_PAGES.md)。切换域名不会自动带走旧域名数据，请先在旧站导出备份，再在新站导入。
-
-[QA 报告](docs/QA_REPORT.md) 记录本地测试与部署后待验收项。浏览器无外部运行依赖不等于广州网络必然能访问 GitHub Pages，需在实际设备确认首次在线加载，缓存成功后才可离线。
+浏览器或系统清理存储仍可能丢本地数据，主屏幕安装不保证永久保存。切换域名前先导出；本次沿用原网址。诊断原件、个人材料、真实学习记录及私密备份不进入公开仓库。公开内容扫描不等于清除Git历史或作者元数据。

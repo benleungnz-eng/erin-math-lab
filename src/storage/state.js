@@ -1,3 +1,4 @@
+import { awardPartner, validateAcademy, mergeAcademy } from "../academy.js";
 import { characters } from "../characters.js";
 import { generate, templateIds } from "../engine/templates.js";
 import {
@@ -171,6 +172,10 @@ export function advance(data, token, deferred = false) {
   return true;
 }
 export function reward(data, s) {
+  if (data.academy) {
+    awardPartner(data, s, "math");
+    return;
+  }
   const key = `${s.date}:stage-${s.stage}`;
   if (data.ledger[key]) return;
   let ids;
@@ -437,7 +442,7 @@ export function validate(data) {
     )
       throw Error("撤销历史不正确");
   }
-  return data;
+  return validateAcademy(data);
 }
 export function mergeStates(current, incoming) {
   validate(incoming);
@@ -465,5 +470,6 @@ export function mergeStates(current, incoming) {
   for (const q of incoming.queue)
     if (!out.queue.some((x) => x.templateId === q.templateId))
       out.queue.push(q);
+  mergeAcademy(out, incoming);
   return validate(out);
 }

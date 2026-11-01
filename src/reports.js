@@ -1,3 +1,6 @@
+import { subjects, topicIds, topicNames } from "./content/science.js";
+export const reportTypeName = (id) =>
+  topicNames[id] || names[templateIds.indexOf(id)] || id;
 import { templateIds, names } from "./engine/templates.js";
 export const REPORT_KEY = "erin-parent-reports-v1";
 const modes = ["independent", "retried", "helped", "studied", "deferred"];
@@ -11,13 +14,17 @@ export const modeNames = {
 };
 export function makeReport(state, date = null) {
   const records = [];
-  for (const s of Object.values(state.sessions)) {
+  for (const s of [
+    ...Object.values(state.sessions),
+    ...Object.values(state.academy?.science.sessions || {}),
+  ]) {
     if (date && s.date !== date) continue;
     s.questions.forEach((q, i) => {
       const r = s.records[i];
       if (!r.mode && !r.errors && !r.maxHint) return;
       records.push({
-        id: `${s.date}:${s.stage}:${q.instanceId}`,
+        id: `${s.date}:${s.stage}:${q.instanceId || q.id}`,
+        subject: s.subject || "math",
         revision:
           1 +
           r.errors +
@@ -27,7 +34,7 @@ export function makeReport(state, date = null) {
           (r.mode ? 1 : 0),
         date: s.date,
         stage: s.stage,
-        template: q.templateId,
+        template: q.templateId || q.template,
         mode: r.mode || "pending",
         errors: r.errors,
         hint: r.maxHint,
@@ -35,13 +42,13 @@ export function makeReport(state, date = null) {
       });
     });
   }
-  return { format: "erin-learning-report", version: 1, records };
+  return { format: "erin-learning-report", version: 2, records };
 }
 export function validateReport(raw) {
   if (
     !raw ||
     raw.format !== "erin-learning-report" ||
-    raw.version !== 1 ||
+    ![1, 2].includes(raw.version) ||
     !Array.isArray(raw.records) ||
     raw.records.length > 50000
   )
@@ -60,7 +67,13 @@ export function validateReport(raw) {
       !Number.isSafeInteger(r.revision) ||
       r.revision < 1 ||
       ![0, 1, 2].includes(r.stage) ||
-      !templateIds.includes(r.template) ||
+      ![...templateIds, ...topicIds].includes(r.template) ||
+      (r.subject === undefined && !templateIds.includes(r.template)) ||
+      (r.subject !== undefined && !Object.hasOwn(subjects, r.subject)) ||
+      (r.subject !== undefined &&
+        (r.subject === "math"
+          ? !templateIds.includes(r.template)
+          : !r.template.startsWith(r.subject + "-"))) ||
       ![...modes, "pending"].includes(r.mode) ||
       !Number.isSafeInteger(r.errors) ||
       r.errors < 0 ||
@@ -76,21 +89,24 @@ export function validateReport(raw) {
     )
       throw Error("报告统计不一致，未导入");
     seen.add(r.id);
-    return Object.fromEntries(
-      [
-        "id",
-        "revision",
-        "date",
-        "stage",
-        "template",
-        "mode",
-        "errors",
-        "hint",
-        "explanation",
-      ].map((k) => [k, r[k]]),
-    );
+    return {
+      subject: r.subject || "math",
+      ...Object.fromEntries(
+        [
+          "id",
+          "revision",
+          "date",
+          "stage",
+          "template",
+          "mode",
+          "errors",
+          "hint",
+          "explanation",
+        ].map((k) => [k, r[k]]),
+      ),
+    };
   });
-  return { format: "erin-learning-report", version: 1, records };
+  return { format: "erin-learning-report", version: 2, records };
 }
 export function mergeReports(current, incoming) {
   const a = validateReport(current),
@@ -112,7 +128,7 @@ export function mergeReports(current, incoming) {
 }
 export const emptyReport = () => ({
   format: "erin-learning-report",
-  version: 1,
+  version: 2,
   records: [],
 });
 export function readReports() {
@@ -124,8 +140,11 @@ export function importReport(raw) {
   localStorage.setItem(REPORT_KEY, JSON.stringify(report));
   return report;
 }
-export function summarize(report) {
-  const records = validateReport(report).records;
+export function summarize(report, subject = "all") {
+  const allRecords = validateReport(report).records;
+  const records = allRecords.filter(
+    (r) => subject === "all" || r.subject === subject,
+  );
   const group = (list) => ({
     n: list.length,
     finished: list.filter((r) => r.mode !== "pending").length,
@@ -140,10 +159,15 @@ export function summarize(report) {
       date,
       ...group(records.filter((r) => r.date === date)),
     })),
-    types: templateIds
+    subjects: Object.entries(subjects).map(([id, name]) => ({
+      id,
+      name,
+      ...group(allRecords.filter((r) => r.subject === id)),
+    })),
+    types: [...templateIds, ...topicIds]
       .map((id, i) => ({
         id,
-        name: names[i],
+        name: reportTypeName(id),
         ...group(records.filter((r) => r.template === id)),
       }))
       .filter((r) => r.n)

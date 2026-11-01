@@ -23,7 +23,7 @@ const fs = require("node:fs");
     });
   await page.goto(base);
   await page.waitForSelector("#start");
-  assert.equal(await page.locator(".companions .character").count(), 7);
+  assert.equal(await page.locator("[data-partner]:not([disabled])").count(), 4);
   await page.click("#start");
   let d = await get();
   let s = d.sessions[d.active];
@@ -112,11 +112,11 @@ const fs = require("node:fs");
   assert.match(await parent.locator(".report-metrics").textContent(), /2 题/);
   await parent.close();
   await page.click('[data-view="studio"]');
-  await page.locator('[data-shot="0"]').selectOption("gen");
+  await page.locator('[data-shot="0"]').selectOption("gu");
   await get();
   await page.reload();
   await page.click('[data-view="studio"]');
-  assert.equal(await page.locator('[data-shot="0"]').inputValue(), "gen");
+  assert.equal(await page.locator('[data-shot="0"]').inputValue(), "gu");
   await page.click('[data-view="settings"]');
   await page.click("#reduce");
   await page.click('[data-view="studio"]');
@@ -159,7 +159,7 @@ const fs = require("node:fs");
     "all requests same origin",
   );
   console.log(
-    "PASS upgrade: seven generated characters, 3-second correct feedback, explicit next, refresh safety, study status, file download, parent imports/dedup/rejection/persistence, student isolation, seven-role studio, reduced motion, phone layout, offline reports",
+    "PASS upgrade: original partner collection, short correct feedback, explicit next, refresh safety, study status, file download, parent imports/dedup/rejection/persistence, student isolation, unlocked-partner studio, reduced motion, phone layout, offline reports",
   );
   await browser.close();
 })().catch((e) => {

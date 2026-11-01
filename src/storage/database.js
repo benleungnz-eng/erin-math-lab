@@ -1,3 +1,4 @@
+import { migrateAcademy } from "../academy.js";
 import { initial, validate, mergeStates } from "./state.js";
 export class Database {
   constructor(notify = () => {}) {
@@ -31,6 +32,8 @@ export class Database {
       });
       if (existing) this.state = validate(existing);
       else await this.mutate((data) => validate(data));
+      if (!this.state.academy)
+        await this.mutate((d) => migrateAcademy(d, Boolean(existing)));
       this.db.onversionchange = () => {
         this.db.close();
         this.db = null;
@@ -39,6 +42,7 @@ export class Database {
       return this.state;
     } catch {
       this.db = null;
+      migrateAcademy(this.state, false);
       this.notify(
         "本地保存暂不可用。仍可练习，但离开可能丢失进度，请导出备份。",
       );
@@ -132,6 +136,7 @@ export class Database {
       const result = replace
         ? structuredClone(incoming)
         : mergeStates(data, incoming);
+      migrateAcademy(result, true);
       Object.assign(data, result);
     }, true);
   }

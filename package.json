@@ -1,6 +1,6 @@
 {
   "name": "erin-math-lab",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -11,7 +11,7 @@
     "start": "node scripts/serve.js",
     "build": "node scripts/build.js",
     "test": "node --test tests/production/*.test.js",
-    "test:browser": "node tests/production/browser.cjs && node tests/production/upgrade.cjs && node tests/production/cancellation.cjs",
+    "test:browser": "node tests/production/browser.cjs && node tests/production/upgrade.cjs && node tests/production/cancellation.cjs && node tests/production/academy-browser.cjs",
     "package": "node scripts/package.js",
     "test:pwa": "node tests/production/pwa.cjs",
     "format:check": "prettier --check src scripts tests/production index.html production.css",

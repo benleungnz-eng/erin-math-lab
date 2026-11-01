@@ -83,7 +83,7 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
     path: "artifacts/production/home.png",
     fullPage: true,
   });
-  ok("production home, three companions and complete offline inventory");
+  ok("three-subject home, original companions and complete offline inventory");
   await page.click("#homeBuild");
   assert.equal(await page.locator("[data-cell]").count(), 36);
   assert.equal(await page.locator("[data-item]:not([disabled])").count(), 3);
@@ -182,8 +182,9 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
   s = data.sessions[data.active];
   assert.equal(s.index, 5);
   assert.equal(s.records[0].mode, "studied");
-  assert.equal(Object.keys(data.ledger).length, 1);
-  assert.equal(s.rewardIds.length, 3);
+  assert.equal(Object.keys(data.academy.rewards).length, 1);
+  assert.ok(s.partnerReward.partner);
+  assert.equal(Object.keys(data.ledger).length, 0);
   const inventory = JSON.stringify(data.inventory);
   await page.reload();
   await page.click("#start");
@@ -194,9 +195,9 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
   assert.equal(await page.locator("#downloadReport").count(), 1);
   await page.click("#closeDialog");
   await page.click("#performance");
-  assert.equal(await page.locator(".comedy-cast .character").count(), 3);
+  assert.equal(await page.locator(".comedy-cast .partner-art").count(), 3);
   await page.click("#replayShow");
-  assert.equal(await page.locator(".comedy-cast .character").count(), 3);
+  assert.equal(await page.locator(".comedy-cast .partner-art").count(), 3);
   await page.click("#skipShow");
   assert.equal(await page.locator(".comedy-stage").count(), 0);
   ok(
@@ -215,7 +216,7 @@ const base = process.env.TEST_URL || "http://127.0.0.1:4180/";
   );
   await finish();
   data = await get();
-  assert.equal(Object.keys(data.ledger).length, 3);
+  assert.equal(Object.keys(data.academy.rewards).length, 3);
   assert.equal(
     Object.values(data.sessions).reduce((n, s) => n + s.questions.length, 0),
     10,

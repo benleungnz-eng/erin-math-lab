@@ -797,7 +797,7 @@ details {
   width: 124px;
   height: 150px;
   flex-shrink: 0;
-  background-image: url("./public/assets/characters.webp");
+
   background-size: 300% 700%;
   background-position: var(--cx) var(--cy);
   background-repeat: no-repeat;
@@ -1236,5 +1236,406 @@ nav button[aria-pressed="true"] {
   }
   #later {
     grid-column: 1/-1;
+  }
+}
+/* v1.2: original vector partners and offline science explorations. */
+.partner-art {
+  display: inline-block;
+  width: 120px;
+  max-width: 100%;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.partner-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.partner-stage {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+  border-radius: 20px;
+  background: #edf1e7;
+  margin: 16px 0;
+  min-width: 0;
+}
+.partner-stage > div {
+  min-width: 0;
+  flex: 1;
+}
+.partner-stage p {
+  margin: 8px 0;
+  line-height: 1.7;
+}
+.home-partner {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.home-partner .partner-stage {
+  background: #e7ede0;
+  color: #263438;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.home-partner .partner-art {
+  width: 180px;
+}
+.subject-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0;
+}
+.subject-cards .card {
+  min-width: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.subject-cards h2 {
+  font-size: 23px;
+}
+.subject-cards p {
+  flex: 1;
+}
+.subject-icon {
+  font-size: 32px;
+  display: inline-grid;
+  place-items: center;
+  background: #e2ece5;
+  border-radius: 18px;
+  width: 60px;
+  height: 60px;
+}
+.subject-biology .subject-icon {
+  background: #e8efd3;
+  color: #52753d;
+}
+.subject-geography .subject-icon {
+  background: #dcebf1;
+  color: #3d6d83;
+}
+.partner-picker {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+.partner-picker button {
+  flex-direction: column;
+  min-width: 0;
+  padding: 12px 8px;
+  text-align: center;
+}
+.partner-picker .partner-art {
+  width: 100px;
+}
+.partner-picker small {
+  font-size: 12px;
+  line-height: 1.5;
+}
+.partner-picker button:disabled {
+  background: #eeeee8;
+  color: #68716a;
+  opacity: 0.75;
+  filter: grayscale(0.8);
+}
+.partner-unlock {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background: #fff4d5;
+  border-radius: 20px;
+  padding: 20px;
+}
+.science-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.science-layout > section {
+  min-width: 0;
+}
+.science-diagram {
+  background: #f2f6ed;
+  border: 1px solid #d3ddce;
+  border-radius: 20px;
+  padding: 16px;
+}
+.science-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fffdf6;
+  border-radius: 14px;
+}
+.science-diagram text {
+  font-family: inherit;
+  font-size: 16px;
+  fill: #263438;
+}
+.diagram-parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.diagram-parts button {
+  font-size: 13px;
+  padding: 8px 10px;
+}
+.diagram-caption {
+  background: #fffdf6;
+  border-left: 4px solid #b38a43;
+  padding: 12px;
+  min-height: 84px;
+  line-height: 1.8;
+}
+.science-choices {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+}
+.science-choices button {
+  justify-content: flex-start;
+  text-align: left;
+  min-height: 56px;
+  line-height: 1.5;
+  white-space: normal;
+}
+.week-plan {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.week-plan li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 14px;
+  background: #edf2e7;
+  border-radius: 12px;
+}
+.week-plan span {
+  color: #59695f;
+}
+.partner-stage.reacting .partner-art {
+  animation: partner-pop 1.3s ease-out both;
+}
+.partner-stage.reacting .variant-1 {
+  animation-name: partner-nod;
+}
+.partner-stage.reacting .variant-2 {
+  animation-name: partner-wave;
+}
+.partner-stage.reacting .variant-3 {
+  animation-name: partner-bounce;
+}
+.partner-stage.reacting:has(
+    .state-complete,
+    .state-unlock_new_partner,
+    .state-bonus_complete
+  )
+  .partner-art {
+  animation-duration: 2.5s;
+}
+.partner-art.state-thinking .partner-hand {
+  transform: translate(-10px, 8px);
+}
+.partner-art.state-wrong_soft .state-prop,
+.partner-art.state-wrong_retry .state-prop {
+  opacity: 0.8;
+}
+@keyframes partner-pop {
+  0% {
+    transform: scale(0.85);
+  }
+  30% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes partner-nod {
+  0%,
+  100% {
+    transform: none;
+  }
+  35% {
+    transform: translateY(6px) rotate(3deg);
+  }
+  65% {
+    transform: rotate(-3deg);
+  }
+}
+@keyframes partner-wave {
+  0%,
+  100% {
+    transform: none;
+  }
+  35% {
+    transform: rotate(-6deg);
+  }
+  65% {
+    transform: rotate(5deg);
+  }
+}
+@keyframes partner-bounce {
+  0%,
+  100% {
+    transform: none;
+  }
+  35% {
+    transform: translateY(-9px);
+  }
+  70% {
+    transform: translateY(-3px);
+  }
+}
+.correct-celebration .partner-art {
+  width: 110px;
+  animation: partner-bounce 1.3s ease-out both;
+}
+.comedy-cast .partner-art {
+  width: 124px;
+  animation: silly-entrance 4s ease-in-out both;
+}
+.companion .partner-art {
+  width: 110px;
+}
+.shot-box .partner-art {
+  width: 130px;
+}
+.shot-preview .partner-art {
+  width: 150px;
+}
+@media (max-width: 1000px) {
+  .partner-picker {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .science-layout {
+    grid-template-columns: 1fr;
+  }
+  .subject-cards {
+    grid-template-columns: 1fr;
+  }
+  .subject-cards .card {
+    padding: 22px;
+  }
+  .subject-cards .card h2 {
+    margin: 10px 0;
+  }
+  .academy-hero {
+    grid-template-columns: 1fr 1fr;
+  }
+  .site-header {
+    flex-wrap: wrap;
+  }
+  nav {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 600px) {
+  .partner-picker {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .partner-picker .partner-art {
+    width: 80px;
+  }
+  .partner-stage {
+    gap: 10px;
+    padding: 12px;
+  }
+  .partner-stage .partner-art {
+    width: 85px;
+  }
+  .academy-hero {
+    grid-template-columns: 1fr;
+  }
+  .home-partner {
+    padding: 0 20px;
+  }
+  .home-partner .partner-stage {
+    flex-wrap: nowrap;
+  }
+  .home-partner .partner-art {
+    width: 100px;
+  }
+  .science-diagram {
+    padding: 10px;
+  }
+  .partner-unlock {
+    padding: 12px;
+    gap: 10px;
+  }
+  .partner-unlock .partner-art {
+    width: 90px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .partner-art,
+  .partner-art svg,
+  .correct-celebration .partner-art,
+  .comedy-cast .partner-art {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.shot-strip {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.shot-box {
+  min-width: 0;
+}
+.shot-box select {
+  max-width: 100%;
+  min-width: 0;
+}
+.shot-box .partner-art {
+  width: 100%;
+  max-width: 130px;
+}
+@media (min-width: 601px) and (max-width: 1000px) {
+  .subject-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .subject-cards .card {
+    padding: 18px;
+  }
+  .subject-cards h2 {
+    font-size: 20px;
+  }
+  .subject-cards button {
+    width: 100%;
+    padding: 11px 8px;
+    font-size: 13px;
+  }
+}
+.state-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  text-align: center;
+  margin: 20px 0;
+}
+.state-gallery .partner-art {
+  width: 100px;
+}
+@media (max-width: 600px) {
+  .state-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .state-gallery .partner-art {
+    width: 80px;
   }
 }
