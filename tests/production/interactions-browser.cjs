@@ -38,7 +38,7 @@ const { chromium } = require("playwright"),
       .count(),
     0,
   );
-  assert.equal(await page.locator(".partner-mystery").count(), 9);
+  assert.equal(await page.locator(".partner-mystery").count(), 10);
   assert.equal(
     await page
       .locator("[data-view=world],[data-view=studio],#homeBuild,#studioLink")
