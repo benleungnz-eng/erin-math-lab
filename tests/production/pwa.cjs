@@ -147,6 +147,7 @@ const path = require("node:path");
     "PASS updated version reopens offline under subpath with completed session intact",
   );
   await context.setOffline(false);
+  await offline.click('[data-view="home"]');
   await offline.waitForSelector("#checkForUpdate");
   assert.match(
     await offline.locator(".update-guide").textContent(),
