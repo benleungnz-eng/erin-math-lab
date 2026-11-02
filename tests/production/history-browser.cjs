@@ -42,6 +42,15 @@ const fs = require("node:fs");
   let s = await current();
   assert.equal(s.questions.length, 61);
   assert.equal(new Set(s.questions.map((q) => q.point)).size, 27);
+  assert.equal(await page.locator(".learning-help button").count(), 1);
+  assert.equal(
+    await page.locator("#historyExplain").textContent(),
+    "直接看答案",
+  );
+  assert.equal(
+    await page.locator("#historyHint1,#historyHint2,#historyLater").count(),
+    0,
+  );
   // Chinese IME composition must not submit prematurely.
   await page.locator('[data-history-blank="0"]').evaluate((el) => {
     el.dispatchEvent(
@@ -103,22 +112,53 @@ const fs = require("node:fs");
         await page.locator(`[data-history-blank="${i}"]`).fill(q.answers[i]);
       await page.locator("#historySubmit").tap();
       await page.waitForSelector("#historyNext:visible");
+      const solvedBefore = structuredClone((await current()).records[0]);
+      await page.locator("#historyExplain").tap();
+      await page.waitForSelector("#historySolution");
+      assert.deepEqual((await current()).records[0], solvedBefore);
       await page.screenshot({
         path: "artifacts/history/ipad-correct.png",
         fullPage: true,
       });
       await page.locator("#historyNext").tap();
     } else {
-      await page.locator("#historyHint1").tap();
-      await page.waitForSelector(".step");
-      await page.locator("#historyHint2").tap();
       await page.locator("#historyExplain").tap();
       await page.waitForSelector("#historySolution");
+      assert.equal(
+        await page.locator("#historySolution li").count(),
+        q.answers.length,
+      );
+      const answerFirst = await page
+        .locator("#historySolution")
+        .evaluate(
+          (el) =>
+            el
+              .querySelector("ol")
+              .compareDocumentPosition(
+                el.querySelector("#historyAnswerPartner"),
+              ) & Node.DOCUMENT_POSITION_FOLLOWING,
+        );
+      assert.ok(answerFirst);
+      assert.match(
+        await page.locator("#historyAnswerPartner").textContent(),
+        /Shadow：/,
+      );
+      assert.equal((await current()).records[s.index].errors, 0);
       assert.ok(
         (await page.locator("#historySolution").textContent()).includes(
           q.answers[0],
         ),
       );
+      if (s.index === 1) {
+        await page.screenshot({
+          path: "artifacts/history/ipad-direct-answer.png",
+          fullPage: true,
+        });
+        await page.reload();
+        await page.waitForSelector("#startHistory");
+        await page.locator("#startHistory").tap();
+        await page.waitForSelector("#historySolution");
+      }
       await page.locator("#historyStudied").tap();
     }
     await page.waitForFunction(

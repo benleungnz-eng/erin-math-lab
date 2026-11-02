@@ -8,7 +8,51 @@ import {
 import { historyRows } from "./content/history.js";
 import { escape as E } from "./components/visual.js";
 import { learningDate } from "./engine/scheduler.js";
-import { partnerLine } from "./partners.js";
+import { partnerById } from "./partners.js";
+export function historyAnswerLine(id, index = 0) {
+  const p = partnerById(id);
+  const lines = {
+    ling: [
+      "哼，记住它。下次争取比我先说出来。",
+      "这次我帮你记一遍。下次轮到你。",
+    ],
+    gu: [
+      "答案装进口袋啦！我们再读一遍就出发～",
+      "来，一起念一遍，把这条知识带走！",
+    ],
+    kirby: [
+      "噗哟～这一口知识，慢慢吞下去就好。",
+      "噗哟！读一遍，再把它放进记忆小口袋～",
+    ],
+    gen: [
+      "喏，答案在这儿，可别让它溜走喽～",
+      "答案登场！这回就别让它偷偷退场啦。",
+    ],
+    lu: [
+      "这一格装好了。读一遍，再接下一格。",
+      "知识方块已就位。我们把它记牢。",
+    ],
+    mario: ["咔哒，这个知识齿轮装上啦！", "读一遍，让这个小齿轮转起来。"],
+    yoshi: ["把这条知识种下，慢慢就记牢啦～", "读一遍，给记忆小苗浇点水。"],
+    prism: ["这一条记忆收好，下一条也一起看。", "把关键词照亮，再读一遍吧。"],
+    comet: ["坐标记下。下次就不会飘走了。", "这条记忆，稳稳收进轨道。"],
+    moss: ["标记完成。读一遍，再前进。", "这一小块知识，我们已经收好了。"],
+    bell: [
+      "答案登台！读一遍，就把这一幕记住啦。",
+      "给这条记忆一点掌声，下一幕见！",
+    ],
+    pebble: [
+      "一小块一小块，今天就记住这一块。",
+      "把这几个词念顺，就又多记住一点。",
+    ],
+    blackegg: [
+      "嘘，答案收进小口袋，下次一起说出来！",
+      "我的天线记住啦，你也一起念一遍吧！",
+    ],
+  };
+  const choices = lines[p.id] || lines.ling;
+  return `${p.name}：${choices[index % choices.length]}`;
+}
 export function historyProgress(a) {
   const sessions = Object.values(a.history?.sessions || {});
   const done = sessions.flatMap((s) =>
@@ -34,7 +78,7 @@ export function historyProgressHTML(a) {
       .reverse()
       .map(
         (s) =>
-          `<details><summary>${E(s.date)} · ${"每日全量复习"} · ${s.index}/${s.questions.length}</summary>${s.questions.map((q, i) => `<article><h3>${E(q.topic)}</h3><p>${E(q.prompt)}</p><p>完成方式：${{ independent: "独立首次答对", retried: "重试后答对", helped: "提示后完成", studied: "看讲解学习", deferred: "稍后再练" }[s.records[i].mode] || "进行中"} · 求助 ${s.records[i].maxHint} 级 · 正式答错 ${s.records[i].errors} 次</p><details><summary>回看原句与联想图</summary><img class="history-image" src="${q.image}" alt="${q.imageAlt}" loading="lazy"><p>${E(q.text)}</p><p>${E(q.memory)}</p><p class="caption">虚构搭档参与记忆小剧场；插画不作为史料。</p></details></article>`).join("")}</details>`,
+          `<details><summary>${E(s.date)} · ${"每日全量复习"} · ${s.index}/${s.questions.length}</summary>${s.questions.map((q, i) => `<article><h3>${E(q.topic)}</h3><p>${E(q.prompt)}</p><p>完成方式：${{ independent: "独立首次答对", retried: "重试后答对", helped: "提示后完成", studied: "看答案学习", deferred: "稍后再练" }[s.records[i].mode] || "进行中"} · 求助 ${s.records[i].maxHint} 级 · 正式答错 ${s.records[i].errors} 次</p><details><summary>回看原句与联想图</summary><img class="history-image" src="${q.image}" alt="${q.imageAlt}" loading="lazy"><p>${E(q.text)}</p><p>${E(q.memory)}</p><p class="caption">虚构搭档参与记忆小剧场；插画不作为史料。</p></details></article>`).join("")}</details>`,
       )
       .join("") || "<p>还没有历史练习记录。</p>"
   }</section>`;
@@ -63,6 +107,7 @@ export function createHistoryUI({
       notify(e.message);
     }
   }
+  const revealedAnswers = new Set();
   function page() {
     const s = current();
     if (!s) {
@@ -75,7 +120,9 @@ export function createHistoryUI({
     }
     const q = s.questions[s.index],
       r = s.records[s.index],
-      token = { session: s.id, index: s.index };
+      token = { session: s.id, index: s.index },
+      answerKey = `${s.id}:${s.index}`,
+      answerVisible = r.maxHint >= 3 || revealedAnswers.has(answerKey);
     const blanks = q.segments
       .map(
         (seg, i) =>
@@ -85,8 +132,12 @@ export function createHistoryUI({
             : ""),
       )
       .join("");
-    main.innerHTML = `<section class="card" data-history-index="${s.index}"><div class="row"><div><p class="eyebrow">历史 · 时光线索局 · ${"每日全量复习"}</p><h1>${E(q.topic)}</h1><p>复习资料第1～10课 · 知识点${q.point} · ${s.index + 1}/${s.questions.length}</p></div><button id="historyHome">暂时回航站</button></div>${panel(s.partnerId, r.resolved ? "correct" : "thinking")}<div class="science-layout history-layout"><figure><img class="history-image" src="${q.image}" alt="${q.imageAlt}" width="960" height="640"><figcaption class="caption">虚构搭档参与记忆小剧场；插画不作为史料。先看场景，再补关键词。</figcaption></figure><section><p class="history-context">${q.point === 10 ? "本组知识点：商朝。" : ""}原句填空 · 可用中文键盘或系统手写输入</p><form id="historyForm"><div class="history-cloze">${blanks}</div><div class="actions"><button type="submit" id="historySubmit" class="primary" ${r.resolved ? "hidden" : ""}>✓ 逐空检查</button><button type="button" id="historyNext" class="gold" ${r.resolved ? "" : "hidden"}>下一题 →</button></div></form><p id="historyFeedback" class="feedback" role="status">${r.resolved ? "线索接上了，点下一题继续。" : "每次只想一个空，不会也可以让搭档帮忙。"}</p><div class="actions learning-help"><button id="historyHint1">✦ 一点思路</button><button id="historyHint2">▤ 关键线索</button><button id="historyExplain">♡ 我不会，直接看讲解</button><button id="historyLater">↻ 稍后再练</button></div>${r.maxHint >= 1 ? `<section class="step"><h3>先搭一条记忆线</h3><p>${E(partnerLine(s.partnerId, "hint_light", 0, q.hints[0]))}</p></section>` : ""}${r.maxHint >= 2 ? `<section class="step"><h3>再靠近一点</h3><p>${E(partnerLine(s.partnerId, "hint_step", 0, q.hints[1]))}</p></section>` : ""}${r.maxHint >= 3 ? `<section class="step" id="historySolution"><h3>完整答案 · 把线索串起来</h3><p>${E(partnerLine(s.partnerId, "solution", 0))}</p><ol>${q.answers.map((a, i) => `<li>第${i + 1}空：<strong>${E(a)}</strong></li>`).join("")}</ol><p>${E(q.text)}</p><p>${E(q.memory)}</p><p class="caption">查看答案不扣奖励，也不会算成独立首次答对。</p><button id="historyStudied">这题先学到这里 →</button></section>` : ""}</section></div></section>`;
+    main.innerHTML = `<section class="card" data-history-index="${s.index}"><div class="row"><div><p class="eyebrow">历史 · 时光线索局 · ${"每日全量复习"}</p><h1>${E(q.topic)}</h1><p>复习资料第1～10课 · 知识点${q.point} · ${s.index + 1}/${s.questions.length}</p></div><button id="historyHome">暂时回航站</button></div>${panel(s.partnerId, answerVisible ? "solution" : r.resolved ? "correct" : "thinking")}<div class="science-layout history-layout"><figure><img class="history-image" src="${q.image}" alt="${q.imageAlt}" width="960" height="640"><figcaption class="caption">虚构搭档参与记忆小剧场；插画不作为史料。先看场景，再补关键词。</figcaption></figure><section><p class="history-context">${q.point === 10 ? "本组知识点：商朝。" : ""}原句填空 · 可用中文键盘或系统手写输入</p><form id="historyForm"><div class="history-cloze">${blanks}</div><div class="actions"><button type="submit" id="historySubmit" class="primary" ${r.resolved ? "hidden" : ""}>✓ 逐空检查</button><button type="button" id="historyNext" class="gold" ${r.resolved ? "" : "hidden"}>下一题 →</button></div></form><p id="historyFeedback" class="feedback" role="status">${r.resolved ? "线索接上了，点下一题继续。" : "每次只想一个空，不会也可以让搭档帮忙。"}</p><div class="actions learning-help"><button id="historyExplain">直接看答案</button></div>${answerVisible ? `<section class="step" id="historySolution" tabindex="-1"><h3>答案</h3><ol class="history-answers">${q.answers.map((answer, i) => `<li>第${i + 1}空：<strong>${E(answer)}</strong></li>`).join("")}</ol><p id="historyAnswerPartner">${E(historyAnswerLine(s.partnerId, s.index))}</p><p class="caption">查看答案不扣奖励，也不会算成独立首次答对。</p>${r.resolved ? "" : '<button id="historyStudied">看过了，下一题 →</button>'}</section>` : ""}</section></div></section>`;
     main.querySelector("#historyHome").onclick = () => go("home");
+    if (answerVisible) {
+      const speech = main.querySelector("#partnerStage [role=status]");
+      if (speech) speech.hidden = true;
+    }
     let saving = Promise.resolve(),
       composing = false;
     main.querySelectorAll("[data-history-blank]").forEach((input) => {
@@ -127,7 +178,7 @@ export function createHistoryUI({
       if (result?.stale) return;
       if (!result?.valid) {
         main.querySelector("#historyFeedback").textContent =
-          "先补齐每个空，再一起检查；也可以直接看讲解。";
+          "先补齐每个空，再一起检查；也可以直接看答案。";
         return;
       }
       page();
@@ -142,17 +193,15 @@ export function createHistoryUI({
             : "wrong",
       );
     };
-    for (const [id, level, name] of [
-      ["historyHint1", 1, "hint_light"],
-      ["historyHint2", 2, "hint_step"],
-      ["historyExplain", 3, "solution"],
-    ])
-      main.querySelector("#" + id).onclick = async () => {
-        await saving;
-        await action((d) => helpHistory(d, token, level), false);
-        page();
-        await event(name);
-      };
+    main.querySelector("#historyExplain").onclick = async () => {
+      await saving;
+      if (!r.resolved) await action((d) => helpHistory(d, token, 3), false);
+      revealedAnswers.add(answerKey);
+      page();
+      const solution = main.querySelector("#historySolution");
+      solution?.focus({ preventScroll: true });
+      solution?.scrollIntoView({ block: "nearest" });
+    };
     const advance = async (defer) => {
       await saving;
       await action((d) => advanceHistory(d, token, defer), false);
@@ -161,14 +210,13 @@ export function createHistoryUI({
         await event(current().partnerReward?.partner ? "unlock" : "complete");
     };
     main.querySelector("#historyNext").onclick = () => advance(false);
-    main.querySelector("#historyLater").onclick = () => advance(true);
     if (main.querySelector("#historyStudied"))
       main.querySelector("#historyStudied").onclick = () => advance(false);
   }
   function summary(s) {
     const counts = {};
     s.records.forEach((r) => (counts[r.mode] = (counts[r.mode] || 0) + 1));
-    main.innerHTML = `<section class="card"><h1>这一段时光探索完成了。</h1>${panel(s.partnerId, "complete")}<p>独立首次答对 ${counts.independent || 0} · 重试后答对 ${counts.retried || 0} · 提示后完成 ${counts.helped || 0} · 看讲解学习 ${counts.studied || 0} · 稍后再练 ${counts.deferred || 0}。</p>${rewardHTML(s)}<div class="actions"><button id="historyFinish" class="primary">今天到这里</button><button id="historyShare">发给爸爸 · 学习报告</button><button id="historyProgress">看看历史进度</button></div><p>看提示、看答案也获得完整奖励。今天不用做其他科。</p></section>`;
+    main.innerHTML = `<section class="card"><h1>这一段时光探索完成了。</h1>${panel(s.partnerId, "complete")}<p>独立首次答对 ${counts.independent || 0} · 重试后答对 ${counts.retried || 0} · 提示后完成 ${counts.helped || 0} · 看答案学习 ${counts.studied || 0} · 稍后再练 ${counts.deferred || 0}。</p>${rewardHTML(s)}<div class="actions"><button id="historyFinish" class="primary">今天到这里</button><button id="historyShare">发给爸爸 · 学习报告</button><button id="historyProgress">看看历史进度</button></div><p>看提示、看答案也获得完整奖励。今天不用做其他科。</p></section>`;
     main.querySelector("#historyFinish").onclick = () => go("home");
     main.querySelector("#historyShare").onclick = () => reportPreview(s.date);
     main.querySelector("#historyProgress").onclick = () => go("progress");
