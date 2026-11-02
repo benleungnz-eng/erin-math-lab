@@ -1,0 +1,8 @@
+Three.js 0.160.1 — MIT. See THREE-LICENSE.txt.
+Earth land texture: Natural Earth 1:50m Land, public domain.
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/
+https://www.naturalearthdata.com/about/terms-of-use/
+https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_50m_land.geojson
+Rendered as an equirectangular 4096 x 2048 green-land / blue-ocean / white-polar map. Coastlines only; no political boundaries.
+Cities: existing app approximate UNGEGN / GeoNames representative coordinates.
+Polar white: schematic snow/ice colouring, not observed or seasonal ice extent. Arctic white is sea ice; Antarctica white follows land south of 60 S.

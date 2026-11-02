@@ -104,6 +104,12 @@ export function startPWA(
           ? registration
           : await register();
       if (!reg) throw Error("registration unavailable");
+      // Registration already starts the first installation. Calling update()
+      // during it can keep the check pending after an installation failure.
+      if (reg.installing && !reg.active) {
+        show("正在准备离线资源…");
+        return;
+      }
       await reg.update();
       if (reg.waiting) await install();
       else show(reg.installing ? "正在后台下载更新…" : "已自动检查更新");

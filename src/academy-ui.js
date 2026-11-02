@@ -1,3 +1,4 @@
+import { openSolarDemo, supportsSolarDemo } from "./solar-demo.js";
 import { updateGuideHTML, bindUpdateGuide } from "./update-guide.js";
 import {
   createHistoryUI,
@@ -283,8 +284,22 @@ export function createAcademyUI({
       parts = diagramParts(q),
       targetPart = guideTarget(q),
       selected = r.visited.at(-1) || "";
-    main.innerHTML = `<section class="card" data-science-index="${s.index}"><div class="row"><div><p class="eyebrow">${subjects[subject]} · 第${s.day + 1}次探索 · ${s.stage ? "自愿加练" : "基础探索"}</p><h1>${q.topic}</h1><p>${q.chapter} · ${s.index + 1}/${s.questions.length}</p></div><button id="scienceHome">暂时回航站</button></div>${panel(s.partnerId, r.resolved ? "correct" : "thinking")}<div class="science-layout"><section>${scienceVisual(q, selected, frame, earthMode)}</section><section><h2 class="question">${E(q.prompt)}</h2><div class="science-choices">${q.choices.map((c) => `<button data-science-choice="${E(c)}" aria-pressed="${r.input[0] === c}" ${r.resolved ? "disabled" : ""}>${E(c)}</button>`).join("")}</div><div class="actions"><button id="scienceSubmit" class="primary" ${r.resolved ? "hidden" : ""}>✓ 检查答案</button><button id="scienceNext" class="gold" ${r.resolved ? "" : "hidden"}>下一题 →</button></div><p id="scienceFeedback" class="feedback" role="status">${r.resolved ? (r.mode === "studied" ? "这题学完了。可以进入下一题。" : "答对了！点下一题继续。") : ""}</p><div class="actions learning-help"><button id="scienceHint1">✦ 一点思路</button><button id="scienceHint2">▤ 带我做第一步</button><button id="scienceExplain">♡ 我不会，直接看讲解</button><button id="scienceLater">↻ 稍后再练</button></div>${r.maxHint >= 1 ? `<section class="step"><h3>先看一个线索</h3><p>${E(partnerLine(s.partnerId, "hint_light", 0, q.hint))}</p></section>` : ""}${r.maxHint >= 2 ? `<section class="step"><h3>先完成一个小观察</h3><p>在图示中点击“${targetPart[1]}”，读一遍旁边的短解释。</p><p id="scienceStepFeedback">${r.guideIndex ? "这一步已经看懂了。" : ""}</p><button id="checkScienceStep">我已经找到这条线索</button><button id="demoScienceStep">先示范这一小步</button></section>` : ""}${r.maxHint >= 3 ? `<section class="step"><h3>完整讲解 · 一起弄懂</h3><p>${E(partnerLine(s.partnerId, "solution", 0))}</p><ol><li>先观察图示：${E(q.hint)}</li><li>${E(q.solution)}</li><li>所以这一题选择：<strong>${E(q.answer)}</strong>。</li></ol><p class="caption">看讲解不计作独立首次答对，也不扣奖励。</p><button id="scienceStudied">这题先学到这里</button></section>` : ""}</section></div></section>`;
+    main.innerHTML = `<section class="card" data-science-index="${s.index}"><div class="row"><div><p class="eyebrow">${subjects[subject]} · 第${s.day + 1}次探索 · ${s.stage ? "自愿加练" : "基础探索"}</p><h1>${q.topic}</h1><p>${q.chapter} · ${s.index + 1}/${s.questions.length}</p></div><button id="scienceHome">暂时回航站</button></div>${panel(s.partnerId, r.resolved ? "correct" : "thinking")}<div class="science-layout"><section>${supportsSolarDemo(q) ? '<div class="solar-demo-launch"><button id="openSolarDemo" class="primary">🌍 打开三维演示</button><p class="caption">进入独立观察页面，返回后继续这一题。</p></div>' : ""}${scienceVisual(q, selected, frame, earthMode)}</section><section><h2 class="question">${E(q.prompt)}</h2><div class="science-choices">${q.choices.map((c) => `<button data-science-choice="${E(c)}" aria-pressed="${r.input[0] === c}" ${r.resolved ? "disabled" : ""}>${E(c)}</button>`).join("")}</div><div class="actions"><button id="scienceSubmit" class="primary" ${r.resolved ? "hidden" : ""}>✓ 检查答案</button><button id="scienceNext" class="gold" ${r.resolved ? "" : "hidden"}>下一题 →</button></div><p id="scienceFeedback" class="feedback" role="status">${r.resolved ? (r.mode === "studied" ? "这题学完了。可以进入下一题。" : "答对了！点下一题继续。") : ""}</p><div class="actions learning-help"><button id="scienceHint1">✦ 一点思路</button><button id="scienceHint2">▤ 带我做第一步</button><button id="scienceExplain">♡ 我不会，直接看讲解</button><button id="scienceLater">↻ 稍后再练</button></div>${r.maxHint >= 1 ? `<section class="step"><h3>先看一个线索</h3><p>${E(partnerLine(s.partnerId, "hint_light", 0, q.hint))}</p></section>` : ""}${r.maxHint >= 2 ? `<section class="step"><h3>先完成一个小观察</h3><p>在图示中点击“${targetPart[1]}”，读一遍旁边的短解释。</p><p id="scienceStepFeedback">${r.guideIndex ? "这一步已经看懂了。" : ""}</p><button id="checkScienceStep">我已经找到这条线索</button><button id="demoScienceStep">先示范这一小步</button></section>` : ""}${r.maxHint >= 3 ? `<section class="step"><h3>完整讲解 · 一起弄懂</h3><p>${E(partnerLine(s.partnerId, "solution", 0))}</p><ol><li>先观察图示：${E(q.hint)}</li><li>${E(q.solution)}</li><li>所以这一题选择：<strong>${E(q.answer)}</strong>。</li></ol><p class="caption">看讲解不计作独立首次答对，也不扣奖励。</p><button id="scienceStudied">这题先学到这里</button></section>` : ""}</section></div></section>`;
     main.querySelector("#scienceHome").onclick = () => go("home");
+    const demoButton = main.querySelector("#openSolarDemo");
+    if (demoButton)
+      demoButton.onclick = async () => {
+        await db.serial;
+        if (!demoButton.isConnected) return;
+        openSolarDemo(q, async (region) => {
+          if (!parts.some(([id]) => id === region)) return;
+          await db.mutate((d) => {
+            const current = scienceTarget(d, subject, token);
+            if (current && !current.r.visited.includes(region))
+              current.r.visited.push(region);
+          });
+        });
+      };
     if (main.querySelector("#earthReference"))
       main.querySelector("#earthReference").open = Boolean(referenceOpen);
     mountEarthLab(main, q.id, async (region) => {

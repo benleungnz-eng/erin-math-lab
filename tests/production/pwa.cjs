@@ -148,11 +148,8 @@ const path = require("node:path");
   );
   await context.setOffline(false);
   await offline.click('[data-view="home"]');
-  await offline.waitForSelector("#checkForUpdate");
-  assert.match(
-    await offline.locator(".update-guide").textContent(),
-    /向上划掉/,
-  );
+  await offline.waitForSelector("#homeUpdateStatus");
+  assert.equal(await offline.locator(".update-guide ol").count(), 0);
   await offline.click("#startBiology");
   await offline.waitForSelector("[data-science-index]");
   await offline.click('[data-view="home"]');
@@ -162,18 +159,13 @@ const path = require("node:path");
     return structuredClone(db.state.academy.science);
   });
   version = initialVersion + "-paused-update-test";
-  await offline.click("#checkForUpdate");
-  await offline.waitForSelector("#installHomeUpdate:not([hidden])");
   await Promise.all([
     offline.waitForNavigation({ waitUntil: "load" }),
-    offline.click("#installHomeUpdate"),
+    offline.evaluate(async () => {
+      await (await navigator.serviceWorker.getRegistration()).update();
+    }),
   ]);
-  await offline.waitForSelector("#checkForUpdate");
-  await offline.waitForFunction(
-    async (expected) =>
-      (await caches.keys()).some((k) => k.includes("v" + expected)),
-    version,
-  );
+  await offline.waitForSelector("#homeUpdateStatus");
   assert.deepEqual(
     await offline.evaluate(async () => {
       const { db } = await import("./src/app.js");
@@ -182,20 +174,15 @@ const path = require("node:path");
     pausedScience,
   );
   await context.setOffline(true);
-  await offline.click("#checkForUpdate");
+  await offline.evaluate(() => window.dispatchEvent(new Event("focus")));
   await offline.waitForFunction(() =>
     document
       .querySelector("#homeUpdateStatus")
-      .textContent.includes("先连接网络"),
-  );
-  assert.ok(
-    !(await offline.locator("#homeUpdateStatus").textContent()).includes(
-      "已是最新",
-    ),
+      .textContent.includes("离线使用中"),
   );
   await context.setOffline(false);
   console.log(
-    "PASS home update guide installs after pausing, preserves science progress, and reports offline honestly",
+    "PASS automatic home update preserves paused science and reports offline honestly",
   );
   await offline.evaluate(async () => {
     const { db } = await import("./src/app.js");
