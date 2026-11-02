@@ -592,7 +592,9 @@ try {
     );
     const placed = [];
     for (const c of [...cityMarkers].sort(
-      (a, b) => Number(b.id === selectedCity) - Number(a.id === selectedCity),
+      (a, b) =>
+        b.marker.position.clone().project(camera).y -
+        a.marker.position.clone().project(camera).y,
     )) {
       const normal = c.marker.position
         .clone()
