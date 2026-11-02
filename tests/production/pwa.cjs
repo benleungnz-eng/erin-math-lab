@@ -81,9 +81,9 @@ const path = require("node:path");
     const reg = await navigator.serviceWorker.getRegistration();
     await reg.update();
   });
-  await page.waitForSelector("#update:not([hidden])");
-  await page.click("#update");
-  assert.match(await page.locator("#notice").textContent(), /先完成/);
+  await page.waitForFunction(async () =>
+    Boolean((await navigator.serviceWorker.getRegistration()).waiting),
+  );
   assert.equal(await page.locator("#explain").count(), 1);
   console.log(
     "PASS waiting update never forcibly reloads an unfinished session",
@@ -115,7 +115,7 @@ const path = require("node:path");
     const { db } = await import("./src/app.js");
     return db.state;
   });
-  await page.click("#update");
+  await page.click('[data-view="home"]');
   await page.waitForFunction(async (expectedVersion) => {
     const keys = await caches.keys();
     return keys.some((k) => k.includes("v" + expectedVersion));
@@ -132,7 +132,7 @@ const path = require("node:path");
     (await page.evaluate(() => caches.keys())).includes("other-app-sentinel"),
   );
   console.log(
-    "PASS explicit update preserves records and other application caches",
+    "PASS automatic update preserves records and other application caches",
   );
   await context.setOffline(true);
   await page.close();

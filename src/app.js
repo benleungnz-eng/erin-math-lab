@@ -178,6 +178,7 @@ function render() {
   else if (view === "collection") academyUI.collection();
   else if (view === "progress") academyUI.progress();
   else renderHome();
+  document.dispatchEvent(new Event("erin:update-guide-opened"));
 }
 for (const b of document.querySelectorAll("[data-view]"))
   b.onclick = () => {
@@ -692,7 +693,7 @@ function renderSettings() {
     )
     .join(
       "",
-    )}</div><div class="actions"><button id="reduce" aria-pressed="${d.prefs.reduced}">减少动态效果：${d.prefs.reduced ? "开" : "关"}</button><button id="jokes" aria-pressed="${d.prefs.jokes}">轻量彩蛋：${d.prefs.jokes ? "开" : "关"}</button></div><p class="caption">声音默认关闭，可在下方查看角色声效。系统的减少动态效果设置也会被尊重。</p><h3>添加到 iPad 主屏幕</h3><p class="muted">用 Safari 打开最终正式地址，等“离线已就绪”，点分享 → 添加到主屏幕。第一次缓存需要联网。</p></section><section class="card"><h2>本机记录与备份</h2><p class="muted">无账号、不上传。清除浏览器数据、系统清理存储或更换域名可能丢记录；安装主屏幕不保证永久保存。</p><div class="actions"><button id="export"><span class="button-icon" aria-hidden="true">↓</span>导出学习备份</button><label class="button">导入备份<input id="import" type="file" accept=".json,application/json" hidden></label><button id="recovery">导出上次导入前备份</button></div><p class="caption">默认合并，保留本机旧数据；相同关卡题面冲突时保留本机版本。确认导入前会自动保留现有快照。</p><p id="importStatus" role="status"></p></section><section class="card"><h2>本机学习小记</h2><p class="caption">样本数只描述本机记录，不评定长期能力。求助与正式错误分开统计。</p><div id="localStats"></div><button id="showLegacy">查看旧版迁移说明</button></section><section class="card"><h2>版本与更新</h2><p class="muted">${APP_VERSION} · 四科学习搭档。源码与自动部署由 GitHub 管理；练习和记录只在你的设备中运行与保存。</p><p class="caption">有新版本时会提示，当前关卡不会被自动刷新。跨域换站前先导出，再在新域名导入。</p></section></div>`;
+    )}</div><div class="actions"><button id="reduce" aria-pressed="${d.prefs.reduced}">减少动态效果：${d.prefs.reduced ? "开" : "关"}</button><button id="jokes" aria-pressed="${d.prefs.jokes}">轻量彩蛋：${d.prefs.jokes ? "开" : "关"}</button></div><p class="caption">声音默认关闭，可在下方查看角色声效。系统的减少动态效果设置也会被尊重。</p><h3>添加到 iPad 主屏幕</h3><p class="muted">用 Safari 打开最终正式地址，等“离线已就绪”，点分享 → 添加到主屏幕。第一次缓存需要联网。</p></section><section class="card"><h2>本机记录与备份</h2><p class="muted">无账号、不上传。清除浏览器数据、系统清理存储或更换域名可能丢记录；安装主屏幕不保证永久保存。</p><div class="actions"><button id="export"><span class="button-icon" aria-hidden="true">↓</span>导出学习备份</button><label class="button">导入备份<input id="import" type="file" accept=".json,application/json" hidden></label><button id="recovery">导出上次导入前备份</button></div><p class="caption">默认合并，保留本机旧数据；相同关卡题面冲突时保留本机版本。确认导入前会自动保留现有快照。</p><p id="importStatus" role="status"></p></section><section class="card"><h2>本机学习小记</h2><p class="caption">样本数只描述本机记录，不评定长期能力。求助与正式错误分开统计。</p><div id="localStats"></div><button id="showLegacy">查看旧版迁移说明</button></section><section class="card"><h2>版本与更新</h2><p class="muted">${APP_VERSION} · 四科学习搭档。源码与自动部署由 GitHub 管理；练习和记录只在你的设备中运行与保存。</p><p class="caption">联网时自动检查更新，回到首页后自动安装，当前练习不会被打断。跨域换站前先导出，再在新域名导入。</p></section></div>`;
   const sound = audioPreferences(),
     soundCount = installedSoundCount();
   main.insertAdjacentHTML(
@@ -824,4 +825,5 @@ startPWA(
     );
   },
   () => db.serial,
+  () => view === "home",
 );

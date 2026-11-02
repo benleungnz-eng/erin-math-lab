@@ -148,19 +148,12 @@ test("all 61 illustrations have unique character pairs and distinct scene action
   ])
     assert.ok(cast.has(id), id);
 });
-test("home update instructions match release and explain iPad switcher/reopen without claiming that reopening completes an update", () => {
+test("home update status is compact and matches release", () => {
   const pkg = JSON.parse(readFileSync("package.json", "utf8"));
   assert.equal(APP_VERSION, pkg.version);
   const html = updateGuideHTML();
-  for (const word of [
-    "检查更新",
-    "安装已下载的新版本",
-    "向上划掉",
-    "主屏幕图标",
-    "离线已就绪",
-    "不一定已经更新完成",
-    "无需删除图标",
-  ])
-    assert.ok(html.includes(word));
-  assert.ok(readFileSync("index.html", "utf8").includes("v" + APP_VERSION));
+  assert.ok(html.includes(APP_VERSION));
+  assert.ok(html.includes("自动检查更新"));
+  assert.ok(!html.includes("<ol>"));
+  assert.ok(!html.includes("checkForUpdate"));
 });
